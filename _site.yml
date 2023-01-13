@@ -4,6 +4,42 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Introduction to Statistical Programming"
+      menu:
+        - text: "Topic 1: Introduction to R language"
+        - text: "Week 1"
+          href: page-a.html
+        - text: "Week 2"
+          href: page-b.html
+        - text: "Topic 2: Programming with R"
+        - text: "Week 3"
+          href: page-c.html
+        - text: "Week 4"
+          href: page-d.html
+        - text: "Topic 3: Importing data into R"
+        - text: "Week 5"
+          href: page-e.html
+        - text: "Topic 4: Programming statistical graphics"
+        - text: "Week 6"
+          href: page-f.html
+        - text: "Week 7"
+          href: page-g.html
+        - text: "Topic 5: Data Cleaning and filtering"
+        - text: "Week 8"
+          href: page-h.html
+        - text: "Week 9"
+          href: page-i.html
+        - text: "Topic 6: Basic Statistical Analysis"
+        - text: "Week 10"
+          href: page-j.html
+        - text: "Week 11"
+          href: page-k.html
+        - text: "Week 12"
+          href: page-l.html
+        - text: "Week 13"
+          href: page-m.html
+        - text: "Week 14"
+          href: page-n.html
     - text: "Tutorial"
       href: Journal.html
     - text: "Links"

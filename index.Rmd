@@ -8,7 +8,7 @@ output: html_document
   display: none;
 }
 
-#getting-started img {
+#getting-started img { 
   margin-right: 10px;
 }
 

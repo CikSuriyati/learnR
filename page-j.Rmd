@@ -1,0 +1,35 @@
+---
+title: "Topic 6: Basic Statistical Analysis"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+In this topic, you will learn about :
+
+- Summary statistics, frequency, and cross tabulation data
+- Test of mean (test of single mean, independent t-test, paired t-test, and one-way ANOVA)
+- Test of association (Pearson Chi-Square and Fisher’s Exact test)
+- Correlation test
+- Linear regression (simple and multiple linear regression)
+
+# {.tabset}
+
+## Week 10 Class 1
+
+### Summary statistics, frequency,
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## Week 10 Class 2
+
+### cross tabulation data
+

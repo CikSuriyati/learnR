@@ -1,0 +1,48 @@
+---
+title: "Topic 4: Programming statistical graphics"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this topic, you will learn about :
+
+- Plotting using base package (graphics) focus on Histogram, Scatter diagram, Bar chart, Box plot, and Line chart
+- Plotting using ggplot2 package (graphics) focus on Histogram, Scatter diagram, Bar chart, Box plot, and Line chart
+
+# {.tabset}
+
+## Week 7 Class 1
+
+### Graphics - ggplot2 Package
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+### Histogram
+
+### Scatter Plot
+
+### Line chart
+
+## Week 7 Class 2
+
+ggplot2
+
+
+### Barchart
+
+### Boxplot 
+
+## Lab Quiz
+
+Topic 1,2,3 
+15% of ongoing assessment
