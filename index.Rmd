@@ -19,23 +19,29 @@ output: html_document
 
 # **Learn R**
 
-This is a template example for lab journaling. Students in Matt Crump's Human Cognition and Performance Lab will use this template to learn R, and other things. Students can replace this text with more fun things. People not in my lab can use this too.
+R is a powerful, versatile and free statistical programming language, which has become increasingly popular among industrial and academic data analysis. These introduction course assume no previous coding experiences in R or any other programming language.
 
-## How to use
+This course will provide students with extensive skills of fast computing on how to organize computations to access, transform, explore, analyze data and produce results. The primary focus is on teaching the concepts and vocabulary of statistical computing. The ultimate goal is that the students would be able to work in an office, lab or as a research assistant to do essential computations and that they would be able to legitimately put computing skills on their resume. 
 
-1. fork the repo for this website and follow instructions on read me to get set up. [https://github.com/CrumpLab/LabJournalWebsite](https://github.com/CrumpLab/LabJournalWebsite)
+The method of teaching and learning included lecture, lab work and project which should be held in the statistics laboratory. The assessments consist of project, quiz and test.
 
-2. Blog/journal what you are doing in R, by editing the Journal.Rmd. See the [Journal page](https://crumplab.github.io/LabJournalWebsite/Journal.html) for an example of what to do to get started learning R.
+## Assessments Breakdown
 
-3. See the [links page](https://crumplab.github.io/LabJournalWebsite/Links.html) for lots of helpful links on learning R.
-
-4. Change everything to make it your own.
+```{r echo=FALSE}
+library(knitr)
+library(kableExtra)
+df <- data.frame(Cat = c("Presentation", "Quiz", "Test", "Written Report"), 
+                 Quiz = linebreak(c("Face to face", "Online", "Lab Test", "Written Report")), 
+                 Test = linebreak(c("25%", "15%","30%","30%")))
+kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total Mark"), escape = F, caption = "Details of Continuous Assessment") %>%
+  kable_styling(latex_options = "hold_position")
+```
 
 
 </div>
 <div class="col-sm-6">
 
-### [Crump Lab: Human Cognition and Performance](https://crumplab.github.io)
+### Scheme of Work
 
 <a href = "https://crumplab.github.io">
 ![](images/logo.png)
