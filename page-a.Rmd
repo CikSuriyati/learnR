@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(nycflights13)
 library(tidyverse)
 library(ggplot2)
+library(knitr)
+library(kableExtra)
 ```
 In this topic, you will learn about :
 
@@ -24,7 +26,7 @@ The readings in this tutorial follow [_R for Data Science_](http://r4ds.had.co.n
 # {.tabset}
 
 
-## Week 1 Class 1
+## Basic Features
 
 [EXERCISES](https://ciksuriyati.shinyapps.io/penguins/?_ga=2.111118085.1242787491.1673712812-716303559.1673712812)
 
@@ -47,9 +49,179 @@ RStudio is an Integrated Development Environment for R. What does that mean? Wel
 
 You can skip this tutorial if you've already done these things.
 
-## Week 1 Class 2
+## Operators in R
 
-### Logical vectors and relational operators
+### Operators in R
+
+
+Type of operators in R
+
+- Assignment operators
+- Arithmetic operators
+- Relational operators
+- Logical operators
+
+
+**_1. ASSIGNMENT OPERATORS_**
+
+The assignment operators in R allows you to assign data to a named object in order to store the data.
+
+```{r echo=FALSE}
+data.table::data.table(
+     Operator = c("<-", "=", "<<-","->", "->>"),
+  Description = c("Leftwards assignment","Left assignment (not recommended) and argument assignment","Left lexicographic assignment (for advanced users)", "Rightwards assignment", "Right lexicographic assignment (for advanced users)")
+)
+
+```
+Example
+
+```{r}
+x <- 2
+y = 6
+3 -> z
+w <<- 7
+8 ->> s
+
+x
+y
+z
+w
+s
+
+```
+
+
+
+**_2. ARITHMETIC OPERATORS_**
+
+These operators are used to carry out mathematical operations like addition and multiplication. Here is a list of arithmetic operators available in R.
+
+```{r echo=FALSE}
+
+data.frame(
+  stringsAsFactors = FALSE,
+          Operator = c("+", "–", "*", "/", "^", "%%", "%/%"),
+       Description = c("Addition","Subtraction",
+                       "Multiplication","Division","Exponent",
+                       "Modulus (Remainder from division)","Integer Division")
+)
+```
+
+Example
+
+```{r}
+3 + 5   
+8 - 3   
+7 * 5   
+1/2     
+4 ^ 4   
+4 ** 4  
+5 %% 3  
+5 %/% 3
+```
+
+
+**_3. RELATIONAL/COMPARISON OPERATORS_**
+
+Comparison or relational operators are designed to compare objects and the output of these comparisons are of type boolean. To clarify, the following table summarizes the R relational operators.
+
+```{r echo=FALSE}
+data.table::data.table(
+     Operator = c("<", ">", "<=", ">=", "==", "!="),
+  Description = c("Less than","Greater than",
+                  "Less than or equal to","Greater than or equal to","Equal to",
+                  "Not equal to")
+)
+```
+
+Example 
+
+```{r}
+x <- 3
+y <- 15
+
+x<y
+x>y
+x<=5
+y>=20
+y == 16
+x != 5
+
+```
+
+**_4. LOGICAL/BOOLEAN OPERATORS_**
+
+```{r echo=FALSE}
+data.table::data.table(
+     Operator = c("!", "&", "&&", "|", "||"),
+  Description = c("Logical NOT","Element-wise logical AND",
+                  "Logical AND","Element-wise logical OR","Logical OR")
+)
+```
+
+
+
+_Example_
+
+```{r echo=TRUE} 
+x<-c(TRUE, FALSE, 0,6)
+x
+```
+```{r echo=TRUE} 
+x<-c(TRUE, FALSE, 0,6)
+y <- c(FALSE,TRUE,FALSE,TRUE)
+
+!x
+```
+
+Operators & and | perform element-wise operation producing result having length of the longer operand.
+
+```{r echo=TRUE, warning=FALSE} 
+x<-c(TRUE, FALSE, 0,6)
+y <- c(FALSE,TRUE,FALSE,TRUE)
+
+x&y
+```
+
+```{r echo=TRUE, warning=FALSE} 
+x<-c(TRUE, FALSE, 0,6)
+y <- c(FALSE,TRUE,FALSE,TRUE)
+
+x|y
+```
+
+
+But && and || examines only the first element of the operands resulting into a single length logical vector.
+
+
+```{r echo=TRUE,message=FALSE, warning=FALSE} 
+x<-c(TRUE, FALSE, 0,6)
+y <- c(FALSE,TRUE,FALSE,TRUE)
+
+x&&y
+```
+
+Zero is considered FALSE and non-zero numbers are taken as TRUE.
+
+```{r echo=TRUE,message=FALSE, warning=FALSE} 
+x<-c(TRUE, FALSE, 0,6)
+y <- c(FALSE,TRUE,FALSE,TRUE)
+
+x||y
+```
+
+
+
+
+Let’s summarise the main points of this tutorial.
+
+- The three most important logical operators are NOT, AND and OR.
+- In R, the NOT operator is the exclamation mark.
+- The AND operator is the ampersand.
+- The OR operator is the vertical bar.
+- Logical operators are often used to subset vectors or data frames.
+
+## Objects in R
 
 The variables are assigned with R-Objects and the data type of the R-object becomes the data type of the variable. There are many types of R-objects. The frequently used ones are:
 
@@ -59,6 +231,3 @@ The variables are assigned with R-Objects and the data type of the R-object beco
 - Arrays
 - Factors
 - Data Frames
-
-
-**_VECTORS_**

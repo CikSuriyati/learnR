@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-15" />
+<meta name="date" content="2023-01-26" />
 
 <title>Topic 1: Introduction to R language</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -324,7 +324,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 1: Introduction to R language</h1>
-<h4 class="date">2023-01-15</h4>
+<h4 class="date">2023-01-26</h4>
 
 </div>
 
@@ -341,8 +341,8 @@ href="http://r4ds.had.co.nz/"><em>R for Data Science</em></a>, section
 5.2.</p>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-1-class-1" class="section level2">
-<h2>Week 1 Class 1</h2>
+<div id="basic-features" class="section level2">
+<h2>Basic Features</h2>
 <p><a
 href="https://ciksuriyati.shinyapps.io/penguins/?_ga=2.111118085.1242787491.1673712812-716303559.1673712812">EXERCISES</a></p>
 <div id="introduction-to-basic-features-of-r-programming"
@@ -372,11 +372,146 @@ you use it!</p>
 <p>You can skip this tutorial if you’ve already done these things.</p>
 </div>
 </div>
-<div id="week-1-class-2" class="section level2">
-<h2>Week 1 Class 2</h2>
-<div id="logical-vectors-and-relational-operators"
-class="section level3">
-<h3>Logical vectors and relational operators</h3>
+<div id="operators-in-r" class="section level2">
+<h2>Operators in R</h2>
+<div id="operators-in-r-1" class="section level3">
+<h3>Operators in R</h3>
+<p>Type of operators in R</p>
+<ul>
+<li>Assignment operators</li>
+<li>Arithmetic operators</li>
+<li>Relational operators</li>
+<li>Logical operators</li>
+</ul>
+<p><strong><em>1. ASSIGNMENT OPERATORS</em></strong></p>
+<p>The assignment operators in R allows you to assign data to a named
+object in order to store the data.</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Operator"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Description"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"<-","2":"Leftwards assignment"},{"1":"=","2":"Left assignment (not recommended) and argument assignment"},{"1":"<<-","2":"Left lexicographic assignment (for advanced users)"},{"1":"->","2":"Rightwards assignment"},{"1":"->>","2":"Right lexicographic assignment (for advanced users)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Example</p>
+<pre class="r"><code>x &lt;- 2
+y = 6
+3 -&gt; z
+w &lt;&lt;- 7
+8 -&gt;&gt; s
+
+x</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>y</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>z</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>w</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>s</code></pre>
+<pre><code>## [1] 8</code></pre>
+<p><strong><em>2. ARITHMETIC OPERATORS</em></strong></p>
+<p>These operators are used to carry out mathematical operations like
+addition and multiplication. Here is a list of arithmetic operators
+available in R.</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Operator"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Description"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"+","2":"Addition"},{"1":"–","2":"Subtraction"},{"1":"*","2":"Multiplication"},{"1":"/","2":"Division"},{"1":"^","2":"Exponent"},{"1":"%%","2":"Modulus (Remainder from division)"},{"1":"%/%","2":"Integer Division"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Example</p>
+<pre class="r"><code>3 + 5   </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>8 - 3   </code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>7 * 5   </code></pre>
+<pre><code>## [1] 35</code></pre>
+<pre class="r"><code>1/2     </code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<pre class="r"><code>4 ^ 4   </code></pre>
+<pre><code>## [1] 256</code></pre>
+<pre class="r"><code>4 ** 4  </code></pre>
+<pre><code>## [1] 256</code></pre>
+<pre class="r"><code>5 %% 3  </code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>5 %/% 3</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><strong><em>3. RELATIONAL/COMPARISON OPERATORS</em></strong></p>
+<p>Comparison or relational operators are designed to compare objects
+and the output of these comparisons are of type boolean. To clarify, the
+following table summarizes the R relational operators.</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Operator"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Description"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"<","2":"Less than"},{"1":">","2":"Greater than"},{"1":"<=","2":"Less than or equal to"},{"1":">=","2":"Greater than or equal to"},{"1":"==","2":"Equal to"},{"1":"!=","2":"Not equal to"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Example</p>
+<pre class="r"><code>x &lt;- 3
+y &lt;- 15
+
+x&lt;y</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>x&gt;y</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>x&lt;=5</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>y&gt;=20</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>y == 16</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>x != 5</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p><strong><em>4. LOGICAL/BOOLEAN OPERATORS</em></strong></p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Operator"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Description"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"!","2":"Logical NOT"},{"1":"&","2":"Element-wise logical AND"},{"1":"&&","2":"Logical AND"},{"1":"|","2":"Element-wise logical OR"},{"1":"||","2":"Logical OR"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><em>Example</em></p>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+x</code></pre>
+<pre><code>## [1] 1 0 0 6</code></pre>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+y &lt;- c(FALSE,TRUE,FALSE,TRUE)
+
+!x</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+<p>Operators &amp; and | perform element-wise operation producing result
+having length of the longer operand.</p>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+y &lt;- c(FALSE,TRUE,FALSE,TRUE)
+
+x&amp;y</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+y &lt;- c(FALSE,TRUE,FALSE,TRUE)
+
+x|y</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
+<p>But &amp;&amp; and || examines only the first element of the operands
+resulting into a single length logical vector.</p>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+y &lt;- c(FALSE,TRUE,FALSE,TRUE)
+
+x&amp;&amp;y</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Zero is considered FALSE and non-zero numbers are taken as TRUE.</p>
+<pre class="r"><code>x&lt;-c(TRUE, FALSE, 0,6)
+y &lt;- c(FALSE,TRUE,FALSE,TRUE)
+
+x||y</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Let’s summarise the main points of this tutorial.</p>
+<ul>
+<li>The three most important logical operators are NOT, AND and OR.</li>
+<li>In R, the NOT operator is the exclamation mark.</li>
+<li>The AND operator is the ampersand.</li>
+<li>The OR operator is the vertical bar.</li>
+<li>Logical operators are often used to subset vectors or data
+frames.</li>
+</ul>
+</div>
+</div>
+<div id="objects-in-r" class="section level2">
+<h2>Objects in R</h2>
 <p>The variables are assigned with R-Objects and the data type of the
 R-object becomes the data type of the variable. There are many types of
 R-objects. The frequently used ones are:</p>
@@ -388,8 +523,6 @@ R-objects. The frequently used ones are:</p>
 <li>Factors</li>
 <li>Data Frames</li>
 </ul>
-<p><strong><em>VECTORS</em></strong></p>
-</div>
 </div>
 </div>
 
