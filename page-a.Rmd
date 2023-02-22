@@ -1,6 +1,5 @@
 ---
 title: "Topic 1: Introduction to R language"
-date: "`r Sys.Date()`"
 output: 
   html_document:
     df_print: paged
@@ -14,12 +13,13 @@ library(ggplot2)
 library(knitr)
 library(kableExtra)
 ```
-In this topic, you will learn about :
+
+
+In this topic in week 1, you will learn about :
 
 - basic features of R programming
 - Logical vectors and relational operators
-- Extracting elements from vectors
-- Data frames and list
+
 
 The readings in this tutorial follow [_R for Data Science_](http://r4ds.had.co.nz/), section 5.2.
 
@@ -50,6 +50,7 @@ RStudio is an Integrated Development Environment for R. What does that mean? Wel
 You can skip this tutorial if you've already done these things.
 
 ## Operators in R
+
 
 ### Operators in R
 
@@ -220,14 +221,3 @@ Let’s summarise the main points of this tutorial.
 - The AND operator is the ampersand.
 - The OR operator is the vertical bar.
 - Logical operators are often used to subset vectors or data frames.
-
-## Objects in R
-
-The variables are assigned with R-Objects and the data type of the R-object becomes the data type of the variable. There are many types of R-objects. The frequently used ones are:
-
-- Vectors
-- Lists
-- Matrices
-- Arrays
-- Factors
-- Data Frames

@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-16" />
+<meta name="date" content="2023-02-22" />
 
 <title>Topic 1: Introduction to R language</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,55 +322,990 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 1: Introduction to R language</h1>
-<h4 class="date">2023-01-16</h4>
+<h4 class="date">2023-02-22</h4>
 
 </div>
 
 
-<p>In this topic, you will learn about :</p>
+<p>In this topic in week 2 , you will learn about :</p>
 <ul>
-<li>basic features of R programming</li>
-<li>Logical vectors and relational operators</li>
-<li>Extracting elements from vectors</li>
 <li>Data frames and list</li>
+<li>Extracting elements from vectors</li>
 </ul>
 <p>The readings in this tutorial follow <a
 href="http://r4ds.had.co.nz/"><em>R for Data Science</em></a>, section
 5.2.</p>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-2-class-1" class="section level2">
-<h2>Week 2 Class 1</h2>
-<div id="extracting-elements-from-vectors" class="section level3">
-<h3>Extracting elements from vectors</h3>
-<p>This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more details
-on using R Markdown see <a href="http://rmarkdown.rstudio.com"
-class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be
-generated that includes both content as well as the output of any
-embedded R code chunks within the document. You can embed an R code
-chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="objects-in-r" class="section level2">
+<h2>Objects in R</h2>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>To introduce data types in R and show how these data types are used
+in data structures.</li>
+<li>Learn how to create vectors of different types.</li>
+<li>Be able to check the type of vector.</li>
+<li>Learn about missing data and other special values.</li>
+<li>Get familiar with the different data structures (lists, matrices,
+data frames).</li>
+</ul>
+<p><span style="color: blue;"><strong>Everything in R is an
+object.</strong></span></p>
+<p>R has 5 basic data types.</p>
+<ul>
+<li>character</li>
+<li>numeric (real or decimal)</li>
+<li>integer</li>
+<li>logical</li>
+<li>complex</li>
+</ul>
+<p>A variable can store different types of values such as numbers,
+characters etc. The <span style="color: blue;"><strong>variables are
+assigned with R-Objects</strong></span> and the <span
+style="color: blue;"><strong>data type of the R-object</strong></span>
+becomes the <span style="color: blue;"><strong>data type of the
+variable.</strong></span></p>
+<p>Elements of these data types may be combined to form data structures,
+such as atomic vectors. When we call a vector atomic, we mean that the
+vector only holds data of a single data type.</p>
+<p>R provides many functions to examine features of vectors and other
+objects, for example</p>
+<p><strong>class( )</strong> - what kind of object is it
+(high-level)?</p>
+<pre class="r"><code>x &lt;- 3L
+class(x)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p><strong>typeof( )</strong> - what is the object’s data type
+(low-level)?</p>
+<pre class="r"><code>x &lt;- 3L
+typeof(x)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p><strong>length( )</strong> - how long is it? What about two
+dimensional objects?</p>
+<pre class="r"><code>x &lt;- 3L
+length(x)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><strong>attributes( )</strong> - does it have any metadata?</p>
+<pre class="r"><code>x &lt;- 3L
+attributes(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<p>Below are examples of atomic character vectors, numeric vectors,
+integer vectors, etc.</p>
+<ul>
+<li><p>character: &lt;“a”&gt;, “abc”</p></li>
+<li><p>numeric: 3, 13.5</p></li>
+<li><p>integer: (the L tells R to store this as an integer)</p></li>
+<li><p>logical: TRUE, FALSE</p></li>
+<li><p>complex: 1+3i (complex numbers with real and imaginary
+parts)</p></li>
+</ul>
+<p>R has many data structures. The frequently used ones are:</p>
+<ul>
+<li>Vectors</li>
+<li>Lists</li>
+<li>Matrices</li>
+<li>Arrays</li>
+<li>Factors</li>
+<li>Data Frames</li>
+</ul>
 </div>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>A vector is a basic data structure which plays an important role in R
+programming. In R, <span style="color: blue;">a sequence of elements
+which share the same data type is known as vector</span>. A vector
+supports logical, integer, double, character, complex, or raw data
+type.</p>
+<pre class="r"><code># Atomic vector of type character.
+print(&quot;ali&quot;);</code></pre>
+<pre><code>## [1] &quot;ali&quot;</code></pre>
+<pre class="r"><code># Atomic vector of type double.
+print(2.5)</code></pre>
+<pre><code>## [1] 2.5</code></pre>
+<pre class="r"><code># Atomic vector of type integer.
+print(3L)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code># Atomic vector of type logical.
+print(TRUE)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code># Atomic vector of type complex.
+print(1+3i)</code></pre>
+<pre><code>## [1] 1+3i</code></pre>
+<pre class="r"><code># Atomic vector of type raw.
+print(charToRaw(&#39;hello&#39;))</code></pre>
+<pre><code>## [1] 68 65 6c 6c 6f</code></pre>
+<p><strong>1. Multiple Elements Vector</strong>.</p>
+<p><span style="color: blue;">Using colon operator (:) with numeric
+data</span></p>
+<pre class="r"><code># Creating a sequence from 4 to 23.
+v &lt;- 4:12
+print(v)</code></pre>
+<pre><code>## [1]  4  5  6  7  8  9 10 11 12</code></pre>
+<pre class="r"><code># Creating a sequence from 3.6 to 9.6.
+v &lt;- 3.6:9.6
+print(v)</code></pre>
+<pre><code>## [1] 3.6 4.6 5.6 6.6 7.6 8.6 9.6</code></pre>
+<pre class="r"><code># If the final element specified does not belong to the sequence then it is discarded.
+v &lt;- 4.8:10.4
+print(v)</code></pre>
+<pre><code>## [1] 4.8 5.8 6.8 7.8 8.8 9.8</code></pre>
+<p><span style="color: blue;">Using sequence (seq.) operator</span></p>
+<pre class="r"><code># Create vector with elements from 5 to 9 incrementing by 0.4.
+print(seq(5, 9, by = 0.4))</code></pre>
+<pre><code>##  [1] 5.0 5.4 5.8 6.2 6.6 7.0 7.4 7.8 8.2 8.6 9.0</code></pre>
+<p><span style="color: blue;">Using the c( ) function</span>.</p>
+<p>The non-character values are coerced to character type if one of the
+elements is a character.</p>
+<pre class="r"><code># The logical and numeric values are converted to characters.
+s &lt;- c(&#39;apple&#39;,&#39;red&#39;,4,TRUE)
+print(s)</code></pre>
+<pre><code>## [1] &quot;apple&quot; &quot;red&quot;   &quot;4&quot;     &quot;TRUE&quot;</code></pre>
+<p><strong>2. Accessing Vector Elements</strong></p>
+<p>Elements of a Vector are accessed using indexing. The <strong>[ ]
+brackets</strong> are used for indexing. Indexing starts with position
+1. Giving a negative value in the index drops that element from
+result.<strong>TRUE, FALSE</strong> or <strong>0</strong> and
+<strong>1</strong> can also be used for indexing.</p>
+<pre class="r"><code># Accessing vector elements using position.
+t &lt;- c(&quot;Sun&quot;,&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thurs&quot;,&quot;Fri&quot;,&quot;Sat&quot;)
+u &lt;- t[c(1,2,5)]
+print(u)</code></pre>
+<pre><code>## [1] &quot;Sun&quot;   &quot;Mon&quot;   &quot;Thurs&quot;</code></pre>
+<pre class="r"><code># Accessing vector elements using logical indexing.
+v &lt;- t[c(TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE)]
+print(v)</code></pre>
+<pre><code>## [1] &quot;Sun&quot; &quot;Fri&quot;</code></pre>
+<pre class="r"><code># Accessing vector elements using negative indexing.
+x &lt;- t[c(-3,-6)]
+print(x)</code></pre>
+<pre><code>## [1] &quot;Sun&quot;   &quot;Mon&quot;   &quot;Wed&quot;   &quot;Thurs&quot; &quot;Sat&quot;</code></pre>
+<pre class="r"><code># Accessing vector elements using 0/1 indexing.
+y &lt;- t[c(0,0,0,0,0,0,1)]
+print(y)</code></pre>
+<pre><code>## [1] &quot;Sun&quot;</code></pre>
+<p><strong>3. Vector Manipulation</strong>.</p>
+<p><strong>Vector arithmetic</strong>.</p>
+<p>Two vectors of same length can be added, subtracted, multiplied or
+divided giving the result as a vector output.</p>
+<pre class="r"><code># Create two vectors.
+v1 &lt;- c(2,8,4,4,0,10)
+v2 &lt;- c(3,11,0,7,1,3)
+
+# Vector addition.
+add &lt;- v1+v2
+print(add)</code></pre>
+<pre><code>## [1]  5 19  4 11  1 13</code></pre>
+<pre class="r"><code># Vector subtraction.
+sub &lt;- v1-v2
+print(sub)</code></pre>
+<pre><code>## [1] -1 -3  4 -3 -1  7</code></pre>
+<pre class="r"><code># Vector multiplication.
+multi &lt;- v1*v2
+print(multi)</code></pre>
+<pre><code>## [1]  6 88  0 28  0 30</code></pre>
+<pre class="r"><code># Vector division.
+divi &lt;- v1/v2
+print(divi)</code></pre>
+<pre><code>## [1] 0.6666667 0.7272727       Inf 0.5714286 0.0000000 3.3333333</code></pre>
+<p><strong>Vector Element Recycling</strong></p>
+<p>If we apply arithmetic operations to two vectors of unequal length,
+then the elements of the shorter vector are recycled to complete the
+operations.</p>
+<pre class="r"><code>v1 &lt;- c(3,8,4,5,0,11)
+v2 &lt;- c(4,11)
+# V2 becomes c(4,11,4,11,4,11)
+
+add.result &lt;- v1+v2
+print(add.result)</code></pre>
+<pre><code>## [1]  7 19  8 16  4 22</code></pre>
+<pre class="r"><code>sub.result &lt;- v1-v2
+print(sub.result)</code></pre>
+<pre><code>## [1] -1 -3  0 -6 -4  0</code></pre>
+<p><strong>Vector Element Sorting</strong></p>
+<p>Elements in a vector can be sorted using the sort() function.</p>
+<pre class="r"><code>v &lt;- c(3,8,4,5,0,11, -9, 304)
+
+# Sort the elements of the vector.
+sort1 &lt;- sort(v)
+print(sort1)</code></pre>
+<pre><code>## [1]  -9   0   3   4   5   8  11 304</code></pre>
+<pre class="r"><code># Sort the elements in the reverse order.
+revsort &lt;- sort(v, decreasing = TRUE)
+print(revsort)</code></pre>
+<pre><code>## [1] 304  11   8   5   4   3   0  -9</code></pre>
+<pre class="r"><code># Sorting character vectors.
+v &lt;- c(&quot;Red&quot;,&quot;Blue&quot;,&quot;yellow&quot;,&quot;violet&quot;)
+sort2 &lt;- sort(v)
+print(sort2)</code></pre>
+<pre><code>## [1] &quot;Blue&quot;   &quot;Red&quot;    &quot;violet&quot; &quot;yellow&quot;</code></pre>
+<pre class="r"><code># Sorting character vectors in reverse order.
+revsort &lt;- sort(v, decreasing = TRUE)
+print(revsort)</code></pre>
+<pre><code>## [1] &quot;yellow&quot; &quot;violet&quot; &quot;Red&quot;    &quot;Blue&quot;</code></pre>
 </div>
-<div id="week-2-class-2" class="section level2">
-<h2>Week 2 Class 2</h2>
-<div id="data-frames-and-list" class="section level3">
-<h3>Data frames and list</h3>
-<p>You can also embed plots, for example:</p>
-<p><img src="page-b_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>Lists are the R objects which contain elements of different types
+like − numbers, strings, vectors and another list inside it. A list can
+also contain a matrix or a function as its elements. List is created
+using <strong>list()</strong> function.</p>
+<p><strong>1. Creating a List</strong></p>
+<p>Following is an example to create a list containing strings, numbers,
+vectors and a logical values.</p>
+<pre class="r"><code># Create a list containing strings, numbers, vectors and a logical
+# values.
+list_data &lt;- list(&quot;Red&quot;, &quot;Green&quot;, c(21,32,11), TRUE, 51.23, 119.1)
+print(list_data)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Red&quot;
+## 
+## [[2]]
+## [1] &quot;Green&quot;
+## 
+## [[3]]
+## [1] 21 32 11
+## 
+## [[4]]
+## [1] TRUE
+## 
+## [[5]]
+## [1] 51.23
+## 
+## [[6]]
+## [1] 119.1</code></pre>
+<p><strong>2. Naming List Elements</strong></p>
+<p>The list elements can be given names and they can be accessed using
+these names.</p>
+<pre class="r"><code># Create a list containing a vector, a matrix and a list.
+list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list(&quot;green&quot;,12.3))
+
+# Give names to the elements in the list.
+names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
+
+# Show the list.
+print(list_data)</code></pre>
+<pre><code>## $`1st Quarter`
+## [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot;
+## 
+## $A_Matrix
+##      [,1] [,2] [,3]
+## [1,]    3    5   -2
+## [2,]    9    1    8
+## 
+## $`A Inner list`
+## $`A Inner list`[[1]]
+## [1] &quot;green&quot;
+## 
+## $`A Inner list`[[2]]
+## [1] 12.3</code></pre>
+<p><strong>3. Accessing List Elements</strong></p>
+<p>Elements of the list can be accessed by the index of the element in
+the list. In case of named lists it can also be accessed using the
+names.</p>
+<p>We continue to use the list in the above example −</p>
+<pre class="r"><code># Create a list containing a vector, a matrix and a list.
+list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list(&quot;green&quot;,12.3))
+
+# Give names to the elements in the list.
+names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
+
+# Access the first element of the list.
+print(list_data[1])</code></pre>
+<pre><code>## $`1st Quarter`
+## [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot;</code></pre>
+<pre class="r"><code># Access the thrid element. As it is also a list, all its elements will be printed.
+print(list_data[3])</code></pre>
+<pre><code>## $`A Inner list`
+## $`A Inner list`[[1]]
+## [1] &quot;green&quot;
+## 
+## $`A Inner list`[[2]]
+## [1] 12.3</code></pre>
+<pre class="r"><code># Access the list element using the name of the element.
+print(list_data$A_Matrix)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    5   -2
+## [2,]    9    1    8</code></pre>
+<p><strong>4. Manipulating List Elements</strong></p>
+<p>We can add, delete and update list elements as shown below. We can
+add and delete elements only at the end of a list. But we can update any
+element.</p>
+<pre class="r"><code># Create a list containing a vector, a matrix and a list.
+list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list(&quot;green&quot;,12.3))
+
+# Give names to the elements in the list.
+names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
+
+# Add element at the end of the list.
+list_data[4] &lt;- &quot;New element&quot;
+print(list_data[4])</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;New element&quot;</code></pre>
+<pre class="r"><code># Remove the last element.
+list_data[4] &lt;- NULL
+
+# Print the 4th Element.
+print(list_data[4])</code></pre>
+<pre><code>## $&lt;NA&gt;
+## NULL</code></pre>
+<pre class="r"><code># Update the 3rd Element.
+list_data[3] &lt;- &quot;updated element&quot;
+print(list_data[3])</code></pre>
+<pre><code>## $`A Inner list`
+## [1] &quot;updated element&quot;</code></pre>
+<p><strong>5. Merging Lists</strong></p>
+<p>You can merge many lists into one list by placing all the lists
+inside one list() function.</p>
+<pre class="r"><code># Create two lists.
+list1 &lt;- list(1,2,3)
+list2 &lt;- list(&quot;Sun&quot;,&quot;Mon&quot;,&quot;Tue&quot;)
+
+# Merge the two lists.
+merged.list &lt;- c(list1,list2)
+
+# Print the merged list.
+print(merged.list)</code></pre>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] 3
+## 
+## [[4]]
+## [1] &quot;Sun&quot;
+## 
+## [[5]]
+## [1] &quot;Mon&quot;
+## 
+## [[6]]
+## [1] &quot;Tue&quot;</code></pre>
+<p><strong>6. Converting List to Vector</strong></p>
+<p>A list can be converted to a vector so that the elements of the
+vector can be used for further manipulation. All the arithmetic
+operations on vectors can be applied after the list is converted into
+vectors. To do this conversion, we use the unlist() function. It takes
+the list as input and produces a vector.</p>
+<pre class="r"><code># Create lists.
+list1 &lt;- list(1:5)
+print(list1)</code></pre>
+<pre><code>## [[1]]
+## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>list2 &lt;-list(10:14)
+print(list2)</code></pre>
+<pre><code>## [[1]]
+## [1] 10 11 12 13 14</code></pre>
+<pre class="r"><code># Convert the lists to vectors.
+v1 &lt;- unlist(list1)
+v2 &lt;- unlist(list2)
+
+print(v1)</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>print(v2)</code></pre>
+<pre><code>## [1] 10 11 12 13 14</code></pre>
+<pre class="r"><code># Now add the vectors
+result &lt;- v1+v2
+print(result)</code></pre>
+<pre><code>## [1] 11 13 15 17 19</code></pre>
 </div>
+<div id="matrices" class="section level2">
+<h2>Matrices</h2>
+<p>Matrices are the R objects in which the elements are arranged in a
+two-dimensional rectangular layout. They contain elements of the same
+atomic types. Though we can create a matrix containing only characters
+or only logical values, they are not of much use. We use matrices
+containing numeric elements to be used in mathematical calculations.</p>
+<p>A Matrix is created using the <strong>matrix()</strong> function.</p>
+<p><strong>Syntax</strong></p>
+<p>The basic syntax for creating a matrix in R is −</p>
+<p><strong>matrix(data, nrow, ncol, byrow, dimnames)</strong></p>
+<p>Following is the description of the parameters used −</p>
+<ul>
+<li>data is the input vector which becomes the data elements of the
+matrix.</li>
+<li>nrow is the number of rows to be created.</li>
+<li>ncol is the number of columns to be created.</li>
+<li>byrow is a logical clue. If TRUE then the input vector elements are
+arranged by row.</li>
+<li>dimname is the names assigned to the rows and columns.</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>Create a matrix taking a vector of numbers as input.</p>
+<pre class="r"><code># Elements are arranged sequentially by row.
+M &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE)
+print(M)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    4    5
+## [2,]    6    7    8
+## [3,]    9   10   11
+## [4,]   12   13   14</code></pre>
+<pre class="r"><code># Elements are arranged sequentially by column.
+N &lt;- matrix(c(3:14), nrow = 4, byrow = FALSE)
+print(N)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    7   11
+## [2,]    4    8   12
+## [3,]    5    9   13
+## [4,]    6   10   14</code></pre>
+<pre class="r"><code># Define the column and row names.
+rownames = c(&quot;row1&quot;, &quot;row2&quot;, &quot;row3&quot;, &quot;row4&quot;)
+colnames = c(&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;)
+
+P &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
+print(P)</code></pre>
+<pre><code>##      col1 col2 col3
+## row1    3    4    5
+## row2    6    7    8
+## row3    9   10   11
+## row4   12   13   14</code></pre>
+<p><span style="color: blue;"><strong>Accessing Elements of a
+Matrix</strong></span></p>
+<p>Elements of a matrix can be accessed by using the column and row
+index of the element. We consider the matrix P above to find the
+specific elements below.</p>
+<pre class="r"><code># Define the column and row names.
+rownames = c(&quot;row1&quot;, &quot;row2&quot;, &quot;row3&quot;, &quot;row4&quot;)
+colnames = c(&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;)
+
+# Create the matrix.
+P &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
+
+# Access the element at 3rd column and 1st row.
+print(P[1,3])</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code># Access the element at 2nd column and 4th row.
+print(P[4,2])</code></pre>
+<pre><code>## [1] 13</code></pre>
+<pre class="r"><code># Access only the  2nd row.
+print(P[2,])</code></pre>
+<pre><code>## col1 col2 col3 
+##    6    7    8</code></pre>
+<pre class="r"><code># Access only the 3rd column.
+print(P[,3])</code></pre>
+<pre><code>## row1 row2 row3 row4 
+##    5    8   11   14</code></pre>
+<p><span style="color: blue;"><strong>Matrix
+Computations</strong></span></p>
+<p>Various mathematical operations are performed on the matrices using
+the R operators. The result of the operation is also a matrix.</p>
+<p>The dimensions (number of rows and columns) should be same for the
+matrices involved in the operation.</p>
+<p><span style="color: blue;"><strong>1. Matrix Addition &amp;
+Subtraction</strong></span></p>
+<pre class="r"><code># Create two 2x3 matrices.
+matrix1 &lt;- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
+print(matrix1)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3   -1    2
+## [2,]    9    4    6</code></pre>
+<pre class="r"><code>matrix2 &lt;- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
+print(matrix2)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    0    3
+## [2,]    2    9    4</code></pre>
+<pre class="r"><code># Add the matrices.
+result &lt;- matrix1 + matrix2
+cat(&quot;Result of addition&quot;,&quot;\n&quot;)</code></pre>
+<pre><code>## Result of addition</code></pre>
+<pre class="r"><code>print(result)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    8   -1    5
+## [2,]   11   13   10</code></pre>
+<pre class="r"><code># Subtract the matrices
+result &lt;- matrix1 - matrix2
+cat(&quot;Result of subtraction&quot;,&quot;\n&quot;)</code></pre>
+<pre><code>## Result of subtraction</code></pre>
+<pre class="r"><code>print(result)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   -2   -1   -1
+## [2,]    7   -5    2</code></pre>
+<p><span style="color: blue;"><strong>2. Matrix Multiplication &amp;
+Division</strong></span></p>
+<pre class="r"><code># Create two 2x3 matrices.
+matrix1 &lt;- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
+print(matrix1)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3   -1    2
+## [2,]    9    4    6</code></pre>
+<pre class="r"><code>matrix2 &lt;- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
+print(matrix2)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    0    3
+## [2,]    2    9    4</code></pre>
+<pre class="r"><code># Multiply the matrices.
+result &lt;- matrix1 * matrix2
+cat(&quot;Result of multiplication&quot;,&quot;\n&quot;)</code></pre>
+<pre><code>## Result of multiplication</code></pre>
+<pre class="r"><code>print(result)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   15    0    6
+## [2,]   18   36   24</code></pre>
+<pre class="r"><code># Divide the matrices
+result &lt;- matrix1 / matrix2
+cat(&quot;Result of division&quot;,&quot;\n&quot;)</code></pre>
+<pre><code>## Result of division</code></pre>
+<pre class="r"><code>print(result)</code></pre>
+<pre><code>##      [,1]      [,2]      [,3]
+## [1,]  0.6      -Inf 0.6666667
+## [2,]  4.5 0.4444444 1.5000000</code></pre>
+</div>
+<div id="arrays" class="section level2">
+<h2>Arrays</h2>
+<p>Arrays are the R data objects which can store data in more than two
+dimensions. For example − If we create an array of dimension (2, 3, 4)
+then it creates 4 rectangular matrices each with 2 rows and 3 columns.
+Arrays can store only data type.</p>
+<p>An array is created using the array() function. It takes vectors as
+input and uses the values in the dim parameter to create an array.</p>
+<p><strong>Example</strong></p>
+<p>The following example creates an array of two 3x3 matrices each with
+3 rows and 3 columns.</p>
+<pre class="r"><code># Create two vectors of different lengths.
+vector1 &lt;- c(5,9,3)
+vector2 &lt;- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+result &lt;- array(c(vector1,vector2),dim = c(3,3,2))
+print(result)</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15</code></pre>
+<p><span style="color: blue;"><strong>1. Naming Columns and
+Rows</strong></span></p>
+<p>We can give names to the rows, columns and matrices in the array by
+using the dimnames parameter.</p>
+<pre class="r"><code># Create two vectors of different lengths.
+vector1 &lt;- c(5,9,3)
+vector2 &lt;- c(10,11,12,13,14,15)
+column.names &lt;- c(&quot;COL1&quot;,&quot;COL2&quot;,&quot;COL3&quot;)
+row.names &lt;- c(&quot;ROW1&quot;,&quot;ROW2&quot;,&quot;ROW3&quot;)
+matrix.names &lt;- c(&quot;Matrix1&quot;,&quot;Matrix2&quot;)
+
+# Take these vectors as input to the array.
+result &lt;- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,column.names,
+   matrix.names))
+print(result)</code></pre>
+<pre><code>## , , Matrix1
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+## 
+## , , Matrix2
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15</code></pre>
+<p><span style="color: blue;"><strong>2. Accessing Array
+Elements</strong></span></p>
+<pre class="r"><code># Create two vectors of different lengths.
+vector1 &lt;- c(5,9,3)
+vector2 &lt;- c(10,11,12,13,14,15)
+column.names &lt;- c(&quot;COL1&quot;,&quot;COL2&quot;,&quot;COL3&quot;)
+row.names &lt;- c(&quot;ROW1&quot;,&quot;ROW2&quot;,&quot;ROW3&quot;)
+matrix.names &lt;- c(&quot;Matrix1&quot;,&quot;Matrix2&quot;)
+
+# Take these vectors as input to the array.
+result &lt;- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,
+   column.names, matrix.names))
+
+# Print the third row of the second matrix of the array.
+print(result[3,,2])</code></pre>
+<pre><code>## COL1 COL2 COL3 
+##    3   12   15</code></pre>
+<pre class="r"><code># Print the element in the 1st row and 3rd column of the 1st matrix.
+print(result[1,3,1])</code></pre>
+<pre><code>## [1] 13</code></pre>
+<pre class="r"><code># Print the 2nd Matrix.
+print(result[,,2])</code></pre>
+<pre><code>##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15</code></pre>
+<p><span style="color: blue;"><strong>3. Manipulating Array
+Elements</strong></span></p>
+<p>As array is made up matrices in multiple dimensions, the operations
+on elements of array are carried out by accessing elements of the
+matrices.</p>
+<pre class="r"><code># Create two vectors of different lengths.
+vector1 &lt;- c(5,9,3)
+vector2 &lt;- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+array1 &lt;- array(c(vector1,vector2),dim = c(3,3,2))
+
+# Create two vectors of different lengths.
+vector3 &lt;- c(9,1,0)
+vector4 &lt;- c(6,0,11,3,14,1,2,6,9)
+array2 &lt;- array(c(vector1,vector2),dim = c(3,3,2))
+
+# create matrices from these arrays.
+matrix1 &lt;- array1[,,2]
+matrix2 &lt;- array2[,,2]
+
+# Add the matrices.
+result &lt;- matrix1+matrix2
+print(result)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   20   26
+## [2,]   18   22   28
+## [3,]    6   24   30</code></pre>
+<p><span style="color: blue;"><strong>4. Calculations Across Array
+Elements</strong></span></p>
+<p>We can do calculations across the elements in an array using the
+apply() function.</p>
+<p><strong>Syntax</strong></p>
+<p><strong>apply(x, margin, fun)</strong></p>
+<p>Following is the description of the parameters used −</p>
+<ul>
+<li>x is an array.</li>
+<li>margin is the name of the data set used.</li>
+<li>fun is the function to be applied across the elements of the
+array.</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>We use the <strong>apply()</strong> function below to calculate the
+sum of the elements in the rows of an array across all the matrices</p>
+<pre class="r"><code># Create two vectors of different lengths.
+vector1 &lt;- c(5,9,3)
+vector2 &lt;- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+new.array &lt;- array(c(vector1,vector2),dim = c(3,3,2))
+print(new.array)</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15</code></pre>
+<pre class="r"><code># Use apply to calculate the sum of the rows across all the matrices.
+result &lt;- apply(new.array, c(1), sum)
+print(result)</code></pre>
+<pre><code>## [1] 56 68 60</code></pre>
+</div>
+<div id="data-frame" class="section level2">
+<h2>Data Frame</h2>
+<p>A data frame is a table or a two-dimensional array-like structure in
+which each column contains values of one variable and each row contains
+one set of values from each column.</p>
+<p>Following are the characteristics of a data frame.</p>
+<ul>
+<li>The column names should be non-empty.</li>
+<li>The row names should be unique.</li>
+<li>The data stored in a data frame can be of numeric, factor or
+character type.</li>
+<li>Each column should contain same number of data items.</li>
+</ul>
+<p><span style="color: blue;"><strong>1. Create Data
+Frame</strong></span></p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+  
+   stringsAsFactors = FALSE
+)
+# Print the data frame.         
+print(student.data) </code></pre>
+<pre><code>##   std_id std_name pocketmoney start_date
+## 1      1      Ali      623.30 2012-01-01
+## 2      2      Abu      515.20 2013-09-23
+## 3      3    Ahmad      611.00 2014-11-15
+## 4      4     Siti      729.00 2014-05-11
+## 5      5     Emma      843.25 2015-03-27</code></pre>
+<p><span style="color: blue;"><strong>2. Get the Structure of the Data
+Frame</strong></span></p>
+<p>The structure of the data frame can be seen by using str()
+function.</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+
+   stringsAsFactors = FALSE
+)
+# Get the structure of the data frame.
+str(student.data)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  4 variables:
+##  $ std_id     : int  1 2 3 4 5
+##  $ std_name   : chr  &quot;Ali&quot; &quot;Abu&quot; &quot;Ahmad&quot; &quot;Siti&quot; ...
+##  $ pocketmoney: num  623 515 611 729 843
+##  $ start_date : Date, format: &quot;2012-01-01&quot; &quot;2013-09-23&quot; ...</code></pre>
+<p><span style="color: blue;"><strong>3. Summary of Data in Data
+Frame</strong></span></p>
+<p>The statistical summary and nature of the data can be obtained by
+applying summary() function.</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+  
+   stringsAsFactors = FALSE
+)
+# Print the summary.
+print(summary(student.data)) </code></pre>
+<pre><code>##      std_id    std_name          pocketmoney      start_date        
+##  Min.   :1   Length:5           Min.   :515.2   Min.   :2012-01-01  
+##  1st Qu.:2   Class :character   1st Qu.:611.0   1st Qu.:2013-09-23  
+##  Median :3   Mode  :character   Median :623.3   Median :2014-05-11  
+##  Mean   :3                      Mean   :664.4   Mean   :2014-01-14  
+##  3rd Qu.:4                      3rd Qu.:729.0   3rd Qu.:2014-11-15  
+##  Max.   :5                      Max.   :843.2   Max.   :2015-03-27</code></pre>
+<p><span style="color: blue;"><strong>4. Extract Data from Data
+Frame</strong></span></p>
+<p>Extract specific column from a data frame using column name.</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+
+   stringsAsFactors = FALSE
+)
+# Extract Specific columns.
+result &lt;- data.frame(student.data$std_name,student.data$pocketmoney)
+print(result)</code></pre>
+<pre><code>##   student.data.std_name student.data.pocketmoney
+## 1                   Ali                   623.30
+## 2                   Abu                   515.20
+## 3                 Ahmad                   611.00
+## 4                  Siti                   729.00
+## 5                  Emma                   843.25</code></pre>
+<p>Extract the first two rows and then all columns</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+
+   stringsAsFactors = FALSE
+)
+# Extract first two rows.
+result &lt;- student.data[1:2,]
+print(result)</code></pre>
+<pre><code>##   std_id std_name pocketmoney start_date
+## 1      1      Ali       623.3 2012-01-01
+## 2      2      Abu       515.2 2013-09-23</code></pre>
+<p>Extract 3rd and 5th row with 2nd and 4th column</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+ 
+   stringsAsFactors = FALSE
+)
+
+# Extract 3rd and 5th row with 2nd and 4th column.
+result &lt;- student.data[c(3,5),c(2,4)]
+print(result)</code></pre>
+<pre><code>##   std_name start_date
+## 3    Ahmad 2014-11-15
+## 5     Emma 2015-03-27</code></pre>
+<p><span style="color: blue;"><strong>5. Expand Data
+Frame</strong></span></p>
+<p>A data frame can be expanded by adding columns and rows.</p>
+<p><span style="color: blue;"><strong>Add Column</strong></span></p>
+<p>Just add the column vector using a new column name.</p>
+<pre class="r"><code># Create the data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+ 
+   stringsAsFactors = FALSE
+)
+
+# Add the &quot;program&quot; column.
+student.data$program &lt;- c(&quot;CS&quot;,&quot;BM&quot;,&quot;Stat&quot;,&quot;Banking&quot;,&quot;AM&quot;)
+v &lt;- student.data
+print(v)</code></pre>
+<pre><code>##   std_id std_name pocketmoney start_date program
+## 1      1      Ali      623.30 2012-01-01      CS
+## 2      2      Abu      515.20 2013-09-23      BM
+## 3      3    Ahmad      611.00 2014-11-15    Stat
+## 4      4     Siti      729.00 2014-05-11 Banking
+## 5      5     Emma      843.25 2015-03-27      AM</code></pre>
+<p><span style="color: blue;"><strong>Add Row</strong></span></p>
+<p>To <strong>add more rows permanently</strong> to an existing data
+frame, we need to bring in the new rows in the <strong>same
+structure</strong> as the existing data frame and use the
+<strong>rbind()</strong> function.</p>
+<p>In the example below we create a data frame with new rows and merge
+it with the existing data frame to create the final data frame.</p>
+<pre class="r"><code># Create the first data frame.
+student.data &lt;- data.frame(
+   std_id = c (1:5), 
+   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
+      &quot;2015-03-27&quot;)),
+   program = c(&quot;CS&quot;,&quot;BM&quot;,&quot;Stat&quot;,&quot;Banking&quot;,&quot;AM&quot;),
+   stringsAsFactors = FALSE
+)
+
+# Create the second data frame
+student.newdata &lt;-  data.frame(
+   std_id = c (6:8), 
+   std_name = c(&quot;Hairi&quot;,&quot;Alimah&quot;,&quot;Maria&quot;),
+   pocketmoney = c(578.0,722.5,632.8), 
+   start_date = as.Date(c(&quot;2013-05-21&quot;,&quot;2013-07-30&quot;,&quot;2014-06-17&quot;)),
+   program = c(&quot;CS&quot;,&quot;Stat&quot;,&quot;AM&quot;),
+   stringsAsFactors = FALSE
+)
+
+# Bind the two data frames.
+std.finaldata &lt;- rbind(student.data,student.newdata)
+print(std.finaldata)</code></pre>
+<pre><code>##   std_id std_name pocketmoney start_date program
+## 1      1      Ali      623.30 2012-01-01      CS
+## 2      2      Abu      515.20 2013-09-23      BM
+## 3      3    Ahmad      611.00 2014-11-15    Stat
+## 4      4     Siti      729.00 2014-05-11 Banking
+## 5      5     Emma      843.25 2015-03-27      AM
+## 6      6    Hairi      578.00 2013-05-21      CS
+## 7      7   Alimah      722.50 2013-07-30    Stat
+## 8      8    Maria      632.80 2014-06-17      AM</code></pre>
+</div>
+<div id="factors" class="section level2">
+<h2>Factors</h2>
+<p>Factors are the data objects which are used to <strong>categorize the
+data</strong> and store it as <strong>levels</strong>. They can store
+both strings and integers. They are useful in the columns which have a
+limited number of unique values. Like “Male,”Female” and True, False
+etc. They are useful in data analysis for statistical modeling.</p>
+<p>Factors are created using the <strong>factor ()</strong> function by
+taking a vector as input.</p>
+<p><strong>Example</strong></p>
+<pre class="r"><code># Create a vector as input.
+data &lt;- c(&quot;East&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;,&quot;North&quot;,&quot;East&quot;,&quot;West&quot;,&quot;West&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;)
+
+print(data)</code></pre>
+<pre><code>##  [1] &quot;East&quot;  &quot;West&quot;  &quot;East&quot;  &quot;North&quot; &quot;North&quot; &quot;East&quot;  &quot;West&quot;  &quot;West&quot;  &quot;West&quot; 
+## [10] &quot;East&quot;  &quot;North&quot;</code></pre>
+<pre class="r"><code>print(is.factor(data))</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># Apply the factor function.
+factor_data &lt;- factor(data)
+
+print(factor_data)</code></pre>
+<pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East North West</code></pre>
+<pre class="r"><code>print(is.factor(factor_data))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p><span style="color: blue;"><strong>1. Factors in Data
+Frame</strong></span></p>
+<p>On creating any data frame with a column of text data, R treats the
+text column as categorical data and creates factors on it.</p>
+<pre class="r"><code># Create the vectors for data frame.
+height &lt;- c(132,151,162,139,166,147,122)
+weight &lt;- c(48,49,66,53,67,52,40)
+gender &lt;- c(&quot;male&quot;,&quot;male&quot;,&quot;female&quot;,&quot;female&quot;,&quot;male&quot;,&quot;female&quot;,&quot;male&quot;)
+
+# Create the data frame.
+input_data &lt;- data.frame(height,weight,gender)
+print(input_data)</code></pre>
+<pre><code>##   height weight gender
+## 1    132     48   male
+## 2    151     49   male
+## 3    162     66 female
+## 4    139     53 female
+## 5    166     67   male
+## 6    147     52 female
+## 7    122     40   male</code></pre>
+<pre class="r"><code># Test if the gender column is a factor.
+print(is.factor(input_data$gender))</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># Print the gender column so see the levels.
+print(input_data$gender)</code></pre>
+<pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot; &quot;male&quot;   &quot;female&quot; &quot;male&quot;</code></pre>
+<p><span style="color: blue;"><strong>2. Changing the Order of
+Levels</strong></span></p>
+<p>The order of the levels in a factor can be changed by applying the
+factor function again with new order of the levels.</p>
+<pre class="r"><code>data &lt;- c(&quot;East&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;,&quot;North&quot;,&quot;East&quot;,&quot;West&quot;,
+   &quot;West&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;)
+# Create the factors
+factor_data &lt;- factor(data)
+print(factor_data)</code></pre>
+<pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East North West</code></pre>
+<pre class="r"><code># Apply the factor function with required order of the level.
+new_order_data &lt;- factor(factor_data,levels = c(&quot;East&quot;,&quot;West&quot;,&quot;North&quot;))
+print(new_order_data)</code></pre>
+<pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East West North</code></pre>
+<p><span style="color: blue;"><strong>3. Generating Factor
+Levels</strong></span></p>
+<p>We can generate factor levels by using the gl() function. It takes
+two integers as input which indicates how many levels and how many times
+each level.</p>
+<p><strong>Syntax</strong></p>
+<p>gl(n, k, labels)</p>
+<p>Following is the description of the parameters used −</p>
+<ul>
+<li><strong>n</strong> is a integer giving the number of levels.</li>
+<li><strong>k</strong> is a integer giving the number of
+replications.</li>
+<li><strong>labels</strong> is a vector of labels for the resulting
+factor levels.</li>
+</ul>
+<p>Example</p>
+<pre class="r"><code>v &lt;- gl(3, 4, labels = c(&quot;Tampa&quot;, &quot;Seattle&quot;,&quot;Boston&quot;))
+print(v)</code></pre>
+<pre><code>##  [1] Tampa   Tampa   Tampa   Tampa   Seattle Seattle Seattle Seattle Boston 
+## [10] Boston  Boston  Boston 
+## Levels: Tampa Seattle Boston</code></pre>
 </div>
 </div>
 

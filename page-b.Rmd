@@ -6,43 +6,863 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
 library(nycflights13)
 library(tidyverse)
 library(ggplot2)
 ```
-In this topic, you will learn about :
+In this topic in week 2 , you will learn about :
 
-- basic features of R programming
-- Logical vectors and relational operators
-- Extracting elements from vectors
 - Data frames and list
+- Extracting elements from vectors
 
 The readings in this tutorial follow [_R for Data Science_](http://r4ds.had.co.nz/), section 5.2.
 
 # {.tabset}
 
-## Week 2 Class 1
+
+## Objects in R
 
 
-### Extracting elements from vectors
+**Objectives**
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- To introduce data types in R and show how these data types are used in data structures.
+- Learn how to create vectors of different types.
+- Be able to check the type of vector.
+- Learn about missing data and other special values.
+- Get familiar with the different data structures (lists, matrices, data frames).
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+`r colorize("**Everything in R is an object.**", "blue")`
 
 
-```{r cars}
-summary(cars)
+R has 5 basic data types.
+
+- character
+- numeric (real or decimal)
+- integer
+- logical
+- complex
+
+
+A variable can store different types of values such as numbers, characters etc. The `r colorize("**variables are assigned with R-Objects**", "blue")` and the `r colorize("**data type of the R-object**", "blue")` becomes the `r colorize("**data type of the variable.**", "blue")`  
+
+Elements of these data types may be combined to form data structures, such as atomic vectors. When we call a vector atomic, we mean that the vector only holds data of a single data type. 
+
+R provides many functions to examine features of vectors and other objects, for example
+
+**class( )** - what kind of object is it (high-level)?  
+```{r} 
+x <- 3L
+class(x)
+```
+**typeof( )** - what is the object’s data type (low-level)?  
+
+```{r} 
+x <- 3L
+typeof(x)
+```
+**length( )** - how long is it? What about two dimensional objects? 
+
+```{r} 
+x <- 3L
+length(x)
+```
+**attributes( )** - does it have any metadata?  
+
+```{r} 
+x <- 3L
+attributes(x)
 ```
 
-## Week 2 Class 2
+Below are examples of atomic character vectors, numeric vectors, integer vectors, etc.
 
-### Data frames and list
+- character: <"a">, "abc"
+- numeric: 3, 13.5
+- integer: (the L tells R to store this as an integer)
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+- logical: TRUE, FALSE
+- complex: 1+3i (complex numbers with real and imaginary parts)
+
+R has many data structures. The frequently used ones are:
+
+- Vectors
+- Lists
+- Matrices
+- Arrays
+- Factors
+- Data Frames
+
+
+## Vectors
+
+A vector is a basic data structure which plays an important role in R programming. In R, `r colorize("a sequence of elements which share the same data type is known as vector", "blue")`. A vector supports logical, integer, double, character, complex, or raw data type.
+```{r}
+# Atomic vector of type character.
+print("ali");
+
+# Atomic vector of type double.
+print(2.5)
+
+# Atomic vector of type integer.
+print(3L)
+
+# Atomic vector of type logical.
+print(TRUE)
+
+# Atomic vector of type complex.
+print(1+3i)
+
+# Atomic vector of type raw.
+print(charToRaw('hello'))
+```
+**1. Multiple Elements Vector**. 
+
+`r colorize("Using colon operator (:) with numeric data", "blue")`
+```{r}
+# Creating a sequence from 4 to 23.
+v <- 4:12
+print(v)
+
+# Creating a sequence from 3.6 to 9.6.
+v <- 3.6:9.6
+print(v)
+
+# If the final element specified does not belong to the sequence then it is discarded.
+v <- 4.8:10.4
+print(v)
+```
+`r colorize("Using sequence (seq.) operator", "blue")`
+```{r}
+# Create vector with elements from 5 to 9 incrementing by 0.4.
+print(seq(5, 9, by = 0.4))
+```
+`r colorize("Using the c( ) function", "blue")`. 
+
+The non-character values are coerced to character type if one of the elements is a character.
+```{r}
+# The logical and numeric values are converted to characters.
+s <- c('apple','red',4,TRUE)
+print(s)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**2. Accessing Vector Elements**
+
+Elements of a Vector are accessed using indexing. The **[ ] brackets** are used for indexing. Indexing starts with position 1. Giving a negative value in the index drops that element from result.**TRUE, FALSE** or **0** and **1** can also be used for indexing.
+
+```{r}
+# Accessing vector elements using position.
+t <- c("Sun","Mon","Tue","Wed","Thurs","Fri","Sat")
+u <- t[c(1,2,5)]
+print(u)
+
+# Accessing vector elements using logical indexing.
+v <- t[c(TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE)]
+print(v)
+
+# Accessing vector elements using negative indexing.
+x <- t[c(-3,-6)]
+print(x)
+
+# Accessing vector elements using 0/1 indexing.
+y <- t[c(0,0,0,0,0,0,1)]
+print(y)
+```
+
+**3. Vector Manipulation**. 
+
+**Vector arithmetic**. 
+
+Two vectors of same length can be added, subtracted, multiplied or divided giving the result as a vector output.
+
+```{r}
+# Create two vectors.
+v1 <- c(2,8,4,4,0,10)
+v2 <- c(3,11,0,7,1,3)
+
+# Vector addition.
+add <- v1+v2
+print(add)
+
+# Vector subtraction.
+sub <- v1-v2
+print(sub)
+
+# Vector multiplication.
+multi <- v1*v2
+print(multi)
+
+# Vector division.
+divi <- v1/v2
+print(divi)
+```
+
+**Vector Element Recycling**
+
+If we apply arithmetic operations to two vectors of unequal length, then the elements of the shorter vector are recycled to complete the operations.
+
+```{r}
+v1 <- c(3,8,4,5,0,11)
+v2 <- c(4,11)
+# V2 becomes c(4,11,4,11,4,11)
+
+add.result <- v1+v2
+print(add.result)
+
+sub.result <- v1-v2
+print(sub.result)
+```
+
+**Vector Element Sorting**
+
+Elements in a vector can be sorted using the sort() function.
+```{r}
+v <- c(3,8,4,5,0,11, -9, 304)
+
+# Sort the elements of the vector.
+sort1 <- sort(v)
+print(sort1)
+
+# Sort the elements in the reverse order.
+revsort <- sort(v, decreasing = TRUE)
+print(revsort)
+
+# Sorting character vectors.
+v <- c("Red","Blue","yellow","violet")
+sort2 <- sort(v)
+print(sort2)
+
+# Sorting character vectors in reverse order.
+revsort <- sort(v, decreasing = TRUE)
+print(revsort)
+```
+
+## Lists
+
+Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using **list()** function.
+
+**1. Creating a List**
+
+Following is an example to create a list containing strings, numbers, vectors and a logical values.
+
+```{r}
+# Create a list containing strings, numbers, vectors and a logical
+# values.
+list_data <- list("Red", "Green", c(21,32,11), TRUE, 51.23, 119.1)
+print(list_data)
+```
+
+**2. Naming List Elements**
+
+The list elements can be given names and they can be accessed using these names.
+```{r}
+# Create a list containing a vector, a matrix and a list.
+list_data <- list(c("Jan","Feb","Mar"), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list("green",12.3))
+
+# Give names to the elements in the list.
+names(list_data) <- c("1st Quarter", "A_Matrix", "A Inner list")
+
+# Show the list.
+print(list_data)
+```
+**3. Accessing List Elements**
+
+Elements of the list can be accessed by the index of the element in the list. In case of named lists it can also be accessed using the names.
+
+We continue to use the list in the above example −
+
+```{r}
+# Create a list containing a vector, a matrix and a list.
+list_data <- list(c("Jan","Feb","Mar"), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list("green",12.3))
+
+# Give names to the elements in the list.
+names(list_data) <- c("1st Quarter", "A_Matrix", "A Inner list")
+
+# Access the first element of the list.
+print(list_data[1])
+
+# Access the thrid element. As it is also a list, all its elements will be printed.
+print(list_data[3])
+
+# Access the list element using the name of the element.
+print(list_data$A_Matrix)
+```
+
+**4. Manipulating List Elements**
+
+We can add, delete and update list elements as shown below. We can add and delete elements only at the end of a list. But we can update any element.
+
+```{r}
+# Create a list containing a vector, a matrix and a list.
+list_data <- list(c("Jan","Feb","Mar"), matrix(c(3,9,5,1,-2,8), nrow = 2),
+   list("green",12.3))
+
+# Give names to the elements in the list.
+names(list_data) <- c("1st Quarter", "A_Matrix", "A Inner list")
+
+# Add element at the end of the list.
+list_data[4] <- "New element"
+print(list_data[4])
+
+# Remove the last element.
+list_data[4] <- NULL
+
+# Print the 4th Element.
+print(list_data[4])
+
+# Update the 3rd Element.
+list_data[3] <- "updated element"
+print(list_data[3])
+```
+
+**5. Merging Lists**
+
+You can merge many lists into one list by placing all the lists inside one list() function.
+```{r}
+# Create two lists.
+list1 <- list(1,2,3)
+list2 <- list("Sun","Mon","Tue")
+
+# Merge the two lists.
+merged.list <- c(list1,list2)
+
+# Print the merged list.
+print(merged.list)
+```
+
+**6. Converting List to Vector**
+
+A list can be converted to a vector so that the elements of the vector can be used for further manipulation. All the arithmetic operations on vectors can be applied after the list is converted into vectors. To do this conversion, we use the unlist() function. It takes the list as input and produces a vector.
+```{r}
+# Create lists.
+list1 <- list(1:5)
+print(list1)
+
+list2 <-list(10:14)
+print(list2)
+
+# Convert the lists to vectors.
+v1 <- unlist(list1)
+v2 <- unlist(list2)
+
+print(v1)
+print(v2)
+
+# Now add the vectors
+result <- v1+v2
+print(result)
+```
+
+## Matrices
+
+Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same atomic types. Though we can create a matrix containing only characters or only logical values, they are not of much use. We use matrices containing numeric elements to be used in mathematical calculations.
+
+A Matrix is created using the **matrix()** function.
+
+**Syntax**
+
+The basic syntax for creating a matrix in R is −
+
+**matrix(data, nrow, ncol, byrow, dimnames)**
+
+Following is the description of the parameters used −
+
+- data is the input vector which becomes the data elements of the matrix.
+- nrow is the number of rows to be created.
+- ncol is the number of columns to be created.
+- byrow is a logical clue. If TRUE then the input vector elements are arranged by row.
+- dimname is the names assigned to the rows and columns.
+
+
+**Example**
+
+Create a matrix taking a vector of numbers as input.
+```{r}
+# Elements are arranged sequentially by row.
+M <- matrix(c(3:14), nrow = 4, byrow = TRUE)
+print(M)
+
+# Elements are arranged sequentially by column.
+N <- matrix(c(3:14), nrow = 4, byrow = FALSE)
+print(N)
+
+# Define the column and row names.
+rownames = c("row1", "row2", "row3", "row4")
+colnames = c("col1", "col2", "col3")
+
+P <- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
+print(P)
+```
+
+`r colorize("**Accessing Elements of a Matrix**", "blue")`
+
+Elements of a matrix can be accessed by using the column and row index of the element. We consider the matrix P above to find the specific elements below.
+```{r}
+# Define the column and row names.
+rownames = c("row1", "row2", "row3", "row4")
+colnames = c("col1", "col2", "col3")
+
+# Create the matrix.
+P <- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
+
+# Access the element at 3rd column and 1st row.
+print(P[1,3])
+
+# Access the element at 2nd column and 4th row.
+print(P[4,2])
+
+# Access only the  2nd row.
+print(P[2,])
+
+# Access only the 3rd column.
+print(P[,3])
+```
+
+`r colorize("**Matrix Computations**", "blue")`
+
+Various mathematical operations are performed on the matrices using the R operators. The result of the operation is also a matrix.
+
+The dimensions (number of rows and columns) should be same for the matrices involved in the operation.
+
+`r colorize("**1. Matrix Addition & Subtraction**", "blue")`
+
+```{r}
+# Create two 2x3 matrices.
+matrix1 <- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
+print(matrix1)
+
+matrix2 <- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
+print(matrix2)
+
+# Add the matrices.
+result <- matrix1 + matrix2
+cat("Result of addition","\n")
+print(result)
+
+# Subtract the matrices
+result <- matrix1 - matrix2
+cat("Result of subtraction","\n")
+print(result)
+```
+
+`r colorize("**2. Matrix Multiplication & Division**", "blue")`
+
+```{r}
+# Create two 2x3 matrices.
+matrix1 <- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
+print(matrix1)
+
+matrix2 <- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
+print(matrix2)
+
+# Multiply the matrices.
+result <- matrix1 * matrix2
+cat("Result of multiplication","\n")
+print(result)
+
+# Divide the matrices
+result <- matrix1 / matrix2
+cat("Result of division","\n")
+print(result)
+```
+
+## Arrays
+
+Arrays are the R data objects which can store data in more than two dimensions. For example − If we create an array of dimension (2, 3, 4) then it creates 4 rectangular matrices each with 2 rows and 3 columns. Arrays can store only data type.
+
+An array is created using the array() function. It takes vectors as input and uses the values in the dim parameter to create an array.
+
+**Example**
+
+The following example creates an array of two 3x3 matrices each with 3 rows and 3 columns.
+
+```{r}
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+result <- array(c(vector1,vector2),dim = c(3,3,2))
+print(result)
+```
+
+`r colorize("**1. Naming Columns and Rows**", "blue")`
+
+We can give names to the rows, columns and matrices in the array by using the dimnames parameter.
+
+```{r}
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+column.names <- c("COL1","COL2","COL3")
+row.names <- c("ROW1","ROW2","ROW3")
+matrix.names <- c("Matrix1","Matrix2")
+
+# Take these vectors as input to the array.
+result <- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,column.names,
+   matrix.names))
+print(result)
+```
+
+`r colorize("**2. Accessing Array Elements**", "blue")`
+
+```{r}
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+column.names <- c("COL1","COL2","COL3")
+row.names <- c("ROW1","ROW2","ROW3")
+matrix.names <- c("Matrix1","Matrix2")
+
+# Take these vectors as input to the array.
+result <- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,
+   column.names, matrix.names))
+
+# Print the third row of the second matrix of the array.
+print(result[3,,2])
+
+# Print the element in the 1st row and 3rd column of the 1st matrix.
+print(result[1,3,1])
+
+# Print the 2nd Matrix.
+print(result[,,2])
+```
+
+`r colorize("**3. Manipulating Array Elements**", "blue")`
+
+As array is made up matrices in multiple dimensions, the operations on elements of array are carried out by accessing elements of the matrices.
+```{r}
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+array1 <- array(c(vector1,vector2),dim = c(3,3,2))
+
+# Create two vectors of different lengths.
+vector3 <- c(9,1,0)
+vector4 <- c(6,0,11,3,14,1,2,6,9)
+array2 <- array(c(vector1,vector2),dim = c(3,3,2))
+
+# create matrices from these arrays.
+matrix1 <- array1[,,2]
+matrix2 <- array2[,,2]
+
+# Add the matrices.
+result <- matrix1+matrix2
+print(result)
+```
+
+`r colorize("**4. Calculations Across Array Elements**", "blue")`
+
+We can do calculations across the elements in an array using the apply() function.
+
+**Syntax**
+
+**apply(x, margin, fun)**
+
+Following is the description of the parameters used −
+
+- x is an array.
+- margin is the name of the data set used.
+- fun is the function to be applied across the elements of the array.
+
+**Example**
+
+We use the **apply()** function below to calculate the sum of the elements in the rows of an array across all the matrices
+
+```{r}
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+
+# Take these vectors as input to the array.
+new.array <- array(c(vector1,vector2),dim = c(3,3,2))
+print(new.array)
+
+# Use apply to calculate the sum of the rows across all the matrices.
+result <- apply(new.array, c(1), sum)
+print(result)
+```
+
+
+## Data Frame
+
+A data frame is a table or a two-dimensional array-like structure in which each column contains values of one variable and each row contains one set of values from each column.
+
+Following are the characteristics of a data frame.
+
+- The column names should be non-empty.
+- The row names should be unique.
+- The data stored in a data frame can be of numeric, factor or character type.
+- Each column should contain same number of data items.
+
+`r colorize("**1. Create Data Frame**", "blue")`
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+  
+   stringsAsFactors = FALSE
+)
+# Print the data frame.			
+print(student.data) 
+```
+
+`r colorize("**2. Get the Structure of the Data Frame**", "blue")`
+
+The structure of the data frame can be seen by using str() function.
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+
+   stringsAsFactors = FALSE
+)
+# Get the structure of the data frame.
+str(student.data)
+```
+
+`r colorize("**3. Summary of Data in Data Frame**", "blue")`
+
+The statistical summary and nature of the data can be obtained by applying summary() function.
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+  
+   stringsAsFactors = FALSE
+)
+# Print the summary.
+print(summary(student.data)) 
+```
+
+`r colorize("**4. Extract Data from Data Frame**", "blue")`
+
+Extract specific column from a data frame using column name.
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+
+   stringsAsFactors = FALSE
+)
+# Extract Specific columns.
+result <- data.frame(student.data$std_name,student.data$pocketmoney)
+print(result)
+```
+
+Extract the first two rows and then all columns
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+
+   stringsAsFactors = FALSE
+)
+# Extract first two rows.
+result <- student.data[1:2,]
+print(result)
+```
+
+Extract 3rd and 5th row with 2nd and 4th column
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+ 
+   stringsAsFactors = FALSE
+)
+
+# Extract 3rd and 5th row with 2nd and 4th column.
+result <- student.data[c(3,5),c(2,4)]
+print(result)
+```
+
+`r colorize("**5. Expand Data Frame**", "blue")`
+
+A data frame can be expanded by adding columns and rows.
+
+`r colorize("**Add Column**", "blue")`
+
+Just add the column vector using a new column name.
+
+```{r}
+# Create the data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+ 
+   stringsAsFactors = FALSE
+)
+
+# Add the "program" column.
+student.data$program <- c("CS","BM","Stat","Banking","AM")
+v <- student.data
+print(v)
+```
+
+`r colorize("**Add Row**", "blue")`
+
+To **add more rows permanently** to an existing data frame, we need to bring in the new rows in the **same structure** as the existing data frame and use the **rbind()** function.
+
+In the example below we create a data frame with new rows and merge it with the existing data frame to create the final data frame.
+
+```{r}
+# Create the first data frame.
+student.data <- data.frame(
+   std_id = c (1:5), 
+   std_name = c("Ali","Abu","Ahmad","Siti","Emma"),
+   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
+   
+   start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+      "2015-03-27")),
+   program = c("CS","BM","Stat","Banking","AM"),
+   stringsAsFactors = FALSE
+)
+
+# Create the second data frame
+student.newdata <- 	data.frame(
+   std_id = c (6:8), 
+   std_name = c("Hairi","Alimah","Maria"),
+   pocketmoney = c(578.0,722.5,632.8), 
+   start_date = as.Date(c("2013-05-21","2013-07-30","2014-06-17")),
+   program = c("CS","Stat","AM"),
+   stringsAsFactors = FALSE
+)
+
+# Bind the two data frames.
+std.finaldata <- rbind(student.data,student.newdata)
+print(std.finaldata)
+```
+
+## Factors
+
+Factors are the data objects which are used to **categorize the data** and store it as **levels**. They can store both strings and integers. They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. They are useful in data analysis for statistical modeling.
+
+Factors are created using the **factor ()** function by taking a vector as input.
+
+**Example**
+
+```{r}
+# Create a vector as input.
+data <- c("East","West","East","North","North","East","West","West","West","East","North")
+
+print(data)
+print(is.factor(data))
+
+# Apply the factor function.
+factor_data <- factor(data)
+
+print(factor_data)
+print(is.factor(factor_data))
+```
+
+`r colorize("**1. Factors in Data Frame**", "blue")`
+
+On creating any data frame with a column of text data, R treats the text column as categorical data and creates factors on it.
+
+```{r}
+# Create the vectors for data frame.
+height <- c(132,151,162,139,166,147,122)
+weight <- c(48,49,66,53,67,52,40)
+gender <- c("male","male","female","female","male","female","male")
+
+# Create the data frame.
+input_data <- data.frame(height,weight,gender)
+print(input_data)
+
+# Test if the gender column is a factor.
+print(is.factor(input_data$gender))
+
+# Print the gender column so see the levels.
+print(input_data$gender)
+```
+
+`r colorize("**2. Changing the Order of Levels**", "blue")`
+
+The order of the levels in a factor can be changed by applying the factor function again with new order of the levels.
+```{r}
+data <- c("East","West","East","North","North","East","West",
+   "West","West","East","North")
+# Create the factors
+factor_data <- factor(data)
+print(factor_data)
+
+# Apply the factor function with required order of the level.
+new_order_data <- factor(factor_data,levels = c("East","West","North"))
+print(new_order_data)
+```
+
+`r colorize("**3. Generating Factor Levels**", "blue")`
+
+We can generate factor levels by using the gl() function. It takes two integers as input which indicates how many levels and how many times each level.
+
+**Syntax**
+
+gl(n, k, labels)
+
+Following is the description of the parameters used −
+
+- **n** is a integer giving the number of levels.
+- **k** is a integer giving the number of replications.
+- **labels** is a vector of labels for the resulting factor levels.
+
+Example
+
+```{r}
+v <- gl(3, 4, labels = c("Tampa", "Seattle","Boston"))
+print(v)
+```
+
+
