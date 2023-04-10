@@ -43,7 +43,7 @@ kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total
 
 ### Scheme of Work
 
-<a href = "https://crumplab.github.io">
+<a href = "https://sites.google.com/view/suriyatiujang/home">
 ![](images/logo.png)
 </a>
 </div>
