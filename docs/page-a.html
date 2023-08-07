@@ -13,7 +13,7 @@
 
 <title>Topic 1: Introduction to R language</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -332,9 +332,6 @@ $(document).ready(function () {
 <li>basic features of R programming</li>
 <li>Logical vectors and relational operators</li>
 </ul>
-<p>The readings in this tutorial follow <a
-href="http://r4ds.had.co.nz/"><em>R for Data Science</em></a>, section
-5.2.</p>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
 <div id="basic-features" class="section level2">
@@ -344,28 +341,117 @@ href="https://ciksuriyati.shinyapps.io/penguins/?_ga=2.111118085.1242787491.1673
 <div id="introduction-to-basic-features-of-r-programming"
 class="section level3">
 <h3>Introduction to basic features of R programming</h3>
-<p><strong>Install R</strong></p>
-<p>This tutorial will help you set up your computer to use R. It is for
-you if you need to:</p>
-<ul>
-<li>Install R on your computer : Click download <a
-href="https://www.r-project.org"><em>CRAN</em></a></li>
-</ul>
-<p><a href="https://vimeo.com/3514904"
-title="Little red riding hood - Click to Watch!"><img
-src="http://i.imgur.com/7YTMFQp.png" alt="install R" /></a> <img
-src="https://vimeo.com/203516510" /></p>
-<ul>
-<li>Install the RStudio IDE: Click download <a
-href="https://posit.co"><em>RStudio</em></a></li>
-</ul>
-<p>RStudio is an Integrated Development Environment for R. What does
-that mean? Well, if you think of R as a language, which it is, you can
-think of RStudio as a program that helps you write and work in the
-language. RStudio makes programming in R much easier and I suggest that
-you use it!</p>
-<p><img src="https://vimeo.com/203516968" /></p>
-<p>You can skip this tutorial if you’ve already done these things.</p>
+<p><strong>Basic Features of R Programming</strong></p>
+<p>R is a powerful and popular programming language widely used for data
+analysis, statistical computing, and graphical representation. It has
+several essential features that make it a favorite choice among data
+scientists, statisticians, and researchers. Below are some of the key
+features of R programming:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Open Source</strong>: R is an open-source language, which
+means it is freely available for anyone to use, modify, and distribute.
+The open-source nature encourages collaboration and continuous
+improvement of the language.</li>
+<li><strong>Data Handling</strong>: R provides efficient data handling
+capabilities, making it easy to import, manipulate, and transform data.
+It supports various data structures, such as vectors, matrices, data
+frames, and lists.</li>
+<li><strong>Statistical Analysis</strong>: R is primarily known for its
+extensive statistical capabilities. It offers a vast collection of
+built-in functions and packages for conducting various statistical
+analyses, including regression, hypothesis testing, ANOVA, and time
+series analysis.</li>
+<li><strong>Graphics and Visualization</strong>: R excels in producing
+high-quality visualizations and graphs. It offers powerful plotting
+functions and packages like ggplot2, lattice, and base graphics,
+enabling users to create insightful and publication-quality plots.</li>
+<li><strong>Extensible</strong>: R is an extensible language, allowing
+users to create their functions and packages to extend its
+functionality. The Comprehensive R Archive Network (CRAN) hosts
+thousands of user-contributed packages for various purposes.</li>
+<li><strong>Reproducibility</strong>: R promotes reproducibility in data
+analysis and research. Scripts written in R can be easily shared and
+rerun on different datasets, ensuring that others can replicate and
+verify the results. Documentation and Community Support: R has
+comprehensive documentation available through manuals, guides, and
+tutorials. Additionally, it has a vibrant and active community of users
+and developers who provide support through forums and mailing
+lists.</li>
+<li><strong>Interactive Environment</strong>: R offers an interactive
+environment with an interactive console and script editor, allowing
+users to execute commands interactively and see immediate results.</li>
+<li><strong>Integration with Other Tools</strong>: R can be integrated
+with other programming languages like Python, C++, and Java, enabling
+users to leverage their existing code and tools seamlessly.</li>
+</ol>
+<p><strong>Summary:</strong> R programming offers a wide range of
+features for data analysis, statistics, visualization, and
+reproducibility. Its open-source nature, extensive statistical
+libraries, and active community support make it a preferred choice for
+data analysis and research in various domains. Whether you are a
+beginner or an experienced data analyst, R provides a powerful and
+flexible environment to explore, analyze, and visualize data
+effectively.</p>
+<p><strong>Step-by-Step Guide to Install and Use R</strong></p>
+<p>Installing and using R is a straightforward process. Here’s a
+step-by-step guide to help you get started:</p>
+<p><strong>Step 1: Download R</strong></p>
+<p>Go to the R Project website: <strong><a
+href="https://www.r-project.org/"
+class="uri">https://www.r-project.org/</a></strong> Click on “CRAN”
+(Comprehensive R Archive Network) under “Download and Install R.” Select
+a CRAN mirror location near you. Choose the appropriate operating system
+(Windows, macOS, or Linux). Download the R installer for your operating
+system.</p>
+<p><strong>Step 2: Install R</strong></p>
+<p>For <strong>Windows</strong>: Double-click the downloaded installer
+file and follow the on-screen instructions to install R. For
+<strong>macOS</strong>: Double-click the downloaded package file, and
+the installation process will begin.</p>
+<p><strong>Step 3: Launch R</strong></p>
+<p>For <strong>Windows</strong>: You can find the R program in the Start
+Menu or on your desktop. Double-click the R icon to launch the R
+console. For <strong>macOS</strong>: You can find the R application in
+the Applications folder. Double-click the R icon to launch the R
+console.</p>
+<p><strong>Step 4: Using R Console</strong></p>
+<p>After launching R, you will see the R console where you can type
+commands and interact with R. To execute a command, type it in the
+console and press Enter. For example, try typing <strong>‘print(“Hello,
+R!”)’</strong> and press Enter. R will print the message “Hello,
+R!”.</p>
+<p><strong>Step 5: Installing R Packages</strong></p>
+<p>R has a vast collection of packages contributed by the community. To
+install packages, you can use the <strong>‘install.packages()
+function’</strong>. For example, to install the
+<strong>‘ggplot2’</strong> package for data visualization, type
+<strong>‘install.packages(“ggplot2”)’</strong> and press Enter.</p>
+<p><strong>Step 6: Loading and Using Packages</strong></p>
+<p>Once a package is installed, you need to load it into your R session
+before using its functions. To load a package, use the <strong>library(
+)</strong> or <strong>require( )</strong> function. For example, to load
+the ggplot2 package, type <strong>library(ggplot2)</strong> and press
+Enter.</p>
+<p><strong>Step 7: Using R Scripts</strong></p>
+<p>Writing code directly in the console is suitable for small tasks, but
+for more complex analyses or projects, it’s best to use R scripts.
+Create a new plain text file with a <strong>.R</strong> extension, e.g.,
+<strong>myscript.R</strong>. Write your R code in the script file using
+a text editor or an integrated development environment (IDE). Save the
+file and then open it in the R console using the <strong>source(
+)</strong> function. For example,
+<strong>source(“myscript.R”)</strong>.</p>
+<p><strong>Step 8: Interacting with Plots</strong></p>
+<p>When you create plots in R, they will typically appear in a separate
+window or plot pane. You can interact with the plots using buttons or
+options in the plot pane (for GUI-based interfaces) or by typing
+additional commands to modify or save the plots.</p>
+<p><strong>Step 9: Exiting R</strong></p>
+<p>To exit R, type <strong>q( )</strong> or <strong>quit( )</strong> in
+the R console and press Enter. Congratulations! You have successfully
+installed and started using R. Now, you can explore R’s vast
+capabilities for data analysis, visualization, and statistical modeling
+to suit your needs.</p>
 </div>
 </div>
 <div id="operators-in-r" class="section level2">
