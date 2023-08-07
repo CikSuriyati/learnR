@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-14" />
+<meta name="date" content="2023-08-07" />
 
 <title>Topic 2: Programming with R</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 2: Programming with R</h1>
-<h4 class="date">2023-01-14</h4>
+<h4 class="date">2023-08-07</h4>
 
 </div>
 
@@ -335,37 +335,202 @@ $(document).ready(function () {
 </ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-2-class-1" class="section level2">
-<h2>Week 2 Class 1</h2>
-<div id="flow-control" class="section level3">
-<h3>Flow control</h3>
-<p>This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more details
-on using R Markdown see <a href="http://rmarkdown.rstudio.com"
-class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be
-generated that includes both content as well as the output of any
-embedded R code chunks within the document. You can embed an R code
-chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="flow-control" class="section level2">
+<h2>Flow Control</h2>
+<div id="flow-control-1" class="section level3">
+<h3>Flow Control</h3>
+<p>Flow control is a fundamental concept in programming that allows you
+to control the execution of code based on certain conditions. In R
+programming, there are several flow control structures that help you
+manage the flow of your program. These flow control structures
+include:</p>
+<p><strong><em>1. if-else Statements:</em></strong></p>
+<p>The if-else statement is used to make decisions based on a condition.
+It allows the program to execute different code blocks depending on
+whether a certain condition is true or false.</p>
+<pre class="r"><code># Example 1: Simple if-else statement
+x &lt;- 10
+if (x &gt; 0) {
+  print(&quot;x is positive.&quot;)
+} else {
+  print(&quot;x is non-positive.&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;x is positive.&quot;</code></pre>
+<pre class="r"><code># Example 2: Nested if-else statement
+y &lt;- 15
+if (y &gt; 0) {
+  if (y %% 2 == 0) {
+    print(&quot;y is a positive even number.&quot;)
+  } else {
+    print(&quot;y is a positive odd number.&quot;)
+  }
+} else {
+  print(&quot;y is non-positive.&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;y is a positive odd number.&quot;</code></pre>
+<p><strong><em>2. if-else if-else Statements:</em></strong></p>
+<p>This is an extension of the if-else statement, allowing you to check
+multiple conditions and execute different code blocks accordingly.</p>
+<pre class="r"><code># Example: if-else if-else statement
+z &lt;- 5
+if (z &gt; 0) {
+  print(&quot;z is positive.&quot;)
+} else if (z &lt; 0) {
+  print(&quot;z is negative.&quot;)
+} else {
+  print(&quot;z is zero.&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;z is positive.&quot;</code></pre>
+<p><strong><em>3. For Loops:</em></strong></p>
+<p>The for loop is used to repeat a block of code a specified number of
+times. It is useful when you know the exact number of iterations
+needed.</p>
+<pre class="r"><code># Example: for loop to print numbers from 1 to 5
+for (i in 1:5) {
+  print(i)
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><strong><em>4. while Loops:</em></strong></p>
+<p>The while loop is used to repeat a block of code as long as a certain
+condition remains true.</p>
+<pre class="r"><code># Example: while loop to print numbers from 1 to 5
+i &lt;- 1
+while (i &lt;= 5) {
+  print(i)
+  i &lt;- i + 1
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><strong><em>5. repeat Loop:</em></strong></p>
+<p>The repeat loop is an infinite loop that continues to execute a block
+of code until a specific condition is met or a break statement is used
+to exit the loop.</p>
+<pre class="r"><code># Example: repeat loop with break statement
+i &lt;- 1
+repeat {
+  print(i)
+  i &lt;- i + 1
+  if (i &gt; 5) {
+    break
+  }
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><strong><em>6. next Statement:</em></strong></p>
+<p>The next statement is used to skip the current iteration of a loop
+and move to the next iteration.</p>
+<pre class="r"><code># Example: using next statement in a for loop to skip odd numbers
+for (i in 1:5) {
+  if (i %% 2 == 1) {
+    next
+  }
+  print(i)
+}</code></pre>
+<pre><code>## [1] 2
+## [1] 4</code></pre>
+<p><strong><em>7. Control Flow with Logical Operators:</em></strong></p>
+<p>Logical operators (&amp;&amp;, ||, !) are used to combine multiple
+conditions in flow control statements.</p>
+<pre class="r"><code># Example: combining conditions with logical operators
+x &lt;- 10
+y &lt;- 5
+if (x &gt; 0 &amp;&amp; y &gt; 0) {
+  print(&quot;Both x and y are positive.&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Both x and y are positive.&quot;</code></pre>
+<p>These flow control structures allow you to write more complex and
+flexible programs in R, making your code more efficient and easier to
+read and maintain.</p>
 </div>
 </div>
-<div id="week-2-class-2" class="section level2">
-<h2>Week 2 Class 2</h2>
-<div id="introduction-to-function" class="section level3">
+<div id="introduction-to-function" class="section level2">
+<h2>Introduction to function</h2>
+<div id="introduction-to-function-1" class="section level3">
 <h3>Introduction to function</h3>
-<p>You can also embed plots, for example:</p>
-<p><img src="page-c_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
+<p>In R programming, functions are blocks of code designed to perform
+specific tasks. Functions are essential for organizing code, promoting
+reusability, and making programs more modular. R provides several
+built-in functions, but you can also create your own custom functions. A
+function typically takes one or more input arguments, processes them,
+and returns an output.</p>
+<p>Creating Functions in R: In R, you can define functions using the
+function() keyword followed by the function name, input arguments, and
+the function body enclosed in curly braces {}. The return() statement is
+used to specify the output of the function.</p>
+<p>Syntax:</p>
+<pre class="r"><code>function_name &lt;- function(arg1, arg2, ...) {
+  # Function body
+  # Perform computations or tasks
+  return(output)
+}</code></pre>
+<p>Example: Simple Function</p>
+<pre class="r"><code># Function to add two numbers
+add_numbers &lt;- function(a, b) {
+  sum &lt;- a + b
+  return(sum)
+}
+
+# Call the function and store the result in a variable
+result &lt;- add_numbers(5, 3)
+print(result)  </code></pre>
+<pre><code>## [1] 8</code></pre>
+<p>Example: Function with Default Argument</p>
+<pre class="r"><code># Function to calculate the area of a rectangle
+rectangle_area &lt;- function(length, width = 1) {
+  area &lt;- length * width
+  return(area)
+}
+
+# Call the function with both arguments
+result1 &lt;- rectangle_area(4, 5)
+print(result1)  </code></pre>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code># Call the function with only one argument (uses the default value for width)
+result2 &lt;- rectangle_area(4)
+print(result2)  </code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>Example: Function with Multiple Outputs</p>
+<pre class="r"><code># Function to calculate both the sum and product of two numbers
+sum_and_product &lt;- function(x, y) {
+  sum &lt;- x + y
+  product &lt;- x * y
+  return(list(sum = sum, product = product))
+}
+
+# Call the function and store the results in a list
+result &lt;- sum_and_product(2, 3)
+print(result$sum)      </code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>print(result$product)  </code></pre>
+<pre><code>## [1] 6</code></pre>
+<p>Example: Recursive Function</p>
+<pre class="r"><code># Recursive function to calculate the factorial of a number
+factorial &lt;- function(n) {
+  if (n == 0 || n == 1) {
+    return(1)
+  } else {
+    return(n * factorial(n - 1))
+  }
+}
+
+# Call the recursive function
+result &lt;- factorial(5)
+print(result) </code></pre>
+<pre><code>## [1] 120</code></pre>
+<p>Functions are powerful tools that enable you to write more organized
+and efficient code in R. They are especially useful when you need to
+perform repetitive tasks or when you want to encapsulate complex
+operations into reusable components.</p>
 </div>
 </div>
 </div>

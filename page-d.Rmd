@@ -15,28 +15,70 @@ In this topic, you will learn about :
 
 # {.tabset}
 
-## Week 4 Class 1
+## Packages
 
 
-### Introduction to function
+### Packages
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+In R programming, a package is a collection of functions, data, and documentation that extends the capabilities of R. Packages provide a way to organize and distribute R code, making it easier for users to access additional functionality beyond what comes with the base R installation. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+You can install and load packages to use their functions and data in your R scripts.
 
+Example: Installing and Loading a Package
 
-```{r cars}
-summary(cars)
+```{r eval=FALSE}
+# Installing a package (only needs to be done once)
+install.packages("dplyr")
+
+# Loading the package (needs to be done in each R session)
+library(dplyr)
+
 ```
 
-## Week 4 Class 2
+## Libraries
 
-### Packages, libraries, and repositories
+### Libraries
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+In R, the term "library" is often used interchangeably with "package." When you load a package using the library() function, you are essentially loading the package's functions and data into your current R session. After loading a package, you can access its functions directly by their names.
+
+Example: Using Functions from a Loaded Package
+
+```{r eval=FALSE}
+# Assuming 'dplyr' package is installed and loaded
+# Using the 'filter' function from the 'dplyr' package
+filtered_data <- filter(my_data_frame, column_name > 10)
+
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Repositories
+
+
+R packages are hosted in repositories, which are collections of packages accessible through the internet. The Comprehensive R Archive Network (CRAN) is the primary and most widely used repository for R packages. CRAN hosts thousands of packages, and you can install packages directly from there using the install.packages() function.
+
+Example: Installing a Package from CRAN
+
+```{r eval=FALSE}
+# Installing the 'ggplot2' package from CRAN
+install.packages("ggplot2")
+
+```
+Apart from CRAN, there are other repositories like Bioconductor (specializing in bioinformatics packages) and GitHub, where developers share R packages.
+
+Example: Installing a Package from GitHub
+
+```{r eval=FALSE}
+# Installing a package from GitHub using the 'remotes' package
+# First, install 'remotes' if not already installed
+install.packages("remotes")
+
+# Load the 'remotes' package
+library(remotes)
+
+# Install the package from GitHub
+install_github("username/repo")
+
+```
+Using packages in R makes it easier to leverage the work of other developers, collaborate, and build on top of existing functionality. It is a powerful mechanism for extending R's capabilities and enhancing your data analysis, visualization, and programming tasks.

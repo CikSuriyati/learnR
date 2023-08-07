@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-14" />
+<meta name="date" content="2023-08-07" />
 
 <title>Topic 3: Importing data into R</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 3: Importing data into R</h1>
-<h4 class="date">2023-01-14</h4>
+<h4 class="date">2023-08-07</h4>
 
 </div>
 
@@ -336,49 +336,229 @@ $(document).ready(function () {
 </ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-5-class-1" class="section level2">
-<h2>Week 5 Class 1</h2>
-<div id="importing-data" class="section level3">
-<h3>Importing Data</h3>
-<p>This is an R Markdown document. Markdown is a simple formatting
-syntax for authoring HTML, PDF, and MS Word documents. For more details
-on using R Markdown see <a href="http://rmarkdown.rstudio.com"
-class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be
-generated that includes both content as well as the output of any
-embedded R code chunks within the document. You can embed an R code
-chunk like this:</p>
-</div>
-<div id="from-flat-files-with-utils-base-package"
+<div id="importing-from-flat-files" class="section level2">
+<h2>Importing from flat files</h2>
+<div id="importing-from-flat-files-with-utils-base-package-in-r"
 class="section level3">
-<h3>From flat files with “utils” base package</h3>
+<h3>Importing from Flat Files with “utils” Base Package in R</h3>
+<p>The “utils” package is a part of the base R installation, and it
+provides useful functions for various utility operations, including
+importing data from flat files. Flat files are simple text files where
+data is stored in a tabular format, such as CSV (Comma-Separated Values)
+files.</p>
+<p>Here are some commonly used functions from the “utils” package for
+importing data from flat files:</p>
 </div>
-<div id="importing-excel-data-file" class="section level3">
-<h3>Importing Excel data file</h3>
+<div id="read.table-and-read.csv" class="section level3">
+<h3>read.table() and read.csv():</h3>
+<p>These functions are used to read data from text files (including CSV
+files) and create data frames. The read.table() function is more generic
+and can handle different file formats, whereas read.csv() is
+specifically designed to read CSV files.</p>
+<pre class="r"><code># Example: Reading data from a CSV file using read.csv()
+my_data &lt;- read.csv(&quot;data.csv&quot;)</code></pre>
+</div>
+<div id="read.delim-and-read.delim2" class="section level3">
+<h3>read.delim() and read.delim2():</h3>
+<p>These functions are similar to read.table(), but they are
+specifically designed to handle tab-delimited data.</p>
+<pre class="r"><code># Example: Reading tab-delimited data from a text file using read.delim()
+my_data &lt;- read.delim(&quot;data.txt&quot;)</code></pre>
+</div>
+<div id="read.csv2" class="section level3">
+<h3>read.csv2():</h3>
+<p>This function is used to read CSV files with European-style decimal
+separators (using semicolons as separators and commas as decimal
+points).</p>
+<pre class="r"><code># Example: Reading data from a CSV file with European-style decimal separators
+my_data &lt;- read.csv2(&quot;data.csv&quot;)</code></pre>
+</div>
+<div id="read.fwf" class="section level3">
+<h3>read.fwf():</h3>
+<p>This function is used to read data from a file with fixed-width
+format (each column has a fixed width).</p>
+<pre class="r"><code># Example: Reading fixed-width data from a text file using read.fwf()
+my_data &lt;- read.fwf(&quot;data.txt&quot;, widths = c(10, 15, 8))</code></pre>
+</div>
+<div id="read.table-with-sep-argument" class="section level3">
+<h3>read.table() with sep argument:</h3>
+<p>The read.table() function can be used to read data from files with
+custom separators (e.g., semicolon, tab, space) by specifying the sep
+argument.</p>
+<pre class="r"><code># Example: Reading data from a file with a custom separator using read.table()
+my_data &lt;- read.table(&quot;data.txt&quot;, sep = &quot;;&quot;)</code></pre>
+<p>Remember that the actual file paths may need to be specified based on
+your working directory and the location of the data files. Also, make
+sure that the flat files are correctly formatted to match the chosen
+function for importing.</p>
+<p>Using the “utils” package in R provides a quick and efficient way to
+import data from various flat file formats, allowing you to perform data
+analysis and manipulation using the powerful features of R.</p>
+</div>
+</div>
+<div id="importing-excel-data-file" class="section level2">
+<h2>Importing Excel data file</h2>
+<p>R provides several packages that allow you to read data from Excel
+files. Here, we’ll focus on two popular packages: readxl and
+openxlsx.</p>
+<p>readxl Package:</p>
+<p>The readxl package is a simple and lightweight option for reading
+Excel data files. It reads both .xls and .xlsx formats.</p>
+<p>Installation: You need to install the readxl package first if you
+haven’t done it already.</p>
+<pre class="r"><code>install.packages(&quot;readxl&quot;)</code></pre>
+<p>Example: Reading Excel Data with readxl</p>
+<pre class="r"><code># Load the readxl package
+library(readxl)
+
+# Read data from an Excel file (xlsx format)
+my_data &lt;- read_excel(&quot;data.xlsx&quot;, sheet = &quot;Sheet1&quot;)
+
+# Print the first few rows of the data
+print(head(my_data))</code></pre>
+<p>openxlsx Package:</p>
+<p>The openxlsx package is more versatile and allows you to read, write,
+and manipulate Excel files. It supports .xlsx format.</p>
+<p>Installation: If you haven’t installed openxlsx yet, you can do it
+using the following command:</p>
+<pre class="r"><code>install.packages(&quot;openxlsx&quot;)</code></pre>
+<p>Example: Reading Excel Data with openxlsx</p>
+<pre class="r"><code># Load the openxlsx package
+library(openxlsx)
+
+# Read data from an Excel file (xlsx format)
+my_wb &lt;- loadWorkbook(&quot;data.xlsx&quot;)
+my_data &lt;- readWorkbook(my_wb, sheet = &quot;Sheet1&quot;)
+
+# Print the first few rows of the data
+print(head(my_data))</code></pre>
+<p>Make sure to provide the correct path to your Excel file in the
+examples above. You may also need to specify the sheet name or index
+from which you want to read data.</p>
+<p>Both readxl and openxlsx packages are excellent choices for importing
+Excel data into R. Choose the one that best fits your needs and data
+format. Once you’ve loaded the data into R, you can perform various data
+analysis and manipulation tasks using the power of R’s data manipulation
+capabilities.</p>
 </div>
 <div id="importing-data-from-other-statistical-software"
-class="section level3">
-<h3>Importing data from other statistical software</h3>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+class="section level2">
+<h2>Importing data from other statistical software</h2>
+<p>R provides various packages that enable you to import data from other
+statistical software formats. Some of the commonly used packages are
+foreign, haven, and readstat.</p>
+<p>foreign Package: The foreign package is useful for reading data from
+other statistical software formats such as SPSS, Stata, and SAS.</p>
+<p>Installation: The foreign package is typically included with the base
+R installation, so you don’t need to install it separately.</p>
+<p>Example: Reading Data from SPSS File</p>
+<pre class="r"><code># Load the foreign package (usually not required as it comes with base R)
+library(foreign)
+
+# Read data from an SPSS file (.sav format)
+my_data &lt;- read.spss(&quot;data.sav&quot;)
+
+# Print the first few rows of the data
+print(head(my_data))</code></pre>
+<p>haven Package:</p>
+<p>The haven package is designed specifically for reading data from SPSS
+and Stata file formats. It provides more consistent handling of data
+types and value labels.</p>
+<p>Installation: If you haven’t installed haven yet, you can do it using
+the following command:</p>
+<pre class="r"><code>install.packages(&quot;haven&quot;)</code></pre>
+<p>Example: Reading Data from Stata File</p>
+<pre class="r"><code># Load the haven package
+library(haven)
+
+# Read data from a Stata file (.dta format)
+my_data &lt;- read_dta(&quot;data.dta&quot;)
+
+# Print the first few rows of the data
+print(head(my_data))</code></pre>
+<p>readstat Package:</p>
+<p>The readstat package is a versatile package that supports reading
+data from SPSS, Stata, and SAS file formats.</p>
+<p>Installation: If you haven’t installed readstat yet, you can do it
+using the following command:</p>
+<pre class="r"><code>install.packages(&quot;readstat&quot;)</code></pre>
+<p>Example: Reading Data from SAS File</p>
+<pre class="r"><code># Load the readstat package
+library(readstat)
+
+# Read data from a SAS file (.sas7bdat format)
+my_data &lt;- read_sas(&quot;data.sas7bdat&quot;)
+
+# Print the first few rows of the data
+print(head(my_data))</code></pre>
+<p>Choose the appropriate package based on the format of the data you
+want to import. The examples above demonstrate how to read data from
+SPSS, Stata, and SAS files, but each package supports other file formats
+as well. Once you’ve successfully imported the data, you can perform
+data analysis and visualization in R as needed.</p>
 </div>
-</div>
-<div id="week-5-class-2" class="section level2">
-<h2>Week 5 Class 2</h2>
-<div id="exporting-data" class="section level3">
-<h3>Exporting data</h3>
-<p>You can also embed plots, for example:</p>
-<p><img src="page-e_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
-</div>
+<div id="exporting-data" class="section level2">
+<h2>Exporting data</h2>
+<p>R provides several functions and packages for exporting data to
+various file formats. Exporting data is essential when you want to save
+the results of your data analysis, share data with others, or use the
+data in other applications. Here are some common methods for exporting
+data in R:</p>
+<p>write.table() and write.csv():</p>
+<p>These functions are used to write data frames to text files in
+tabular format, such as CSV files.</p>
+<p>Example: Exporting Data to CSV</p>
+<pre class="r"><code># Create a sample data frame
+my_data &lt;- data.frame(
+  Name = c(&quot;John&quot;, &quot;Jane&quot;, &quot;Mike&quot;),
+  Age = c(25, 30, 22),
+  Score = c(80, 85, 70)
+)
+
+# Export data to CSV file
+write.csv(my_data, file = &quot;data.csv&quot;, row.names = FALSE)</code></pre>
+<p>write.xlsx():</p>
+<p>The openxlsx package provides the write.xlsx() function to export
+data frames to Excel files (.xlsx format).</p>
+<p>Installation: If you haven’t installed openxlsx yet, you can do it
+using the following command:</p>
+<pre class="r"><code>install.packages(&quot;openxlsx&quot;)</code></pre>
+<p>Example: Exporting Data to Excel</p>
+<pre class="r"><code># Load the openxlsx package
+library(openxlsx)
+
+# Export data to Excel file
+write.xlsx(my_data, file = &quot;data.xlsx&quot;)</code></pre>
+<p>write_dta():</p>
+<p>The haven package provides the write_dta() function to export data
+frames to Stata files (.dta format).</p>
+<p>Example: Exporting Data to Stata</p>
+<pre class="r"><code># Load the haven package
+library(haven)
+
+# Export data to Stata file
+write_dta(my_data, file = &quot;data.dta&quot;)</code></pre>
+<p>write_sav():</p>
+<p>The haven package also provides the write_sav() function to export
+data frames to SPSS files (.sav format).</p>
+<p>Example: Exporting Data to SPSS</p>
+<pre class="r"><code># Load the haven package
+library(haven)
+
+# Export data to SPSS file
+write_sav(my_data, file = &quot;data.sav&quot;)</code></pre>
+<p>Custom Export Formats:</p>
+<p>You can also create custom export functions to save data in formats
+not natively supported by R. For example, you can write custom functions
+to save data in JSON, XML, or other file formats using packages like
+jsonlite or XML.</p>
+<p>Remember to specify the correct file path when exporting data. You
+can use either an absolute path or a relative path based on your working
+directory.</p>
+<p>Exporting data in R allows you to save the results of your analysis
+for further use or share the data with colleagues and collaborators.
+Choose the appropriate method based on the desired file format and the
+specific requirements of your project.</p>
 </div>
 </div>
 
