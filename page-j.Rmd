@@ -9,27 +9,195 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 In this topic, you will learn about :
 
-- Summary statistics, frequency, and cross tabulation data
-- Test of mean (test of single mean, independent t-test, paired t-test, and one-way ANOVA)
-- Test of association (Pearson Chi-Square and Fisher’s Exact test)
-- Correlation test
-- Linear regression (simple and multiple linear regression)
+- Summary statistics, frequency, and cross tabulation table
+
 
 # {.tabset}
 
-## Week 10 Class 1
+## Summary statistics
 
-### Summary statistics, frequency,
-You can also embed plots, for example:
+### Summary statistics
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+Summary Statistics in R Programming
+
+Summary statistics are numerical measures that provide a concise overview of the main characteristics of a dataset. They help to understand the central tendency, variability, and distribution of data. R provides various functions to compute summary statistics for data analysis.
+
+Common Summary Statistics in R:
+Mean (mean()): The mean is the average value of a numeric variable.
+Median (median()): The median is the middle value of a numeric variable when the data is sorted.
+Minimum (min()), Maximum (max()): The minimum and maximum values are the smallest and largest values, respectively, in a numeric variable.
+Standard Deviation (sd()): The standard deviation measures the spread or variability of a numeric variable.
+Variance (var()): The variance is the square of the standard deviation and also measures variability.
+Quantiles (quantile()): Quantiles divide the data into equal parts, such as quartiles (Q1, Q2, Q3) and percentiles.
+
+Example: Computing Summary Statistics
+
+```{r}
+# Sample data
+data <- c(10, 15, 20, 25, 30, 35, 40)
+
+# Compute summary statistics
+mean_value <- mean(data)
+median_value <- median(data)
+min_value <- min(data)
+max_value <- max(data)
+sd_value <- sd(data)
+var_value <- var(data)
+quantiles <- quantile(data, probs = c(0.25, 0.5, 0.75))
+
+print(mean_value)   
+print(median_value) 
+print(min_value)    
+print(max_value)    
+print(sd_value)     
+print(var_value)    
+print(quantiles)    
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**Summary Statistics for Data Frames:**
 
+For data frames, you can use functions like summary(), sapply(), and colMeans() to compute summary statistics for each variable.
 
-## Week 10 Class 2
+Example: Computing Summary Statistics for a Data Frame
 
-### cross tabulation data
+```{r}
+# Sample data frame
+data <- data.frame(
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+
+# Compute summary statistics for each variable in the data frame
+summary_stats <- summary(data)
+means <- sapply(data, mean)
+col_means <- colMeans(data)
+
+print(summary_stats)
+print(means)
+print(col_means)
+
+```
+
+Summary statistics are valuable tools to gain insights into your data quickly and can help you make informed decisions and observations during data analysis in R.
+
+## Frequency
+
+**Frequency in R Programming**
+
+Frequency refers to the count of occurrences of distinct values in a dataset. In R, you can calculate the frequency of values for categorical variables using various functions and techniques.
+
+Calculating Frequency:
+
+Using table(): The table() function creates a frequency table that shows the count of each unique value in a vector or data frame column.
+
+**Example: Calculating Frequency using table()**
+
+```{r}
+# Sample data
+gender <- c("Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female")
+
+# Calculate frequency of each unique value
+frequency_table <- table(gender)
+print(frequency_table)
+
+```
+
+Using count() from dplyr: If you are using the dplyr package, you can use the count() function to calculate the frequency of values in a data frame column.
+
+Example: Calculating Frequency using count() from dplyr
+
+```{r}
+# Load dplyr library
+library(dplyr)
+
+# Sample data frame
+data <- data.frame(
+  Gender = c("Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female")
+)
+
+# Calculate frequency of each unique value in the Gender column
+frequency_table <- count(data, Gender)
+print(frequency_table)
+
+```
+
+Frequency Table Interpretation:
+
+The frequency table provides a summary of the counts for each unique value in the dataset. 
+
+**Relative Frequency (Proportions):**
+
+You can also calculate relative frequency, which represents the proportion of each unique value relative to the total count.
+
+Example: Calculating Relative Frequency using prop.table()
+
+```{r}
+# Sample data
+gender <- c("Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female")
+
+# Calculate relative frequency of each unique value
+relative_frequency <- prop.table(table(gender))
+print(relative_frequency)
+
+```
+
+This means that "Female" has a relative frequency of 0.5 (50%), and "Male" also has a relative frequency of 0.5 (50%).
+
+**Summary:**
+
+Frequency refers to the count of occurrences of distinct values in a dataset.
+Use table() or count() from dplyr to calculate the frequency of values for categorical variables.
+Relative frequency can be obtained by dividing the frequency of each value by the total count.
+
+## Cross tabulation table
+
+Cross Tabulation Table in R Programming
+
+Cross tabulation (also known as a contingency table or crosstab) is a tabular representation that shows the distribution of one or more categorical variables against another. It allows you to analyze the relationship between two or more categorical variables in a data set.
+
+Creating a Cross Tabulation Table:
+
+Using table(): The table() function can be used to create a basic cross tabulation table in R.
+
+Example: Creating a Cross Tabulation Table using table()
+
+```{r}
+# Sample data
+gender <- c("Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female")
+occupation <- c("Engineer", "Teacher", "Engineer", "Doctor", "Teacher", "Doctor", "Engineer", "Doctor")
+
+# Create a cross tabulation table for gender and occupation
+cross_tab <- table(gender, occupation)
+print(cross_tab)
+
+```
+
+Using xtabs(): The xtabs() function is another way to create cross-tabulation tables, providing more flexibility in defining formulas.
+
+Example: Creating a Cross Tabulation Table using xtabs()
+
+```{r}
+# Sample data
+gender <- c("Male", "Female", "Male", "Male", "Female", "Female", "Male", "Female")
+occupation <- c("Engineer", "Teacher", "Engineer", "Doctor", "Teacher", "Doctor", "Engineer", "Doctor")
+
+# Create a cross tabulation table for gender and occupation
+cross_tab <- xtabs(~ gender + occupation)
+print(cross_tab)
+
+```
+
+Interpreting a Cross Tabulation Table:
+
+A cross tabulation table displays the frequency of occurrences for combinations of values from two or more categorical variables. The rows represent the categories of one variable, while the columns represent the categories of the other variable.
+
+Here, you can interpret that there are two females and one male in the "Doctor" category of occupation. In the "Engineer" category, there are no females but two males, and so on.
+
+**Summary:**
+
+A cross tabulation table shows the distribution of one or more categorical variables against another.
+Use table() or xtabs() to create cross-tabulation tables in R.
+Cross tabulation helps to analyze the relationships between categorical variables and is a useful tool for exploratory data analysis.
 

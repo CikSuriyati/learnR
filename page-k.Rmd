@@ -9,27 +9,255 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 In this topic, you will learn about :
 
-- Summary statistics, frequency, and cross tabulation data
 - Test of mean (test of single mean, independent t-test, paired t-test, and one-way ANOVA)
-- Test of association (Pearson Chi-Square and Fisher’s Exact test)
-- Correlation test
-- Linear regression (simple and multiple linear regression)
 
 # {.tabset}
 
-## Week 11 Class 1
+## test of single mean
 
-### Test of mean (single mean,independent t-test) 
-You can also embed plots, for example:
+### Test of Single Mean in R Programming
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+A test of a single mean in R is used to determine if a sample mean is significantly different from a hypothesized population mean. It helps to assess whether the observed sample mean provides enough evidence to reject or fail to reject the null hypothesis about the population mean.
+
+Performing a Test of Single Mean:
+
+One-Sample t-test (t.test()): The most commonly used test for a single mean in R is the one-sample t-test. It compares the sample mean to a hypothesized population mean and provides a p-value indicating the level of significance.
+
+Example: One-Sample t-test
+Suppose we have a sample of exam scores (out of 100) and want to test if the sample mean is significantly different from the population mean of 75.
+
+```{r}
+# Sample data
+scores <- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
+
+# Perform one-sample t-test
+test_result <- t.test(scores, mu = 75)
+
+# Print the test result
+print(test_result)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Interpreting the Output:
+The output of the t.test() function includes the t-statistic, degrees of freedom, the observed sample mean, the hypothesized population mean (mu), and the p-value. The p-value indicates the probability of obtaining the observed sample mean or more extreme values under the assumption that the null hypothesis (population mean = hypothesized mean) is true.
+
+If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is significant evidence that the sample mean is different from the hypothesized population mean.
+
+Alternative Form for One-Sample t-test:
+
+t.test() with mu argument: You can also use the mu argument to specify the hypothesized population mean.
+
+Example: One-Sample t-test with mu argument
+
+```{r}
+# Sample data
+scores <- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
+
+# Perform one-sample t-test with mu argument
+test_result <- t.test(scores, mu = 75)
+
+# Print the test result
+print(test_result)
+
+```
+
+Both of the above examples perform the same one-sample t-test, but the second example explicitly sets the hypothesized population mean using the mu argument.
+
+Summary:
+
+A test of a single mean in R helps to determine if a sample mean is significantly different from a hypothesized population mean.
+The one-sample t-test is commonly used for this purpose in R, and it can be performed using the t.test() function.
+The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis.
+
+## Independent t-test
+
+### Independent t-Test in R Programming
+
+The independent t-test (also known as the two-sample t-test) is used to compare the means of two independent groups to determine if there is a significant difference between their sample means. It is commonly used when you have two groups, and you want to assess whether the means of a continuous variable are significantly different between these groups.
+
+Performing an Independent t-Test:
+
+1. Using t.test(): The t.test() function in R can be used to perform an independent t-test. It assumes that the two samples are independent and have approximately equal variances.
+
+Example: Independent t-Test
+Suppose we have two groups of exam scores (out of 100), one for males and another for females, and we want to compare whether the mean scores are significantly different between the two groups.
+
+```{r}
+# Sample data for two groups
+scores_male <- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
+scores_female <- c(78, 76, 80, 88, 70, 84, 77, 82, 85, 80)
+
+# Perform independent t-test
+test_result <- t.test(scores_male, scores_female)
+
+# Print the test result
+print(test_result)
+
+```
 
 
-## Week 11 Class 2
+Interpreting the Output:
 
-### Test of mean (paired t-test, and one-way ANOVA)
+The output of the t.test() function includes the t-statistic, degrees of freedom, the observed difference in sample means, and the p-value. The p-value indicates the probability of obtaining the observed difference in means or more extreme differences under the assumption that the two groups have equal means.
+
+If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is a significant difference between the means of the two groups.
+
+Alternative Form for Independent t-Test:
+
+2. Using formula syntax in t.test(): You can also use the formula syntax in t.test() to specify the grouping variable and the response variable.
+
+Example: Independent t-Test with Formula Syntax
+
+```{r}
+# Create a data frame with two columns (Group and Scores)
+data <- data.frame(
+  Group = rep(c("Male", "Female"), each = 10),
+  Scores = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81, 78, 76, 80, 88, 70, 84, 77, 82, 85, 80)
+)
+
+# Perform independent t-test using formula syntax
+test_result <- t.test(Scores ~ Group, data = data)
+
+# Print the test result
+print(test_result)
+
+```
+
+Both of the above examples perform the same independent t-test, but the second example uses the formula syntax to specify the grouping variable (Group) and the response variable (Scores).
+
+Summary:
+
+The independent t-test is used to compare the means of two independent groups to determine if there is a significant difference between their sample means.
+The t.test() function in R can be used to perform an independent t-test, either with vector inputs or formula syntax.
+The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of equal means between the two groups.
+
+## Paired t-Test 
+
+### Paired t-Test in R Programming
+
+The paired t-test (also known as the dependent t-test) is used to compare the means of two related or paired samples to determine if there is a significant difference between their means. It is commonly used when you have two sets of observations that are linked or matched in some way.
+
+Performing a Paired t-Test:
+
+Using t.test(): The t.test() function in R can be used to perform a paired t-test. It assumes that the two samples are dependent (paired) and come from the same population.
+Example: Paired t-Test
+Suppose we have two sets of exam scores (before and after a training program) and want to determine if there is a significant improvement in scores after the program.
+
+```{r}
+# Sample data for before and after scores
+scores_before <- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
+scores_after <- c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
+
+# Perform paired t-test
+test_result <- t.test(scores_before, scores_after, paired = TRUE)
+
+# Print the test result
+print(test_result)
+
+```
+
+
+Interpreting the Output:
+
+The output of the t.test() function includes the t-statistic, degrees of freedom, the observed difference in paired sample means, and the p-value. The p-value indicates the probability of obtaining the observed difference in means or more extreme differences under the assumption that the two samples come from the same population.
+
+If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is a significant difference between the means of the paired samples.
+
+Alternative Form for Paired t-Test:
+
+Using formula syntax in t.test(): You can also use the formula syntax in t.test() to specify the response variable and the grouping variable (if applicable).
+
+Example: Paired t-Test with Formula Syntax
+
+```{r eval=FALSE}
+# Create a data frame with two columns (Before and After)
+data <- data.frame(
+  Before = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81),
+  After = c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
+)
+
+# Perform paired t-test using formula syntax
+test_result <- t.test(Before ~ After, data = data, paired = TRUE)
+
+# Print the test result
+print(test_result)
+
+```
+
+
+Both of the above examples perform the same paired t-test, but the second example uses formula syntax to specify the response variable (Before) and the grouping variable (After) within the data data frame.
+
+Summary:
+
+The paired t-test is used to compare the means of two related or paired samples to determine if there is a significant difference between their means.
+The t.test() function in R can be used to perform a paired t-test, either with vector inputs or formula syntax.
+The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of equal means for the paired samples.
+
+## One-Way ANOVA 
+
+### One-Way ANOVA in R Programming
+
+One-Way Analysis of Variance (ANOVA) is a statistical technique used to compare the means of three or more groups to determine if there are significant differences between them. It is commonly used when you have one categorical independent variable and one continuous dependent variable.
+
+Performing One-Way ANOVA:
+
+1. Using aov(): The aov() function in R is used to perform one-way ANOVA. It fits a linear model to the data and tests for differences between the means of the groups.
+
+Example: One-Way ANOVA
+Suppose we have three groups (A, B, and C) with exam scores and want to test if there are significant differences in scores between these groups.
+
+```{r}
+# Sample data for three groups
+group_a <- c(82, 78, 85, 90, 73)
+group_b <- c(88, 80, 90, 95, 78)
+group_c <- c(79, 84, 86, 81, 82)
+
+# Combine data into a single data frame
+data <- data.frame(
+  Score = c(group_a, group_b, group_c),
+  Group = factor(rep(c("A", "B", "C"), each = 5))
+)
+
+# Perform one-way ANOVA
+anova_result <- aov(Score ~ Group, data = data)
+
+# Summarize the ANOVA result
+summary(anova_result)
+
+```
+
+
+Interpreting the Output:
+
+The output of the summary() function on the aov() result provides the ANOVA table, which includes the F-statistic, degrees of freedom, and p-value. The p-value indicates the probability of obtaining the observed differences in means or more extreme differences under the assumption that the means of all groups are equal.
+
+If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there are significant differences in means between at least two groups.
+
+Post-hoc Tests:
+
+When the ANOVA result is significant, post-hoc tests can be performed to determine which groups differ from each other. Popular post-hoc tests include Tukey's Honestly Significant Difference (HSD) and Bonferroni correction.
+
+Example: Post-hoc Test using TukeyHSD()
+
+```{r}
+# Perform Tukey's HSD post-hoc test
+posthoc_test <- TukeyHSD(anova_result)
+
+# Print the post-hoc test results
+print(posthoc_test)
+
+```
+
+
+Summary:
+
+One-Way ANOVA is used to compare the means of three or more groups to determine if there are significant differences between them.
+The aov() function in R is used to perform one-way ANOVA.
+The p-value obtained from the ANOVA helps to make a decision about rejecting or failing to reject the null hypothesis of equal means for the groups.
+Post-hoc tests can be performed when the ANOVA result is significant to identify which groups differ significantly from each other.
+
+
+
+
+
 

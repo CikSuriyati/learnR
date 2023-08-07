@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-14" />
+<meta name="date" content="2023-08-07" />
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,39 +322,190 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
-<h4 class="date">2023-01-14</h4>
+<h4 class="date">2023-08-07</h4>
 
 </div>
 
 
 <p>In this topic, you will learn about :</p>
 <ul>
-<li>Summary statistics, frequency, and cross tabulation data</li>
-<li>Test of mean (test of single mean, independent t-test, paired
-t-test, and one-way ANOVA)</li>
-<li>Test of association (Pearson Chi-Square and Fisher’s Exact
-test)</li>
-<li>Correlation test</li>
 <li>Linear regression (simple and multiple linear regression)</li>
 </ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-13-class-1" class="section level2">
-<h2>Week 13 Class 1</h2>
-<div id="correlation-test" class="section level3">
-<h3>Correlation test</h3>
-<p>You can also embed plots, for example:</p>
-<p><img src="page-m_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
-</div>
-</div>
-<div id="week-13-class-2" class="section level2">
-<h2>Week 13 Class 2</h2>
-<div id="linear-regression-simple-and-multiple-linear-regression"
+<div id="simple-linear-regression" class="section level2">
+<h2>Simple Linear Regression</h2>
+<div id="simple-linear-regression-in-r-programming"
 class="section level3">
-<h3>Linear regression (simple and multiple linear regression)</h3>
+<h3>Simple Linear Regression in R Programming</h3>
+<p>Simple Linear Regression is a statistical method used to model the
+relationship between two continuous variables by fitting a linear
+equation to the data. It helps to understand how changes in the
+predictor variable (independent variable) are associated with changes in
+the response variable (dependent variable).</p>
+<p>Performing Simple Linear Regression:</p>
+<ol style="list-style-type: decimal">
+<li>Using lm(): The lm() function in R is used to perform simple linear
+regression.</li>
+</ol>
+<p>Example: Simple Linear Regression Suppose we have data on the number
+of hours studied and the corresponding exam scores, and we want to model
+the relationship between the two variables using simple linear
+regression.</p>
+<pre class="r"><code># Sample data for hours studied and exam scores
+hours_studied &lt;- c(2, 4, 6, 8, 10)
+exam_scores &lt;- c(65, 75, 85, 90, 95)
+
+# Create a data frame with the two variables
+data &lt;- data.frame(Hours_Studied = hours_studied, Exam_Scores = exam_scores)
+
+# Perform simple linear regression
+reg_model &lt;- lm(Exam_Scores ~ Hours_Studied, data = data)
+
+# Print the regression summary
+summary(reg_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Exam_Scores ~ Hours_Studied, data = data)
+## 
+## Residuals:
+##    1    2    3    4    5 
+## -2.0  0.5  3.0  0.5 -2.0 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    59.5000     2.5331   23.49 0.000169 ***
+## Hours_Studied   3.7500     0.3819    9.82 0.002245 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.415 on 3 degrees of freedom
+## Multiple R-squared:  0.9698, Adjusted R-squared:  0.9598 
+## F-statistic: 96.43 on 1 and 3 DF,  p-value: 0.002245</code></pre>
+<p>Interpreting the Output: The output of the summary() function on the
+regression model provides the coefficient estimates, standard errors,
+t-values, and p-values for the predictor variable (Hours_Studied) and
+the intercept term. It also provides the R-squared value, which
+represents the proportion of variance in the response variable
+(Exam_Scores) explained by the predictor variable.</p>
+<p>The coefficient estimate for Hours_Studied indicates the change in
+the Exam_Scores for each unit increase in Hours_Studied.</p>
+<p>Making Predictions:</p>
+<p>Once the regression model is fitted, you can make predictions for new
+data using the predict() function.</p>
+<pre class="r"><code># New data for prediction
+new_data &lt;- data.frame(Hours_Studied = c(3, 7, 9))
+
+# Make predictions using the regression model
+predictions &lt;- predict(reg_model, newdata = new_data)
+
+# Print the predictions
+print(predictions)</code></pre>
+<pre><code>##     1     2     3 
+## 70.75 85.75 93.25</code></pre>
+<p>Plotting the Regression Line:</p>
+<p>You can visualize the linear regression model by plotting the
+regression line along with the data points.</p>
+<pre class="r"><code># Plot the data points and the regression line
+plot(hours_studied, exam_scores, xlab = &quot;Hours Studied&quot;, ylab = &quot;Exam Scores&quot;, main = &quot;Simple Linear Regression&quot;)
+abline(reg_model, col = &quot;blue&quot;)</code></pre>
+<p><img src="page-m_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Summary:</p>
+<p>Simple Linear Regression is used to model the relationship between
+two continuous variables using a linear equation. The lm() function in R
+is used to perform simple linear regression. The output of summary()
+provides information about the regression coefficients, R-squared value,
+and statistical significance of the model. You can use the predict()
+function to make predictions with the fitted regression model.
+Visualizing the regression line can help in understanding the
+relationship between the variables.</p>
+</div>
+</div>
+<div id="multiple-linear-regression" class="section level2">
+<h2>Multiple Linear Regression</h2>
+<div id="multiple-linear-regression-in-r-programming"
+class="section level3">
+<h3>Multiple Linear Regression in R Programming</h3>
+<p>Multiple Linear Regression is a statistical method used to model the
+relationship between a dependent variable (response variable) and two or
+more independent variables (predictor variables) by fitting a linear
+equation to the data. It helps to understand how changes in multiple
+predictor variables are associated with changes in the response
+variable.</p>
+<p>Performing Multiple Linear Regression:</p>
+<ol style="list-style-type: decimal">
+<li>Using lm(): The lm() function in R is also used to perform multiple
+linear regression, similar to simple linear regression.</li>
+</ol>
+<p>Example: Multiple Linear Regression Suppose we have data on the
+number of hours studied, the number of hours slept, and the
+corresponding exam scores, and we want to model the relationship between
+the two predictor variables (Hours_Studied and Hours_Slept) and the
+response variable (Exam_Scores) using multiple linear regression.</p>
+<pre class="r"><code># Sample data for hours studied, hours slept, and exam scores
+hours_studied &lt;- c(2, 4, 6, 8, 10)
+hours_slept &lt;- c(6, 7, 8, 9, 8)
+exam_scores &lt;- c(65, 75, 85, 90, 95)
+
+# Create a data frame with the three variables
+data &lt;- data.frame(Hours_Studied = hours_studied, Hours_Slept = hours_slept, Exam_Scores = exam_scores)
+
+# Perform multiple linear regression
+reg_model &lt;- lm(Exam_Scores ~ Hours_Studied + Hours_Slept, data = data)
+
+# Print the regression summary
+summary(reg_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Exam_Scores ~ Hours_Studied + Hours_Slept, data = data)
+## 
+## Residuals:
+##         1         2         3         4         5 
+## -1.00e+00  5.00e-01  2.00e+00 -1.50e+00 -1.11e-16 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)     45.000      9.109   4.940   0.0386 *
+## Hours_Studied    3.000      0.552   5.435   0.0322 *
+## Hours_Slept      2.500      1.531   1.633   0.2441  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.936 on 2 degrees of freedom
+## Multiple R-squared:  0.9871, Adjusted R-squared:  0.9741 
+## F-statistic: 76.33 on 2 and 2 DF,  p-value: 0.01293</code></pre>
+<p>Interpreting the Output: The output of the summary() function on the
+multiple regression model provides the coefficient estimates, standard
+errors, t-values, and p-values for each predictor variable
+(Hours_Studied and Hours_Slept) and the intercept term. It also provides
+the R-squared value, which represents the proportion of variance in the
+response variable (Exam_Scores) explained by the predictor
+variables.</p>
+<p>The coefficient estimates for Hours_Studied and Hours_Slept indicate
+the change in the Exam_Scores for each unit increase in the
+corresponding predictor variable while holding other variables
+constant.</p>
+<p>Making Predictions:</p>
+<p>Similarly to simple linear regression, you can make predictions for
+new data using the predict() function.</p>
+<pre class="r"><code># New data for prediction
+new_data &lt;- data.frame(Hours_Studied = c(3, 7, 9), Hours_Slept = c(7, 8, 9))
+
+# Make predictions using the regression model
+predictions &lt;- predict(reg_model, newdata = new_data)
+
+# Print the predictions
+print(predictions)</code></pre>
+<pre><code>##    1    2    3 
+## 71.5 86.0 94.5</code></pre>
+<p>Summary:</p>
+<p>Multiple Linear Regression is used to model the relationship between
+a dependent variable and two or more independent variables using a
+linear equation. The lm() function in R is used to perform multiple
+linear regression. The output of summary() provides information about
+the regression coefficients, R-squared value, and statistical
+significance of the model. You can use the predict() function to make
+predictions with the fitted regression model for new data.</p>
 </div>
 </div>
 <div id="test" class="section level2">

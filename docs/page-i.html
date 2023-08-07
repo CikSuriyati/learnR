@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-01-14" />
+<meta name="date" content="2023-08-07" />
 
 <title>Topic 5: Data Cleaning and filtering</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,39 +322,161 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 5: Data Cleaning and filtering</h1>
-<h4 class="date">2023-01-14</h4>
+<h4 class="date">2023-08-07</h4>
 
 </div>
 
 
 <p>In this topic, you will learn about :</p>
 <ul>
-<li>Introduction to tidy data</li>
-<li>Introduction to tidyr package</li>
-<li>Missing Data</li>
 <li>Keep and remove variables</li>
 <li>Filtering data and variables</li>
 </ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="week-9-class-1" class="section level2">
-<h2>Week 9 Class 1</h2>
-<div id="missing-data" class="section level3">
-<h3>Missing Data</h3>
+<div id="keep-and-remove-variables" class="section level2">
+<h2>Keep and remove variables</h2>
+<div id="keeping-and-removing-variables-in-r-programming"
+class="section level3">
+<h3>Keeping and Removing Variables in R Programming</h3>
+<p>In R, you can selectively keep or remove variables (columns) from a
+data frame using various functions and techniques. This allows you to
+manipulate and subset data to work with only the variables you need for
+analysis or visualization.</p>
+<p><strong>Keeping Variables:</strong></p>
+<p>Using $ Operator: You can keep specific variables by using the $
+operator to select them from the data frame.</p>
+<p>Example: Keeping Variables using $ Operator</p>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+
+# Keep only the Age and Height variables
+selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;)]</code></pre>
+<p>Using Square Brackets: You can use square brackets with column names
+to keep specific variables from the data frame.</p>
+<p>Example: Keeping Variables using Square Brackets</p>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+
+# Keep only the Age and Weight variables
+selected_data &lt;- data[, c(&quot;Age&quot;, &quot;Weight&quot;)]</code></pre>
+<p><strong>Removing Variables:</strong></p>
+<p>Using $ Operator or Square Brackets with Negation: You can remove
+specific variables by using the $ operator or square brackets with a
+negation sign (-) in front of the column names.</p>
+<p>Example: Removing Variables using $ Operator and Square Brackets with
+Negation</p>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+
+# Remove the ID variable
+selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;, &quot;Weight&quot;)]
+
+# Alternative method: Remove the ID variable
+selected_data &lt;- data[-1]</code></pre>
+<p>Using select() from dplyr: If you are using the dplyr package, you
+can use the select() function to remove variables.</p>
+<p>Example: Removing Variables using select() from dplyr</p>
+<pre class="r"><code># Load dplyr library
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+
+# Remove the ID variable
+selected_data &lt;- select(data, -ID)</code></pre>
+<p>Summary:</p>
+<p>You can keep specific variables using the $ operator, square
+brackets, or the select() function from dplyr. To remove variables, use
+the negation sign with the $ operator, square brackets, or the select()
+function from dplyr. Choose the method that best suits your data
+manipulation needs and the packages you are using.</p>
 </div>
-<div id="keep-and-remove-variables" class="section level3">
-<h3>Keep and remove variables</h3>
-<p>You can also embed plots, for example:</p>
-<p><img src="page-i_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
 </div>
-</div>
-<div id="week-9-class-2" class="section level2">
-<h2>Week 9 Class 2</h2>
-<div id="filtering-data-and-variables" class="section level3">
-<h3>Filtering data and variables</h3>
+<div id="filtering-data-and-variables" class="section level2">
+<h2>Filtering data and variables</h2>
+<div id="filtering-data-and-variables-in-r-programming"
+class="section level3">
+<h3>Filtering Data and Variables in R Programming</h3>
+<p>Filtering data and variables in R involves selecting specific rows or
+columns from a data frame based on certain conditions or criteria. This
+process allows you to extract subsets of the data for further analysis
+or visualization.</p>
+<p><strong>Filtering Data (Rows):</strong></p>
+<p>Using Logical Indexing: You can use logical indexing to filter rows
+based on specific conditions.</p>
+<p>Example: Filtering Data using Logical Indexing</p>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Gender = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;)
+)
+
+# Filter rows where Age is greater than 25
+filtered_data &lt;- data[data$Age &gt; 25, ]</code></pre>
+<p><strong>Filtering Variables (Columns):</strong></p>
+<p>Using $ Operator or Square Brackets: You can use the $ operator or
+square brackets to select specific columns from a data frame.</p>
+<p>Example: Filtering Variables using $ Operator and Square Brackets</p>
+<pre class="r"><code># Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Gender = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;)
+)
+
+# Select only the Age and Gender columns
+selected_variables &lt;- data[c(&quot;Age&quot;, &quot;Gender&quot;)]</code></pre>
+<p>Using select() from dplyr: If you are using the dplyr package, you
+can use the select() function to filter columns.</p>
+<p>Example: Filtering Variables using select() from dplyr</p>
+<pre class="r"><code># Load dplyr library
+library(dplyr)
+
+# Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Gender = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;)
+)
+
+# Select only the Age and Gender columns
+selected_variables &lt;- select(data, Age, Gender)</code></pre>
+<p>Summary:</p>
+<p>Filtering data (rows) involves selecting specific rows based on
+conditions using logical indexing or the filter() function from dplyr.
+Filtering variables (columns) involves selecting specific columns using
+the $ operator, square brackets, or the select() function from dplyr.
+Choose the appropriate method based on your data manipulation needs and
+whether you are using the dplyr package for data manipulation.</p>
 </div>
 </div>
 </div>
