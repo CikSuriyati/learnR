@@ -344,8 +344,10 @@ data frame using various functions and techniques. This allows you to
 manipulate and subset data to work with only the variables you need for
 analysis or visualization.</p>
 <p><strong>Keeping Variables:</strong></p>
-<p>Using $ Operator: You can keep specific variables by using the $
-operator to select them from the data frame.</p>
+<ol style="list-style-type: decimal">
+<li>Using $ Operator: You can keep specific variables by using the $
+operator to select them from the data frame.</li>
+</ol>
 <p>Example: Keeping Variables using $ Operator</p>
 <pre class="r"><code># Sample data frame
 data &lt;- data.frame(
@@ -357,8 +359,10 @@ data &lt;- data.frame(
 
 # Keep only the Age and Height variables
 selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;)]</code></pre>
-<p>Using Square Brackets: You can use square brackets with column names
-to keep specific variables from the data frame.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using <strong>Square Brackets</strong>: You can use square brackets
+with column names to keep specific variables from the data frame.</li>
+</ol>
 <p>Example: Keeping Variables using Square Brackets</p>
 <pre class="r"><code># Sample data frame
 data &lt;- data.frame(
@@ -371,9 +375,11 @@ data &lt;- data.frame(
 # Keep only the Age and Weight variables
 selected_data &lt;- data[, c(&quot;Age&quot;, &quot;Weight&quot;)]</code></pre>
 <p><strong>Removing Variables:</strong></p>
-<p>Using $ Operator or Square Brackets with Negation: You can remove
+<ol style="list-style-type: decimal">
+<li>Using $ Operator or Square Brackets with Negation: You can remove
 specific variables by using the $ operator or square brackets with a
-negation sign (-) in front of the column names.</p>
+negation sign (-) in front of the column names.</li>
+</ol>
 <p>Example: Removing Variables using $ Operator and Square Brackets with
 Negation</p>
 <pre class="r"><code># Sample data frame
@@ -389,9 +395,13 @@ selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;, &quot;Weight&quo
 
 # Alternative method: Remove the ID variable
 selected_data &lt;- data[-1]</code></pre>
-<p>Using select() from dplyr: If you are using the dplyr package, you
-can use the select() function to remove variables.</p>
-<p>Example: Removing Variables using select() from dplyr</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using <strong>select()</strong> from <strong>dplyr</strong>: If you
+are using the <strong>dplyr</strong> package, you can use the
+<strong>select()</strong> function to remove variables.</li>
+</ol>
+<p>Example: Removing Variables using <strong>select()</strong> from
+dplyr</p>
 <pre class="r"><code># Load dplyr library
 library(dplyr)</code></pre>
 <pre><code>## 
@@ -412,12 +422,17 @@ data &lt;- data.frame(
 
 # Remove the ID variable
 selected_data &lt;- select(data, -ID)</code></pre>
-<p>Summary:</p>
-<p>You can keep specific variables using the $ operator, square
-brackets, or the select() function from dplyr. To remove variables, use
-the negation sign with the $ operator, square brackets, or the select()
-function from dplyr. Choose the method that best suits your data
-manipulation needs and the packages you are using.</p>
+<p><strong>Summary:</strong></p>
+<ol style="list-style-type: decimal">
+<li>You can keep specific variables using the $ operator, square
+brackets, or the <strong>select()</strong> function from
+<strong>dplyr</strong>.</li>
+<li>To remove variables, use the negation sign with the $ operator,
+<strong>square brackets</strong>, or the <strong>select()</strong>
+function from <strong>dplyr</strong>.</li>
+<li>Choose the method that best suits your data manipulation needs and
+the packages you are using.</li>
+</ol>
 </div>
 </div>
 <div id="filtering-data-and-variables" class="section level2">
@@ -430,8 +445,10 @@ columns from a data frame based on certain conditions or criteria. This
 process allows you to extract subsets of the data for further analysis
 or visualization.</p>
 <p><strong>Filtering Data (Rows):</strong></p>
-<p>Using Logical Indexing: You can use logical indexing to filter rows
-based on specific conditions.</p>
+<ol style="list-style-type: decimal">
+<li>Using <strong>Logical Indexing</strong>: You can use logical
+indexing to filter rows based on specific conditions.</li>
+</ol>
 <p>Example: Filtering Data using Logical Indexing</p>
 <pre class="r"><code># Sample data frame
 data &lt;- data.frame(
@@ -443,9 +460,12 @@ data &lt;- data.frame(
 # Filter rows where Age is greater than 25
 filtered_data &lt;- data[data$Age &gt; 25, ]</code></pre>
 <p><strong>Filtering Variables (Columns):</strong></p>
-<p>Using $ Operator or Square Brackets: You can use the $ operator or
-square brackets to select specific columns from a data frame.</p>
-<p>Example: Filtering Variables using $ Operator and Square Brackets</p>
+<ol style="list-style-type: decimal">
+<li>Using $ Operator or Square Brackets: You can use the $ operator or
+square brackets to select specific columns from a data frame.</li>
+</ol>
+<p>Example: Filtering Variables using $ Operator and <strong>Square
+Brackets</strong></p>
 <pre class="r"><code># Sample data frame
 data &lt;- data.frame(
   ID = 1:5,
@@ -455,9 +475,13 @@ data &lt;- data.frame(
 
 # Select only the Age and Gender columns
 selected_variables &lt;- data[c(&quot;Age&quot;, &quot;Gender&quot;)]</code></pre>
-<p>Using select() from dplyr: If you are using the dplyr package, you
-can use the select() function to filter columns.</p>
-<p>Example: Filtering Variables using select() from dplyr</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using <strong>select()</strong> from <strong>dplyr</strong>: If you
+are using the <strong>dplyr</strong> package, you can use the
+<strong>select()</strong> function to filter columns.</li>
+</ol>
+<p>Example: Filtering Variables using <strong>select()</strong> from
+<strong>dplyr</strong></p>
 <pre class="r"><code># Load dplyr library
 library(dplyr)
 
@@ -470,13 +494,18 @@ data &lt;- data.frame(
 
 # Select only the Age and Gender columns
 selected_variables &lt;- select(data, Age, Gender)</code></pre>
-<p>Summary:</p>
-<p>Filtering data (rows) involves selecting specific rows based on
-conditions using logical indexing or the filter() function from dplyr.
-Filtering variables (columns) involves selecting specific columns using
-the $ operator, square brackets, or the select() function from dplyr.
-Choose the appropriate method based on your data manipulation needs and
-whether you are using the dplyr package for data manipulation.</p>
+<p><strong>Summary:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Filtering data (rows) involves selecting specific rows based on
+conditions using logical indexing or the <strong>filter()</strong>
+function from dplyr.</li>
+<li>Filtering variables (columns) involves selecting specific columns
+using the $ operator, square brackets, or the <strong>select()</strong>
+function from <strong>dplyr</strong>.</li>
+<li>Choose the appropriate method based on your data manipulation needs
+and whether you are using the <strong>dplyr</strong> package for data
+manipulation.</li>
+</ol>
 </div>
 </div>
 </div>
