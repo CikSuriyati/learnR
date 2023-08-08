@@ -2,8 +2,8 @@
 title: 'Topic 6: Basic Statistical Analysis'
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -175,27 +175,41 @@ If the p-value is below a pre-defined significance level (commonly 0.05), we rej
 
 **Alternative Form for Paired t-Test:**
 
-2. Using **formula syntax in t.test()**: You can also use the formula syntax in **t.test()** to specify the response variable and the grouping variable (if applicable).
+2. The paired t-test can also be conducted in an alternative form using the **pair.t.test()** function in R. This function specifically focuses on paired t-tests and provides a more concise syntax for conducting the test for paired samples.
 
-**Example: Paired t-Test with Formula Syntax**
+**Function: t.test()**
+
+Syntax:
 
 ```{r eval=FALSE}
-# Create a data frame with two columns (Before and After)
-data <- data.frame(
-  Before = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81),
-  After = c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
-)
+t.test(x, y, alternative = "less")
+```
 
-# Perform paired t-test using formula syntax
-test_result <- t.test(Before ~ After, data = data, paired = TRUE)
+- x: A numeric vector representing the measurements of the first group.
+- y: A numeric vector representing the measurements of the second group.
+- alternative: The alternative hypothesis. Options are **"two.sided" (default), "less", or "greater"**.
 
-# Print the test result
-print(test_result)
+**Example: Paired t-Test using pair.t.test()**
+
+Using the same example of before and after scores:
+
+```{r}
+# Sample data: Before and after scores
+before <- c(78, 85, 92, 76, 80)
+after <- c(85, 90, 95, 82, 88)
+
+# Perform paired t-test using t.test()
+result <- t.test(before, after, paired = TRUE, alternative = "less")
+
+# Print the results
+print(result)
 
 ```
 
 
-Both of the above examples perform the same paired t-test, but the second example uses formula syntax to specify the response variable (Before) and the grouping variable (After) within the data data frame.
+The t.test() function performs the paired t-test between the two vectors before and after with the specified alternative hypothesis. The output will include the t-statistic, degrees of freedom, p-value, and confidence interval.
+
+The interpretation of the results and the significance testing process remains the same as in the previous example.
 
 **Summary:**
 

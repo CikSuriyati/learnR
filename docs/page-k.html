@@ -14,7 +14,7 @@
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -568,26 +568,50 @@ population.</p>
 significant difference between the means of the paired samples.</p>
 <p><strong>Alternative Form for Paired t-Test:</strong></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Using <strong>formula syntax in t.test()</strong>: You can also use
-the formula syntax in <strong>t.test()</strong> to specify the response
-variable and the grouping variable (if applicable).</li>
+<li>The paired t-test can also be conducted in an alternative form using
+the <strong>pair.t.test()</strong> function in R. This function
+specifically focuses on paired t-tests and provides a more concise
+syntax for conducting the test for paired samples.</li>
 </ol>
-<p><strong>Example: Paired t-Test with Formula Syntax</strong></p>
-<pre class="r"><code># Create a data frame with two columns (Before and After)
-data &lt;- data.frame(
-  Before = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81),
-  After = c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
-)
+<p><strong>Function: t.test()</strong></p>
+<p>Syntax:</p>
+<pre class="r"><code>t.test(x, y, alternative = &quot;less&quot;)</code></pre>
+<ul>
+<li>x: A numeric vector representing the measurements of the first
+group.</li>
+<li>y: A numeric vector representing the measurements of the second
+group.</li>
+<li>alternative: The alternative hypothesis. Options are
+<strong>“two.sided” (default), “less”, or “greater”</strong>.</li>
+</ul>
+<p><strong>Example: Paired t-Test using pair.t.test()</strong></p>
+<p>Using the same example of before and after scores:</p>
+<pre class="r"><code># Sample data: Before and after scores
+before &lt;- c(78, 85, 92, 76, 80)
+after &lt;- c(85, 90, 95, 82, 88)
 
-# Perform paired t-test using formula syntax
-test_result &lt;- t.test(Before ~ After, data = data, paired = TRUE)
+# Perform paired t-test using t.test()
+result &lt;- t.test(before, after, paired = TRUE, alternative = &quot;less&quot;)
 
-# Print the test result
-print(test_result)</code></pre>
-<p>Both of the above examples perform the same paired t-test, but the
-second example uses formula syntax to specify the response variable
-(Before) and the grouping variable (After) within the data data
-frame.</p>
+# Print the results
+print(result)</code></pre>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  before and after
+## t = -6.7424, df = 4, p-value = 0.001261
+## alternative hypothesis: true mean difference is less than 0
+## 95 percent confidence interval:
+##       -Inf -3.966116
+## sample estimates:
+## mean difference 
+##            -5.8</code></pre>
+<p>The t.test() function performs the paired t-test between the two
+vectors before and after with the specified alternative hypothesis. The
+output will include the t-statistic, degrees of freedom, p-value, and
+confidence interval.</p>
+<p>The interpretation of the results and the significance testing
+process remains the same as in the previous example.</p>
 <p><strong>Summary:</strong></p>
 <ol style="list-style-type: decimal">
 <li>The paired t-test is used to compare the means of two related or

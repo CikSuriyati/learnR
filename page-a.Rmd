@@ -2,12 +2,10 @@
 title: 'Topic 1: Introduction to R language'
 output:
   pdf_document: default
-<<<<<<< Updated upstream
   html_document:
     df_print: paged
 =======
   html_document: default
->>>>>>> Stashed changes
 ---
 
 ```{r setup, include=FALSE}
