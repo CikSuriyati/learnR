@@ -1,63 +1,26 @@
 ---
-title: "Topic 1: Introduction to R language"
-date: "`r Sys.Date()`"
-output: html_document
-runtime: shiny_prerendered
+layout: page
+title: Start-Up Guide for Self-guided Students
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(learnr)
-library(nycflights13)
-library(tidyverse)
-library(ggplot2)
-```
-In this topic, you will learn about :
+## Step 1: Make sure we can help!
 
-- basic features of R programming
-- Logical vectors and relational operators
-- Extracting elements from vectors
-- Data frames and list
+Check out the [target audience]({{ site.baseurl }}/about/audience) of the course and decide if you will benefit from interacting with these materials. If you are a scientists at any educational level that works with data and you 1) want to learn the basics of programming or 2) want to establish a little more formal programming background and work-flow, then you are likely our target audience. You can find a little more encouragement in our description of [why you should take this course]({{ site.baseurl }}/about/why-should-you-take-this-class/).
 
-The readings in this tutorial follow [_R for Data Science_](http://r4ds.had.co.nz/), section 5.2.
+## Step 2: Decide your approach to the course.
 
-# {.tabset}
+As a self-guided student you can 1) follow along with the whole course at your own pace or 2) find a couple modules that will be helpful to you in isolation. 
 
+1. If you are following the whole course, we suggest you follow the [schedule]({{ site.baseurl }}/schedule), which includes introductions into SQL and [R]({{ site.baseurl }}/about/why-r/). Each [assignment]({{ site.baseurl }}/assignments) includes listings for video and text materials, as well as the practice [exercises]({{ site.baseurl }}/exercises). We provide output files with each exercise to give you a hint what your code should accomplish.
 
-## Week 1 Class 1
+2. If you are interested in just a couple of modules in SQL or R, the best way to find out the assignment that is best suited to your needs is browsing through the [schedule]({{ site.baseurl }}/schedule). 
 
+*If you are interested in the Python material, the [lesson material]({{ site.baseurl }}/materials/) and [assignments]({{ site.baseurl }}/assignments/) developed in previous iterations of the course are still available, but with less direction.*
 
-### Introduction to basic features of R programming
+## Step 3: Setup your computer
 
-**Install R**
+Make sure your computer is [setup]({{ site.baseurl }}/computer-setup).
 
-This tutorial will help you set up your computer to use R. It is for you if you need to:
+## Step 4: Give us feedback
 
-* Install R on your computer : Click download [_CRAN_](https://www.r-project.org)
-
-[![install R](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
-![](https://vimeo.com/203516510)
-
-* Install the RStudio IDE: Click download [_RStudio_](https://posit.co)
-
-RStudio is an Integrated Development Environment for R. What does that mean? Well, if you think of R as a language, which it is, you can think of RStudio as a program that helps you write and work in the language. RStudio makes programming in R much easier and I suggest that you use it!
-
-![](https://vimeo.com/203516968)
-
-You can skip this tutorial if you've already done these things.
-
-## Week 1 Class 2
-
-### Logical vectors and relational operators
-
-The variables are assigned with R-Objects and the data type of the R-object becomes the data type of the variable. There are many types of R-objects. The frequently used ones are:
-
-- Vectors
-- Lists
-- Matrices
-- Arrays
-- Factors
-- Data Frames
-
-
-**_VECTORS_**
+Help us make sure you have a good experience by [providing feedback]({{ site.github.repo }}/issues).

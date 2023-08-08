@@ -2,8 +2,12 @@
 title: 'Topic 1: Introduction to R language'
 output:
   pdf_document: default
+<<<<<<< Updated upstream
   html_document:
     df_print: paged
+=======
+  html_document: default
+>>>>>>> Stashed changes
 ---
 
 ```{r setup, include=FALSE}
@@ -52,52 +56,64 @@ R programming offers a wide range of features for data analysis, statistics, vis
 
 
 ## Step-by-Step Guide to Install and Use R
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 Installing and using R is a straightforward process. Here's a step-by-step guide to help you get started:
 
-**Step 1: Download R**
+1. **Download R**
 
 Go to the R Project website: **https://www.r-project.org/**
 Click on "CRAN" (Comprehensive R Archive Network) under "Download and Install R."
 Select a CRAN mirror location near you.
+
 Choose the appropriate operating system (Windows, macOS, or Linux).
 Download the R installer for your operating system.
 
-**Step 2: Install R**
+2. **Install R**
 
 For **Windows**: Double-click the downloaded installer file and follow the on-screen instructions to install R.
+
 For **macOS**: Double-click the downloaded package file, and the installation process will begin.
 
-**Step 3: Launch R**
+3. **Launch R**
 
 For **Windows**: You can find the R program in the Start Menu or on your desktop. Double-click the R icon to launch the R console.
+
 For **macOS**: You can find the R application in the Applications folder. Double-click the R icon to launch the R console.
 
-**Step 4: Using R Console**
+4. **Using R Console**
 
 After launching R, you will see the R console where you can type commands and interact with R.
 To execute a command, type it in the console and press Enter.
+
 For example, try typing **'print("Hello, R!")'** and press Enter. R will print the message "Hello, R!".
 
-**Step 5: Installing R Packages**
+5. **Installing R Packages**
 
 R has a vast collection of packages contributed by the community. To install packages, you can use the **'install.packages() function'**.
+
 For example, to install the **'ggplot2'** package for data visualization, type **'install.packages("ggplot2")'** and press Enter.
 
-**Step 6: Loading and Using Packages**
+6. **Loading and Using Packages**
 
 Once a package is installed, you need to load it into your R session before using its functions.
 To load a package, use the **library( )** or **require( )** function.
+
 For example, to load the ggplot2 package, type **library(ggplot2)** and press Enter.
 
-**Step 7: Using R Scripts**
+7. **Using R Scripts**
 
 Writing code directly in the console is suitable for small tasks, but for more complex analyses or projects, it's best to use R scripts.
+
 Create a new plain text file with a **.R** extension, e.g., **myscript.R**.
 Write your R code in the script file using a text editor or an integrated development environment (IDE).
+
 Save the file and then open it in the R console using the **source( )** function. For example, **source("myscript.R")**.
 
-**Step 8: Interacting with Plots**
+8. **Interacting with Plots**
 
 When you create plots in R, they will typically appear in a separate window or plot pane.
 You can interact with the plots using buttons or options in the plot pane (for GUI-based interfaces) or by typing additional commands to modify or save the plots.
@@ -105,7 +121,8 @@ You can interact with the plots using buttons or options in the plot pane (for G
 **Step 9: Exiting R**
 
 To exit R, type **q( )** or **quit( )** in the R console and press Enter.
-Congratulations! You have successfully installed and started using R. Now, you can explore R's vast capabilities for data analysis, visualization, and statistical modeling to suit your needs.
+Congratulations! You have successfully installed and started using R. 
+Now, you can explore R's vast capabilities for data analysis, visualization, and statistical modeling to suit your needs.
 
 
 ## Operators in R

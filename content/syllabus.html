@@ -11,7 +11,7 @@
 
 
 
-<title>Start-Up Guide for Self-guided Students</title>
+<title>Syllabus</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,53 +348,325 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Start-Up Guide for Self-guided
-Students</h1>
+<h1 class="title toc-ignore">Syllabus</h1>
 
 </div>
 
 
-<div id="step-1-make-sure-we-can-help" class="section level2">
-<h2>Step 1: Make sure we can help!</h2>
-<p>Check out the <a href="%7B%7B%20site.baseurl%20%7D%7D/about/audience">target audience</a>
-of the course and decide if you will benefit from interacting with these
-materials. If you are a scientists at any educational level that works
-with data and you 1) want to learn the basics of programming or 2) want
-to establish a little more formal programming background and work-flow,
-then you are likely our target audience. You can find a little more
-encouragement in our description of <a href="%7B%7B%20site.baseurl%20%7D%7D/about/why-should-you-take-this-class/">why
-you should take this course</a>.</p>
+<div id="course" class="section level2">
+<h2>Course</h2>
+<p>{{ INTRODUCTION TO STATISTICAL PROGRAMMING}}</p>
+<p>{{ page.catalog }}, {{ page.credits }} Credits, {{ page.semester
+}}</p>
+<div id="instructor" class="section level3">
+<h3>Instructor</h3>
+<p>{{ page.professor }}</p>
+<p>Office: {{ page.office }}</p>
+<p>Email: <a href="mailto:%7B%7B%20page.email%20%7D%7D">{{ page.email
+}}</a></p>
+<p>Phone: {{ page.phone }}</p>
 </div>
-<div id="step-2-decide-your-approach-to-the-course." class="section level2">
-<h2>Step 2: Decide your approach to the course.</h2>
-<p>As a self-guided student you can 1) follow along with the whole
-course at your own pace or 2) find a couple modules that will be helpful
-to you in isolation.</p>
-<ol style="list-style-type: decimal">
-<li><p>If you are following the whole course, we suggest you follow the
-<a href="%7B%7B%20site.baseurl%20%7D%7D/schedule">schedule</a>, which
-includes introductions into SQL and <a href="%7B%7B%20site.baseurl%20%7D%7D/about/why-r/">R</a>. Each <a href="%7B%7B%20site.baseurl%20%7D%7D/assignments">assignment</a>
-includes listings for video and text materials, as well as the practice
-<a href="%7B%7B%20site.baseurl%20%7D%7D/exercises">exercises</a>. We
-provide output files with each exercise to give you a hint what your
-code should accomplish.</p></li>
-<li><p>If you are interested in just a couple of modules in SQL or R,
-the best way to find out the assignment that is best suited to your
-needs is browsing through the <a href="%7B%7B%20site.baseurl%20%7D%7D/schedule">schedule</a>.</p></li>
-</ol>
-<p><em>If you are interested in the Python material, the <a href="%7B%7B%20site.baseurl%20%7D%7D/materials/">lesson material</a> and
-<a href="%7B%7B%20site.baseurl%20%7D%7D/assignments/">assignments</a>
-developed in previous iterations of the course are still available, but
-with less direction.</em></p>
+<div id="location" class="section level3">
+<h3>Location</h3>
+<p>{{location}}</p>
 </div>
-<div id="step-3-setup-your-computer" class="section level2">
-<h2>Step 3: Setup your computer</h2>
-<p>Make sure your computer is <a href="%7B%7B%20site.baseurl%20%7D%7D/computer-setup">setup</a>.</p>
+<div id="times" class="section level3">
+<h3>Times</h3>
+<p>{% for class in page.schedule %} {{ class }} {% endfor %}</p>
 </div>
-<div id="step-4-give-us-feedback" class="section level2">
-<h2>Step 4: Give us feedback</h2>
-<p>Help us make sure you have a good experience by <a href="%7B%7B%20site.github.repo%20%7D%7D/issues">providing
-feedback</a>.</p>
+<div id="office-hours" class="section level3">
+<h3>Office Hours</h3>
+<p>Times: {{ page.office_hours }}</p>
+<p>Location: {{ page.office_hours_location }}</p>
+<p>Or by appointment. <em>Note: my schedule gets very busy during the
+semester so please try to schedule appointments as far in advance as
+possible. In general it will be very difficult to set up appointments
+less than 24 hours in advance.</em></p>
+</div>
+<div id="website" class="section level3">
+<h3>Website</h3>
+<p>The syllabus and other relevant class information and resources will
+be posted at <a href="%7B%7Bhttps://ciksuriyati.github.io/learnR/index.html%7D%7D/">{{
+site.url}}</a>. Changes to the schedule will be posted to this site so
+please try to check it periodically for updates.</p>
+</div>
+<div id="course-communications" class="section level3">
+<h3>Course Communications</h3>
+<p>Canvas: Messages in canvas are the preferred method for course
+communication</p>
+<p>Email: <a href="mailto:%7B%7B%20page.email%20%7D%7D">{{ page.email
+}}</a></p>
+</div>
+<div id="required-texts" class="section level3">
+<h3>Required Texts</h3>
+<p>There is no required text book for this class.</p>
+<p>All needed material is openly available on the course website. If you
+are interested in additional reading on the topics we are covering I
+highly recommend <a href="https://r4ds.had.co.nz/">R for Data
+Science</a>, which is freely available on the web.</p>
+</div>
+<div id="course-description" class="section level3">
+<h3>Course Description</h3>
+<p>An introduction to data management, manipulation, and analysis, with
+an emphasis on biological problems. Class consists of short
+introductions to new concepts followed by hands on computing exercises
+using R and SQLite, but the concepts apply to programming languages and
+databases more generally. No background in computing is required.</p>
+</div>
+<div id="prerequisite-knowledge-and-skills" class="section level3">
+<h3>Prerequisite Knowledge and Skills</h3>
+<p>Knowledge of basic biology to provide context for exercises.</p>
+</div>
+<div id="purpose-of-course" class="section level3">
+<h3>Purpose of Course</h3>
+<p>In this course you will learn all of the fundamental aspects of
+computer programming that are necessary for conducting biological
+research. By the end of the course you will be able to use these tools
+to import data into R, perform analysis on that data, and export the
+results to graphs, text files, and databases. By learning how to get the
+computer to do your work for you, you will be able to do more science
+faster.</p>
+</div>
+<div id="course-objectives-and-goals" class="section level3">
+<h3>Course Objectives and Goals</h3>
+<p>Students completing this course will be able to:</p>
+<ul>
+<li>Create well structured data</li>
+<li>Extract information from data</li>
+<li>Write computer programs in R</li>
+<li>Automate data analysis</li>
+<li>Apply these tools to address biological questions</li>
+<li>Apply general data management and analysis concepts to other
+programming languages and database management systems</li>
+</ul>
+</div>
+<div id="teaching-philosophy" class="section level3">
+<h3>Teaching Philosophy</h3>
+<p>This class is taught using a flipped, learner-centered, approach,
+because learning to program and work with data requires actively working
+on computers. Flipped classes work well for all kinds of content, but I
+think they work particularly well for computer oriented classes. If
+you’re interested in knowing more take a look at this great <a href="https://assignmentbro.com/wp-content/uploads/2021/02/flipped-classroom-infographics-scaled.jpg">flipped
+classroom info-graphic</a>.</p>
+</div>
+<div id="instructional-methods" class="section level3">
+<h3>Instructional Methods</h3>
+<p>As a flipped classroom, students are provided with either reading or
+video material that they are expected to view/read prior to class.
+Classes will involve brief refreshers on new concepts followed by
+working on exercises in class that cover that concept. While students
+are working on exercises the instructor will actively engage with
+students to help them understand material they find confusing, explain
+misunderstandings and help identify mistakes that are preventing
+students from completing the exercises, and discuss novel applications
+and alternative approaches to the data analysis challenges students are
+attempting to solve. For more challenging topics class may start with
+20-30 minute demonstrations on the concepts followed by time to work on
+exercises.</p>
+</div>
+</div>
+<div id="course-policies" class="section level2">
+<h2>Course Policies</h2>
+<div id="attendance-policy" class="section level3">
+<h3>Attendance Policy</h3>
+<p>Attendance will not be taken or factor into the grades for this
+class. However, experience suggests that students who regularly miss
+class often struggle to learn the material.</p>
+</div>
+<div id="quizexam-policy" class="section level3">
+<h3>Quiz/Exam Policy</h3>
+<p>There are no quizzes or exams in this course.</p>
+</div>
+<div id="make-up-policy" class="section level3">
+<h3>Make-up policy</h3>
+<p>Life happens and therefore there is an automatic grace period of 48
+hours for the submission of late assignments with no need to request an
+extension. However, it is highly recommended that you submit assignments
+on time when possible because assignments build on one another and it
+can be hard to catch up if you fall behind. Reasonable requests for
+longer extensions will also be granted. Assignments turned in after the
+48 hour grace period without an extension will be be graded with a 20%
+penalty.</p>
+</div>
+<div id="assignment-policy" class="section level3">
+<h3>Assignment policy</h3>
+<p>Assignments are due Monday night by 11:59 pm Eastern Time. This
+timing allows you to be finished with one week’s material before
+starting the next week’s material. Assignments should be submitted via
+either RStudio Cloud (for R assignments) or Canvas (for other
+assignments).</p>
+</div>
+<div id="course-technology" class="section level3">
+<h3>Course Technology</h3>
+<p>Students are required to provide their own laptops and to install
+free and open source software on those laptops (see <a href="%7B%7B%20site.baseurl%20%7D%7D/computer-setup">Setup</a> for
+installation instructions). Support will be provided by the instructor
+in the installation of required software. If you don’t have access to a
+laptop please contact the instructor and they will do their best to
+provide you with one.</p>
+</div>
+<div id="materials-and-supplies-fees" class="section level3">
+<h3>Materials and Supplies Fees</h3>
+<p>There are no materials and supplies fees for this course.</p>
+</div>
+</div>
+<div id="uf-policies" class="section level2">
+<h2>UF Policies</h2>
+<div id="university-policy-on-accommodating-students-with-disabilities" class="section level3">
+<h3>University Policy on Accommodating Students with Disabilities</h3>
+<p>The Disability Resource Center coordinates the needed accommodations
+of students with disabilities. This includes registering disabilities,
+recommending academic accommodations within the classroom, accessing
+special adaptive computer equipment, providing interpretation services
+and mediating faculty-student disability related issues.Students
+requesting classroom accommodation must first register with the Dean of
+Students Office. The Dean of Students Office will provide documentation
+to the student who must then provide this documentation to the
+Instructor when requesting accommodation0001 Reid Hall, 352-392-8565,
+www.dso.ufl.edu/drc/</p>
+<p>My policy: If you are in my class I want to help you learn and will
+happily work with you to make the learning environment equitable for you
+and others.</p>
+</div>
+<div id="online-course-evaluation-process" class="section level3">
+<h3>Online Course Evaluation Process</h3>
+<p>Students are expected to provide professional and respectful feedback
+on the quality of instruction in this course by completing course
+evaluations online via GatorEvals. Guidance on how to give feedback in a
+professional and respectful manner is available at <a href="https://gatorevals.aa.ufl.edu/students/" class="uri">https://gatorevals.aa.ufl.edu/students/</a>. Students will
+be notified when the evaluation period opens, and can complete
+evaluations through the email they receive from GatorEvals, in their
+Canvas course menu under GatorEvals, or via <a href="https://ufl.bluera.com/ufl/" class="uri">https://ufl.bluera.com/ufl/</a>. Summaries of course
+evaluation results are available to students at <a href="https://gatorevals.aa.ufl.edu/public-results/" class="uri">https://gatorevals.aa.ufl.edu/public-results/</a>.</p>
+</div>
+<div id="university-policy-on-academic-misconduct" class="section level3">
+<h3>University Policy on Academic Misconduct</h3>
+<p>Academic honesty and integrity are fundamental values of the
+University community. Students should be sure that they understand the
+UF Student Honor Code at <a href="http://www.dso.ufl.edu/students.php" class="uri">http://www.dso.ufl.edu/students.php</a>.</p>
+</div>
+<div id="netiquette-and-communication-courtesy" class="section level3">
+<h3>Netiquette and Communication Courtesy</h3>
+<p>All members of the class are expected to follow rules of common
+courtesy in all email messages, threaded discussions and chats.</p>
+</div>
+<div id="academic-honesty" class="section level3">
+<h3>Academic Honesty</h3>
+<p>As a student at the University of Florida, you have committed
+yourself to uphold the Honor Code, which includes the following
+pledge:“We, the members of the University of Florida community, pledge
+to hold ourselves and our peers to the highest standards of honesty and
+integrity.”You are expected to exhibit behavior consistent with this
+commitment to the UF academic community, and on all work submitted for
+credit at the University of Florida, the following pledge is either
+required or implied: “On my honor, I have neither given nor received
+unauthorized aid in doing this assignment.”</p>
+<p>It is assumed that you will complete all work independently in each
+course unless the instructor provides explicit permission for you to
+collaborate on course tasks (e.g. assignments, papers, quizzes, exams).
+Furthermore, as part of your obligation to uphold the Honor Code, you
+should report any condition that facilitates academic misconduct to
+appropriate personnel. It is your individual responsibility to know and
+comply with all university policies and procedures regarding academic
+integrity and the Student Honor Code.Violations of the Honor Code at the
+University of Florida will not be tolerated. Violations will be reported
+to the Dean of Students Office for consideration of disciplinary action.
+For more information regarding the Student Honor Code, please see: <a href="http://www.dso.ufl.edu/sccr/process/student-conduct-honor-code" class="uri">http://www.dso.ufl.edu/sccr/process/student-conduct-honor-code</a></p>
+</div>
+<div id="software-use" class="section level3">
+<h3>Software Use</h3>
+<p>All faculty, staff and students of the university are required and
+expected to obey the laws and legal agreements governing software use.
+Failure to do so can lead to monetary damages and/or criminal penalties
+for the individual violator. Because such violations are also against
+university policies and rules, disciplinary action will be taken as
+appropriate.</p>
+</div>
+<div id="student-privacy" class="section level3">
+<h3>Student Privacy</h3>
+<p>There are federal laws protecting your privacy with regards to grades
+earned in courses and on individual assignments. For more information,
+please see: <a href="http://registrar.ufl.edu/catalog0910/policies/regulationferpa.html" class="uri">http://registrar.ufl.edu/catalog0910/policies/regulationferpa.html</a></p>
+</div>
+</div>
+<div id="grading-policies" class="section level2">
+<h2>Grading Policies</h2>
+<p>Grading for this course is based on 12 equally weighted
+assignments.</p>
+<p>Exercises in assignments will be graded as follows:</p>
+<ul>
+<li>Produces the correct answer using the requested approach: 100%</li>
+<li>Generally uses the right approach, but a minor mistake results in an
+incorrect answer: 90%</li>
+<li>Attempts to solve the problem and makes some progress using the core
+concept: 50%</li>
+<li>Answer demonstrates a lack of understanding of the core concept:
+0%</li>
+</ul>
+<div id="grading-scale" class="section level3">
+<h3>Grading scale</h3>
+<ul>
+<li><strong>A 93-100</strong></li>
+<li><strong>A- 90-92.9</strong></li>
+<li><strong>B+ 87-89.9</strong></li>
+<li><strong>B 83-86.9</strong></li>
+<li><strong>B- 80-82.9</strong></li>
+<li><strong>C+ 77-79.9</strong></li>
+<li><strong>C 73-76.9</strong></li>
+<li><strong>C- 70-72.9</strong></li>
+<li><strong>D+ 67-69.9</strong></li>
+<li><strong>D 60-66.9</strong></li>
+<li><strong>E &lt;60</strong></li>
+</ul>
+</div>
+<div id="uf-grading-policies-for-assigning-grade-points" class="section level3">
+<h3>UF grading policies for assigning grade points</h3>
+<p><a href="https://catalog.ufl.edu/UGRD/academic-regulations/grades-grading-policies/">https://catalog.ufl.edu/UGRD/academic-regulations/grades-grading-policies/</a></p>
+</div>
+</div>
+<div id="campus-helping-resources" class="section level2">
+<h2>Campus Helping Resources</h2>
+<p>Students experiencing crises or personal problems that interfere with
+their general well-being are encouraged to utilize the university’s
+counseling resources. The Counseling&amp; Wellness Center provides
+confidential counseling services at no cost for currently enrolled
+students. Resources are available on campus for students having personal
+problems or lacking clear career or academic goals, which interfere with
+their academic performance.</p>
+<div id="health-and-wellness" class="section level3">
+<h3>Health and Wellness</h3>
+<p>U Matter, We Care: If you or a friend is in distress, please contact
+<a href="mailto:umatter@ufl.edu" class="email">umatter@ufl.edu</a> or
+352 392-1575 so that a team member can reach out to the student.</p>
+<p>Counseling and Wellness Center: <a href="http://www.counseling.ufl.edu/cwc" class="uri">http://www.counseling.ufl.edu/cwc</a>, 392-1575.</p>
+<p>Sexual Assault Recovery Services (SARS): Student Health Care Center,
+392-1161.</p>
+<p>University Police Department: 392-1111 (or 9-1-1 for emergencies), or
+<a href="http://www.police.ufl.edu/" class="uri">http://www.police.ufl.edu/</a>.</p>
+</div>
+<div id="academic-resources" class="section level3">
+<h3>Academic Resources</h3>
+<p>E-learning technical support: 352-392-4357 (select option 2) or
+e-mail to <a href="mailto:Learning-support@ufl.edu" class="email">Learning-support@ufl.edu</a>. <a href="https://lss.at.ufl.edu/help.shtml" class="uri">https://lss.at.ufl.edu/help.shtml</a>.</p>
+<p>Career Connections Center: Reitz Union, 392-1601. Career assistance
+and counseling. <a href="https://career.ufl.edu/" class="uri">https://career.ufl.edu/</a>.</p>
+<p>Library Support: <a href="http://cms.uflib.ufl.edu/ask" class="uri">http://cms.uflib.ufl.edu/ask</a>. Various ways to receive
+assistance with respect to using the libraries or finding resources.</p>
+<p>Teaching Center: Broward Hall, 392-2010 or 392-6420. General study
+skills and tutoring. <a href="https://teachingcenter.ufl.edu/" class="uri">https://teachingcenter.ufl.edu/</a>.</p>
+<p>Writing Studio: 302 Tigert Hall, 846-1138. Help brainstorming,
+formatting, and writing papers. <a href="https://writing.ufl.edu/writing-studio/" class="uri">https://writing.ufl.edu/writing-studio/</a>.</p>
+</div>
+<div id="student-complaints" class="section level3">
+<h3>Student Complaints</h3>
+<p>Student Complaints Campus: <a href="https://www.dso.ufl.edu/documents/UF_Complaints_policy.pdf" class="uri">https://www.dso.ufl.edu/documents/UF_Complaints_policy.pdf</a>.</p>
+<p>On-Line Students Complaints: <a href="http://www.distance.ufl.edu/student-complaint-process" class="uri">http://www.distance.ufl.edu/student-complaint-process</a>.</p>
+</div>
+</div>
+<div id="course-schedule" class="section level2">
+<h2>Course Schedule</h2>
+<p>The details course schedule is available on the course website at: <a href="%7B%7B%20site.baseurl%20%7D%7D/schedule">{{ site.url
+}}/schedule</a>.</p>
 </div>
 
 
