@@ -16,21 +16,20 @@ In this topic, you will learn about :
 
 ## Summary statistics
 
-### Summary statistics
-
-Summary Statistics in R Programming
+### Summary Statistics in R Programming
 
 Summary statistics are numerical measures that provide a concise overview of the main characteristics of a dataset. They help to understand the central tendency, variability, and distribution of data. R provides various functions to compute summary statistics for data analysis.
 
-Common Summary Statistics in R:
-Mean (mean()): The mean is the average value of a numeric variable.
-Median (median()): The median is the middle value of a numeric variable when the data is sorted.
-Minimum (min()), Maximum (max()): The minimum and maximum values are the smallest and largest values, respectively, in a numeric variable.
-Standard Deviation (sd()): The standard deviation measures the spread or variability of a numeric variable.
-Variance (var()): The variance is the square of the standard deviation and also measures variability.
-Quantiles (quantile()): Quantiles divide the data into equal parts, such as quartiles (Q1, Q2, Q3) and percentiles.
+**Common Summary Statistics in R:**
 
-Example: Computing Summary Statistics
+- Mean (**mean()**): The mean is the average value of a numeric variable.
+- Median (**median()**): The median is the middle value of a numeric variable when the data is sorted.
+- Minimum (**min()**), Maximum (**max()**): The minimum and maximum values are the smallest and largest values, respectively, in a numeric variable.
+- Standard Deviation (**sd()**): The standard deviation measures the spread or variability of a numeric variable.
+- Variance (**var()**): The variance is the square of the standard deviation and also measures variability.
+- Quantiles (**quantile()**): Quantiles divide the data into equal parts, such as quartiles (Q1, Q2, Q3) and percentiles.
+
+**Example: Computing Summary Statistics**
 
 ```{r}
 # Sample data
@@ -57,9 +56,9 @@ print(quantiles)
 
 **Summary Statistics for Data Frames:**
 
-For data frames, you can use functions like summary(), sapply(), and colMeans() to compute summary statistics for each variable.
+For data frames, you can use functions like **summary(), sapply(), and colMeans()** to compute summary statistics for each variable.
 
-Example: Computing Summary Statistics for a Data Frame
+**Example: Computing Summary Statistics for a Data Frame**
 
 ```{r}
 # Sample data frame
@@ -88,9 +87,9 @@ Summary statistics are valuable tools to gain insights into your data quickly an
 
 Frequency refers to the count of occurrences of distinct values in a dataset. In R, you can calculate the frequency of values for categorical variables using various functions and techniques.
 
-Calculating Frequency:
+**Calculating Frequency:**
 
-Using table(): The table() function creates a frequency table that shows the count of each unique value in a vector or data frame column.
+1. Using **table()**: The **table()** function creates a frequency table that shows the count of each unique value in a vector or data frame column.
 
 **Example: Calculating Frequency using table()**
 
@@ -104,9 +103,9 @@ print(frequency_table)
 
 ```
 
-Using count() from dplyr: If you are using the dplyr package, you can use the count() function to calculate the frequency of values in a data frame column.
+2. Using **count()** from **dplyr**: If you are using the **dplyr** package, you can use the **count()** function to calculate the frequency of values in a data frame column.
 
-Example: Calculating Frequency using count() from dplyr
+**Example: Calculating Frequency using count() from dplyr**
 
 ```{r}
 # Load dplyr library
@@ -123,7 +122,7 @@ print(frequency_table)
 
 ```
 
-Frequency Table Interpretation:
+**Frequency Table Interpretation:**
 
 The frequency table provides a summary of the counts for each unique value in the dataset. 
 
@@ -131,7 +130,7 @@ The frequency table provides a summary of the counts for each unique value in th
 
 You can also calculate relative frequency, which represents the proportion of each unique value relative to the total count.
 
-Example: Calculating Relative Frequency using prop.table()
+**Example: Calculating Relative Frequency using prop.table()**
 
 ```{r}
 # Sample data
@@ -147,21 +146,21 @@ This means that "Female" has a relative frequency of 0.5 (50%), and "Male" also 
 
 **Summary:**
 
-Frequency refers to the count of occurrences of distinct values in a dataset.
-Use table() or count() from dplyr to calculate the frequency of values for categorical variables.
-Relative frequency can be obtained by dividing the frequency of each value by the total count.
+1. Frequency refers to the count of occurrences of distinct values in a dataset.
+2. Use **table()** or **count()** from **dplyr** to calculate the frequency of values for categorical variables.
+3. Relative frequency can be obtained by dividing the frequency of each value by the total count.
 
 ## Cross tabulation table
 
-Cross Tabulation Table in R Programming
+**Cross Tabulation Table in R Programming**
 
-Cross tabulation (also known as a contingency table or crosstab) is a tabular representation that shows the distribution of one or more categorical variables against another. It allows you to analyze the relationship between two or more categorical variables in a data set.
+**Cross tabulation** (also known as a contingency table or crosstab) is a tabular representation that shows the distribution of one or more categorical variables against another. It allows you to analyze the relationship between two or more categorical variables in a data set.
 
-Creating a Cross Tabulation Table:
+**Creating a Cross Tabulation Table:**
 
-Using table(): The table() function can be used to create a basic cross tabulation table in R.
+1. Using **table()**: The **table()** function can be used to create a basic cross tabulation table in R.
 
-Example: Creating a Cross Tabulation Table using table()
+**Example: Creating a Cross Tabulation Table using table()**
 
 ```{r}
 # Sample data
@@ -174,9 +173,9 @@ print(cross_tab)
 
 ```
 
-Using xtabs(): The xtabs() function is another way to create cross-tabulation tables, providing more flexibility in defining formulas.
+2. Using **xtabs()**: The **xtabs()** function is another way to create cross-tabulation tables, providing more flexibility in defining formulas.
 
-Example: Creating a Cross Tabulation Table using xtabs()
+**Example: Creating a Cross Tabulation Table using xtabs()**
 
 ```{r}
 # Sample data
@@ -189,7 +188,7 @@ print(cross_tab)
 
 ```
 
-Interpreting a Cross Tabulation Table:
+**Interpreting a Cross Tabulation Table:**
 
 A cross tabulation table displays the frequency of occurrences for combinations of values from two or more categorical variables. The rows represent the categories of one variable, while the columns represent the categories of the other variable.
 
@@ -197,7 +196,7 @@ Here, you can interpret that there are two females and one male in the "Doctor" 
 
 **Summary:**
 
-A cross tabulation table shows the distribution of one or more categorical variables against another.
-Use table() or xtabs() to create cross-tabulation tables in R.
-Cross tabulation helps to analyze the relationships between categorical variables and is a useful tool for exploratory data analysis.
+1. A cross tabulation table shows the distribution of one or more categorical variables against another.
+2. Use **table()** or **xtabs()** to create cross-tabulation tables in R.
+3. Cross tabulation helps to analyze the relationships between categorical variables and is a useful tool for exploratory data analysis.
 

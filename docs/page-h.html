@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-07" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 5: Data Cleaning and filtering</title>
 
@@ -324,7 +324,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 5: Data Cleaning and filtering</h1>
-<h4 class="date">2023-08-07</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
@@ -341,23 +341,31 @@ $(document).ready(function () {
 <h2>Introduction to tidy data</h2>
 <div id="introduction-to-tidy-data-1" class="section level3">
 <h3>Introduction to tidy data</h3>
-<p>Introduction to Tidy Data in R Programming</p>
+<p><strong>Introduction to Tidy Data in R Programming</strong></p>
 <p>Tidy data is a structured and standardized format for organizing
 datasets that makes data manipulation, visualization, and analysis more
 straightforward and efficient. Tidy data principles, introduced by
 Hadley Wickham, aim to provide a consistent and intuitive way to handle
 data in R. In tidy data, each variable forms a column, each observation
 forms a row, and each type of observational unit forms a table.</p>
-<p>Tidy Data Principles:</p>
-<p>Each variable has its own column: Each variable or attribute of the
-data is represented by a separate column. Each observation has its own
-row: Each unique observation or case is represented by a separate row.
-Each type of observational unit forms a table: Related data should be
-organized into separate tables. Benefits of Tidy Data:</p>
-<p>Simplified data manipulation and analysis with consistent data
-structures. Easy integration with other R packages and tools. More
-straightforward data visualization and interpretation. Example of Tidy
-Data: Suppose we have a dataset containing information about the age and
+<p><strong>Tidy Data Principles:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Each variable has its own column: Each variable or attribute of the
+data is represented by a separate column.</li>
+<li>Each observation has its own row: Each unique observation or case is
+represented by a separate row.</li>
+<li>Each type of observational unit forms a table: Related data should
+be organized into separate tables.</li>
+</ol>
+<p><strong>Benefits of Tidy Data:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Simplified data manipulation and analysis with consistent data
+structures.</li>
+<li>Easy integration with other R packages and tools.</li>
+<li>More straightforward data visualization and interpretation.</li>
+</ol>
+<p><strong>Example of Tidy Data:</strong></p>
+<p>Suppose we have a dataset containing information about the age and
 height of individuals in different countries. The tidy format of this
 data would be as follows:</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -448,11 +456,11 @@ Germany
 </table>
 <p>Here, each row represents a unique individual, and each column
 represents a variable (Country, Age, and Height).</p>
-<p>Tidying Data in R:</p>
+<p><strong>Tidying Data in R:</strong></p>
 <p>To convert data into a tidy format, you can use the tidyr package,
-which provides functions like gather() and spread() to reshape and tidy
-data.</p>
-<p>Example: Tidying Data using tidyr</p>
+which provides functions like <strong>gather()</strong> and
+<strong>spread()</strong> to reshape and tidy data.</p>
+<p><strong>Example: Tidying Data using tidyr</strong></p>
 <pre class="r"><code># Sample messy data
 messy_data &lt;- data.frame(
   Country = c(&quot;USA&quot;, &quot;Canada&quot;, &quot;Germany&quot;),
@@ -481,11 +489,11 @@ print(tidy_data)</code></pre>
 ## 12 Germany Height_2020   175</code></pre>
 <p>In this example, the initial dataset messy_data contains age and
 height information for individuals in different countries for two years
-(2019 and 2020). We use the gather() function from tidyr to tidy the
-data, combining the “Age” and “Height” variables into a single column,
-and creating a new column called “Year_Height” to indicate the year of
-measurement. The resulting tidy_data will follow the principles of tidy
-data.</p>
+(2019 and 2020). We use the <strong>gather()</strong> function from
+tidyr to tidy the data, combining the “Age” and “Height” variables into
+a single column, and creating a new column called “Year_Height” to
+indicate the year of measurement. The resulting tidy_data will follow
+the principles of tidy data.</p>
 <p>By following tidy data principles, you can make your data analysis
 workflow more organized, efficient, and reproducible in R. Tidy data
 allows you to take advantage of the full potential of various R packages
@@ -496,19 +504,19 @@ and tools for data manipulation, visualization, and analysis.</p>
 <h2>Introduction to tidyr package</h2>
 <div id="introduction-to-tidyr-package-1" class="section level3">
 <h3>Introduction to tidyr package</h3>
-<p>Introduction to tidyr Package in R Programming</p>
+<p><strong>Introduction to tidyr Package in R Programming</strong></p>
 <p>tidyr is a powerful R package designed to help tidy and reshape data,
 making it easier to work with and analyze. It is part of the tidyverse
 ecosystem, developed by Hadley Wickham, and complements the dplyr
 package for data manipulation. tidyr provides functions to convert data
 between wide and long formats, gather and spread data, and handle
 missing values efficiently.</p>
-<p>Key Functions in tidyr:</p>
-<p>gather(): This function converts data from wide to long format by
-gathering columns into key-value pairs. It is particularly useful when
-you have multiple columns representing different variables, and you want
-to transform them into rows.</p>
-<p>Example of gather():</p>
+<p><strong>Key Functions in tidyr:</strong></p>
+<p><strong>1. gather()</strong>: This function converts data from wide
+to long format by gathering columns into key-value pairs. It is
+particularly useful when you have multiple columns representing
+different variables, and you want to transform them into rows.</p>
+<p><strong>Example of gather():</strong></p>
 <pre class="r"><code># Sample wide-format data
 wide_data &lt;- data.frame(
   ID = c(1, 2, 3),
@@ -527,11 +535,11 @@ print(tidy_data)</code></pre>
 ## 4  1 Year_2020   110
 ## 5  2 Year_2020   130
 ## 6  3 Year_2020    90</code></pre>
-<p>spread(): This function converts data from long to wide format by
-spreading key-value pairs into separate columns. It is useful when you
-want to reshape your data so that each unique value in a column becomes
-a new column.</p>
-<p>Example of spread():</p>
+<p><strong>2. spread():</strong> This function converts data from long
+to wide format by spreading key-value pairs into separate columns. It is
+useful when you want to reshape your data so that each unique value in a
+column becomes a new column.</p>
+<p><strong>Example of spread():</strong></p>
 <pre class="r"><code># Sample long-format data
 long_data &lt;- data.frame(
   ID = c(1, 1, 2, 2, 3, 3),
@@ -547,11 +555,12 @@ print(wide_data)</code></pre>
 ## 1  1       100       110
 ## 2  2       120       130
 ## 3  3        80        90</code></pre>
-<p>separate() and unite(): These functions are used to split or combine
-columns containing multiple pieces of information, respectively.
-separate() splits a column into multiple columns based on a separator,
-while unite() combines multiple columns into a single column.</p>
-<p>Example of separate() and unite():</p>
+<p><strong>3. separate() and unite():</strong> These functions are used
+to split or combine columns containing multiple pieces of information,
+respectively. <strong>separate()</strong> splits a column into multiple
+columns based on a separator, while <strong>unite()</strong> combines
+multiple columns into a single column.</p>
+<p><strong>Example of separate() and unite():</strong></p>
 <pre class="r"><code># Sample data with combined date information
 data &lt;- data.frame(
   ID = c(1, 2, 3),
@@ -577,9 +586,9 @@ print(united_data)</code></pre>
 <p>These are just a few examples of the functionalities provided by the
 tidyr package. Tidying and reshaping your data using tidyr can
 significantly improve data analysis workflows and make your code more
-expressive and readable. The tidyr package, along with other packages in
-the tidyverse, promotes a consistent and efficient approach to data
-manipulation in R.</p>
+expressive and readable. The <strong>tidyr</strong> package, along with
+other packages in the <strong>tidyverse</strong>, promotes a consistent
+and efficient approach to data manipulation in R.</p>
 </div>
 </div>
 <div id="missing-data" class="section level2">
@@ -590,21 +599,23 @@ manipulation in R.</p>
 with missing data is a crucial step in data analysis, as it can impact
 the accuracy and validity of your results. In R, there are various
 approaches to handle missing data effectively.</p>
-</div>
-<div id="common-representations-of-missing-data-in-r"
-class="section level3">
-<h3>Common Representations of Missing Data in R:</h3>
-<p>NA (Not Available): R uses NA to represent missing values in numeric,
-character, and logical vectors. NaN (Not a Number): Used in specific
-cases for undefined mathematical operations. NULL: Used to represent
-missing values in lists or objects.</p>
-</div>
-<div id="identifying-missing-data" class="section level3">
-<h3>Identifying Missing Data:</h3>
-<p>is.na(): Checks if elements in a vector or data frame are missing.
-complete.cases(): Returns a logical vector indicating complete cases (no
-missing values) in a data frame.</p>
-<p>Example: Identifying Missing Data</p>
+<p><strong>Common Representations of Missing Data in R:</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>NA (Not Available):</strong> R uses NA to represent missing
+values in numeric, character, and logical vectors.</li>
+<li><strong>NaN (Not a Number):</strong> Used in specific cases for
+undefined mathematical operations.</li>
+<li><strong>NULL:</strong> Used to represent missing values in lists or
+objects.</li>
+</ol>
+<p><strong>Identifying Missing Data:</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>is.na():</strong> Checks if elements in a vector or data
+frame are missing.</li>
+<li><strong>complete.cases():</strong> Returns a logical vector
+indicating complete cases (no missing values) in a data frame.</li>
+</ol>
+<p><strong>Example: Identifying Missing Data</strong></p>
 <pre class="r"><code># Sample data with missing values
 data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
 
@@ -613,28 +624,35 @@ missing_age &lt;- is.na(data$Age)
 
 # Check for complete cases in the data frame
 complete_cases &lt;- complete.cases(data)</code></pre>
-<p>Handling Missing Data:</p>
-<p>Omitting Missing Data: na.omit(): Removes rows containing any missing
-values from a data frame.</p>
-<p>Example: Omitting Missing Data</p>
+<p><strong>Handling Missing Data:</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Omitting Missing Data:</strong> <strong>na.omit():</strong>
+Removes rows containing any missing values from a data frame.</li>
+</ol>
+<p><strong>Example: Omitting Missing Data</strong></p>
 <pre class="r"><code># Sample data with missing values
 data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
 
 # Omit rows with missing values
 data_no_missing &lt;- na.omit(data)</code></pre>
-<p>Imputing Missing Data: is.na() combined with subsetting: Replace
-missing values with a specific value or computed value.</p>
-<p>Example: Imputing Missing Data</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Imputing Missing Data:</strong> <strong>is.na()</strong>
+combined with subsetting: Replace missing values with a specific value
+or computed value.</li>
+</ol>
+<p><strong>Example: Imputing Missing Data</strong></p>
 <pre class="r"><code># Sample data with missing values
 data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
 
 # Impute missing values with the mean of non-missing values
 mean_age &lt;- mean(data$Age, na.rm = TRUE)
 data$Age[is.na(data$Age)] &lt;- mean_age</code></pre>
-<p>Imputing Missing Data with imputeTS Package: The imputeTS package
-provides advanced imputation techniques, including time series
-imputation.</p>
-<p>Example: Imputing Missing Data using imputeTS</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Imputing Missing Data with imputeTS Package:</strong> The
+<strong>imputeTS</strong> package provides advanced imputation
+techniques, including time series imputation.</li>
+</ol>
+<p><strong>Example: Imputing Missing Data using imputeTS</strong></p>
 <pre class="r"><code># Install and load the imputeTS package
 install.packages(&quot;imputeTS&quot;)
 library(imputeTS)
@@ -644,11 +662,16 @@ data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
 
 # Impute missing values using linear interpolation
 data$Age &lt;- na.interpolation(data$Age)</code></pre>
-<p>Handling Missing Data Summary:</p>
-<p>Missing data is common in datasets and needs to be addressed for
-accurate analysis. Use is.na() and complete.cases() to identify missing
-data. Choose appropriate methods for handling missing data, such as
-omitting, imputing, or using specialized packages like imputeTS.</p>
+<p><strong>Handling Missing Data Summary:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Missing data is common in datasets and needs to be addressed for
+accurate analysis.</li>
+<li>Use <strong>is.na()</strong> and <strong>complete.cases()</strong>
+to identify missing data.</li>
+<li>Choose appropriate methods for handling missing data, such as
+omitting, imputing, or using specialized packages like
+<strong>imputeTS</strong>.</li>
+</ol>
 <p>Remember that the choice of handling missing data depends on the
 nature of the data and the objectives of the analysis. Always handle
 missing data thoughtfully and consider the potential impact on the

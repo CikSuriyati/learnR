@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-08-07" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
-<h4 class="date">2023-08-07</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
@@ -335,25 +335,30 @@ $(document).ready(function () {
 <h1 class="tabset"></h1>
 <div id="summary-statistics" class="section level2">
 <h2>Summary statistics</h2>
-<div id="summary-statistics-1" class="section level3">
-<h3>Summary statistics</h3>
-<p>Summary Statistics in R Programming</p>
+<div id="summary-statistics-in-r-programming" class="section level3">
+<h3>Summary Statistics in R Programming</h3>
 <p>Summary statistics are numerical measures that provide a concise
 overview of the main characteristics of a dataset. They help to
 understand the central tendency, variability, and distribution of data.
 R provides various functions to compute summary statistics for data
 analysis.</p>
-<p>Common Summary Statistics in R: Mean (mean()): The mean is the
-average value of a numeric variable. Median (median()): The median is
-the middle value of a numeric variable when the data is sorted. Minimum
-(min()), Maximum (max()): The minimum and maximum values are the
-smallest and largest values, respectively, in a numeric variable.
-Standard Deviation (sd()): The standard deviation measures the spread or
-variability of a numeric variable. Variance (var()): The variance is the
-square of the standard deviation and also measures variability.
-Quantiles (quantile()): Quantiles divide the data into equal parts, such
-as quartiles (Q1, Q2, Q3) and percentiles.</p>
-<p>Example: Computing Summary Statistics</p>
+<p><strong>Common Summary Statistics in R:</strong></p>
+<ul>
+<li>Mean (<strong>mean()</strong>): The mean is the average value of a
+numeric variable.</li>
+<li>Median (<strong>median()</strong>): The median is the middle value
+of a numeric variable when the data is sorted.</li>
+<li>Minimum (<strong>min()</strong>), Maximum (<strong>max()</strong>):
+The minimum and maximum values are the smallest and largest values,
+respectively, in a numeric variable.</li>
+<li>Standard Deviation (<strong>sd()</strong>): The standard deviation
+measures the spread or variability of a numeric variable.</li>
+<li>Variance (<strong>var()</strong>): The variance is the square of the
+standard deviation and also measures variability.</li>
+<li>Quantiles (<strong>quantile()</strong>): Quantiles divide the data
+into equal parts, such as quartiles (Q1, Q2, Q3) and percentiles.</li>
+</ul>
+<p><strong>Example: Computing Summary Statistics</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- c(10, 15, 20, 25, 30, 35, 40)
 
@@ -382,9 +387,11 @@ print(mean_value)   </code></pre>
 <pre><code>##  25%  50%  75% 
 ## 17.5 25.0 32.5</code></pre>
 <p><strong>Summary Statistics for Data Frames:</strong></p>
-<p>For data frames, you can use functions like summary(), sapply(), and
-colMeans() to compute summary statistics for each variable.</p>
-<p>Example: Computing Summary Statistics for a Data Frame</p>
+<p>For data frames, you can use functions like <strong>summary(),
+sapply(), and colMeans()</strong> to compute summary statistics for each
+variable.</p>
+<p><strong>Example: Computing Summary Statistics for a Data
+Frame</strong></p>
 <pre class="r"><code># Sample data frame
 data &lt;- data.frame(
   Age = c(25, 30, 22, 28, 35),
@@ -422,10 +429,12 @@ data analysis in R.</p>
 <p>Frequency refers to the count of occurrences of distinct values in a
 dataset. In R, you can calculate the frequency of values for categorical
 variables using various functions and techniques.</p>
-<p>Calculating Frequency:</p>
-<p>Using table(): The table() function creates a frequency table that
-shows the count of each unique value in a vector or data frame
-column.</p>
+<p><strong>Calculating Frequency:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Using <strong>table()</strong>: The <strong>table()</strong>
+function creates a frequency table that shows the count of each unique
+value in a vector or data frame column.</li>
+</ol>
 <p><strong>Example: Calculating Frequency using table()</strong></p>
 <pre class="r"><code># Sample data
 gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
@@ -436,10 +445,14 @@ print(frequency_table)</code></pre>
 <pre><code>## gender
 ## Female   Male 
 ##      4      4</code></pre>
-<p>Using count() from dplyr: If you are using the dplyr package, you can
-use the count() function to calculate the frequency of values in a data
-frame column.</p>
-<p>Example: Calculating Frequency using count() from dplyr</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using <strong>count()</strong> from <strong>dplyr</strong>: If you
+are using the <strong>dplyr</strong> package, you can use the
+<strong>count()</strong> function to calculate the frequency of values
+in a data frame column.</li>
+</ol>
+<p><strong>Example: Calculating Frequency using count() from
+dplyr</strong></p>
 <pre class="r"><code># Load dplyr library
 library(dplyr)</code></pre>
 <pre><code>## 
@@ -461,13 +474,14 @@ print(frequency_table)</code></pre>
 <pre><code>##   Gender n
 ## 1 Female 4
 ## 2   Male 4</code></pre>
-<p>Frequency Table Interpretation:</p>
+<p><strong>Frequency Table Interpretation:</strong></p>
 <p>The frequency table provides a summary of the counts for each unique
 value in the dataset.</p>
 <p><strong>Relative Frequency (Proportions):</strong></p>
 <p>You can also calculate relative frequency, which represents the
 proportion of each unique value relative to the total count.</p>
-<p>Example: Calculating Relative Frequency using prop.table()</p>
+<p><strong>Example: Calculating Relative Frequency using
+prop.table()</strong></p>
 <pre class="r"><code># Sample data
 gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
 
@@ -480,23 +494,31 @@ print(relative_frequency)</code></pre>
 <p>This means that “Female” has a relative frequency of 0.5 (50%), and
 “Male” also has a relative frequency of 0.5 (50%).</p>
 <p><strong>Summary:</strong></p>
-<p>Frequency refers to the count of occurrences of distinct values in a
-dataset. Use table() or count() from dplyr to calculate the frequency of
-values for categorical variables. Relative frequency can be obtained by
-dividing the frequency of each value by the total count.</p>
+<ol style="list-style-type: decimal">
+<li>Frequency refers to the count of occurrences of distinct values in a
+dataset.</li>
+<li>Use <strong>table()</strong> or <strong>count()</strong> from
+<strong>dplyr</strong> to calculate the frequency of values for
+categorical variables.</li>
+<li>Relative frequency can be obtained by dividing the frequency of each
+value by the total count.</li>
+</ol>
 </div>
 <div id="cross-tabulation-table" class="section level2">
 <h2>Cross tabulation table</h2>
-<p>Cross Tabulation Table in R Programming</p>
-<p>Cross tabulation (also known as a contingency table or crosstab) is a
-tabular representation that shows the distribution of one or more
-categorical variables against another. It allows you to analyze the
-relationship between two or more categorical variables in a data
-set.</p>
-<p>Creating a Cross Tabulation Table:</p>
-<p>Using table(): The table() function can be used to create a basic
-cross tabulation table in R.</p>
-<p>Example: Creating a Cross Tabulation Table using table()</p>
+<p><strong>Cross Tabulation Table in R Programming</strong></p>
+<p><strong>Cross tabulation</strong> (also known as a contingency table
+or crosstab) is a tabular representation that shows the distribution of
+one or more categorical variables against another. It allows you to
+analyze the relationship between two or more categorical variables in a
+data set.</p>
+<p><strong>Creating a Cross Tabulation Table:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Using <strong>table()</strong>: The <strong>table()</strong>
+function can be used to create a basic cross tabulation table in R.</li>
+</ol>
+<p><strong>Example: Creating a Cross Tabulation Table using
+table()</strong></p>
 <pre class="r"><code># Sample data
 gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
 occupation &lt;- c(&quot;Engineer&quot;, &quot;Teacher&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;, &quot;Teacher&quot;, &quot;Doctor&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;)
@@ -508,10 +530,13 @@ print(cross_tab)</code></pre>
 ## gender   Doctor Engineer Teacher
 ##   Female      2        0       2
 ##   Male        1        3       0</code></pre>
-<p>Using xtabs(): The xtabs() function is another way to create
-cross-tabulation tables, providing more flexibility in defining
-formulas.</p>
-<p>Example: Creating a Cross Tabulation Table using xtabs()</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using <strong>xtabs()</strong>: The <strong>xtabs()</strong>
+function is another way to create cross-tabulation tables, providing
+more flexibility in defining formulas.</li>
+</ol>
+<p><strong>Example: Creating a Cross Tabulation Table using
+xtabs()</strong></p>
 <pre class="r"><code># Sample data
 gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
 occupation &lt;- c(&quot;Engineer&quot;, &quot;Teacher&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;, &quot;Teacher&quot;, &quot;Doctor&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;)
@@ -523,7 +548,7 @@ print(cross_tab)</code></pre>
 ## gender   Doctor Engineer Teacher
 ##   Female      2        0       2
 ##   Male        1        3       0</code></pre>
-<p>Interpreting a Cross Tabulation Table:</p>
+<p><strong>Interpreting a Cross Tabulation Table:</strong></p>
 <p>A cross tabulation table displays the frequency of occurrences for
 combinations of values from two or more categorical variables. The rows
 represent the categories of one variable, while the columns represent
@@ -532,11 +557,15 @@ the categories of the other variable.</p>
 the “Doctor” category of occupation. In the “Engineer” category, there
 are no females but two males, and so on.</p>
 <p><strong>Summary:</strong></p>
-<p>A cross tabulation table shows the distribution of one or more
-categorical variables against another. Use table() or xtabs() to create
-cross-tabulation tables in R. Cross tabulation helps to analyze the
-relationships between categorical variables and is a useful tool for
-exploratory data analysis.</p>
+<ol style="list-style-type: decimal">
+<li>A cross tabulation table shows the distribution of one or more
+categorical variables against another.</li>
+<li>Use <strong>table()</strong> or <strong>xtabs()</strong> to create
+cross-tabulation tables in R.</li>
+<li>Cross tabulation helps to analyze the relationships between
+categorical variables and is a useful tool for exploratory data
+analysis.</li>
+</ol>
 </div>
 </div>
 

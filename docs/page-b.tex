@@ -1,0 +1,1929 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Topic 1: Introduction to R language},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Topic 1: Introduction to R language}
+\author{}
+\date{\vspace{-2.5em}2023-08-08}
+
+\begin{document}
+\maketitle
+
+In this topic in week 2 , you will learn about :
+
+\begin{itemize}
+\tightlist
+\item
+  Data frames and list
+\item
+  Extracting elements from vectors
+\end{itemize}
+
+The readings in this tutorial follow
+\href{http://r4ds.had.co.nz/}{\emph{R for Data Science}}, section 5.2.
+
+\hypertarget{section}{%
+\section{}\label{section}}
+
+\hypertarget{objects-in-r}{%
+\subsection{Objects in R}\label{objects-in-r}}
+
+\textbf{Objectives}
+
+\begin{itemize}
+\tightlist
+\item
+  To introduce data types in R and show how these data types are used in
+  data structures.
+\item
+  Learn how to create vectors of different types.
+\item
+  Be able to check the type of vector.
+\item
+  Learn about missing data and other special values.
+\item
+  Get familiar with the different data structures (lists, matrices, data
+  frames).
+\end{itemize}
+
+\textcolor{blue}{**Everything in R is an object.**}
+
+R has 5 basic data types.
+
+\begin{itemize}
+\tightlist
+\item
+  character
+\item
+  numeric (real or decimal)
+\item
+  integer
+\item
+  logical
+\item
+  complex
+\end{itemize}
+
+A variable can store different types of values such as numbers,
+characters etc. The
+\textcolor{blue}{**variables are assigned with R-Objects**} and the
+\textcolor{blue}{**data type of the R-object**} becomes the
+\textcolor{blue}{**data type of the variable.**}
+
+Elements of these data types may be combined to form data structures,
+such as atomic vectors. When we call a vector atomic, we mean that the
+vector only holds data of a single data type.
+
+R provides many functions to examine features of vectors and other
+objects, for example
+
+\textbf{class( )} - what kind of object is it (high-level)?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 3L}
+\FunctionTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\textbf{typeof( )} - what is the object's data type (low-level)?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 3L}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\textbf{length( )} - how long is it? What about two dimensional objects?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 3L}
+\FunctionTok{length}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\textbf{attributes( )} - does it have any metadata?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 3L}
+\FunctionTok{attributes}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+Below are examples of atomic character vectors, numeric vectors, integer
+vectors, etc.
+
+\begin{itemize}
+\item
+  character: \textless{}``a''\textgreater, ``abc''
+\item
+  numeric: 3, 13.5
+\item
+  integer: (the L tells R to store this as an integer)
+\item
+  logical: TRUE, FALSE
+\item
+  complex: 1+3i (complex numbers with real and imaginary parts)
+\end{itemize}
+
+R has many data structures. The frequently used ones are:
+
+\begin{itemize}
+\tightlist
+\item
+  Vectors
+\item
+  Lists
+\item
+  Matrices
+\item
+  Arrays
+\item
+  Factors
+\item
+  Data Frames
+\end{itemize}
+
+\hypertarget{vectors}{%
+\subsection{Vectors}\label{vectors}}
+
+A vector is a basic data structure which plays an important role in R
+programming. In R,
+\textcolor{blue}{a sequence of elements which share the same data type is known as vector}.
+A vector supports logical, integer, double, character, complex, or raw
+data type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type character.}
+\FunctionTok{print}\NormalTok{(}\StringTok{"ali"}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ali"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type double.}
+\FunctionTok{print}\NormalTok{(}\FloatTok{2.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type integer.}
+\FunctionTok{print}\NormalTok{(3L)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type logical.}
+\FunctionTok{print}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type complex.}
+\FunctionTok{print}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\NormalTok{3i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1+3i
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atomic vector of type raw.}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{charToRaw}\NormalTok{(}\StringTok{\textquotesingle{}hello\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 68 65 6c 6c 6f
+\end{verbatim}
+
+\textbf{1. Multiple Elements Vector}.
+
+\textcolor{blue}{Using colon operator (:) with numeric data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a sequence from 4 to 23.}
+\NormalTok{v }\OtherTok{\textless{}{-}} \DecValTok{4}\SpecialCharTok{:}\DecValTok{12}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  4  5  6  7  8  9 10 11 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a sequence from 3.6 to 9.6.}
+\NormalTok{v }\OtherTok{\textless{}{-}} \FloatTok{3.6}\SpecialCharTok{:}\FloatTok{9.6}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.6 4.6 5.6 6.6 7.6 8.6 9.6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# If the final element specified does not belong to the sequence then it is discarded.}
+\NormalTok{v }\OtherTok{\textless{}{-}} \FloatTok{4.8}\SpecialCharTok{:}\FloatTok{10.4}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.8 5.8 6.8 7.8 8.8 9.8
+\end{verbatim}
+
+\textcolor{blue}{Using sequence (seq.) operator}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create vector with elements from 5 to 9 incrementing by 0.4.}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 5.0 5.4 5.8 6.2 6.6 7.0 7.4 7.8 8.2 8.6 9.0
+\end{verbatim}
+
+\textcolor{blue}{Using the c( ) function}.
+
+The non-character values are coerced to character type if one of the
+elements is a character.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The logical and numeric values are converted to characters.}
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}apple\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}\DecValTok{4}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "apple" "red"   "4"     "TRUE"
+\end{verbatim}
+
+\textbf{2. Accessing Vector Elements}
+
+Elements of a Vector are accessed using indexing. The \textbf{{[} {]}
+brackets} are used for indexing. Indexing starts with position 1. Giving
+a negative value in the index drops that element from
+result.\textbf{TRUE, FALSE} or \textbf{0} and \textbf{1} can also be
+used for indexing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accessing vector elements using position.}
+\NormalTok{t }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sun"}\NormalTok{,}\StringTok{"Mon"}\NormalTok{,}\StringTok{"Tue"}\NormalTok{,}\StringTok{"Wed"}\NormalTok{,}\StringTok{"Thurs"}\NormalTok{,}\StringTok{"Fri"}\NormalTok{,}\StringTok{"Sat"}\NormalTok{)}
+\NormalTok{u }\OtherTok{\textless{}{-}}\NormalTok{ t[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sun"   "Mon"   "Thurs"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accessing vector elements using logical indexing.}
+\NormalTok{v }\OtherTok{\textless{}{-}}\NormalTok{ t[}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sun" "Fri"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accessing vector elements using negative indexing.}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ t[}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sun"   "Mon"   "Wed"   "Thurs" "Sat"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Accessing vector elements using 0/1 indexing.}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ t[}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sun"
+\end{verbatim}
+
+\textbf{3. Vector Manipulation}.
+
+\textbf{Vector arithmetic}.
+
+Two vectors of same length can be added, subtracted, multiplied or
+divided giving the result as a vector output.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors.}
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# Vector addition.}
+\NormalTok{add }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{+}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(add)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5 19  4 11  1 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vector subtraction.}
+\NormalTok{sub }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{{-}}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(sub)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1 -3  4 -3 -1  7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vector multiplication.}
+\NormalTok{multi }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{*}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(multi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  6 88  0 28  0 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vector division.}
+\NormalTok{divi }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{/}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(divi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6666667 0.7272727       Inf 0.5714286 0.0000000 3.3333333
+\end{verbatim}
+
+\textbf{Vector Element Recycling}
+
+If we apply arithmetic operations to two vectors of unequal length, then
+the elements of the shorter vector are recycled to complete the
+operations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{11}\NormalTok{)}
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{11}\NormalTok{)}
+\CommentTok{\# V2 becomes c(4,11,4,11,4,11)}
+
+\NormalTok{add.result }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{+}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(add.result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  7 19  8 16  4 22
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sub.result }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{{-}}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(sub.result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1 -3  0 -6 -4  0
+\end{verbatim}
+
+\textbf{Vector Element Sorting}
+
+Elements in a vector can be sorted using the sort() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{11}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{, }\DecValTok{304}\NormalTok{)}
+
+\CommentTok{\# Sort the elements of the vector.}
+\NormalTok{sort1 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(v)}
+\FunctionTok{print}\NormalTok{(sort1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  -9   0   3   4   5   8  11 304
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sort the elements in the reverse order.}
+\NormalTok{revsort }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(v, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(revsort)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 304  11   8   5   4   3   0  -9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sorting character vectors.}
+\NormalTok{v }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Red"}\NormalTok{,}\StringTok{"Blue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"violet"}\NormalTok{)}
+\NormalTok{sort2 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(v)}
+\FunctionTok{print}\NormalTok{(sort2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Blue"   "Red"    "violet" "yellow"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sorting character vectors in reverse order.}
+\NormalTok{revsort }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(v, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(revsort)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "yellow" "violet" "Red"    "Blue"
+\end{verbatim}
+
+\hypertarget{lists}{%
+\subsection{Lists}\label{lists}}
+
+Lists are the R objects which contain elements of different types like −
+numbers, strings, vectors and another list inside it. A list can also
+contain a matrix or a function as its elements. List is created using
+\textbf{list()} function.
+
+\textbf{1. Creating a List}
+
+Following is an example to create a list containing strings, numbers,
+vectors and a logical values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list containing strings, numbers, vectors and a logical}
+\CommentTok{\# values.}
+\NormalTok{list\_data }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"Red"}\NormalTok{, }\StringTok{"Green"}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{,}\DecValTok{32}\NormalTok{,}\DecValTok{11}\NormalTok{), }\ConstantTok{TRUE}\NormalTok{, }\FloatTok{51.23}\NormalTok{, }\FloatTok{119.1}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(list\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "Red"
+## 
+## [[2]]
+## [1] "Green"
+## 
+## [[3]]
+## [1] 21 32 11
+## 
+## [[4]]
+## [1] TRUE
+## 
+## [[5]]
+## [1] 51.23
+## 
+## [[6]]
+## [1] 119.1
+\end{verbatim}
+
+\textbf{2. Naming List Elements}
+
+The list elements can be given names and they can be accessed using
+these names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list containing a vector, a matrix and a list.}
+\NormalTok{list\_data }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Jan"}\NormalTok{,}\StringTok{"Feb"}\NormalTok{,}\StringTok{"Mar"}\NormalTok{), }\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{),}
+   \FunctionTok{list}\NormalTok{(}\StringTok{"green"}\NormalTok{,}\FloatTok{12.3}\NormalTok{))}
+
+\CommentTok{\# Give names to the elements in the list.}
+\FunctionTok{names}\NormalTok{(list\_data) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1st Quarter"}\NormalTok{, }\StringTok{"A\_Matrix"}\NormalTok{, }\StringTok{"A Inner list"}\NormalTok{)}
+
+\CommentTok{\# Show the list.}
+\FunctionTok{print}\NormalTok{(list\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $`1st Quarter`
+## [1] "Jan" "Feb" "Mar"
+## 
+## $A_Matrix
+##      [,1] [,2] [,3]
+## [1,]    3    5   -2
+## [2,]    9    1    8
+## 
+## $`A Inner list`
+## $`A Inner list`[[1]]
+## [1] "green"
+## 
+## $`A Inner list`[[2]]
+## [1] 12.3
+\end{verbatim}
+
+\textbf{3. Accessing List Elements}
+
+Elements of the list can be accessed by the index of the element in the
+list. In case of named lists it can also be accessed using the names.
+
+We continue to use the list in the above example −
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list containing a vector, a matrix and a list.}
+\NormalTok{list\_data }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Jan"}\NormalTok{,}\StringTok{"Feb"}\NormalTok{,}\StringTok{"Mar"}\NormalTok{), }\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{),}
+   \FunctionTok{list}\NormalTok{(}\StringTok{"green"}\NormalTok{,}\FloatTok{12.3}\NormalTok{))}
+
+\CommentTok{\# Give names to the elements in the list.}
+\FunctionTok{names}\NormalTok{(list\_data) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1st Quarter"}\NormalTok{, }\StringTok{"A\_Matrix"}\NormalTok{, }\StringTok{"A Inner list"}\NormalTok{)}
+
+\CommentTok{\# Access the first element of the list.}
+\FunctionTok{print}\NormalTok{(list\_data[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $`1st Quarter`
+## [1] "Jan" "Feb" "Mar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access the thrid element. As it is also a list, all its elements will be printed.}
+\FunctionTok{print}\NormalTok{(list\_data[}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $`A Inner list`
+## $`A Inner list`[[1]]
+## [1] "green"
+## 
+## $`A Inner list`[[2]]
+## [1] 12.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access the list element using the name of the element.}
+\FunctionTok{print}\NormalTok{(list\_data}\SpecialCharTok{$}\NormalTok{A\_Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    5   -2
+## [2,]    9    1    8
+\end{verbatim}
+
+\textbf{4. Manipulating List Elements}
+
+We can add, delete and update list elements as shown below. We can add
+and delete elements only at the end of a list. But we can update any
+element.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a list containing a vector, a matrix and a list.}
+\NormalTok{list\_data }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Jan"}\NormalTok{,}\StringTok{"Feb"}\NormalTok{,}\StringTok{"Mar"}\NormalTok{), }\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{),}
+   \FunctionTok{list}\NormalTok{(}\StringTok{"green"}\NormalTok{,}\FloatTok{12.3}\NormalTok{))}
+
+\CommentTok{\# Give names to the elements in the list.}
+\FunctionTok{names}\NormalTok{(list\_data) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1st Quarter"}\NormalTok{, }\StringTok{"A\_Matrix"}\NormalTok{, }\StringTok{"A Inner list"}\NormalTok{)}
+
+\CommentTok{\# Add element at the end of the list.}
+\NormalTok{list\_data[}\DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"New element"}
+\FunctionTok{print}\NormalTok{(list\_data[}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "New element"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove the last element.}
+\NormalTok{list\_data[}\DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+
+\CommentTok{\# Print the 4th Element.}
+\FunctionTok{print}\NormalTok{(list\_data[}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $<NA>
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Update the 3rd Element.}
+\NormalTok{list\_data[}\DecValTok{3}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"updated element"}
+\FunctionTok{print}\NormalTok{(list\_data[}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $`A Inner list`
+## [1] "updated element"
+\end{verbatim}
+
+\textbf{5. Merging Lists}
+
+You can merge many lists into one list by placing all the lists inside
+one list() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two lists.}
+\NormalTok{list1 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{list2 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"Sun"}\NormalTok{,}\StringTok{"Mon"}\NormalTok{,}\StringTok{"Tue"}\NormalTok{)}
+
+\CommentTok{\# Merge the two lists.}
+\NormalTok{merged.list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(list1,list2)}
+
+\CommentTok{\# Print the merged list.}
+\FunctionTok{print}\NormalTok{(merged.list)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] 3
+## 
+## [[4]]
+## [1] "Sun"
+## 
+## [[5]]
+## [1] "Mon"
+## 
+## [[6]]
+## [1] "Tue"
+\end{verbatim}
+
+\textbf{6. Converting List to Vector}
+
+A list can be converted to a vector so that the elements of the vector
+can be used for further manipulation. All the arithmetic operations on
+vectors can be applied after the list is converted into vectors. To do
+this conversion, we use the unlist() function. It takes the list as
+input and produces a vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create lists.}
+\NormalTok{list1 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(list1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list2 }\OtherTok{\textless{}{-}}\FunctionTok{list}\NormalTok{(}\DecValTok{10}\SpecialCharTok{:}\DecValTok{14}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(list2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 10 11 12 13 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the lists to vectors.}
+\NormalTok{v1 }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(list1)}
+\NormalTok{v2 }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(list2)}
+
+\FunctionTok{print}\NormalTok{(v1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(v2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10 11 12 13 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Now add the vectors}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ v1}\SpecialCharTok{+}\NormalTok{v2}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11 13 15 17 19
+\end{verbatim}
+
+\hypertarget{matrices}{%
+\subsection{Matrices}\label{matrices}}
+
+Matrices are the R objects in which the elements are arranged in a
+two-dimensional rectangular layout. They contain elements of the same
+atomic types. Though we can create a matrix containing only characters
+or only logical values, they are not of much use. We use matrices
+containing numeric elements to be used in mathematical calculations.
+
+A Matrix is created using the \textbf{matrix()} function.
+
+\textbf{Syntax}
+
+The basic syntax for creating a matrix in R is −
+
+\textbf{matrix(data, nrow, ncol, byrow, dimnames)}
+
+Following is the description of the parameters used −
+
+\begin{itemize}
+\tightlist
+\item
+  data is the input vector which becomes the data elements of the
+  matrix.
+\item
+  nrow is the number of rows to be created.
+\item
+  ncol is the number of columns to be created.
+\item
+  byrow is a logical clue. If TRUE then the input vector elements are
+  arranged by row.
+\item
+  dimname is the names assigned to the rows and columns.
+\end{itemize}
+
+\textbf{Example}
+
+Create a matrix taking a vector of numbers as input.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Elements are arranged sequentially by row.}
+\NormalTok{M }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(M)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    4    5
+## [2,]    6    7    8
+## [3,]    9   10   11
+## [4,]   12   13   14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Elements are arranged sequentially by column.}
+\NormalTok{N }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(N)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    7   11
+## [2,]    4    8   12
+## [3,]    5    9   13
+## [4,]    6   10   14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define the column and row names.}
+\NormalTok{rownames }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"row1"}\NormalTok{, }\StringTok{"row2"}\NormalTok{, }\StringTok{"row3"}\NormalTok{, }\StringTok{"row4"}\NormalTok{)}
+\NormalTok{colnames }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"col1"}\NormalTok{, }\StringTok{"col2"}\NormalTok{, }\StringTok{"col3"}\NormalTok{)}
+
+\NormalTok{P }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{(rownames, colnames))}
+\FunctionTok{print}\NormalTok{(P)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      col1 col2 col3
+## row1    3    4    5
+## row2    6    7    8
+## row3    9   10   11
+## row4   12   13   14
+\end{verbatim}
+
+\textcolor{blue}{**Accessing Elements of a Matrix**}
+
+Elements of a matrix can be accessed by using the column and row index
+of the element. We consider the matrix P above to find the specific
+elements below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define the column and row names.}
+\NormalTok{rownames }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"row1"}\NormalTok{, }\StringTok{"row2"}\NormalTok{, }\StringTok{"row3"}\NormalTok{, }\StringTok{"row4"}\NormalTok{)}
+\NormalTok{colnames }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"col1"}\NormalTok{, }\StringTok{"col2"}\NormalTok{, }\StringTok{"col3"}\NormalTok{)}
+
+\CommentTok{\# Create the matrix.}
+\NormalTok{P }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\SpecialCharTok{:}\DecValTok{14}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{(rownames, colnames))}
+
+\CommentTok{\# Access the element at 3rd column and 1st row.}
+\FunctionTok{print}\NormalTok{(P[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access the element at 2nd column and 4th row.}
+\FunctionTok{print}\NormalTok{(P[}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access only the  2nd row.}
+\FunctionTok{print}\NormalTok{(P[}\DecValTok{2}\NormalTok{,])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## col1 col2 col3 
+##    6    7    8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access only the 3rd column.}
+\FunctionTok{print}\NormalTok{(P[,}\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## row1 row2 row3 row4 
+##    5    8   11   14
+\end{verbatim}
+
+\textcolor{blue}{**Matrix Computations**}
+
+Various mathematical operations are performed on the matrices using the
+R operators. The result of the operation is also a matrix.
+
+The dimensions (number of rows and columns) should be same for the
+matrices involved in the operation.
+
+\textcolor{blue}{**1. Matrix Addition & Subtraction**}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two 2x3 matrices.}
+\NormalTok{matrix1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(matrix1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3   -1    2
+## [2,]    9    4    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matrix2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(matrix2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    0    3
+## [2,]    2    9    4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add the matrices.}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ matrix1 }\SpecialCharTok{+}\NormalTok{ matrix2}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Result of addition"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Result of addition
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    8   -1    5
+## [2,]   11   13   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subtract the matrices}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ matrix1 }\SpecialCharTok{{-}}\NormalTok{ matrix2}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Result of subtraction"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Result of subtraction
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   -2   -1   -1
+## [2,]    7   -5    2
+\end{verbatim}
+
+\textcolor{blue}{**2. Matrix Multiplication & Division**}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two 2x3 matrices.}
+\NormalTok{matrix1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(matrix1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3   -1    2
+## [2,]    9    4    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matrix2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(matrix2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    0    3
+## [2,]    2    9    4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Multiply the matrices.}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ matrix1 }\SpecialCharTok{*}\NormalTok{ matrix2}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Result of multiplication"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Result of multiplication
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   15    0    6
+## [2,]   18   36   24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Divide the matrices}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ matrix1 }\SpecialCharTok{/}\NormalTok{ matrix2}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Result of division"}\NormalTok{,}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Result of division
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]      [,2]      [,3]
+## [1,]  0.6      -Inf 0.6666667
+## [2,]  4.5 0.4444444 1.5000000
+\end{verbatim}
+
+\hypertarget{arrays}{%
+\subsection{Arrays}\label{arrays}}
+
+Arrays are the R data objects which can store data in more than two
+dimensions. For example − If we create an array of dimension (2, 3, 4)
+then it creates 4 rectangular matrices each with 2 rows and 3 columns.
+Arrays can store only data type.
+
+An array is created using the array() function. It takes vectors as
+input and uses the values in the dim parameter to create an array.
+
+\textbf{Example}
+
+The following example creates an array of two 3x3 matrices each with 3
+rows and 3 columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+
+\CommentTok{\# Take these vectors as input to the array.}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+\end{verbatim}
+
+\textcolor{blue}{**1. Naming Columns and Rows**}
+
+We can give names to the rows, columns and matrices in the array by
+using the dimnames parameter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+\NormalTok{column.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"COL1"}\NormalTok{,}\StringTok{"COL2"}\NormalTok{,}\StringTok{"COL3"}\NormalTok{)}
+\NormalTok{row.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"ROW1"}\NormalTok{,}\StringTok{"ROW2"}\NormalTok{,}\StringTok{"ROW3"}\NormalTok{)}
+\NormalTok{matrix.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Matrix1"}\NormalTok{,}\StringTok{"Matrix2"}\NormalTok{)}
+
+\CommentTok{\# Take these vectors as input to the array.}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}\AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{(row.names,column.names,}
+\NormalTok{   matrix.names))}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , Matrix1
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+## 
+## , , Matrix2
+## 
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+\end{verbatim}
+
+\textcolor{blue}{**2. Accessing Array Elements**}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+\NormalTok{column.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"COL1"}\NormalTok{,}\StringTok{"COL2"}\NormalTok{,}\StringTok{"COL3"}\NormalTok{)}
+\NormalTok{row.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"ROW1"}\NormalTok{,}\StringTok{"ROW2"}\NormalTok{,}\StringTok{"ROW3"}\NormalTok{)}
+\NormalTok{matrix.names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Matrix1"}\NormalTok{,}\StringTok{"Matrix2"}\NormalTok{)}
+
+\CommentTok{\# Take these vectors as input to the array.}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}\AttributeTok{dimnames =} \FunctionTok{list}\NormalTok{(row.names,}
+\NormalTok{   column.names, matrix.names))}
+
+\CommentTok{\# Print the third row of the second matrix of the array.}
+\FunctionTok{print}\NormalTok{(result[}\DecValTok{3}\NormalTok{,,}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## COL1 COL2 COL3 
+##    3   12   15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print the element in the 1st row and 3rd column of the 1st matrix.}
+\FunctionTok{print}\NormalTok{(result[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print the 2nd Matrix.}
+\FunctionTok{print}\NormalTok{(result[,,}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      COL1 COL2 COL3
+## ROW1    5   10   13
+## ROW2    9   11   14
+## ROW3    3   12   15
+\end{verbatim}
+
+\textcolor{blue}{**3. Manipulating Array Elements**}
+
+As array is made up matrices in multiple dimensions, the operations on
+elements of array are carried out by accessing elements of the matrices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+
+\CommentTok{\# Take these vectors as input to the array.}
+\NormalTok{array1 }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector3 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{vector4 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{9}\NormalTok{)}
+\NormalTok{array2 }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# create matrices from these arrays.}
+\NormalTok{matrix1 }\OtherTok{\textless{}{-}}\NormalTok{ array1[,,}\DecValTok{2}\NormalTok{]}
+\NormalTok{matrix2 }\OtherTok{\textless{}{-}}\NormalTok{ array2[,,}\DecValTok{2}\NormalTok{]}
+
+\CommentTok{\# Add the matrices.}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ matrix1}\SpecialCharTok{+}\NormalTok{matrix2}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10   20   26
+## [2,]   18   22   28
+## [3,]    6   24   30
+\end{verbatim}
+
+\textcolor{blue}{**4. Calculations Across Array Elements**}
+
+We can do calculations across the elements in an array using the apply()
+function.
+
+\textbf{Syntax}
+
+\textbf{apply(x, margin, fun)}
+
+Following is the description of the parameters used −
+
+\begin{itemize}
+\tightlist
+\item
+  x is an array.
+\item
+  margin is the name of the data set used.
+\item
+  fun is the function to be applied across the elements of the array.
+\end{itemize}
+
+\textbf{Example}
+
+We use the \textbf{apply()} function below to calculate the sum of the
+elements in the rows of an array across all the matrices
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create two vectors of different lengths.}
+\NormalTok{vector1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{vector2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{15}\NormalTok{)}
+
+\CommentTok{\# Take these vectors as input to the array.}
+\NormalTok{new.array }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(vector1,vector2),}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(new.array)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    5   10   13
+## [2,]    9   11   14
+## [3,]    3   12   15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Use apply to calculate the sum of the rows across all the matrices.}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(new.array, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{), sum)}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 56 68 60
+\end{verbatim}
+
+\hypertarget{data-frame}{%
+\subsection{Data Frame}\label{data-frame}}
+
+A data frame is a table or a two-dimensional array-like structure in
+which each column contains values of one variable and each row contains
+one set of values from each column.
+
+Following are the characteristics of a data frame.
+
+\begin{itemize}
+\tightlist
+\item
+  The column names should be non-empty.
+\item
+  The row names should be unique.
+\item
+  The data stored in a data frame can be of numeric, factor or character
+  type.
+\item
+  Each column should contain same number of data items.
+\end{itemize}
+
+\textcolor{blue}{**1. Create Data Frame**}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+  
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\CommentTok{\# Print the data frame.         }
+\FunctionTok{print}\NormalTok{(student.data) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   std_id std_name pocketmoney start_date
+## 1      1      Ali      623.30 2012-01-01
+## 2      2      Abu      515.20 2013-09-23
+## 3      3    Ahmad      611.00 2014-11-15
+## 4      4     Siti      729.00 2014-05-11
+## 5      5     Emma      843.25 2015-03-27
+\end{verbatim}
+
+\textcolor{blue}{**2. Get the Structure of the Data Frame**}
+
+The structure of the data frame can be seen by using str() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\CommentTok{\# Get the structure of the data frame.}
+\FunctionTok{str}\NormalTok{(student.data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    5 obs. of  4 variables:
+##  $ std_id     : int  1 2 3 4 5
+##  $ std_name   : chr  "Ali" "Abu" "Ahmad" "Siti" ...
+##  $ pocketmoney: num  623 515 611 729 843
+##  $ start_date : Date, format: "2012-01-01" "2013-09-23" ...
+\end{verbatim}
+
+\textcolor{blue}{**3. Summary of Data in Data Frame**}
+
+The statistical summary and nature of the data can be obtained by
+applying summary() function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+  
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\CommentTok{\# Print the summary.}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(student.data)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      std_id    std_name          pocketmoney      start_date        
+##  Min.   :1   Length:5           Min.   :515.2   Min.   :2012-01-01  
+##  1st Qu.:2   Class :character   1st Qu.:611.0   1st Qu.:2013-09-23  
+##  Median :3   Mode  :character   Median :623.3   Median :2014-05-11  
+##  Mean   :3                      Mean   :664.4   Mean   :2014-01-14  
+##  3rd Qu.:4                      3rd Qu.:729.0   3rd Qu.:2014-11-15  
+##  Max.   :5                      Max.   :843.2   Max.   :2015-03-27
+\end{verbatim}
+
+\textcolor{blue}{**4. Extract Data from Data Frame**}
+
+Extract specific column from a data frame using column name.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\CommentTok{\# Extract Specific columns.}
+\NormalTok{result }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(student.data}\SpecialCharTok{$}\NormalTok{std\_name,student.data}\SpecialCharTok{$}\NormalTok{pocketmoney)}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   student.data.std_name student.data.pocketmoney
+## 1                   Ali                   623.30
+## 2                   Abu                   515.20
+## 3                 Ahmad                   611.00
+## 4                  Siti                   729.00
+## 5                  Emma                   843.25
+\end{verbatim}
+
+Extract the first two rows and then all columns
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+\CommentTok{\# Extract first two rows.}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ student.data[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{,]}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   std_id std_name pocketmoney start_date
+## 1      1      Ali       623.3 2012-01-01
+## 2      2      Abu       515.2 2013-09-23
+\end{verbatim}
+
+Extract 3rd and 5th row with 2nd and 4th column
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+ 
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\CommentTok{\# Extract 3rd and 5th row with 2nd and 4th column.}
+\NormalTok{result }\OtherTok{\textless{}{-}}\NormalTok{ student.data[}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{),}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{)]}
+\FunctionTok{print}\NormalTok{(result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   std_name start_date
+## 3    Ahmad 2014-11-15
+## 5     Emma 2015-03-27
+\end{verbatim}
+
+\textcolor{blue}{**5. Expand Data Frame**}
+
+A data frame can be expanded by adding columns and rows.
+
+\textcolor{blue}{**Add Column**}
+
+Just add the column vector using a new column name.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+ 
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\CommentTok{\# Add the "program" column.}
+\NormalTok{student.data}\SpecialCharTok{$}\NormalTok{program }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"CS"}\NormalTok{,}\StringTok{"BM"}\NormalTok{,}\StringTok{"Stat"}\NormalTok{,}\StringTok{"Banking"}\NormalTok{,}\StringTok{"AM"}\NormalTok{)}
+\NormalTok{v }\OtherTok{\textless{}{-}}\NormalTok{ student.data}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   std_id std_name pocketmoney start_date program
+## 1      1      Ali      623.30 2012-01-01      CS
+## 2      2      Abu      515.20 2013-09-23      BM
+## 3      3    Ahmad      611.00 2014-11-15    Stat
+## 4      4     Siti      729.00 2014-05-11 Banking
+## 5      5     Emma      843.25 2015-03-27      AM
+\end{verbatim}
+
+\textcolor{blue}{**Add Row**}
+
+To \textbf{add more rows permanently} to an existing data frame, we need
+to bring in the new rows in the \textbf{same structure} as the existing
+data frame and use the \textbf{rbind()} function.
+
+In the example below we create a data frame with new rows and merge it
+with the existing data frame to create the final data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the first data frame.}
+\NormalTok{student.data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ali"}\NormalTok{,}\StringTok{"Abu"}\NormalTok{,}\StringTok{"Ahmad"}\NormalTok{,}\StringTok{"Siti"}\NormalTok{,}\StringTok{"Emma"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{623.3}\NormalTok{,}\FloatTok{515.2}\NormalTok{,}\FloatTok{611.0}\NormalTok{,}\FloatTok{729.0}\NormalTok{,}\FloatTok{843.25}\NormalTok{), }
+   
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2012{-}01{-}01"}\NormalTok{, }\StringTok{"2013{-}09{-}23"}\NormalTok{, }\StringTok{"2014{-}11{-}15"}\NormalTok{, }\StringTok{"2014{-}05{-}11"}\NormalTok{,}
+      \StringTok{"2015{-}03{-}27"}\NormalTok{)),}
+   \AttributeTok{program =} \FunctionTok{c}\NormalTok{(}\StringTok{"CS"}\NormalTok{,}\StringTok{"BM"}\NormalTok{,}\StringTok{"Stat"}\NormalTok{,}\StringTok{"Banking"}\NormalTok{,}\StringTok{"AM"}\NormalTok{),}
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\CommentTok{\# Create the second data frame}
+\NormalTok{student.newdata }\OtherTok{\textless{}{-}}  \FunctionTok{data.frame}\NormalTok{(}
+   \AttributeTok{std\_id =} \FunctionTok{c}\NormalTok{ (}\DecValTok{6}\SpecialCharTok{:}\DecValTok{8}\NormalTok{), }
+   \AttributeTok{std\_name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Hairi"}\NormalTok{,}\StringTok{"Alimah"}\NormalTok{,}\StringTok{"Maria"}\NormalTok{),}
+   \AttributeTok{pocketmoney =} \FunctionTok{c}\NormalTok{(}\FloatTok{578.0}\NormalTok{,}\FloatTok{722.5}\NormalTok{,}\FloatTok{632.8}\NormalTok{), }
+   \AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"2013{-}05{-}21"}\NormalTok{,}\StringTok{"2013{-}07{-}30"}\NormalTok{,}\StringTok{"2014{-}06{-}17"}\NormalTok{)),}
+   \AttributeTok{program =} \FunctionTok{c}\NormalTok{(}\StringTok{"CS"}\NormalTok{,}\StringTok{"Stat"}\NormalTok{,}\StringTok{"AM"}\NormalTok{),}
+   \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\CommentTok{\# Bind the two data frames.}
+\NormalTok{std.finaldata }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(student.data,student.newdata)}
+\FunctionTok{print}\NormalTok{(std.finaldata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   std_id std_name pocketmoney start_date program
+## 1      1      Ali      623.30 2012-01-01      CS
+## 2      2      Abu      515.20 2013-09-23      BM
+## 3      3    Ahmad      611.00 2014-11-15    Stat
+## 4      4     Siti      729.00 2014-05-11 Banking
+## 5      5     Emma      843.25 2015-03-27      AM
+## 6      6    Hairi      578.00 2013-05-21      CS
+## 7      7   Alimah      722.50 2013-07-30    Stat
+## 8      8    Maria      632.80 2014-06-17      AM
+\end{verbatim}
+
+\hypertarget{factors}{%
+\subsection{Factors}\label{factors}}
+
+Factors are the data objects which are used to \textbf{categorize the
+data} and store it as \textbf{levels}. They can store both strings and
+integers. They are useful in the columns which have a limited number of
+unique values. Like ``Male,''Female'' and True, False etc. They are
+useful in data analysis for statistical modeling.
+
+Factors are created using the \textbf{factor ()} function by taking a
+vector as input.
+
+\textbf{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector as input.}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"East"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"North"}\NormalTok{,}\StringTok{"North"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"North"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "East"  "West"  "East"  "North" "North" "East"  "West"  "West"  "West" 
+## [10] "East"  "North"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{is.factor}\NormalTok{(data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply the factor function.}
+\NormalTok{factor\_data }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data)}
+
+\FunctionTok{print}\NormalTok{(factor\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East North West
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{is.factor}\NormalTok{(factor\_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\textcolor{blue}{**1. Factors in Data Frame**}
+
+On creating any data frame with a column of text data, R treats the text
+column as categorical data and creates factors on it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the vectors for data frame.}
+\NormalTok{height }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{132}\NormalTok{,}\DecValTok{151}\NormalTok{,}\DecValTok{162}\NormalTok{,}\DecValTok{139}\NormalTok{,}\DecValTok{166}\NormalTok{,}\DecValTok{147}\NormalTok{,}\DecValTok{122}\NormalTok{)}
+\NormalTok{weight }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{48}\NormalTok{,}\DecValTok{49}\NormalTok{,}\DecValTok{66}\NormalTok{,}\DecValTok{53}\NormalTok{,}\DecValTok{67}\NormalTok{,}\DecValTok{52}\NormalTok{,}\DecValTok{40}\NormalTok{)}
+\NormalTok{gender }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"male"}\NormalTok{)}
+
+\CommentTok{\# Create the data frame.}
+\NormalTok{input\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(height,weight,gender)}
+\FunctionTok{print}\NormalTok{(input\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height weight gender
+## 1    132     48   male
+## 2    151     49   male
+## 3    162     66 female
+## 4    139     53 female
+## 5    166     67   male
+## 6    147     52 female
+## 7    122     40   male
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Test if the gender column is a factor.}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{is.factor}\NormalTok{(input\_data}\SpecialCharTok{$}\NormalTok{gender))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print the gender column so see the levels.}
+\FunctionTok{print}\NormalTok{(input\_data}\SpecialCharTok{$}\NormalTok{gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "male"   "male"   "female" "female" "male"   "female" "male"
+\end{verbatim}
+
+\textcolor{blue}{**2. Changing the Order of Levels**}
+
+The order of the levels in a factor can be changed by applying the
+factor function again with new order of the levels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"East"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"North"}\NormalTok{,}\StringTok{"North"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}
+   \StringTok{"West"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"East"}\NormalTok{,}\StringTok{"North"}\NormalTok{)}
+\CommentTok{\# Create the factors}
+\NormalTok{factor\_data }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data)}
+\FunctionTok{print}\NormalTok{(factor\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East North West
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply the factor function with required order of the level.}
+\NormalTok{new\_order\_data }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(factor\_data,}\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"East"}\NormalTok{,}\StringTok{"West"}\NormalTok{,}\StringTok{"North"}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(new\_order\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] East  West  East  North North East  West  West  West  East  North
+## Levels: East West North
+\end{verbatim}
+
+\textcolor{blue}{**3. Generating Factor Levels**}
+
+We can generate factor levels by using the gl() function. It takes two
+integers as input which indicates how many levels and how many times
+each level.
+
+\textbf{Syntax}
+
+gl(n, k, labels)
+
+Following is the description of the parameters used −
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{n} is a integer giving the number of levels.
+\item
+  \textbf{k} is a integer giving the number of replications.
+\item
+  \textbf{labels} is a vector of labels for the resulting factor levels.
+\end{itemize}
+
+Example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v }\OtherTok{\textless{}{-}} \FunctionTok{gl}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Tampa"}\NormalTok{, }\StringTok{"Seattle"}\NormalTok{,}\StringTok{"Boston"}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] Tampa   Tampa   Tampa   Tampa   Seattle Seattle Seattle Seattle Boston 
+## [10] Boston  Boston  Boston 
+## Levels: Tampa Seattle Boston
+\end{verbatim}
+
+\end{document}

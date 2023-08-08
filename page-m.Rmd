@@ -19,11 +19,12 @@ In this topic, you will learn about :
 
 Simple Linear Regression is a statistical method used to model the relationship between two continuous variables by fitting a linear equation to the data. It helps to understand how changes in the predictor variable (independent variable) are associated with changes in the response variable (dependent variable).
 
-Performing Simple Linear Regression:
+**Performing Simple Linear Regression:**
 
-1. Using lm(): The lm() function in R is used to perform simple linear regression.
+1. Using **lm()**: The **lm()** function in R is used to perform simple linear regression.
 
-Example: Simple Linear Regression
+**Example: Simple Linear Regression**
+
 Suppose we have data on the number of hours studied and the corresponding exam scores, and we want to model the relationship between the two variables using simple linear regression.
 
 ```{r}
@@ -42,14 +43,15 @@ summary(reg_model)
 
 ```
 
-Interpreting the Output:
-The output of the summary() function on the regression model provides the coefficient estimates, standard errors, t-values, and p-values for the predictor variable (Hours_Studied) and the intercept term. It also provides the R-squared value, which represents the proportion of variance in the response variable (Exam_Scores) explained by the predictor variable.
+**Interpreting the Output:**
+
+The output of the **summary()** function on the regression model provides the coefficient estimates, standard errors, t-values, and p-values for the predictor variable (Hours_Studied) and the intercept term. It also provides the R-squared value, which represents the proportion of variance in the response variable (Exam_Scores) explained by the predictor variable.
 
 The coefficient estimate for Hours_Studied indicates the change in the Exam_Scores for each unit increase in Hours_Studied.
 
-Making Predictions:
+2. **Making Predictions:**
 
-Once the regression model is fitted, you can make predictions for new data using the predict() function.
+Once the regression model is fitted, you can make predictions for new data using the **predict()** function.
 
 ```{r}
 # New data for prediction
@@ -63,7 +65,7 @@ print(predictions)
 
 ```
 
-Plotting the Regression Line:
+3. **Plotting the Regression Line:**
 
 You can visualize the linear regression model by plotting the regression line along with the data points.
 
@@ -74,13 +76,13 @@ abline(reg_model, col = "blue")
 
 ```
 
-Summary:
+**Summary:**
 
-Simple Linear Regression is used to model the relationship between two continuous variables using a linear equation.
-The lm() function in R is used to perform simple linear regression.
-The output of summary() provides information about the regression coefficients, R-squared value, and statistical significance of the model.
-You can use the predict() function to make predictions with the fitted regression model.
-Visualizing the regression line can help in understanding the relationship between the variables.
+1. Simple Linear Regression is used to model the relationship between two continuous variables using a linear equation.
+2. The **lm()** function in R is used to perform simple linear regression.
+3. The output of **summary()** provides information about the regression coefficients, R-squared value, and statistical significance of the model.
+4. You can use the **predict()** function to make predictions with the fitted regression model.
+5. Visualizing the regression line can help in understanding the relationship between the variables.
 
 
 
@@ -90,11 +92,12 @@ Visualizing the regression line can help in understanding the relationship betwe
 
 Multiple Linear Regression is a statistical method used to model the relationship between a dependent variable (response variable) and two or more independent variables (predictor variables) by fitting a linear equation to the data. It helps to understand how changes in multiple predictor variables are associated with changes in the response variable.
 
-Performing Multiple Linear Regression:
+**Performing Multiple Linear Regression:**
 
-1. Using lm(): The lm() function in R is also used to perform multiple linear regression, similar to simple linear regression.
+1. Using **lm()**: The **lm()** function in R is also used to perform multiple linear regression, similar to simple linear regression.
 
-Example: Multiple Linear Regression
+**Example: Multiple Linear Regression**
+
 Suppose we have data on the number of hours studied, the number of hours slept, and the corresponding exam scores, and we want to model the relationship between the two predictor variables (Hours_Studied and Hours_Slept) and the response variable (Exam_Scores) using multiple linear regression.
 
 ```{r}
@@ -114,14 +117,15 @@ summary(reg_model)
 
 ```
 
-Interpreting the Output:
-The output of the summary() function on the multiple regression model provides the coefficient estimates, standard errors, t-values, and p-values for each predictor variable (Hours_Studied and Hours_Slept) and the intercept term. It also provides the R-squared value, which represents the proportion of variance in the response variable (Exam_Scores) explained by the predictor variables.
+**Interpreting the Output:**
+
+The output of the **summary()** function on the multiple regression model provides the coefficient estimates, standard errors, t-values, and p-values for each predictor variable (Hours_Studied and Hours_Slept) and the intercept term. It also provides the R-squared value, which represents the proportion of variance in the response variable (Exam_Scores) explained by the predictor variables.
 
 The coefficient estimates for Hours_Studied and Hours_Slept indicate the change in the Exam_Scores for each unit increase in the corresponding predictor variable while holding other variables constant.
 
-Making Predictions:
+2. **Making Predictions:**
 
-Similarly to simple linear regression, you can make predictions for new data using the predict() function.
+Similarly to simple linear regression, you can make predictions for new data using the **predict()** function.
 
 ```{r}
 # New data for prediction
@@ -135,12 +139,12 @@ print(predictions)
 
 ```
 
-Summary:
+**Summary:**
 
-Multiple Linear Regression is used to model the relationship between a dependent variable and two or more independent variables using a linear equation.
-The lm() function in R is used to perform multiple linear regression.
-The output of summary() provides information about the regression coefficients, R-squared value, and statistical significance of the model.
-You can use the predict() function to make predictions with the fitted regression model for new data.
+1. Multiple Linear Regression is used to model the relationship between a dependent variable and two or more independent variables using a linear equation.
+2. The **lm()** function in R is used to perform multiple linear regression.
+3. The output of **summary()** provides information about the regression coefficients, R-squared value, and statistical significance of the model.
+4. You can use the **predict()** function to make predictions with the fitted regression model for new data.
 
 
 ## Test 

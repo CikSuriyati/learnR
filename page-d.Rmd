@@ -1,7 +1,9 @@
 ---
-title: "Topic 2: Programming with R"
+title: 'Topic 2: Programming with R'
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -24,7 +26,7 @@ In R programming, a package is a collection of functions, data, and documentatio
 
 You can install and load packages to use their functions and data in your R scripts.
 
-Example: Installing and Loading a Package
+**Example: Installing and Loading a Package**
 
 ```{r eval=FALSE}
 # Installing a package (only needs to be done once)
@@ -40,9 +42,9 @@ library(dplyr)
 ### Libraries
 
 
-In R, the term "library" is often used interchangeably with "package." When you load a package using the library() function, you are essentially loading the package's functions and data into your current R session. After loading a package, you can access its functions directly by their names.
+In R, the term **"library"** is often used interchangeably with **"package"**. When you load a package using the **library( )** function, you are essentially loading the package's functions and data into your current R session. After loading a package, you can access its functions directly by their names.
 
-Example: Using Functions from a Loaded Package
+**Example: Using Functions from a Loaded Package**
 
 ```{r eval=FALSE}
 # Assuming 'dplyr' package is installed and loaded
@@ -51,14 +53,14 @@ filtered_data <- filter(my_data_frame, column_name > 10)
 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
 
 ## Repositories
 
 
-R packages are hosted in repositories, which are collections of packages accessible through the internet. The Comprehensive R Archive Network (CRAN) is the primary and most widely used repository for R packages. CRAN hosts thousands of packages, and you can install packages directly from there using the install.packages() function.
+R packages are hosted in repositories, which are collections of packages accessible through the internet. The Comprehensive R Archive Network (CRAN) is the primary and most widely used repository for R packages. CRAN hosts thousands of packages, and you can install packages directly from there using the **install.packages( )** function.
 
-Example: Installing a Package from CRAN
+**Example: Installing a Package from CRAN**
 
 ```{r eval=FALSE}
 # Installing the 'ggplot2' package from CRAN
@@ -67,7 +69,7 @@ install.packages("ggplot2")
 ```
 Apart from CRAN, there are other repositories like Bioconductor (specializing in bioinformatics packages) and GitHub, where developers share R packages.
 
-Example: Installing a Package from GitHub
+**Example: Installing a Package from GitHub**
 
 ```{r eval=FALSE}
 # Installing a package from GitHub using the 'remotes' package
@@ -81,4 +83,5 @@ library(remotes)
 install_github("username/repo")
 
 ```
+
 Using packages in R makes it easier to leverage the work of other developers, collaborate, and build on top of existing functionality. It is a powerful mechanism for extending R's capabilities and enhancing your data analysis, visualization, and programming tasks.

@@ -23,11 +23,12 @@ In this topic, you will learn about :
 
 Pearson's Chi-Square test for independence is a statistical test used to determine if there is a significant association between two categorical variables. It assesses whether the observed frequency distribution differs significantly from the expected frequency distribution under the assumption of independence.
 
-Performing Pearson's Chi-Square Test:
+**Performing Pearson's Chi-Square Test:**
 
-1. Using chisq.test(): The chisq.test() function in R is used to perform Pearson's Chi-Square test.
+1. Using **chisq.test()**: The **chisq.test()** function in R is used to perform Pearson's Chi-Square test.
 
-Example: Pearson's Chi-Square Test
+**Example: Pearson's Chi-Square Test**
+
 Suppose we have survey data on the relationship between gender and favorite color and want to test if there is a significant association between the two variables.
 
 ```{r}
@@ -47,12 +48,13 @@ print(chi_square_result)
 ```
 
 
-Interpreting the Output:
-The output of the chisq.test() function includes the Chi-Square statistic, degrees of freedom, and the p-value. The p-value indicates the probability of obtaining the observed contingency table or more extreme tables under the assumption of independence.
+**Interpreting the Output:**
+
+The output of the **chisq.test()** function includes the Chi-Square statistic, degrees of freedom, and the p-value. The p-value indicates the probability of obtaining the observed contingency table or more extreme tables under the assumption of independence.
 
 If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is a significant association between gender and favorite color.
 
-Using Residuals:
+2. Using **Residuals:**
 
 The residuals can be helpful in interpreting the direction and magnitude of the deviation from independence.
 
@@ -66,12 +68,12 @@ print(residuals)
 ```
 
 
-Summary:
+**Summary:**
 
-Pearson's Chi-Square test for independence is used to determine if there is a significant association between two categorical variables.
-The chisq.test() function in R is used to perform Pearson's Chi-Square test.
-The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of independence between the two categorical variables.
-Residuals can be used to interpret the direction and magnitude of the deviation from independence.
+1. Pearson's Chi-Square test for independence is used to determine if there is a significant association between two categorical variables.
+2. The **chisq.test()** function in R is used to perform Pearson's Chi-Square test.
+3. The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of independence between the two categorical variables.
+4. Residuals can be used to interpret the direction and magnitude of the deviation from independence.
 
 
 ## Fisher’s Exact test
@@ -80,11 +82,12 @@ Residuals can be used to interpret the direction and magnitude of the deviation 
 
 Fisher's Exact test is a statistical test used to determine if there is a significant association between two categorical variables in a 2x2 contingency table. It is particularly useful when the sample size is small or when the assumptions of the Chi-Square test are not met.
 
-Performing Fisher's Exact Test:
+**Performing Fisher's Exact Test:**
 
-1. Using fisher.test(): The fisher.test() function in R is used to perform Fisher's Exact test.
+1. Using **fisher.test():** The **fisher.test()** function in R is used to perform Fisher's Exact test.
 
-Example: Fisher's Exact Test
+**Example: Fisher's Exact Test**
+
 Suppose we have survey data on the relationship between gender and voting preference and want to test if there is a significant association between the two variables.
 
 ```{r}
@@ -104,12 +107,12 @@ print(fisher_result)
 ```
 
 
-Interpreting the Output:
-The output of the fisher.test() function includes the p-value. The p-value indicates the probability of obtaining the observed contingency table or more extreme tables under the assumption of independence.
+**Interpreting the Output:**
+The output of the **fisher.test()** function includes the p-value. The p-value indicates the probability of obtaining the observed contingency table or more extreme tables under the assumption of independence.
 
 If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is a significant association between gender and voting preference.
 
-Using Odds Ratio:
+2. Using **Odds Ratio**:
 
 The odds ratio is a measure of association between two categorical variables in a 2x2 contingency table. It quantifies the strength and direction of the relationship.
 
@@ -123,12 +126,12 @@ print(odds_ratio)
 
 ```
 
-Summary:
+**Summary:**
 
-Fisher's Exact test is used to determine if there is a significant association between two categorical variables in a 2x2 contingency table, especially when sample sizes are small or Chi-Square test assumptions are not met.
-The fisher.test() function in R is used to perform Fisher's Exact test.
-The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of independence between the two categorical variables.
-The odds ratio can be used to measure the strength and direction of the association between the variables.
+1. Fisher's Exact test is used to determine if there is a significant association between two categorical variables in a 2x2 contingency table, especially when sample sizes are small or Chi-Square test assumptions are not met.
+2. The **fisher.test()** function in R is used to perform Fisher's Exact test.
+3. The p-value obtained from the test helps to make a decision about rejecting or failing to reject the null hypothesis of independence between the two categorical variables.
+4. The odds ratio can be used to measure the strength and direction of the association between the variables.
 
 ## Correlation test
 
@@ -136,11 +139,11 @@ The odds ratio can be used to measure the strength and direction of the associat
 
 Correlation is a statistical measure that indicates the extent to which two continuous variables are linearly related to each other. Correlation tests in R help to determine if there is a significant association between two continuous variables and to quantify the strength and direction of the relationship.
 
-Performing Correlation Test:
+**Performing Correlation Test:**
 
-1. Pearson Correlation (cor.test()): The cor.test() function in R is used to perform Pearson's correlation test. It tests for a linear relationship between two continuous variables.
+1. **Pearson Correlation** (**cor.test()**): The **cor.test()** function in R is used to perform Pearson's correlation test. It tests for a linear relationship between two continuous variables.
 
-Example: Pearson Correlation Test
+**Example: Pearson Correlation Test**
 
 ```{r}
 # Sample data for two continuous variables
@@ -155,14 +158,15 @@ print(cor_test_result)
 
 ```
 
-Interpreting the Output:
-The output of the cor.test() function includes the correlation coefficient (r), the p-value, and the confidence interval for the correlation coefficient. The correlation coefficient (r) measures the strength and direction of the linear relationship between the two variables.
+**Interpreting the Output:**
+
+The output of the **cor.test()** function includes the correlation coefficient (r), the p-value, and the confidence interval for the correlation coefficient. The correlation coefficient (r) measures the strength and direction of the linear relationship between the two variables.
 
 If the p-value is below a pre-defined significance level (commonly 0.05), we reject the null hypothesis and conclude that there is a significant correlation between the two variables.
 
-2. Spearman Correlation (cor.test()): You can also use the cor.test() function to perform Spearman's correlation test, which tests for a monotonic relationship between two variables. Spearman's correlation is more appropriate for data that are not normally distributed or have outliers.
+2. **Spearman Correlation** (**cor.test()**): You can also use the **cor.test()** function to perform Spearman's correlation test, which tests for a monotonic relationship between two variables. Spearman's correlation is more appropriate for data that are not normally distributed or have outliers.
 
-Example: Spearman Correlation Test
+**Example: Spearman Correlation Test**
 
 ```{r}
 # Sample data for two continuous variables
@@ -178,9 +182,9 @@ print(cor_test_result)
 ```
 
 
-3. Kendall Correlation (cor.test()): The cor.test() function can also perform Kendall's correlation test, which tests for a monotonic relationship between two variables similar to Spearman's correlation. Kendall's correlation is appropriate when dealing with small sample sizes.
+3. **Kendall Correlation** (**cor.test()**): The **cor.test()** function can also perform Kendall's correlation test, which tests for a monotonic relationship between two variables similar to Spearman's correlation. Kendall's correlation is appropriate when dealing with small sample sizes.
 
-Example: Kendall Correlation Test
+**Example: Kendall Correlation Test**
 
 ```{r}
 # Sample data for two continuous variables
@@ -195,12 +199,12 @@ print(cor_test_result)
 
 ```
 
-Summary:
+**Summary:**
 
-Correlation tests in R help to determine if there is a significant association between two continuous variables.
-Pearson correlation is used for normally distributed data with a linear relationship.
-Spearman and Kendall correlations are used for non-normally distributed data or data with outliers, and they test for monotonic relationships.
-The p-value obtained from the correlation test helps to make a decision about rejecting or failing to reject the null hypothesis of no correlation between the two variables.
+1. Correlation tests in R help to determine if there is a significant association between two continuous variables.
+2. Pearson correlation is used for normally distributed data with a linear relationship.
+3. Spearman and Kendall correlations are used for non-normally distributed data or data with outliers, and they test for monotonic relationships.
+4. The p-value obtained from the correlation test helps to make a decision about rejecting or failing to reject the null hypothesis of no correlation between the two variables.
 
 
 

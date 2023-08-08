@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-08-07" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 4: Programming statistical graphics</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -323,41 +323,47 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Topic 4: Programming statistical
 graphics</h1>
-<h4 class="date">2023-08-07</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
 
-<p>In this topic, you will learn about :</p>
-<p>Plotting using ggplot2 package (graphics) focus on Histogram, Scatter
-diagram, Bar chart, Box plot, and Line chart</p>
+<p>In this topic in week 7, you will learn to plot using ggplot2 package
+(graphics) focus on:</p>
+<ul>
+<li>Histogram</li>
+<li>Scatter diagram</li>
+<li>Bar chart</li>
+<li>Box plot</li>
+<li>Line chart</li>
+</ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
 <div id="histogram" class="section level2">
 <h2>Histogram</h2>
-<p>Histogram using ggplot2 in R Programming</p>
+<p><strong>Histogram using ggplot2 in R Programming</strong></p>
 <p>ggplot2 is a powerful and popular data visualization package in R
 that provides a flexible and elegant way to create high-quality
 graphics. To create a histogram using ggplot2, you need to follow a
-specific workflow using the ggplot() function along with the
-geom_histogram() function.</p>
-<p>Step-by-Step Workflow:</p>
-<p>Load the necessary library: You need to load the ggplot2 library
-before using it.</p>
+specific workflow using the <strong>ggplot()</strong> function along
+with the <strong>geom_histogram()</strong> function.</p>
+<p><strong>Step-by-Step Workflow:</strong></p>
+<p>Load the necessary library: You need to load the
+<strong>ggplot2</strong> library before using it.</p>
 <pre class="r"><code># Load ggplot2 library
 library(ggplot2)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Prepare the data: Ensure you have the data in a data frame or tibble
 format with the variable you want to plot.</li>
-<li>Create the ggplot object: Use the ggplot() function to specify the
-data and aesthetic mappings for the plot.</li>
-<li>Add the geometry: Use the geom_histogram() function to create the
-histogram.</li>
+<li>Create the ggplot object: Use the <strong>ggplot()</strong> function
+to specify the data and aesthetic mappings for the plot.</li>
+<li>Add the geometry: Use the <strong>geom_histogram()</strong> function
+to create the histogram.</li>
 <li>Customize the plot (optional): You can customize the appearance of
-the plot using various ggplot2 functions like labs(), theme(),
-scale_x_continuous(), scale_y_continuous(), etc.</li>
+the plot using various ggplot2 functions like <strong>labs(), theme(),
+scale_x_continuous(), scale_y_continuous(),</strong> etc.</li>
 </ol>
-<p>Example: Creating a Histogram with ggplot2</p>
+<p><strong>Example: Creating a Histogram with ggplot2</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- data.frame(values = c(10, 15, 12, 18, 20, 25, 22, 17, 14, 30))
 
@@ -367,37 +373,44 @@ ggplot(data, aes(x = values)) +
   labs(title = &quot;Histogram Example&quot;, x = &quot;Values&quot;, y = &quot;Frequency&quot;)</code></pre>
 <p><img src="page-g_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>In this example, we have a sample data frame named data with a single
-column values. We created a histogram using ggplot2 by specifying the
-data and aesthetic mappings in the ggplot() function and adding the
-histogram geometry with geom_histogram(). We customized the fill color,
+column values. We created a histogram using <strong>ggplot2</strong> by
+specifying the data and aesthetic mappings in the
+<strong>ggplot()</strong> function and adding the histogram geometry
+with <strong>geom_histogram()</strong>. We customized the fill color,
 border color, and number of bins in the histogram. We also added a title
-and axis labels using labs().</p>
+and axis labels using <strong>labs()</strong>.</p>
 <p>Remember to replace data and values with your actual data frame and
-variable name in the ggplot2 code. You can further customize the
-appearance of the plot using additional ggplot2 functions to meet your
-specific visualization needs. ggplot2 provides a wide range of options
-for creating beautiful and informative histograms.</p>
+variable name in the <strong>ggplot2</strong> code. You can further
+customize the appearance of the plot using additional
+<strong>ggplot2</strong> functions to meet your specific visualization
+needs. <strong>ggplot2</strong> provides a wide range of options for
+creating beautiful and informative histograms.</p>
 </div>
 <div id="scatter-plot" class="section level2">
 <h2>Scatter Plot</h2>
-<p>Scatterplot using ggplot2 in R Programming</p>
+<p><strong>Scatterplot using ggplot2 in R Programming</strong></p>
 <p>ggplot2 is a powerful data visualization package in R that offers a
 flexible and intuitive way to create high-quality graphics. To create a
 scatterplot using ggplot2, you need to follow a specific workflow using
 the ggplot() function along with the geom_point() function.</p>
-<p>Step-by-Step Workflow:</p>
-<p>Load the necessary library: You need to load the ggplot2 library
-before using it.</p>
+<p><strong>Step-by-Step Workflow:</strong></p>
+<p>Load the necessary library: You need to load the
+<strong>ggplot2</strong> library before using it.</p>
 <pre class="r"><code># Load ggplot2 library
 library(ggplot2)</code></pre>
-<p>Prepare the data: Ensure you have the data in a data frame or tibble
-format with the variables you want to plot. Create the ggplot object:
-Use the ggplot() function to specify the data and aesthetic mappings for
-the plot. Add the geometry: Use the geom_point() function to create the
-scatterplot. Customize the plot (optional): You can customize the
-appearance of the plot using various ggplot2 functions like labs(),
-theme(), scale_x_continuous(), scale_y_continuous(), etc.</p>
-<p>Example: Creating a Scatterplot with ggplot2</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the data: Ensure you have the data in a data frame or tibble
+format with the variables you want to plot.</li>
+<li>Create the ggplot object: Use the <strong>ggplot()</strong> function
+to specify the data and aesthetic mappings for the plot.</li>
+<li>Add the geometry: Use the <strong>geom_point()</strong> function to
+create the scatterplot.</li>
+<li>Customize the plot (optional): You can customize the appearance of
+the plot using various <strong>ggplot2</strong> functions like
+<strong>labs(), theme(), scale_x_continuous(),
+scale_y_continuous(),</strong> etc.</li>
+</ol>
+<p><strong>Example: Creating a Scatterplot with ggplot2</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- data.frame(x_values = c(1, 2, 3, 4, 5, 6),
                    y_values = c(10, 15, 12, 18, 20, 25))
@@ -408,38 +421,46 @@ ggplot(data, aes(x = x_values, y = y_values)) +
   labs(title = &quot;Scatterplot Example&quot;, x = &quot;X-axis&quot;, y = &quot;Y-axis&quot;)</code></pre>
 <p><img src="page-g_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>In this example, we have a sample data frame named data with two
-columns x_values and y_values. We created a scatterplot using ggplot2 by
-specifying the data and aesthetic mappings in the ggplot() function and
-adding the scatterplot geometry with geom_point(). We customized the
-point color and size in the scatterplot. We also added a title and axis
-labels using labs().</p>
-<p>Remember to replace data, x_values, and y_values with your actual
-data frame and variable names in the ggplot2 code. You can further
-customize the appearance of the plot using additional ggplot2 functions
-to suit your specific visualization needs. ggplot2 provides numerous
-options for creating attractive and informative scatterplots.</p>
+<strong>columns x_values</strong> and <strong>y_values</strong>. We
+created a scatterplot using <strong>ggplot2</strong> by specifying the
+data and aesthetic mappings in the <strong>ggplot()</strong> function
+and adding the scatterplot geometry with <strong>geom_point()</strong>.
+We customized the point color and size in the scatterplot. We also added
+a title and axis labels using <strong>labs()</strong>.</p>
+<p>Remember to replace data, <strong>x_values</strong>, and
+<strong>y_values</strong> with your actual data frame and variable names
+in the <strong>ggplot2</strong> code. You can further customize the
+appearance of the plot using additional <strong>ggplot2</strong>
+functions to suit your specific visualization needs.
+<strong>ggplot2</strong> provides numerous options for creating
+attractive and informative scatterplots.</p>
 </div>
 <div id="bar-chart" class="section level2">
 <h2>Bar chart</h2>
-<p>Bar Chart using ggplot2 in R Programming</p>
-<p>ggplot2 is a popular and powerful data visualization package in R
-that offers a flexible and elegant way to create high-quality graphics.
-To create a bar chart using ggplot2, you need to follow a specific
-workflow using the ggplot() function along with the geom_bar()
-function.</p>
-<p>Step-by-Step Workflow:</p>
+<p><strong>Bar Chart using ggplot2 in R Programming</strong></p>
+<p><strong>ggplot2</strong> is a popular and powerful data visualization
+package in R that offers a flexible and elegant way to create
+high-quality graphics. To create a bar chart using
+<strong>ggplot2</strong>, you need to follow a specific workflow using
+the <strong>ggplot()</strong> function along with the
+<strong>geom_bar()</strong> function.</p>
+<p><strong>Step-by-Step Workflow:</strong></p>
 <p>Load the necessary library: You need to load the ggplot2 library
 before using it.</p>
 <pre class="r"><code># Load ggplot2 library
 library(ggplot2)</code></pre>
-<p>Prepare the data: Ensure you have the data in a data frame or tibble
-format with the variables you want to plot. Create the ggplot object:
-Use the ggplot() function to specify the data and aesthetic mappings for
-the plot. Add the geometry: Use the geom_bar() function to create the
-bar chart. Customize the plot (optional): You can customize the
-appearance of the plot using various ggplot2 functions like labs(),
-theme(), scale_x_discrete(), scale_y_continuous(), etc.</p>
-<p>Example: Creating a Bar Chart with ggplot2</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the data: Ensure you have the data in a data frame or tibble
+format with the variables you want to plot.</li>
+<li>Create the ggplot object: Use the <strong>ggplot()</strong> function
+to specify the data and aesthetic mappings for the plot.</li>
+<li>Add the geometry: Use the <strong>geom_bar()</strong> function to
+create the bar chart.</li>
+<li>Customize the plot (optional): You can customize the appearance of
+the plot using various ggplot2 functions like <strong>labs(), theme(),
+scale_x_discrete(), scale_y_continuous(),</strong> etc.</li>
+</ol>
+<p><strong>Example: Creating a Bar Chart with ggplot2</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- data.frame(categories = c(&quot;Category 1&quot;, &quot;Category 2&quot;, &quot;Category 3&quot;, &quot;Category 4&quot;),
                    counts = c(20, 15, 30, 25))
@@ -451,10 +472,11 @@ ggplot(data, aes(x = categories, y = counts)) +
 <p><img src="page-g_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>In this example, we have a sample data frame named data with two
 columns categories and counts. We created a bar chart using ggplot2 by
-specifying the data and aesthetic mappings in the ggplot() function and
-adding the bar chart geometry with geom_bar(). We customized the fill
-color of the bars in the chart. We also added a title and axis labels
-using labs().</p>
+specifying the data and aesthetic mappings in the
+<strong>ggplot()</strong> function and adding the bar chart geometry
+with <strong>geom_bar()</strong>. We customized the fill color of the
+bars in the chart. We also added a title and axis labels using
+<strong>labs()</strong>.</p>
 <p>Remember to replace data, categories, and counts with your actual
 data frame and variable names in the ggplot2 code. You can further
 customize the appearance of the plot using additional ggplot2 functions
@@ -463,24 +485,29 @@ options for creating visually appealing and informative bar charts.</p>
 </div>
 <div id="boxplot" class="section level2">
 <h2>Boxplot</h2>
-<p>Boxplot using ggplot2 in R Programming</p>
+<p><strong>Boxplot using ggplot2 in R Programming</strong></p>
 <p>ggplot2 is a popular data visualization package in R that offers a
 flexible and elegant way to create high-quality graphics. To create a
 boxplot using ggplot2, you need to follow a specific workflow using the
-ggplot() function along with the geom_boxplot() function.</p>
-<p>Step-by-Step Workflow:</p>
-<p>Load the necessary library: You need to load the ggplot2 library
-before using it.</p>
+<strong>ggplot()</strong> function along with the
+<strong>geom_boxplot()</strong> function.</p>
+<p><strong>Step-by-Step Workflow:</strong></p>
+<p>Load the necessary library: You need to load the
+<strong>ggplot2</strong> library before using it.</p>
 <pre class="r"><code># Load ggplot2 library
 library(ggplot2)</code></pre>
-<p>Prepare the data: Ensure you have the data in a data frame or tibble
-format with the variables you want to plot. Create the ggplot object:
-Use the ggplot() function to specify the data and aesthetic mappings for
-the plot. Add the geometry: Use the geom_boxplot() function to create
-the boxplot. Customize the plot (optional): You can customize the
-appearance of the plot using various ggplot2 functions like labs(),
-theme(), scale_x_discrete(), scale_y_continuous(), etc.</p>
-<p>Example: Creating a Boxplot with ggplot2</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the data: Ensure you have the data in a data frame or tibble
+format with the variables you want to plot.</li>
+<li>Create the ggplot object: Use the <strong>ggplot()</strong> function
+to specify the data and aesthetic mappings for the plot.</li>
+<li>Add the geometry: Use the <strong>geom_boxplot()</strong> function
+to create the boxplot.</li>
+<li>Customize the plot (optional): You can customize the appearance of
+the plot using various ggplot2 functions like <strong>labs(), theme(),
+scale_x_discrete(), scale_y_continuous(),</strong> etc.</li>
+</ol>
+<p><strong>Example: Creating a Boxplot with ggplot2</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- data.frame(groups = rep(c(&quot;Group 1&quot;, &quot;Group 2&quot;, &quot;Group 3&quot;), each = 100),
                    values = c(rnorm(100, mean = 10, sd = 2),
@@ -494,10 +521,11 @@ ggplot(data, aes(x = groups, y = values)) +
 <p><img src="page-g_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>In this example, we have a sample data frame named data with two
 columns groups and values. We created a boxplot using ggplot2 by
-specifying the data and aesthetic mappings in the ggplot() function and
-adding the boxplot geometry with geom_boxplot(). We customized the fill
-color and border color of the boxes in the boxplot. We also added a
-title and axis labels using labs().</p>
+specifying the data and aesthetic mappings in the
+<strong>ggplot()</strong> function and adding the boxplot geometry with
+<strong>geom_boxplot()</strong>. We customized the fill color and border
+color of the boxes in the boxplot. We also added a title and axis labels
+using labs().</p>
 <p>Remember to replace data, groups, and values with your actual data
 frame and variable names in the ggplot2 code. You can further customize
 the appearance of the plot using additional ggplot2 functions to meet
@@ -506,24 +534,29 @@ options for creating visually appealing and informative boxplots.</p>
 </div>
 <div id="line-chart" class="section level2">
 <h2>Line chart</h2>
-<p>Line Chart using ggplot2 in R Programming</p>
+<p><strong>Line Chart using ggplot2 in R Programming</strong></p>
 <p>ggplot2 is a powerful data visualization package in R that provides a
 flexible and elegant way to create high-quality graphics. To create a
 line chart using ggplot2, you need to follow a specific workflow using
-the ggplot() function along with the geom_line() function.</p>
-<p>Step-by-Step Workflow:</p>
-<p>Load the necessary library: You need to load the ggplot2 library
-before using it.</p>
+the <strong>ggplot()</strong> function along with the
+<strong>geom_line()</strong> function.</p>
+<p><strong>Step-by-Step Workflow:</strong></p>
+<p>Load the necessary library: You need to load the
+<strong>ggplot2</strong> library before using it.</p>
 <pre class="r"><code># Load ggplot2 library
 library(ggplot2)</code></pre>
-<p>repare the data: Ensure you have the data in a data frame or tibble
-format with the variables you want to plot. Create the ggplot object:
-Use the ggplot() function to specify the data and aesthetic mappings for
-the plot. Add the geometry: Use the geom_line() function to create the
-line chart. Customize the plot (optional): You can customize the
-appearance of the plot using various ggplot2 functions like labs(),
-theme(), scale_x_continuous(), scale_y_continuous(), etc.</p>
-<p>Example: Creating a Line Chart with ggplot2</p>
+<ol style="list-style-type: decimal">
+<li>Prepare the data: Ensure you have the data in a data frame or tibble
+format with the variables you want to plot.</li>
+<li>Create the ggplot object: Use the <strong>ggplot()</strong> function
+to specify the data and aesthetic mappings for the plot.</li>
+<li>Add the geometry: Use the <strong>geom_line()</strong> function to
+create the line chart.</li>
+<li>Customize the plot (optional): You can customize the appearance of
+the plot using various ggplot2 functions like <strong>labs(), theme(),
+scale_x_continuous(), scale_y_continuous(),</strong> etc.</li>
+</ol>
+<p><strong>Example: Creating a Line Chart with ggplot2</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- data.frame(time = c(1, 2, 3, 4, 5, 6),
                    values = c(10, 15, 12, 18, 20, 25))
@@ -533,14 +566,17 @@ ggplot(data, aes(x = time, y = values)) +
   geom_line(color = &quot;blue&quot;, size = 1.5) +
   labs(title = &quot;Line Chart Example&quot;, x = &quot;Time&quot;, y = &quot;Values&quot;)</code></pre>
 <pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` instead.</code></pre>
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <p><img src="page-g_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>In this example, we have a sample data frame named data with two
 columns time and values. We created a line chart using ggplot2 by
-specifying the data and aesthetic mappings in the ggplot() function and
-adding the line chart geometry with geom_line(). We customized the line
-color and size in the chart. We also added a title and axis labels using
-labs().</p>
+specifying the data and aesthetic mappings in the
+<strong>ggplot()</strong> function and adding the line chart geometry
+with <strong>geom_line()</strong>. We customized the line color and size
+in the chart. We also added a title and axis labels using labs().</p>
 <p>Remember to replace data, time, and values with your actual data
 frame and variable names in the ggplot2 code. You can further customize
 the appearance of the plot using additional ggplot2 functions to meet

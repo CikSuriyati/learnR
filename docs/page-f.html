@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-07" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 4: Programming statistical graphics</title>
 
@@ -323,7 +323,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Topic 4: Programming statistical
 graphics</h1>
-<h4 class="date">2023-08-07</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
@@ -339,18 +339,24 @@ diagram, Bar chart, Box plot, and Line chart</p>
 continuous or discrete variable. It shows the frequency or count of data
 points falling into specific bins or intervals. In R, you can create a
 histogram using the base graphics package.</p>
-<p>Function: hist()</p>
+<p><strong>Function: hist( )</strong></p>
 <p>Syntax:</p>
-<pre class="r"><code>hist(x, breaks = &quot;Sturges&quot;, col = &quot;steelblue&quot;, main = &quot;Histogram&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Frequency&quot;)</code></pre>
-<p>x: The data vector for which the histogram is to be created.</p>
-<p>breaks: The method for determining the number of bins in the
-histogram. Default is “Sturges,” but you can also use “Scott,” “FD,”
-“Rice,” “Doane,” etc.</p>
-<p>col: The color of the bars in the histogram.</p>
-<p>main: The title of the histogram.</p>
-<p>xlab: The label for the x-axis.</p>
-<p>ylab: The label for the y-axis.</p>
-<p>Example: Creating a Histogram</p>
+<pre class="r"><code>hist(x, breaks = &quot;Sturges&quot;, col = &quot;steelblue&quot;, main = &quot;Histogram&quot;, xlab = &quot;X-axis label&quot;,
+     ylab = &quot;Frequency&quot;)</code></pre>
+<ul>
+<li>x: The data vector for which the histogram is to be created.</li>
+<li>breaks: The method for determining the number of bins in the
+histogram.
+<ul>
+<li>Default is “Sturges,” but you can also use “Scott,” “FD,” “Rice,”
+“Doane,” etc.</li>
+</ul></li>
+<li>col: The color of the bars in the histogram.</li>
+<li>main: The title of the histogram.</li>
+<li>xlab: The label for the x-axis.</li>
+<li>ylab: The label for the y-axis.</li>
+</ul>
+<p><strong>Example: Creating a Histogram</strong></p>
 <pre class="r"><code># Generate random data
 set.seed(42)
 data &lt;- rnorm(1000, mean = 10, sd = 2)
@@ -360,32 +366,35 @@ hist(data, breaks = &quot;Sturges&quot;, col = &quot;steelblue&quot;, main = &qu
 <p><img src="page-f_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>In this example, we generated 1000 random data points from a normal
 distribution with mean 10 and standard deviation 2. We then created a
-histogram using the hist() function and specified the number of bins
-using the “Sturges” method. The histogram is plotted with blue bars and
-has a title and axis labels.</p>
-<p>Remember to replace data with your actual data vector in the hist()
-function. The histogram will provide insights into the distribution and
-central tendency of your data, making it a valuable tool for exploratory
-data analysis.</p>
+histogram using the <strong>hist( )</strong> function and specified the
+number of bins using the “Sturges” method. The histogram is plotted with
+blue bars and has a title and axis labels.</p>
+<p>Remember to replace data with your actual data vector in the
+<strong>hist( )</strong> function. The histogram will provide insights
+into the distribution and central tendency of your data, making it a
+valuable tool for exploratory data analysis.</p>
 </div>
 <div id="scatter-plot" class="section level2">
 <h2>Scatter Plot</h2>
-<p>Scatter Plot using Base Package in R Programming</p>
+<p><strong>Scatter Plot using Base Package in R Programming</strong></p>
 <p>A scatter plot is a graphical representation of the relationship
 between two continuous variables. It is a powerful visualization tool to
 understand the correlation and distribution of data points. In R, you
 can create a scatter plot using the base graphics package.</p>
-<p>Function: plot()</p>
+<p><strong>Function: plot( )</strong></p>
 <p>Syntax:</p>
-<pre class="r"><code>plot(x, y, main = &quot;Scatter Plot&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Y-axis label&quot;, col = &quot;blue&quot;, pch = 16)</code></pre>
-<p>x: The data vector for the x-axis.</p>
-<p>y: The data vector for the y-axis.</p>
-<p>main: The title of the scatter plot.</p>
-<p>xlab: The label for the x-axis.</p>
-<p>ylab: The label for the y-axis.</p>
-<p>col: The color of the data points.</p>
-<p>pch: The symbol used for the data points. Default is 1 (a dot).</p>
-<p>Example: Creating a Scatter Plot</p>
+<pre class="r"><code>plot(x, y, main = &quot;Scatter Plot&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Y-axis label&quot;,
+     col = &quot;blue&quot;, pch = 16)</code></pre>
+<ul>
+<li>x: The data vector for the x-axis.</li>
+<li>y: The data vector for the y-axis.</li>
+<li>main: The title of the scatter plot.</li>
+<li>xlab: The label for the x-axis.</li>
+<li>ylab: The label for the y-axis.</li>
+<li>col: The color of the data points.</li>
+<li>pch: The symbol used for the data points. Default is 1 (a dot).</li>
+</ul>
+<p><strong>Example: Creating a Scatter Plot</strong></p>
 <pre class="r"><code># Generate random data
 set.seed(42)
 x &lt;- rnorm(100, mean = 10, sd = 2)
@@ -393,69 +402,76 @@ y &lt;- 2 * x + rnorm(100, mean = 0, sd = 2)
 
 # Create a scatter plot
 plot(x, y, main = &quot;Scatter Plot&quot;, xlab = &quot;X-axis&quot;, ylab = &quot;Y-axis&quot;, col = &quot;blue&quot;, pch = 16)</code></pre>
-<p><img src="page-f_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-In this example, we generated two sets of random data x and y. The
+<p><img src="page-f_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>In this example, we generated two sets of random data x and y. The
 relationship between x and y is linear, with y being approximately twice
 the value of x with some random noise. We then created a scatter plot
-using the plot() function, plotting the data points with blue dots.</p>
+using the <strong>plot( )</strong> function, plotting the data points
+with blue dots.</p>
 <p>Remember to replace x and y with your actual data vectors in the
-plot() function. Scatter plots are valuable for visualizing the
-correlation between two variables and identifying patterns or trends in
-the data.</p>
+<strong>plot( )</strong> function. Scatter plots are valuable for
+visualizing the correlation between two variables and identifying
+patterns or trends in the data.</p>
 </div>
 <div id="bar-chart" class="section level2">
 <h2>Bar chart</h2>
-<p>Bar Chart using Base Package in R Programming</p>
+<p><strong>Bar Chart using Base Package in R Programming</strong></p>
 <p>A bar chart (or bar plot) is a graphical representation of
 categorical data, where the height or length of each bar corresponds to
 the frequency or count of data in each category. In R, you can create a
 bar chart using the base graphics package.</p>
-<p>Function: barplot()</p>
+<p><strong>Function: barplot( )</strong></p>
 <p>Syntax:</p>
-<pre class="r"><code>barplot(height, names.arg = NULL, col = &quot;steelblue&quot;, main = &quot;Bar Chart&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Y-axis label&quot;)</code></pre>
-<p>height: A numeric vector containing the heights of the bars.</p>
-<p>names.arg: A vector of labels for the bars. If not provided, bar
-numbers will be used as labels.</p>
-<p>col: The color of the bars.</p>
-<p>main: The title of the bar chart.</p>
-<p>xlab: The label for the x-axis.</p>
-<p>ylab: The label for the y-axis.</p>
-<p>Example: Creating a Bar Chart</p>
+<pre class="r"><code>barplot(height, names.arg = NULL, col = &quot;steelblue&quot;, main = &quot;Bar Chart&quot;, xlab = &quot;X-axis label&quot;,
+        ylab = &quot;Y-axis label&quot;)</code></pre>
+<ul>
+<li>height: A numeric vector containing the heights of the bars.</li>
+<li>names.arg: A vector of labels for the bars. If not provided, bar
+numbers will be used as labels.</li>
+<li>col: The color of the bars.</li>
+<li>main: The title of the bar chart.</li>
+<li>xlab: The label for the x-axis.</li>
+<li>ylab: The label for the y-axis.</li>
+</ul>
+<p><strong>Example: Creating a Bar Chart</strong></p>
 <pre class="r"><code># Sample data
 categories &lt;- c(&quot;Category 1&quot;, &quot;Category 2&quot;, &quot;Category 3&quot;, &quot;Category 4&quot;)
 counts &lt;- c(20, 15, 30, 25)
 
 # Create a bar chart
 barplot(counts, names.arg = categories, col = &quot;steelblue&quot;, main = &quot;Bar Chart Example&quot;, xlab = &quot;Categories&quot;, ylab = &quot;Count&quot;)</code></pre>
-<p><img src="page-f_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-In this example, we have sample data representing four categories and
-their corresponding counts. We used the barplot() function to create a
-bar chart with the heights of the bars determined by the counts and
-labeled each bar with its respective category.</p>
+<p><img src="page-f_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>In this example, we have sample data representing four categories and
+their corresponding counts. We used the <strong>barplot( )</strong>
+function to create a bar chart with the heights of the bars determined
+by the counts and labeled each bar with its respective category.</p>
 <p>Remember to replace categories and counts with your actual data
-vectors in the barplot() function. Bar charts are helpful in visualizing
-categorical data and comparing the frequency or count of different
-categories.</p>
+vectors in the <strong>barplot( )</strong> function. Bar charts are
+helpful in visualizing categorical data and comparing the frequency or
+count of different categories.</p>
 </div>
 <div id="boxplot" class="section level2">
 <h2>Boxplot</h2>
-<p>Box Plot using Base Package in R Programming</p>
+<p><strong>Box Plot using Base Package in R Programming</strong></p>
 <p>A box plot (also known as a box-and-whisker plot) is a graphical
 representation of the distribution of numerical data through quartiles.
 It provides a visual summary of the data’s central tendency, spread, and
 presence of outliers. In R, you can create a box plot using the base
 graphics package.</p>
-<p>Function: boxplot()</p>
+<p><strong>Function: boxplot()</strong></p>
 <p>Syntax:</p>
-<pre class="r"><code>boxplot(x, horizontal = FALSE, main = &quot;Box Plot&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Y-axis label&quot;)</code></pre>
-<p>x: A numeric vector or a list of numeric vectors for which the box
-plot is to be created.</p>
-<p>horizontal: A logical value indicating whether to draw the box plot
-horizontally or vertically. Default is FALSE (vertical).</p>
-<p>main: The title of the box plot.</p>
-<p>xlab: The label for the x-axis.</p>
-<p>ylab: The label for the y-axis.</p>
-<p>Example: Creating a Box Plot</p>
+<pre class="r"><code>boxplot(x, horizontal = FALSE, main = &quot;Box Plot&quot;, xlab = &quot;X-axis label&quot;,
+        ylab = &quot;Y-axis label&quot;)</code></pre>
+<ul>
+<li>x: A numeric vector or a list of numeric vectors for which the box
+plot is to be created.</li>
+<li>horizontal: A logical value indicating whether to draw the box plot
+horizontally or vertically. Default is FALSE (vertical).</li>
+<li>main: The title of the box plot.</li>
+<li>xlab: The label for the x-axis.</li>
+<li>ylab: The label for the y-axis.</li>
+</ul>
+<p><strong>Example: Creating a Box Plot</strong></p>
 <pre class="r"><code># Sample data
 data &lt;- list(
   group1 = c(10, 15, 18, 20, 25, 30),
@@ -467,33 +483,36 @@ boxplot(data, horizontal = FALSE, main = &quot;Box Plot Example&quot;, xlab = &q
 <p><img src="page-f_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>In this example, we have two groups of sample data stored in a list
 data. Each group represents a set of numerical values. We used the
-boxplot() function to create a box plot, displaying the distribution of
-each group’s data through the quartiles.</p>
+<strong>boxplot( )</strong> function to create a box plot, displaying
+the distribution of each group’s data through the quartiles.</p>
 <p>Remember to replace data with your actual data vectors or list in the
-boxplot() function. Box plots are useful for visualizing the spread and
-distribution of data, identifying outliers, and comparing multiple
-groups or datasets.</p>
+<strong>boxplot( )</strong> function. Box plots are useful for
+visualizing the spread and distribution of data, identifying outliers,
+and comparing multiple groups or datasets.</p>
 </div>
 <div id="line-chart" class="section level2">
 <h2>Line chart</h2>
-<p>Line Chart using Base Package in R Programming</p>
+<p><strong>Line Chart using Base Package in R Programming</strong></p>
 <p>A line chart (also known as a line plot or line graph) is a graphical
 representation of data points connected by straight lines. It is
 particularly useful for showing the trend or pattern in continuous data
 over time or any ordered variable. In R, you can create a line chart
 using the base graphics package.</p>
-<p>Function: plot()</p>
+<p><strong>Function: plot( )</strong></p>
 <p>Syntax:</p>
-<pre class="r"><code>plot(x, y, type = &quot;l&quot;, col = &quot;blue&quot;, lwd = 2, main = &quot;Line Chart&quot;, xlab = &quot;X-axis label&quot;, ylab = &quot;Y-axis label&quot;)</code></pre>
-<p>x: The data vector for the x-axis.</p>
-<p>y: The data vector for the y-axis.</p>
-<p>type: The type of plot. Use “l” for a line chart.</p>
-<p>col: The color of the line.</p>
-<p>lwd: The width of the line.</p>
-<p>main: The title of the line chart.</p>
-<p>xlab: The label for the x-axis.</p>
-<p>ylab: The label for the y-axis.</p>
-<p>Example: Creating a Line Chart</p>
+<pre class="r"><code>plot(x, y, type = &quot;l&quot;, col = &quot;blue&quot;, lwd = 2, main = &quot;Line Chart&quot;, xlab = &quot;X-axis label&quot;,
+     ylab = &quot;Y-axis label&quot;)</code></pre>
+<ul>
+<li>x: The data vector for the x-axis.</li>
+<li>y: The data vector for the y-axis.</li>
+<li>type: The type of plot. Use “l” for a line chart.</li>
+<li>col: The color of the line.</li>
+<li>lwd: The width of the line.</li>
+<li>main: The title of the line chart.</li>
+<li>xlab: The label for the x-axis.</li>
+<li>ylab: The label for the y-axis.</li>
+</ul>
+<p><strong>Example: Creating a Line Chart</strong></p>
 <pre class="r"><code># Sample data
 time &lt;- c(1, 2, 3, 4, 5, 6)
 values &lt;- c(10, 15, 12, 18, 20, 25)
@@ -502,13 +521,14 @@ values &lt;- c(10, 15, 12, 18, 20, 25)
 plot(time, values, type = &quot;l&quot;, col = &quot;blue&quot;, lwd = 2, main = &quot;Line Chart Example&quot;, xlab = &quot;Time&quot;, ylab = &quot;Values&quot;)</code></pre>
 <p><img src="page-f_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>In this example, we have sample data for time (x-axis) and
-corresponding values (y-axis). We used the plot() function with type =
-“l” to create a line chart, where the data points are connected with a
-blue line.</p>
+corresponding values (y-axis). We used the <strong>plot( )</strong>
+function with type = <strong>“l”</strong> to create a line chart, where
+the data points are connected with a blue line.</p>
 <p>Remember to replace time and values with your actual data vectors in
-the plot() function. Line charts are valuable for visualizing trends,
-patterns, and changes over time or any ordered variable. They are
-especially useful for time series data or data with a natural order.</p>
+the <strong>plot( )</strong> function. Line charts are valuable for
+visualizing trends, patterns, and changes over time or any ordered
+variable. They are especially useful for time series data or data with a
+natural order.</p>
 </div>
 </div>
 

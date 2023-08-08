@@ -1,6 +1,7 @@
 ---
-title: "Topic 1: Introduction to R language"
-output: 
+title: 'Topic 1: Introduction to R language'
+output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -50,7 +51,7 @@ Documentation and Community Support: R has comprehensive documentation available
 R programming offers a wide range of features for data analysis, statistics, visualization, and reproducibility. Its open-source nature, extensive statistical libraries, and active community support make it a preferred choice for data analysis and research in various domains. Whether you are a beginner or an experienced data analyst, R provides a powerful and flexible environment to explore, analyze, and visualize data effectively.
 
 
-**Step-by-Step Guide to Install and Use R**
+## Step-by-Step Guide to Install and Use R
 
 Installing and using R is a straightforward process. Here's a step-by-step guide to help you get started:
 

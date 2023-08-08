@@ -1,7 +1,9 @@
 ---
-title: "Topic 3: Importing data into R"
+title: 'Topic 3: Importing data into R'
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -26,18 +28,19 @@ The "utils" package is a part of the base R installation, and it provides useful
 
 Here are some commonly used functions from the "utils" package for importing data from flat files:
 
-### read.table() and read.csv():
+**1. read.table( )** and **read.csv( ):**
 
-These functions are used to read data from text files (including CSV files) and create data frames. The read.table() function is more generic and can handle different file formats, whereas read.csv() is specifically designed to read CSV files.
+These functions are used to read data from text files (including CSV files) and create data frames. The **read.table( )** function is more generic and can handle different file formats, whereas **read.csv( )** is specifically designed to read CSV files.
+
 ```{r eval=FALSE}
 # Example: Reading data from a CSV file using read.csv()
 my_data <- read.csv("data.csv")
 
 ```
 
-### read.delim() and read.delim2():
+**2. read.delim( )** and **read.delim2( ):**
 
-These functions are similar to read.table(), but they are specifically designed to handle tab-delimited data.
+These functions are similar to **read.table( )**, but they are specifically designed to handle tab-delimited data.
 
 ```{r eval=FALSE}
 # Example: Reading tab-delimited data from a text file using read.delim()
@@ -45,7 +48,7 @@ my_data <- read.delim("data.txt")
 
 ```
 
-### read.csv2():
+**3. read.csv2( ):**
 
 This function is used to read CSV files with European-style decimal separators (using semicolons as separators and commas as decimal points).
 
@@ -55,17 +58,20 @@ my_data <- read.csv2("data.csv")
 
 ```
 
-### read.fwf():
+**4. read.fwf( ):**
+
 This function is used to read data from a file with fixed-width format (each column has a fixed width).
+
 ```{r  eval=FALSE}
 # Example: Reading fixed-width data from a text file using read.fwf()
 my_data <- read.fwf("data.txt", widths = c(10, 15, 8))
 
 ```
 
-### read.table() with sep argument:
+**5. read.table( )** with **sep** argument:
 
-The read.table() function can be used to read data from files with custom separators (e.g., semicolon, tab, space) by specifying the sep argument.
+The **read.table( )** function can be used to read data from files with custom **separators (e.g., semicolon, tab, space)** by specifying the sep argument.
+
 ```{r eval=FALSE}
 # Example: Reading data from a file with a custom separator using read.table()
 my_data <- read.table("data.txt", sep = ";")
@@ -74,23 +80,25 @@ my_data <- read.table("data.txt", sep = ";")
 
 Remember that the actual file paths may need to be specified based on your working directory and the location of the data files. Also, make sure that the flat files are correctly formatted to match the chosen function for importing.
 
-Using the "utils" package in R provides a quick and efficient way to import data from various flat file formats, allowing you to perform data analysis and manipulation using the powerful features of R.
+Using the **"utils"** package in R provides a quick and efficient way to import data from various flat file formats, allowing you to perform data analysis and manipulation using the powerful features of R.
 
 ## Importing Excel data file
 
-R provides several packages that allow you to read data from Excel files. Here, we'll focus on two popular packages: readxl and openxlsx.
+R provides several packages that allow you to read data from Excel files. Here, we'll focus on two popular packages: **readxl** and **openxlsx**.
 
-readxl Package:
+**1. readxl** Package:
 
 The readxl package is a simple and lightweight option for reading Excel data files. It reads both .xls and .xlsx formats.
 
 Installation:
+
 You need to install the readxl package first if you haven't done it already.
+
 ```{r eval=FALSE}
 install.packages("readxl")
 
 ```
-Example: Reading Excel Data with readxl
+**Example: Reading Excel Data with readxl**
 
 ```{r eval=FALSE}
 # Load the readxl package
@@ -104,11 +112,12 @@ print(head(my_data))
 
 ```
 
-openxlsx Package:
+**2. openxlsx** Package:
 
-The openxlsx package is more versatile and allows you to read, write, and manipulate Excel files. It supports .xlsx format.
+The openxlsx package is more versatile and allows you to read, write, and manipulate Excel files. It supports **.xlsx** format.
 
 Installation:
+
 If you haven't installed openxlsx yet, you can do it using the following command:
 
 ```{r eval=FALSE}
@@ -116,7 +125,7 @@ install.packages("openxlsx")
 
 ```
 
-Example: Reading Excel Data with openxlsx
+**Example: Reading Excel Data with openxlsx**
 
 ```{r eval=FALSE}
 # Load the openxlsx package
@@ -137,15 +146,16 @@ Both readxl and openxlsx packages are excellent choices for importing Excel data
 
 ## Importing data from other statistical software
 
-R provides various packages that enable you to import data from other statistical software formats. Some of the commonly used packages are foreign, haven, and readstat.
+R provides various packages that enable you to import data from other statistical software formats. Some of the commonly used packages are **foreign, haven, and readstat.**
 
-foreign Package:
-The foreign package is useful for reading data from other statistical software formats such as SPSS, Stata, and SAS.
+**1. foreign Package:**
+The foreign package is useful for reading data from other statistical software formats such as **SPSS, Stata, and SAS.**
 
 Installation:
+
 The foreign package is typically included with the base R installation, so you don't need to install it separately.
 
-Example: Reading Data from SPSS File
+**Example: Reading Data from SPSS File**
 
 ```{r eval=FALSE}
 # Load the foreign package (usually not required as it comes with base R)
@@ -159,18 +169,20 @@ print(head(my_data))
 
 ```
 
-haven Package:
+**2. haven Package:**
 
-The haven package is designed specifically for reading data from SPSS and Stata file formats. It provides more consistent handling of data types and value labels.
+The haven package is designed specifically for reading data from **SPSS and Stata** file formats. It provides more consistent handling of data types and value labels.
 
 Installation:
+
 If you haven't installed haven yet, you can do it using the following command:
 
 ```{r eval=FALSE}
 install.packages("haven")
 
 ```
-Example: Reading Data from Stata File
+
+**Example: Reading Data from Stata File**
 
 ```{r eval=FALSE}
 # Load the haven package
@@ -184,11 +196,12 @@ print(head(my_data))
 
 ```
 
-readstat Package:
+**3. readstat Package:**
 
-The readstat package is a versatile package that supports reading data from SPSS, Stata, and SAS file formats.
+The readstat package is a versatile package that supports reading data from **SPSS, Stata, and SAS** file formats.
 
 Installation:
+
 If you haven't installed readstat yet, you can do it using the following command:
 
 ```{r eval=FALSE}
@@ -196,7 +209,7 @@ install.packages("readstat")
 
 ```
 
-Example: Reading Data from SAS File
+**Example: Reading Data from SAS File**
 
 ```{r eval=FALSE}
 # Load the readstat package
@@ -216,11 +229,11 @@ Choose the appropriate package based on the format of the data you want to impor
 
 R provides several functions and packages for exporting data to various file formats. Exporting data is essential when you want to save the results of your data analysis, share data with others, or use the data in other applications. Here are some common methods for exporting data in R:
 
-write.table() and write.csv():
+**1. write.table( ) and write.csv( ):**
 
 These functions are used to write data frames to text files in tabular format, such as CSV files.
 
-Example: Exporting Data to CSV
+**Example: Exporting Data to CSV**
 
 ```{r}
 # Create a sample data frame
@@ -235,18 +248,20 @@ write.csv(my_data, file = "data.csv", row.names = FALSE)
 
 ```
 
-write.xlsx():
+**2. write.xlsx( ):**
 
-The openxlsx package provides the write.xlsx() function to export data frames to Excel files (.xlsx format).
+The **openxlsx** package provides the **write.xlsx( )** function to export data frames to Excel files **(.xlsx format)**.
 
 Installation:
-If you haven't installed openxlsx yet, you can do it using the following command:
+
+If you haven't installed **openxlsx** yet, you can do it using the following command:
 
 ```{r eval=FALSE}
 install.packages("openxlsx")
 
 ```
-Example: Exporting Data to Excel
+
+**Example: Exporting Data to Excel**
 
 ```{r eval=FALSE}
 # Load the openxlsx package
@@ -257,11 +272,11 @@ write.xlsx(my_data, file = "data.xlsx")
 
 ```
 
-write_dta():
+**3. write_dta( ):**
 
-The haven package provides the write_dta() function to export data frames to Stata files (.dta format).
+The haven package provides the **write_dta( )** function to export data frames to **Stata files (.dta format)**.
 
-Example: Exporting Data to Stata
+**Example: Exporting Data to Stata**
 
 ```{r eval=FALSE}
 # Load the haven package
@@ -272,11 +287,11 @@ write_dta(my_data, file = "data.dta")
 
 ```
 
-write_sav():
+**4. write_sav( ):**
 
-The haven package also provides the write_sav() function to export data frames to SPSS files (.sav format).
+The haven package also provides the **write_sav( )** function to export data frames to **SPSS files (.sav format)**.
 
-Example: Exporting Data to SPSS
+**Example: Exporting Data to SPSS**
 
 ```{r eval=FALSE}
 # Load the haven package
@@ -287,9 +302,9 @@ write_sav(my_data, file = "data.sav")
 
 ```
 
-Custom Export Formats:
+**Custom Export Formats:**
 
-You can also create custom export functions to save data in formats not natively supported by R. For example, you can write custom functions to save data in JSON, XML, or other file formats using packages like jsonlite or XML.
+You can also create custom export functions to save data in formats not natively supported by R. For example, you can write custom functions to save data in **JSON, XML**, or other file formats using packages like **jsonlite or XML**.
 
 
 Remember to specify the correct file path when exporting data. You can use either an absolute path or a relative path based on your working directory.

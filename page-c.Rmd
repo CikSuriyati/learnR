@@ -1,7 +1,9 @@
 ---
-title: "Topic 2: Programming with R"
+title: 'Topic 2: Programming with R'
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}

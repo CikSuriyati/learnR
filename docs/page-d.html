@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-07" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 2: Programming with R</title>
 
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 2: Programming with R</h1>
-<h4 class="date">2023-08-07</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
@@ -346,7 +346,7 @@ additional functionality beyond what comes with the base R
 installation.</p>
 <p>You can install and load packages to use their functions and data in
 your R scripts.</p>
-<p>Example: Installing and Loading a Package</p>
+<p><strong>Example: Installing and Loading a Package</strong></p>
 <pre class="r"><code># Installing a package (only needs to be done once)
 install.packages(&quot;dplyr&quot;)
 
@@ -358,18 +358,16 @@ library(dplyr)</code></pre>
 <h2>Libraries</h2>
 <div id="libraries-1" class="section level3">
 <h3>Libraries</h3>
-<p>In R, the term “library” is often used interchangeably with
-“package.” When you load a package using the library() function, you are
-essentially loading the package’s functions and data into your current R
-session. After loading a package, you can access its functions directly
-by their names.</p>
-<p>Example: Using Functions from a Loaded Package</p>
+<p>In R, the term <strong>“library”</strong> is often used
+interchangeably with <strong>“package”</strong>. When you load a package
+using the <strong>library( )</strong> function, you are essentially
+loading the package’s functions and data into your current R session.
+After loading a package, you can access its functions directly by their
+names.</p>
+<p><strong>Example: Using Functions from a Loaded Package</strong></p>
 <pre class="r"><code># Assuming &#39;dplyr&#39; package is installed and loaded
 # Using the &#39;filter&#39; function from the &#39;dplyr&#39; package
 filtered_data &lt;- filter(my_data_frame, column_name &gt; 10)</code></pre>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the
-plot.</p>
 </div>
 </div>
 <div id="repositories" class="section level2">
@@ -378,14 +376,15 @@ plot.</p>
 packages accessible through the internet. The Comprehensive R Archive
 Network (CRAN) is the primary and most widely used repository for R
 packages. CRAN hosts thousands of packages, and you can install packages
-directly from there using the install.packages() function.</p>
-<p>Example: Installing a Package from CRAN</p>
+directly from there using the <strong>install.packages( )</strong>
+function.</p>
+<p><strong>Example: Installing a Package from CRAN</strong></p>
 <pre class="r"><code># Installing the &#39;ggplot2&#39; package from CRAN
 install.packages(&quot;ggplot2&quot;)</code></pre>
 <p>Apart from CRAN, there are other repositories like Bioconductor
 (specializing in bioinformatics packages) and GitHub, where developers
 share R packages.</p>
-<p>Example: Installing a Package from GitHub</p>
+<p><strong>Example: Installing a Package from GitHub</strong></p>
 <pre class="r"><code># Installing a package from GitHub using the &#39;remotes&#39; package
 # First, install &#39;remotes&#39; if not already installed
 install.packages(&quot;remotes&quot;)
