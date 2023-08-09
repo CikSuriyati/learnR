@@ -14,7 +14,7 @@
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -586,7 +586,6 @@ the <strong>pair.t.test()</strong> function in R. This function
 specifically focuses on paired t-tests and provides a more concise
 syntax for conducting the test for paired samples.</li>
 </ol>
-<<<<<<< Updated upstream
 <p><strong>Function: t.test()</strong></p>
 <p>Syntax:</p>
 <pre class="r"><code>t.test(x, y, alternative = &quot;less&quot;)</code></pre>
@@ -607,40 +606,6 @@ after &lt;- c(85, 90, 95, 82, 88)
 # Perform paired t-test using t.test()
 result &lt;- t.test(before, after, paired = TRUE, alternative = &quot;less&quot;)
 
-=======
-<<<<<<< HEAD
-<p><strong>Example: Paired t-Test</strong></p>
-<pre class="r"><code># Create a data frame with two columns (Before and After)
-data &lt;- data.frame(
-  Before = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81),
-  After = c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
-)
-
-# Perform paired t-test using formula syntax
-test_result &lt;- t.test(data$Before, data$After, data = data, paired = TRUE, alternative = &quot;less&quot;)
-=======
-<p><strong>Function: t.test()</strong></p>
-<p>Syntax:</p>
-<pre class="r"><code>t.test(x, y, alternative = &quot;less&quot;)</code></pre>
-<ul>
-<li>x: A numeric vector representing the measurements of the first
-group.</li>
-<li>y: A numeric vector representing the measurements of the second
-group.</li>
-<li>alternative: The alternative hypothesis. Options are
-<strong>“two.sided” (default), “less”, or “greater”</strong>.</li>
-</ul>
-<p><strong>Example: Paired t-Test using pair.t.test()</strong></p>
-<p>Using the same example of before and after scores:</p>
-<pre class="r"><code># Sample data: Before and after scores
-before &lt;- c(78, 85, 92, 76, 80)
-after &lt;- c(85, 90, 95, 82, 88)
-
-# Perform paired t-test using t.test()
-result &lt;- t.test(before, after, paired = TRUE, alternative = &quot;less&quot;)
->>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
-
->>>>>>> Stashed changes
 # Print the results
 print(result)</code></pre>
 <pre><code>## 

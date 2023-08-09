@@ -180,7 +180,6 @@ print(test_result)
 
 ```
 
-
 **Interpreting the Output:**
 
 The output of the **t.test()** function includes the t-statistic, degrees of freedom, the observed difference in paired sample means, and the p-value. The p-value indicates the probability of obtaining the observed difference in means or more extreme differences under the assumption that the two samples come from the same population.
@@ -191,38 +190,18 @@ If the p-value is below a pre-defined significance level (commonly 0.05), we rej
 
 2. The paired t-test can also be conducted in an alternative form using the **pair.t.test()** function in R. This function specifically focuses on paired t-tests and provides a more concise syntax for conducting the test for paired samples.
 
-<<<<<<< Updated upstream
 **Function: t.test()**
 
 Syntax:
-=======
-<<<<<<< HEAD
-**Example: Paired t-Test**
-=======
-**Function: t.test()**
-
-Syntax:
->>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
->>>>>>> Stashed changes
 
 ```{r eval=FALSE}
 t.test(x, y, alternative = "less")
 ```
 
-<<<<<<< Updated upstream
 - x: A numeric vector representing the measurements of the first group.
 - y: A numeric vector representing the measurements of the second group.
 - alternative: The alternative hypothesis. Options are **"two.sided" (default), "less", or "greater"**.
-=======
-<<<<<<< HEAD
-# Perform paired t-test using formula syntax
-test_result <- t.test(data$Before, data$After, data = data, paired = TRUE, alternative = "less")
-=======
-- x: A numeric vector representing the measurements of the first group.
-- y: A numeric vector representing the measurements of the second group.
-- alternative: The alternative hypothesis. Options are **"two.sided" (default), "less", or "greater"**.
->>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
->>>>>>> Stashed changes
+
 
 **Example: Paired t-Test using pair.t.test()**
 
