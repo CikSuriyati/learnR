@@ -2,12 +2,20 @@
 title: 'Topic 5: Data Cleaning and filtering'
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
+library("devtools")
+devtools::install_github("kupietz/kableExtra")
 knitr::opts_chunk$set(echo = TRUE)
+
+library(devtools)
+library(tidyverse)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
 ```
 In this topic, you will learn about :
 
@@ -173,15 +181,13 @@ Missing data refers to the absence of values in a dataset. Dealing with missing 
 
 **Example: Identifying Missing Data**
 
-```{r eval=FALSE}
+```{r}
 # Sample data with missing values
-data <- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
+data <- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
 
-# Check for missing values in the Age column
-missing_age <- is.na(data$Age)
-
-# Check for complete cases in the data frame
-complete_cases <- complete.cases(data)
+# Detect missing values
+missing_values <- is.na(data$Value)
+print(missing_values)
 
 ```
 
@@ -192,47 +198,107 @@ complete_cases <- complete.cases(data)
 
 **Example: Omitting Missing Data**
 
-```{r eval=FALSE}
+```{r}
 # Sample data with missing values
-data <- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
-
-# Omit rows with missing values
-data_no_missing <- na.omit(data)
+data <- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Remove rows with missing values
+clean_data <- na.omit(data)
+print(clean_data)
 
 ```
 
-2. **Imputing Missing Data:**
+2. **Replacing Missing Values:**
+
+**replace(x, list, values)**: Replaces values in vector x based on a list of replacement values.
+**ifelse(test, yes, no)**: Replaces values in a vector based on a logical test.
+
+**Example: Replacing Missing Values**
+
+```{r}
+# Sample data with missing values
+data <- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Replace missing values with a specific value
+replaced_data <- replace(data$Value, is.na(data$Value), 0)
+print(replaced_data)
+
+```
+
+**Example: Replacing Missing Values**
+
+```{r}
+# Sample data with missing values
+data <- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Replace missing values with a specific value
+replaced_data <- replace(data$Value, is.na(data$Value), 0)
+print(replaced_data)
+
+```
+
+
+3. **Imputing Missing Data:**
+
 **is.na()** combined with subsetting: Replace missing values with a specific value or computed value.
 
-**Example: Imputing Missing Data**
+Imputing involves estimating missing values using statistical methods. Popular imputation methods include mean, median, or regression imputation.
 
-```{r eval=FALSE}
+- **Example: Imputing Missing Data with mean**
+
+```{r}
 # Sample data with missing values
-data <- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
-
-# Impute missing values with the mean of non-missing values
-mean_age <- mean(data$Age, na.rm = TRUE)
-data$Age[is.na(data$Age)] <- mean_age
+data <- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Impute missing values with mean
+mean_value <- mean(data$Value, na.rm = TRUE)
+imputed_data <- ifelse(is.na(data$Value), mean_value, data$Value)
+print(imputed_data)
 
 ```
 
-3. **Imputing Missing Data with imputeTS Package:**
-The **imputeTS** package provides advanced imputation techniques, including time series imputation.
+- **Using Hmisc Library and imputing with Median value:**
 
-**Example: Imputing Missing Data using imputeTS**
+Using the function **impute( )** inside Hmisc library let’s impute the column marks2 of data with the median value of this entire column.
+
+**Example: Using Hmisc Library and imputing with Median value**
 
 ```{r eval=FALSE}
-# Install and load the imputeTS package
-install.packages("imputeTS")
-library(imputeTS)
+# install and load the required packages
 
-# Sample data with missing values
-data <- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
+install.packages("Hmisc")
+library(Hmisc)
 
-# Impute missing values using linear interpolation
-data$Age <- na.interpolation(data$Age)
+# create a adataframe
+data <- data.frame(marks1 = c(NA, 22, NA, 49, 75),
+				marks2 = c(81, 14, NA, 61, 12),
+				marks3 = c(78.5, 19.325, NA, 28,
+							48.002))
+
+# fill missing values of marks2 with median
+impute(data$marks2, median)
 
 ```
+- **Impute with a specific Constant value**
+
+Using the function **impute( )** inside Hmisc library let’s impute the column marks2 of data with a constant value.
+
+**Example: Impute missing values**
+
+```{r eval=FALSE}
+# install and load the required packages
+
+install.packages("Hmisc")
+library(Hmisc)
+# create a adataframe
+data <- data.frame(marks1 = c(NA, 22, NA, 49, 75),
+				marks2 = c(81, 14, NA, 61, 12),
+				marks3 = c(78.5, 19.325, NA, 28,
+							48.002))
+
+# impute with a specific number
+# replace NA with 2000
+impute(data$marks3, 2000)
+
+```
+
+
 
 **Handling Missing Data Summary:**
 

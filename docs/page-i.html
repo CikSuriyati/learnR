@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-08" />
+<meta name="date" content="2023-08-09" />
 
 <title>Topic 5: Data Cleaning and filtering</title>
 
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 5: Data Cleaning and filtering</h1>
-<h4 class="date">2023-08-08</h4>
+<h4 class="date">2023-08-09</h4>
 
 </div>
 
@@ -356,9 +356,26 @@ data &lt;- data.frame(
   Height = c(170, 180, 165, 175, 190),
   Weight = c(70, 80, 60, 75, 85)
 )
-
-# Keep only the Age and Height variables
-selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;)]</code></pre>
+print(data)</code></pre>
+<pre><code>##   ID Age Height Weight
+## 1  1  25    170     70
+## 2  2  30    180     80
+## 3  3  22    165     60
+## 4  4  28    175     75
+## 5  5  35    190     85</code></pre>
+<pre class="r"><code># Keep only the Age and Height variables using $
+a&lt;-data$Age
+a</code></pre>
+<pre><code>## [1] 25 30 22 28 35</code></pre>
+<pre class="r"><code># Keep only the Age and Height variables []
+selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;)]
+print(selected_data)</code></pre>
+<pre><code>##   Age Height
+## 1  25    170
+## 2  30    180
+## 3  22    165
+## 4  28    175
+## 5  35    190</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <strong>Square Brackets</strong>: You can use square brackets
 with column names to keep specific variables from the data frame.</li>
@@ -373,7 +390,14 @@ data &lt;- data.frame(
 )
 
 # Keep only the Age and Weight variables
-selected_data &lt;- data[, c(&quot;Age&quot;, &quot;Weight&quot;)]</code></pre>
+selected_data &lt;- data[, c(&quot;Age&quot;, &quot;Weight&quot;)]
+print(selected_data)</code></pre>
+<pre><code>##   Age Weight
+## 1  25     70
+## 2  30     80
+## 3  22     60
+## 4  28     75
+## 5  35     85</code></pre>
 <p><strong>Removing Variables:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Using $ Operator or Square Brackets with Negation: You can remove
@@ -392,9 +416,29 @@ data &lt;- data.frame(
 
 # Remove the ID variable
 selected_data &lt;- data[c(&quot;Age&quot;, &quot;Height&quot;, &quot;Weight&quot;)]
-
-# Alternative method: Remove the ID variable
-selected_data &lt;- data[-1]</code></pre>
+print(selected_data)</code></pre>
+<pre><code>##   Age Height Weight
+## 1  25    170     70
+## 2  30    180     80
+## 3  22    165     60
+## 4  28    175     75
+## 5  35    190     85</code></pre>
+<pre class="r"><code># Alternative method: Remove the ID variable
+# Sample data frame
+data &lt;- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
+selected_data &lt;- data[-1]
+print(selected_data)</code></pre>
+<pre><code>##   Age Height Weight
+## 1  25    170     70
+## 2  30    180     80
+## 3  22    165     60
+## 4  28    175     75
+## 5  35    190     85</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <strong>select()</strong> from <strong>dplyr</strong>: If you
 are using the <strong>dplyr</strong> package, you can use the
@@ -421,7 +465,14 @@ data &lt;- data.frame(
 )
 
 # Remove the ID variable
-selected_data &lt;- select(data, -ID)</code></pre>
+selected_data &lt;- select(data, -ID)
+print(selected_data)</code></pre>
+<pre><code>##   Age Height Weight
+## 1  25    170     70
+## 2  30    180     80
+## 3  22    165     60
+## 4  28    175     75
+## 5  35    190     85</code></pre>
 <p><strong>Summary:</strong></p>
 <ol style="list-style-type: decimal">
 <li>You can keep specific variables using the $ operator, square
@@ -458,7 +509,12 @@ data &lt;- data.frame(
 )
 
 # Filter rows where Age is greater than 25
-filtered_data &lt;- data[data$Age &gt; 25, ]</code></pre>
+filtered_data &lt;- data[data$Age &gt; 25, ]
+print(filtered_data)</code></pre>
+<pre><code>##   ID Age Gender
+## 2  2  30 Female
+## 4  4  28   Male
+## 5  5  35 Female</code></pre>
 <p><strong>Filtering Variables (Columns):</strong></p>
 <ol style="list-style-type: decimal">
 <li>Using $ Operator or Square Brackets: You can use the $ operator or
@@ -474,7 +530,14 @@ data &lt;- data.frame(
 )
 
 # Select only the Age and Gender columns
-selected_variables &lt;- data[c(&quot;Age&quot;, &quot;Gender&quot;)]</code></pre>
+selected_variables &lt;- data[c(&quot;Age&quot;, &quot;Gender&quot;)]
+print(selected_variables)</code></pre>
+<pre><code>##   Age Gender
+## 1  25   Male
+## 2  30 Female
+## 3  22   Male
+## 4  28   Male
+## 5  35 Female</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <strong>select()</strong> from <strong>dplyr</strong>: If you
 are using the <strong>dplyr</strong> package, you can use the
@@ -491,9 +554,22 @@ data &lt;- data.frame(
   Age = c(25, 30, 22, 28, 35),
   Gender = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;)
 )
-
-# Select only the Age and Gender columns
-selected_variables &lt;- select(data, Age, Gender)</code></pre>
+print(data)</code></pre>
+<pre><code>##   ID Age Gender
+## 1  1  25   Male
+## 2  2  30 Female
+## 3  3  22   Male
+## 4  4  28   Male
+## 5  5  35 Female</code></pre>
+<pre class="r"><code># Select only the Age and Gender columns
+selected_variables &lt;- select(data, Age, Gender)
+print(selected_variables)</code></pre>
+<pre><code>##   Age Gender
+## 1  25   Male
+## 2  30 Female
+## 3  22   Male
+## 4  28   Male
+## 5  35 Female</code></pre>
 <p><strong>Summary:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Filtering data (rows) involves selecting specific rows based on

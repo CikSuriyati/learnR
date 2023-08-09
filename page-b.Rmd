@@ -2,8 +2,9 @@
 title: 'Topic 1: Introduction to R language'
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -790,6 +791,8 @@ print(std.finaldata)
 
 ## Factors
 
+Factors are a unique data type in R used to represent categorical or discrete data. They are particularly useful for working with data that has distinct categories, such as nominal or ordinal variables. Factors allow you to efficiently store and manage categorical data while maintaining the underlying order or levels.
+
 Factors are the data objects which are used to **categorize the data** and store it as **levels**. They can store both strings and integers. They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. They are useful in data analysis for statistical modeling.
 
 Factors are created using the **factor ()** function by taking a vector as input.
@@ -809,6 +812,14 @@ factor_data <- factor(data)
 print(factor_data)
 print(is.factor(factor_data))
 ```
+
+**Working with Factors:**
+
+Factors have distinct properties that make them useful for data analysis:
+
+1. **Levels**: Factors have predefined levels that represent the distinct categories in the data.
+2. **Order**: Factors can be ordered, making them suitable for ordinal data.
+3. **Labels**: Each level can have a human-readable label associated with it.
 
 `r colorize("**1. Factors in Data Frame**", "blue")`
 
@@ -852,7 +863,9 @@ We can generate factor levels by using the gl() function. It takes two integers 
 
 **Syntax**
 
+```{r eval=FALSE}
 gl(n, k, labels)
+```
 
 Following is the description of the parameters used −
 

@@ -1746,6 +1746,12 @@ with the existing data frame to create the final data frame.
 \hypertarget{factors}{%
 \subsection{Factors}\label{factors}}
 
+Factors are a unique data type in R used to represent categorical or
+discrete data. They are particularly useful for working with data that
+has distinct categories, such as nominal or ordinal variables. Factors
+allow you to efficiently store and manage categorical data while
+maintaining the underlying order or levels.
+
 Factors are the data objects which are used to \textbf{categorize the
 data} and store it as \textbf{levels}. They can store both strings and
 integers. They are useful in the columns which have a limited number of
@@ -1804,6 +1810,25 @@ vector as input.
 \begin{verbatim}
 ## [1] TRUE
 \end{verbatim}
+
+\textbf{Working with Factors:}
+
+Factors have distinct properties that make them useful for data
+analysis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Levels}: Factors have predefined levels that represent the
+  distinct categories in the data.
+\item
+  \textbf{Order}: Factors can be ordered, making them suitable for
+  ordinal data.
+\item
+  \textbf{Labels}: Each level can have a human-readable label associated
+  with it.
+\end{enumerate}
 
 \textcolor{blue}{**1. Factors in Data Frame**}
 
@@ -1897,7 +1922,11 @@ each level.
 
 \textbf{Syntax}
 
-gl(n, k, labels)
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gl}\NormalTok{(n, k, labels)}
+\end{Highlighting}
+\end{Shaded}
 
 Following is the description of the parameters used −
 

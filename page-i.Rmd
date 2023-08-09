@@ -2,8 +2,8 @@
 title: 'Topic 5: Data Cleaning and filtering'
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -36,10 +36,13 @@ data <- data.frame(
   Height = c(170, 180, 165, 175, 190),
   Weight = c(70, 80, 60, 75, 85)
 )
-
-# Keep only the Age and Height variables
+print(data)
+# Keep only the Age and Height variables using $
+a<-data$Age
+a
+# Keep only the Age and Height variables []
 selected_data <- data[c("Age", "Height")]
-
+print(selected_data)
 ```
 
 2. Using **Square Brackets**: You can use square brackets with column names to keep specific variables from the data frame.
@@ -57,7 +60,7 @@ data <- data.frame(
 
 # Keep only the Age and Weight variables
 selected_data <- data[, c("Age", "Weight")]
-
+print(selected_data)
 ```
 
 **Removing Variables:**
@@ -77,10 +80,17 @@ data <- data.frame(
 
 # Remove the ID variable
 selected_data <- data[c("Age", "Height", "Weight")]
-
+print(selected_data)
 # Alternative method: Remove the ID variable
+# Sample data frame
+data <- data.frame(
+  ID = 1:5,
+  Age = c(25, 30, 22, 28, 35),
+  Height = c(170, 180, 165, 175, 190),
+  Weight = c(70, 80, 60, 75, 85)
+)
 selected_data <- data[-1]
-
+print(selected_data)
 ```
 
 2. Using **select()** from **dplyr**: If you are using the **dplyr** package, you can use the **select()** function to remove variables.
@@ -101,7 +111,7 @@ data <- data.frame(
 
 # Remove the ID variable
 selected_data <- select(data, -ID)
-
+print(selected_data)
 ```
 
 **Summary:**
@@ -133,7 +143,7 @@ data <- data.frame(
 
 # Filter rows where Age is greater than 25
 filtered_data <- data[data$Age > 25, ]
-
+print(filtered_data)
 ```
 
 **Filtering Variables (Columns):**
@@ -152,7 +162,7 @@ data <- data.frame(
 
 # Select only the Age and Gender columns
 selected_variables <- data[c("Age", "Gender")]
-
+print(selected_variables)
 ```
 
 2. Using **select()** from **dplyr**: If you are using the **dplyr** package, you can use the **select()** function to filter columns.
@@ -169,10 +179,10 @@ data <- data.frame(
   Age = c(25, 30, 22, 28, 35),
   Gender = c("Male", "Female", "Male", "Male", "Female")
 )
-
+print(data)
 # Select only the Age and Gender columns
 selected_variables <- select(data, Age, Gender)
-
+print(selected_variables)
 ```
 
 **Summary:**

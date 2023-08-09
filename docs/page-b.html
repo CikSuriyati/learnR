@@ -10,11 +10,11 @@
 
 
 
-<meta name="date" content="2023-02-22" />
+<meta name="date" content="2023-08-08" />
 
 <title>Topic 1: Introduction to R language</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 1: Introduction to R language</h1>
-<h4 class="date">2023-02-22</h4>
+<h4 class="date">2023-08-08</h4>
 
 </div>
 
@@ -1219,6 +1219,11 @@ print(std.finaldata)</code></pre>
 </div>
 <div id="factors" class="section level2">
 <h2>Factors</h2>
+<p>Factors are a unique data type in R used to represent categorical or
+discrete data. They are particularly useful for working with data that
+has distinct categories, such as nominal or ordinal variables. Factors
+allow you to efficiently store and manage categorical data while
+maintaining the underlying order or levels.</p>
 <p>Factors are the data objects which are used to <strong>categorize the
 data</strong> and store it as <strong>levels</strong>. They can store
 both strings and integers. They are useful in the columns which have a
@@ -1243,6 +1248,17 @@ print(factor_data)</code></pre>
 ## Levels: East North West</code></pre>
 <pre class="r"><code>print(is.factor(factor_data))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
+<p><strong>Working with Factors:</strong></p>
+<p>Factors have distinct properties that make them useful for data
+analysis:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Levels</strong>: Factors have predefined levels that
+represent the distinct categories in the data.</li>
+<li><strong>Order</strong>: Factors can be ordered, making them suitable
+for ordinal data.</li>
+<li><strong>Labels</strong>: Each level can have a human-readable label
+associated with it.</li>
+</ol>
 <p><span style="color: blue;"><strong>1. Factors in Data
 Frame</strong></span></p>
 <p>On creating any data frame with a column of text data, R treats the
@@ -1291,7 +1307,7 @@ Levels</strong></span></p>
 two integers as input which indicates how many levels and how many times
 each level.</p>
 <p><strong>Syntax</strong></p>
-<p>gl(n, k, labels)</p>
+<pre class="r"><code>gl(n, k, labels)</code></pre>
 <p>Following is the description of the parameters used −</p>
 <ul>
 <li><strong>n</strong> is a integer giving the number of levels.</li>

@@ -154,7 +154,7 @@ These flow control structures allow you to write more complex and flexible progr
 In R programming, functions are blocks of code designed to perform specific tasks. Functions are essential for organizing code, promoting reusability, and making programs more modular. R provides several built-in functions, but you can also create your own custom functions. A function typically takes one or more input arguments, processes them, and returns an output.
 
 Creating Functions in R:
-In R, you can define functions using the function() keyword followed by the function name, input arguments, and the function body enclosed in curly braces {}. The return() statement is used to specify the output of the function.
+In R, you can define functions using the function() keyword followed by the function name, input arguments, and the function body enclosed in curly braces {}. The **return()** statement is used to specify the output of the function.
 
 Syntax:
 

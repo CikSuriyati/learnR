@@ -1,8 +1,18 @@
 ---
 title: "Learn R"
 output:
+<<<<<<< Updated upstream
   html_document: default
   pdf_document: default
+=======
+<<<<<<< HEAD
+  pdf_document: default
+  html_document: default
+=======
+  html_document: default
+  pdf_document: default
+>>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
+>>>>>>> Stashed changes
 ---
 
 <style type="text/css">

@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-08" />
+<meta name="date" content="2023-08-09" />
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
-<h4 class="date">2023-08-08</h4>
+<h4 class="date">2023-08-09</h4>
 
 </div>
 
@@ -525,6 +525,19 @@ compare the means of two related or paired samples to determine if there
 is a significant difference between their means. It is commonly used
 when you have two sets of observations that are linked or matched in
 some way.</p>
+<p><strong>Function: t.test()</strong></p>
+<p>Syntax:</p>
+<pre class="r"><code>t.test(x, y, paired = TRUE, alternative = &quot;two.sided&quot;)</code></pre>
+<ul>
+<li>x: A numeric vector representing the measurements of the first
+group.</li>
+<li>y: A numeric vector representing the measurements of the second
+group.</li>
+<li>paired: A logical value indicating whether the test is paired. Set
+to TRUE for paired t-test.</li>
+<li>alternative: The alternative hypothesis. Options are “two.sided”
+(default), “less”, or “greater”.</li>
+</ul>
 <p><strong>Performing a Paired t-Test:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Using <strong>t.test()</strong>: The <strong>t.test()</strong>
@@ -541,7 +554,7 @@ scores_before &lt;- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
 scores_after &lt;- c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
 
 # Perform paired t-test
-test_result &lt;- t.test(scores_before, scores_after, paired = TRUE)
+test_result &lt;- t.test(scores_before, scores_after, paired = TRUE, alternative = &quot;two.sided&quot;)
 
 # Print the test result
 print(test_result)</code></pre>
@@ -573,6 +586,7 @@ the <strong>pair.t.test()</strong> function in R. This function
 specifically focuses on paired t-tests and provides a more concise
 syntax for conducting the test for paired samples.</li>
 </ol>
+<<<<<<< Updated upstream
 <p><strong>Function: t.test()</strong></p>
 <p>Syntax:</p>
 <pre class="r"><code>t.test(x, y, alternative = &quot;less&quot;)</code></pre>
@@ -593,6 +607,40 @@ after &lt;- c(85, 90, 95, 82, 88)
 # Perform paired t-test using t.test()
 result &lt;- t.test(before, after, paired = TRUE, alternative = &quot;less&quot;)
 
+=======
+<<<<<<< HEAD
+<p><strong>Example: Paired t-Test</strong></p>
+<pre class="r"><code># Create a data frame with two columns (Before and After)
+data &lt;- data.frame(
+  Before = c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81),
+  After = c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
+)
+
+# Perform paired t-test using formula syntax
+test_result &lt;- t.test(data$Before, data$After, data = data, paired = TRUE, alternative = &quot;less&quot;)
+=======
+<p><strong>Function: t.test()</strong></p>
+<p>Syntax:</p>
+<pre class="r"><code>t.test(x, y, alternative = &quot;less&quot;)</code></pre>
+<ul>
+<li>x: A numeric vector representing the measurements of the first
+group.</li>
+<li>y: A numeric vector representing the measurements of the second
+group.</li>
+<li>alternative: The alternative hypothesis. Options are
+<strong>“two.sided” (default), “less”, or “greater”</strong>.</li>
+</ul>
+<p><strong>Example: Paired t-Test using pair.t.test()</strong></p>
+<p>Using the same example of before and after scores:</p>
+<pre class="r"><code># Sample data: Before and after scores
+before &lt;- c(78, 85, 92, 76, 80)
+after &lt;- c(85, 90, 95, 82, 88)
+
+# Perform paired t-test using t.test()
+result &lt;- t.test(before, after, paired = TRUE, alternative = &quot;less&quot;)
+>>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
+
+>>>>>>> Stashed changes
 # Print the results
 print(result)</code></pre>
 <pre><code>## 

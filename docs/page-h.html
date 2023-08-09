@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-08-08" />
+<meta name="date" content="2023-08-09" />
 
 <title>Topic 5: Data Cleaning and filtering</title>
 
@@ -35,6 +35,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="site_libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -324,7 +326,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Topic 5: Data Cleaning and filtering</h1>
-<h4 class="date">2023-08-08</h4>
+<h4 class="date">2023-08-09</h4>
 
 </div>
 
@@ -617,13 +619,12 @@ indicating complete cases (no missing values) in a data frame.</li>
 </ol>
 <p><strong>Example: Identifying Missing Data</strong></p>
 <pre class="r"><code># Sample data with missing values
-data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
+data &lt;- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
 
-# Check for missing values in the Age column
-missing_age &lt;- is.na(data$Age)
-
-# Check for complete cases in the data frame
-complete_cases &lt;- complete.cases(data)</code></pre>
+# Detect missing values
+missing_values &lt;- is.na(data$Value)
+print(missing_values)</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
 <p><strong>Handling Missing Data:</strong></p>
 <ol style="list-style-type: decimal">
 <li><strong>Omitting Missing Data:</strong> <strong>na.omit():</strong>
@@ -631,37 +632,93 @@ Removes rows containing any missing values from a data frame.</li>
 </ol>
 <p><strong>Example: Omitting Missing Data</strong></p>
 <pre class="r"><code># Sample data with missing values
-data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
-
-# Omit rows with missing values
-data_no_missing &lt;- na.omit(data)</code></pre>
+data &lt;- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Remove rows with missing values
+clean_data &lt;- na.omit(data)
+print(clean_data)</code></pre>
+<pre><code>##   ID Value
+## 1  1    10
+## 3  3    15
+## 5  5    20</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><strong>Imputing Missing Data:</strong> <strong>is.na()</strong>
-combined with subsetting: Replace missing values with a specific value
-or computed value.</li>
+<li><strong>Replacing Missing Values:</strong></li>
 </ol>
-<p><strong>Example: Imputing Missing Data</strong></p>
+<p><strong>replace(x, list, values)</strong>: Replaces values in vector
+x based on a list of replacement values. <strong>ifelse(test, yes,
+no)</strong>: Replaces values in a vector based on a logical test.</p>
+<p><strong>Example: Replacing Missing Values</strong></p>
 <pre class="r"><code># Sample data with missing values
-data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
-
-# Impute missing values with the mean of non-missing values
-mean_age &lt;- mean(data$Age, na.rm = TRUE)
-data$Age[is.na(data$Age)] &lt;- mean_age</code></pre>
+data &lt;- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Replace missing values with a specific value
+replaced_data &lt;- replace(data$Value, is.na(data$Value), 0)
+print(replaced_data)</code></pre>
+<pre><code>## [1] 10  0 15  0 20</code></pre>
+<p><strong>Example: Replacing Missing Values</strong></p>
+<pre class="r"><code># Sample data with missing values
+data &lt;- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Replace missing values with a specific value
+replaced_data &lt;- replace(data$Value, is.na(data$Value), 0)
+print(replaced_data)</code></pre>
+<pre><code>## [1] 10  0 15  0 20</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><strong>Imputing Missing Data with imputeTS Package:</strong> The
-<strong>imputeTS</strong> package provides advanced imputation
-techniques, including time series imputation.</li>
+<li><strong>Imputing Missing Data:</strong></li>
 </ol>
-<p><strong>Example: Imputing Missing Data using imputeTS</strong></p>
-<pre class="r"><code># Install and load the imputeTS package
-install.packages(&quot;imputeTS&quot;)
-library(imputeTS)
+<p><strong>is.na()</strong> combined with subsetting: Replace missing
+values with a specific value or computed value.</p>
+<p>Imputing involves estimating missing values using statistical
+methods. Popular imputation methods include mean, median, or regression
+imputation.</p>
+<ul>
+<li><strong>Example: Imputing Missing Data with mean</strong></li>
+</ul>
+<pre class="r"><code># Sample data with missing values
+data &lt;- data.frame(ID = 1:5, Value = c(10, NA, 15, NA, 20))
+# Impute missing values with mean
+mean_value &lt;- mean(data$Value, na.rm = TRUE)
+imputed_data &lt;- ifelse(is.na(data$Value), mean_value, data$Value)
+print(imputed_data)</code></pre>
+<pre><code>## [1] 10 15 15 15 20</code></pre>
+<ul>
+<li><strong>Using Hmisc Library and imputing with Median
+value:</strong></li>
+</ul>
+<p>Using the function <strong>impute( )</strong> inside Hmisc library
+let’s impute the column marks2 of data with the median value of this
+entire column.</p>
+<p><strong>Example: Using Hmisc Library and imputing with Median
+value</strong></p>
+<pre class="r"><code># install and load the required packages
 
-# Sample data with missing values
-data &lt;- data.frame(ID = 1:5, Age = c(25, 30, NA, 22, NA))
+install.packages(&quot;Hmisc&quot;)
+library(Hmisc)
 
-# Impute missing values using linear interpolation
-data$Age &lt;- na.interpolation(data$Age)</code></pre>
+# create a adataframe
+data &lt;- data.frame(marks1 = c(NA, 22, NA, 49, 75),
+                marks2 = c(81, 14, NA, 61, 12),
+                marks3 = c(78.5, 19.325, NA, 28,
+                            48.002))
+
+# fill missing values of marks2 with median
+impute(data$marks2, median)</code></pre>
+<ul>
+<li><strong>Impute with a specific Constant value</strong></li>
+</ul>
+<p>Using the function <strong>impute( )</strong> inside Hmisc library
+let’s impute the column marks2 of data with a constant value.</p>
+<p><strong>Example: Impute missing values</strong></p>
+<pre class="r"><code># install and load the required packages
+
+install.packages(&quot;Hmisc&quot;)
+library(Hmisc)
+# create a adataframe
+data &lt;- data.frame(marks1 = c(NA, 22, NA, 49, 75),
+                marks2 = c(81, 14, NA, 61, 12),
+                marks3 = c(78.5, 19.325, NA, 28,
+                            48.002))
+
+# impute with a specific number
+# replace NA with 2000
+impute(data$marks3, 2000)</code></pre>
 <p><strong>Handling Missing Data Summary:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Missing data is common in datasets and needs to be addressed for

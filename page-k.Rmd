@@ -145,6 +145,20 @@ Both of the above examples perform the same independent t-test, but the second e
 
 The paired t-test (also known as the dependent t-test) is used to compare the means of two related or paired samples to determine if there is a significant difference between their means. It is commonly used when you have two sets of observations that are linked or matched in some way.
 
+**Function: t.test()**
+
+Syntax:
+
+```{r eval=FALSE}
+t.test(x, y, paired = TRUE, alternative = "two.sided")
+
+```
+
+- x: A numeric vector representing the measurements of the first group.
+- y: A numeric vector representing the measurements of the second group.
+- paired: A logical value indicating whether the test is paired. Set to TRUE for paired t-test.
+- alternative: The alternative hypothesis. Options are "two.sided" (default), "less", or "greater".
+
 **Performing a Paired t-Test:**
 
 1. Using **t.test()**: The **t.test()** function in R can be used to perform a paired t-test. It assumes that the two samples are dependent (paired) and come from the same population.
@@ -159,7 +173,7 @@ scores_before <- c(82, 78, 85, 90, 73, 88, 79, 84, 86, 81)
 scores_after <- c(88, 80, 90, 95, 78, 90, 82, 89, 92, 87)
 
 # Perform paired t-test
-test_result <- t.test(scores_before, scores_after, paired = TRUE)
+test_result <- t.test(scores_before, scores_after, paired = TRUE, alternative = "two.sided")
 
 # Print the test result
 print(test_result)
@@ -177,17 +191,38 @@ If the p-value is below a pre-defined significance level (commonly 0.05), we rej
 
 2. The paired t-test can also be conducted in an alternative form using the **pair.t.test()** function in R. This function specifically focuses on paired t-tests and provides a more concise syntax for conducting the test for paired samples.
 
+<<<<<<< Updated upstream
 **Function: t.test()**
 
 Syntax:
+=======
+<<<<<<< HEAD
+**Example: Paired t-Test**
+=======
+**Function: t.test()**
+
+Syntax:
+>>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
+>>>>>>> Stashed changes
 
 ```{r eval=FALSE}
 t.test(x, y, alternative = "less")
 ```
 
+<<<<<<< Updated upstream
 - x: A numeric vector representing the measurements of the first group.
 - y: A numeric vector representing the measurements of the second group.
 - alternative: The alternative hypothesis. Options are **"two.sided" (default), "less", or "greater"**.
+=======
+<<<<<<< HEAD
+# Perform paired t-test using formula syntax
+test_result <- t.test(data$Before, data$After, data = data, paired = TRUE, alternative = "less")
+=======
+- x: A numeric vector representing the measurements of the first group.
+- y: A numeric vector representing the measurements of the second group.
+- alternative: The alternative hypothesis. Options are **"two.sided" (default), "less", or "greater"**.
+>>>>>>> 71398288ce50cbb0a144a8dabbbc2dd9a6faf889
+>>>>>>> Stashed changes
 
 **Example: Paired t-Test using pair.t.test()**
 
