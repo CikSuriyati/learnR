@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 In this topic, you will learn about :
 
 - Presentation guidelines
-- Presentation Rubrics
+- Written report Rubrics
 
 # {.tabset}
 

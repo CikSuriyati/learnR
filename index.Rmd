@@ -28,6 +28,7 @@ This course will provide students with extensive skills of fast computing on how
 
 The method of teaching and learning included lecture, lab work and project which should be held in the statistics laboratory. The assessments consist of project, quiz and test.
 
+
 ## Assessments Breakdown
 
 ```{r echo=FALSE}
@@ -44,9 +45,12 @@ kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total
 </div>
 <div class="col-sm-6">
 
-### Scheme of Work
+
+
 
 <a href = "https://sites.google.com/view/suriyatiujang/home">
 ![](images/logo.png)
 </a>
 </div>
+
+

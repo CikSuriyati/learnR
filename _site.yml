@@ -7,6 +7,8 @@ navbar:
     - text: "Introduction to Statistical Programming"
       menu:
         - text: "Topic 1: Introduction to R language"
+        - text: "Sheme of Work"
+          href: sow.html
         - text: "Week 1"
           href: page-a.html
         - text: "Week 2"
