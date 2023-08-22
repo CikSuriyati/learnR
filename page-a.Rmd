@@ -4,7 +4,6 @@ output:
   pdf_document: default
   html_document:
     df_print: paged
-=======
   html_document: default
 ---
 
@@ -50,10 +49,7 @@ R programming offers a wide range of features for data analysis, statistics, vis
 
 
 ## Step-by-Step Guide to Install and Use R
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 
 Installing and using R is a straightforward process. Here's a step-by-step guide to help you get started:
 

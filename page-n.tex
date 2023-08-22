@@ -1,0 +1,318 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Week 14},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Week 14}
+\author{}
+\date{\vspace{-2.5em}2023-08-16}
+
+\begin{document}
+\maketitle
+
+In this topic, you will learn about :
+
+\begin{itemize}
+\tightlist
+\item
+  Presentation guidelines
+\item
+  Written report Rubrics
+\end{itemize}
+
+\hypertarget{section}{%
+\section{}\label{section}}
+
+\hypertarget{presentation}{%
+\subsection{Presentation}\label{presentation}}
+
+\hypertarget{presentation-25-of-ongoing-assessment}{%
+\subsubsection{Presentation (25\% of ongoing
+assessment)}\label{presentation-25-of-ongoing-assessment}}
+
+The main aim of this presentation is to promote self-efficacy in
+handling data in a meaningful manner.
+
+\textbf{Instruction:}
+
+\begin{itemize}
+\tightlist
+\item
+  Conduct a simple data analysis with proper steps in analysing the data
+  using R programming.
+\item
+  You may choose any dataset that is freely available and conduct a
+  proper data analysis procedure.
+\item
+  Demonstrate and promote your ability to analyse data from scratch in a
+  meaningful manner.
+\item
+  The objective of the data analysis and presentation is to promote
+  self-skill in analysing data and knowledge transfer to the community.
+\item
+  \textbf{AT LEAST ONE DESCRIPTIVE STATISTICS and ONE INFERENTIAL
+  STATISTICS} should be included in the analysis.
+\item
+  The presentation should be delivered in public with the following
+  requirements:
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Introduction
+\item
+  Objective(s)
+\item
+  Methodology
+\item
+  Analysis (Demonstrate the steps of analysis using RStudio).
+\item
+  Results
+\item
+  Conclusion
+\item
+  Benefit of the analysis
+\end{enumerate}
+
+There is no restricted format in presentation delivery.
+
+\textbf{NOTE:} It is advisable to create a social media group with many
+stakeholders from industries, academics, and local community.
+
+\hypertarget{written-report}{%
+\subsection{Written Report}\label{written-report}}
+
+\hypertarget{written-report-30-of-ongoing-assessment}{%
+\subsubsection{Written Report (30\% of ongoing
+assessment)}\label{written-report-30-of-ongoing-assessment}}
+
+Topic 1 to 6
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1161}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.7161}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0516}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0613}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0548}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Assessment criteria}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Weight (W)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Score (1 -10)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+**Marks (W*S)**
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Introduction} & Appropriate title; clear problem statement;
+well-defined project scope; clear, measurable and achievable objectives;
+and significant to the community and practitioners. & 3 & & \\
+\textbf{Literature Review} & Review of current, related literature and
+research reports. Consist of relevant, correct facts and substantial
+references - able to identify, collect, summarize and analyze relevant
+and latest/issues of subject matter.) & 2 & & \\
+\textbf{Methodology} & A detailed and in depth explanation of the
+appropriate approach, methods, sources and deliverables in accomplishing
+the project. & 4 & & \\
+\textbf{Results / Findings} & The result of research carried out to
+solve the problem defined. This may include analysis, usability, design,
+implementation, testing, prototype or framework. & 5 & & \\
+\textbf{Conclusion and Recommendations} & Conclusion of what has been
+achieved, explaining limitations/problems and recommendation for future
+work. & 2 & & \\
+\textbf{Report Presentation} & Structure, organisation and standard
+report format. Clarity of language, consistency of the content, logical
+flow and use of figurative language for all materials. & 2 & & \\
+\textbf{References and Citations} & Standard citation and references
+based on the guideline given. Valid source of references and other
+appropriate supporting documents. & 2 & & \\
+\end{longtable}
+
+\hypertarget{project-evaluation-rubric-report}{%
+\subsubsection{PROJECT EVALUATION RUBRIC
+(REPORT)}\label{project-evaluation-rubric-report}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0029}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0264}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2573}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2295}}
+  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2361}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2478}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+No
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Assessment criteria}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Excellence (8-10)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Good (6-7)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Satisfactory (5)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Poor (1-4)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \textbf{Introduction} & - Working title that clearly reflects the
+project. - Well defined problem statement. Provides exceptionally clear
+context supporting rationale for project; clear statement of why project
+is needed. - Objectives - highly reflect the following elements: a.
+Specific b. Measurable c.~Achievable d.~Realistic e. Timeliness
+f.~Well-defined project scope. & Working title that reflects the
+project.  Clear problem statement. Provides clear context supporting
+rationale for project; clear statement of why project is needed. 
+Objectives - clearly reflect the following elements: a. Specific b.
+Measurable c.~Achievable d.~Realistic e. Timeliness  Clear project
+scope. & Appropriate working title that reflects the project.  Adequate
+problem statement. Provides context supporting rationale for project;
+statement of why project is needed.  Objectives - adequately reflect
+the following elements: a. Specific b. Measurable c.~Achievable
+d.~Realistic e. Timeliness  Adequate project scope. & Inappropriate
+working title that reflects the project.  Unclear problem statement,
+poor statement of context supporting rationale for project, statement of
+why project is needed.  Objectives - does not reflect the following
+elements: a. Specific b. Measurable c.~Achievable d.~Realistic e.
+Timeliness  Not well-defined project scope. \\
+2 & \textbf{Literature Review} & Thorough review of relevant and
+empirical sources, citing seminal works in the field. Exemplary
+synthesis and organization of literature that is clearly linked to
+project question. Specific attention to diversity issues pertaining to
+project topic. & Good review of relevant and empirical sources, citing
+seminal works in the field. Good synthesis and organization of
+literature that is clearly linked to project question. Attention to
+diversity issues pertaining to project topic. & Adequate review of
+relevant and empirical sources. Adequate synthesis and organization of
+literature that is linked to project question. Some attention to
+diversity issues pertaining to project topic. & Incomplete or poorly
+developed review ofliterature; problems withorganization; weak linkage
+toproject topic. \\
+3 & \textbf{Methodology} & Highly reflects the following elements: 1.
+Reference population and samples 2. Design 3. Sampling techniques 4.
+Instrument tools 5. Methods 6. Operational Definition 7. Flow Chart &
+Clearly reflects the following elements:  Reference population and
+samples  Design  Sampling techniques  Instrument tools  Methods 
+Operational Definition  Flow Chart & Adequately reflects the following
+elements:  Reference population and samples  Design  Sampling
+techniques  Instrument tools  Methods  Operational Definition  Flow
+Chart & Poorly reflects the following elements:  Reference population
+and samples  Design  Sampling techniques  Instrument tool  Methods 
+Operational Definition  Flow Chart \\
+4 & \textbf{Results/Findings} & Professional looking and accurate
+representation of the result in tables and/or graphs. Graphs and tables
+are labeled and titled. Critical analysis of the results. & Accurate
+representation of the result in tables and/or graphs. Graphs and tables
+are labeled and titled. Contain some result analysis. & Accurate
+representations of the result in written form, but no graphs or tables
+are presented. & Results are not shown or are inaccurate. \\
+5 & \textbf{Conclusion and Recommendations} & Conclusion includes the
+findings, lesson learned from the project. Future recommendations to
+real life situations are highly stated. & Conclusion includes the
+findings and lesson learned from the project. Recommendations for future
+work are stated. & Conclusion includes the findings or lesson learned
+from the project. Some recommendations for future work are stated. & No
+conclusion or recommendations were included in the report. \\
+6 & \textbf{Report Presentation} & The report is well structured and
+organized following the standard research reporting procedure/format.
+Sentences are complete and grammatical, and theyflow together easily.
+All figures, graphs, charts and drawings are accurate, consistent with
+the text and of good quality. & The report is structured and organized
+following the standard research reporting procedure/format. Sentences
+are complete with minor grammatical errors. Figures, graphs, charts and
+drawings are not accurate but consistent with the text. & The report is
+poorly structured and organized but following the standard research
+reporting procedure/format. Sentences are complete with major
+grammatical errors. Figures, graphs, charts and drawings are not
+accurate and not consistent with the text. & The report does not follow
+the standard research reporting procedure/format. Poor grammar
+structure. All figures, graphs, charts and drawings are of bad
+quality. \\
+7 & \textbf{References and Citations} & Contain relevant references and
+citations. & Contain some relevant references and citations. & Contain a
+few relevant references and citations. & Contain irrelevant references
+and very few citations. \\
+\end{longtable}
+
+\end{document}
