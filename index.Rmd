@@ -1,8 +1,7 @@
 ---
 title: "Learn R"
-output:
-  pdf_document: default
-  html_document: default
+output: rmdformats::readthedown
+  toc:true
 ---
 
 <style type="text/css">
@@ -43,15 +42,5 @@ kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total
 Back to main website [_Miss Sue_](https://sites.google.com/view/suriyatiujang/home?authuser=0)
 
 
-</div>
-<div class="col-sm-6">
-
-
-
-
-<a href = "https://sites.google.com/view/suriyatiujang/home">
-![](images/logo.png)
-</a>
-</div>
 
 

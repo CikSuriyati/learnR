@@ -1,332 +1,310 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
 
-<html>
+    
+        <meta name="date" content="2023-09-04" />
+    
+    <title>Topic 1: Introduction to R language</title>
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-<meta name="date" content="2023-08-08" />
-
-<title>Topic 1: Introduction to R language</title>
-
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
+        <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+        <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
     </style>
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+    <!-- tabsets dropdown -->
 
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
 
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
 
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
 </head>
 
-<body>
+<body class="preload">
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Learn R</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Introduction to Statistical Programming
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Topic 1: Introduction to R language</li>
-    <li>
-      <a href="page-a.html">Week 1</a>
-    </li>
-    <li>
-      <a href="page-b.html">Week 2</a>
-    </li>
-    <li class="dropdown-header">Topic 2: Programming with R</li>
-    <li>
-      <a href="page-c.html">Week 3</a>
-    </li>
-    <li>
-      <a href="page-d.html">Week 4</a>
-    </li>
-    <li class="dropdown-header">Topic 3: Importing data into R</li>
-    <li>
-      <a href="page-e.html">Week 5</a>
-    </li>
-    <li class="dropdown-header">Topic 4: Programming statistical graphics</li>
-    <li>
-      <a href="page-f.html">Week 6</a>
-    </li>
-    <li>
-      <a href="page-g.html">Week 7</a>
-    </li>
-    <li class="dropdown-header">Topic 5: Data Cleaning and filtering</li>
-    <li>
-      <a href="page-h.html">Week 8</a>
-    </li>
-    <li>
-      <a href="page-i.html">Week 9</a>
-    </li>
-    <li class="dropdown-header">Topic 6: Basic Statistical Analysis</li>
-    <li>
-      <a href="page-j.html">Week 10</a>
-    </li>
-    <li>
-      <a href="page-k.html">Week 11</a>
-    </li>
-    <li>
-      <a href="page-l.html">Week 12</a>
-    </li>
-    <li>
-      <a href="page-m.html">Week 13</a>
-    </li>
-    <li>
-      <a href="page-n.html">Week 14</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="Journal.html">Tutorial</a>
-</li>
-<li>
-  <a href="Links.html">Links</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Learn R</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Introduction to Statistical Programming
+           
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li class="dropdown-header">Topic 1: Introduction to R language</li>
+          <li>
+            <a href="sow.html">Sheme of Work</a>
+          </li>
+          <li>
+            <a href="page-a.html">Week 1</a>
+          </li>
+          <li>
+            <a href="page-b.html">Week 2</a>
+          </li>
+          <li class="dropdown-header">Topic 2: Programming with R</li>
+          <li>
+            <a href="page-c.html">Week 3</a>
+          </li>
+          <li>
+            <a href="page-d.html">Week 4</a>
+          </li>
+          <li class="dropdown-header">Topic 3: Importing data into R</li>
+          <li>
+            <a href="page-e.html">Week 5</a>
+          </li>
+          <li class="dropdown-header">Topic 4: Programming statistical graphics</li>
+          <li>
+            <a href="page-f.html">Week 6</a>
+          </li>
+          <li>
+            <a href="page-g.html">Week 7</a>
+          </li>
+          <li class="dropdown-header">Topic 5: Data Cleaning and filtering</li>
+          <li>
+            <a href="page-h.html">Week 8</a>
+          </li>
+          <li>
+            <a href="page-i.html">Week 9</a>
+          </li>
+          <li class="dropdown-header">Topic 6: Basic Statistical Analysis</li>
+          <li>
+            <a href="page-j.html">Week 10</a>
+          </li>
+          <li>
+            <a href="page-k.html">Week 11</a>
+          </li>
+          <li>
+            <a href="page-l.html">Week 12</a>
+          </li>
+          <li>
+            <a href="page-m.html">Week 13</a>
+          </li>
+          <li>
+            <a href="page-n.html">Week 14</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="Journal.html">Tutorial</a>
+      </li>
+      <li>
+        <a href="Links.html">Links</a>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
         
+      <h1 class="title">Topic 1: Introduction to R language</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Topic 1: Introduction to R language</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#section" id="toc-section"></a>
+      <ul>
+      <li><a href="#objects-in-r" id="toc-objects-in-r">Objects in
+      R</a></li>
+      <li><a href="#vectors" id="toc-vectors">Vectors</a></li>
+      <li><a href="#lists" id="toc-lists">Lists</a></li>
+      <li><a href="#matrices" id="toc-matrices">Matrices</a></li>
+      <li><a href="#arrays" id="toc-arrays">Arrays</a></li>
+      <li><a href="#data-frame" id="toc-data-frame">Data Frame</a></li>
+      <li><a href="#factors" id="toc-factors">Factors</a></li>
+      <li><a href="#arithmetic-with-r"
+      id="toc-arithmetic-with-r">Arithmetic with R</a></li>
+      </ul></li>
       </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                  <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-09-04</p>
+          </div>
+   </div>
+     
 
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Topic 1: Introduction to R language</h1>
-<h4 class="date">2023-08-08</h4>
-
-</div>
-
-
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
 <p>In this topic in week 2 , you will learn about :</p>
 <ul>
 <li>Data frames and list</li>
@@ -372,22 +350,22 @@ vector only holds data of a single data type.</p>
 objects, for example</p>
 <p><strong>class( )</strong> - what kind of object is it
 (high-level)?</p>
-<pre class="r"><code>x &lt;- 3L
-class(x)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> 3L</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p><strong>typeof( )</strong> - what is the object’s data type
 (low-level)?</p>
-<pre class="r"><code>x &lt;- 3L
-typeof(x)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> 3L</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p><strong>length( )</strong> - how long is it? What about two
 dimensional objects?</p>
-<pre class="r"><code>x &lt;- 3L
-length(x)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> 3L</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p><strong>attributes( )</strong> - does it have any metadata?</p>
-<pre class="r"><code>x &lt;- 3L
-attributes(x)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> 3L</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">attributes</span>(x)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Below are examples of atomic character vectors, numeric vectors,
 integer vectors, etc.</p>
@@ -416,49 +394,49 @@ programming. In R, <span style="color: blue;">a sequence of elements
 which share the same data type is known as vector</span>. A vector
 supports logical, integer, double, character, complex, or raw data
 type.</p>
-<pre class="r"><code># Atomic vector of type character.
-print(&quot;ali&quot;);</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Atomic vector of type character.</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;ali&quot;</span>);</span></code></pre></div>
 <pre><code>## [1] &quot;ali&quot;</code></pre>
-<pre class="r"><code># Atomic vector of type double.
-print(2.5)</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Atomic vector of type double.</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fl">2.5</span>)</span></code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
-<pre class="r"><code># Atomic vector of type integer.
-print(3L)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Atomic vector of type integer.</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">print</span>(3L)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<pre class="r"><code># Atomic vector of type logical.
-print(TRUE)</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Atomic vector of type logical.</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">print</span>(<span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code># Atomic vector of type complex.
-print(1+3i)</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Atomic vector of type complex.</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">print</span>(<span class="dv">1</span><span class="sc">+</span>3i)</span></code></pre></div>
 <pre><code>## [1] 1+3i</code></pre>
-<pre class="r"><code># Atomic vector of type raw.
-print(charToRaw(&#39;hello&#39;))</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Atomic vector of type raw.</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">charToRaw</span>(<span class="st">&#39;hello&#39;</span>))</span></code></pre></div>
 <pre><code>## [1] 68 65 6c 6c 6f</code></pre>
 <p><strong>1. Multiple Elements Vector</strong>.</p>
 <p><span style="color: blue;">Using colon operator (:) with numeric
 data</span></p>
-<pre class="r"><code># Creating a sequence from 4 to 23.
-v &lt;- 4:12
-print(v)</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Creating a sequence from 4 to 23.</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>## [1]  4  5  6  7  8  9 10 11 12</code></pre>
-<pre class="r"><code># Creating a sequence from 3.6 to 9.6.
-v &lt;- 3.6:9.6
-print(v)</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Creating a sequence from 3.6 to 9.6.</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fl">3.6</span><span class="sc">:</span><span class="fl">9.6</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>## [1] 3.6 4.6 5.6 6.6 7.6 8.6 9.6</code></pre>
-<pre class="r"><code># If the final element specified does not belong to the sequence then it is discarded.
-v &lt;- 4.8:10.4
-print(v)</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># If the final element specified does not belong to the sequence then it is discarded.</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fl">4.8</span><span class="sc">:</span><span class="fl">10.4</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>## [1] 4.8 5.8 6.8 7.8 8.8 9.8</code></pre>
 <p><span style="color: blue;">Using sequence (seq.) operator</span></p>
-<pre class="r"><code># Create vector with elements from 5 to 9 incrementing by 0.4.
-print(seq(5, 9, by = 0.4))</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># Create vector with elements from 5 to 9 incrementing by 0.4.</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">9</span>, <span class="at">by =</span> <span class="fl">0.4</span>))</span></code></pre></div>
 <pre><code>##  [1] 5.0 5.4 5.8 6.2 6.6 7.0 7.4 7.8 8.2 8.6 9.0</code></pre>
 <p><span style="color: blue;">Using the c( ) function</span>.</p>
 <p>The non-character values are coerced to character type if one of the
 elements is a character.</p>
-<pre class="r"><code># The logical and numeric values are converted to characters.
-s &lt;- c(&#39;apple&#39;,&#39;red&#39;,4,TRUE)
-print(s)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># The logical and numeric values are converted to characters.</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="dv">4</span>,<span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="fu">print</span>(s)</span></code></pre></div>
 <pre><code>## [1] &quot;apple&quot; &quot;red&quot;   &quot;4&quot;     &quot;TRUE&quot;</code></pre>
 <p><strong>2. Accessing Vector Elements</strong></p>
 <p>Elements of a Vector are accessed using indexing. The <strong>[ ]
@@ -466,81 +444,81 @@ brackets</strong> are used for indexing. Indexing starts with position
 1. Giving a negative value in the index drops that element from
 result.<strong>TRUE, FALSE</strong> or <strong>0</strong> and
 <strong>1</strong> can also be used for indexing.</p>
-<pre class="r"><code># Accessing vector elements using position.
-t &lt;- c(&quot;Sun&quot;,&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thurs&quot;,&quot;Fri&quot;,&quot;Sat&quot;)
-u &lt;- t[c(1,2,5)]
-print(u)</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># Accessing vector elements using position.</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sun&quot;</span>,<span class="st">&quot;Mon&quot;</span>,<span class="st">&quot;Tue&quot;</span>,<span class="st">&quot;Wed&quot;</span>,<span class="st">&quot;Thurs&quot;</span>,<span class="st">&quot;Fri&quot;</span>,<span class="st">&quot;Sat&quot;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>u <span class="ot">&lt;-</span> t[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)]</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="fu">print</span>(u)</span></code></pre></div>
 <pre><code>## [1] &quot;Sun&quot;   &quot;Mon&quot;   &quot;Thurs&quot;</code></pre>
-<pre class="r"><code># Accessing vector elements using logical indexing.
-v &lt;- t[c(TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE)]
-print(v)</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># Accessing vector elements using logical indexing.</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> t[<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>)]</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>## [1] &quot;Sun&quot; &quot;Fri&quot;</code></pre>
-<pre class="r"><code># Accessing vector elements using negative indexing.
-x &lt;- t[c(-3,-6)]
-print(x)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># Accessing vector elements using negative indexing.</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> t[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">6</span>)]</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;Sun&quot;   &quot;Mon&quot;   &quot;Wed&quot;   &quot;Thurs&quot; &quot;Sat&quot;</code></pre>
-<pre class="r"><code># Accessing vector elements using 0/1 indexing.
-y &lt;- t[c(0,0,0,0,0,0,1)]
-print(y)</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co"># Accessing vector elements using 0/1 indexing.</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> t[<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)]</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;Sun&quot;</code></pre>
 <p><strong>3. Vector Manipulation</strong>.</p>
 <p><strong>Vector arithmetic</strong>.</p>
 <p>Two vectors of same length can be added, subtracted, multiplied or
 divided giving the result as a vector output.</p>
-<pre class="r"><code># Create two vectors.
-v1 &lt;- c(2,8,4,4,0,10)
-v2 &lt;- c(3,11,0,7,1,3)
-
-# Vector addition.
-add &lt;- v1+v2
-print(add)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># Create two vectors.</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">10</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="co"># Vector addition.</span></span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a>add <span class="ot">&lt;-</span> v1<span class="sc">+</span>v2</span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a><span class="fu">print</span>(add)</span></code></pre></div>
 <pre><code>## [1]  5 19  4 11  1 13</code></pre>
-<pre class="r"><code># Vector subtraction.
-sub &lt;- v1-v2
-print(sub)</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="co"># Vector subtraction.</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>sub <span class="ot">&lt;-</span> v1<span class="sc">-</span>v2</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="fu">print</span>(sub)</span></code></pre></div>
 <pre><code>## [1] -1 -3  4 -3 -1  7</code></pre>
-<pre class="r"><code># Vector multiplication.
-multi &lt;- v1*v2
-print(multi)</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># Vector multiplication.</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>multi <span class="ot">&lt;-</span> v1<span class="sc">*</span>v2</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="fu">print</span>(multi)</span></code></pre></div>
 <pre><code>## [1]  6 88  0 28  0 30</code></pre>
-<pre class="r"><code># Vector division.
-divi &lt;- v1/v2
-print(divi)</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># Vector division.</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>divi <span class="ot">&lt;-</span> v1<span class="sc">/</span>v2</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="fu">print</span>(divi)</span></code></pre></div>
 <pre><code>## [1] 0.6666667 0.7272727       Inf 0.5714286 0.0000000 3.3333333</code></pre>
 <p><strong>Vector Element Recycling</strong></p>
 <p>If we apply arithmetic operations to two vectors of unequal length,
 then the elements of the shorter vector are recycled to complete the
 operations.</p>
-<pre class="r"><code>v1 &lt;- c(3,8,4,5,0,11)
-v2 &lt;- c(4,11)
-# V2 becomes c(4,11,4,11,4,11)
-
-add.result &lt;- v1+v2
-print(add.result)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">11</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">11</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a><span class="co"># V2 becomes c(4,11,4,11,4,11)</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>add.result <span class="ot">&lt;-</span> v1<span class="sc">+</span>v2</span>
+<span id="cb47-6"><a href="#cb47-6" tabindex="-1"></a><span class="fu">print</span>(add.result)</span></code></pre></div>
 <pre><code>## [1]  7 19  8 16  4 22</code></pre>
-<pre class="r"><code>sub.result &lt;- v1-v2
-print(sub.result)</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>sub.result <span class="ot">&lt;-</span> v1<span class="sc">-</span>v2</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a><span class="fu">print</span>(sub.result)</span></code></pre></div>
 <pre><code>## [1] -1 -3  0 -6 -4  0</code></pre>
 <p><strong>Vector Element Sorting</strong></p>
 <p>Elements in a vector can be sorted using the sort() function.</p>
-<pre class="r"><code>v &lt;- c(3,8,4,5,0,11, -9, 304)
-
-# Sort the elements of the vector.
-sort1 &lt;- sort(v)
-print(sort1)</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">11</span>, <span class="sc">-</span><span class="dv">9</span>, <span class="dv">304</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a><span class="co"># Sort the elements of the vector.</span></span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a>sort1 <span class="ot">&lt;-</span> <span class="fu">sort</span>(v)</span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a><span class="fu">print</span>(sort1)</span></code></pre></div>
 <pre><code>## [1]  -9   0   3   4   5   8  11 304</code></pre>
-<pre class="r"><code># Sort the elements in the reverse order.
-revsort &lt;- sort(v, decreasing = TRUE)
-print(revsort)</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="co"># Sort the elements in the reverse order.</span></span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>revsort <span class="ot">&lt;-</span> <span class="fu">sort</span>(v, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a><span class="fu">print</span>(revsort)</span></code></pre></div>
 <pre><code>## [1] 304  11   8   5   4   3   0  -9</code></pre>
-<pre class="r"><code># Sorting character vectors.
-v &lt;- c(&quot;Red&quot;,&quot;Blue&quot;,&quot;yellow&quot;,&quot;violet&quot;)
-sort2 &lt;- sort(v)
-print(sort2)</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="co"># Sorting character vectors.</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Red&quot;</span>,<span class="st">&quot;Blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;violet&quot;</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>sort2 <span class="ot">&lt;-</span> <span class="fu">sort</span>(v)</span>
+<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a><span class="fu">print</span>(sort2)</span></code></pre></div>
 <pre><code>## [1] &quot;Blue&quot;   &quot;Red&quot;    &quot;violet&quot; &quot;yellow&quot;</code></pre>
-<pre class="r"><code># Sorting character vectors in reverse order.
-revsort &lt;- sort(v, decreasing = TRUE)
-print(revsort)</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="co"># Sorting character vectors in reverse order.</span></span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>revsort <span class="ot">&lt;-</span> <span class="fu">sort</span>(v, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a><span class="fu">print</span>(revsort)</span></code></pre></div>
 <pre><code>## [1] &quot;yellow&quot; &quot;violet&quot; &quot;Red&quot;    &quot;Blue&quot;</code></pre>
 </div>
 <div id="lists" class="section level2">
@@ -552,10 +530,10 @@ using <strong>list()</strong> function.</p>
 <p><strong>1. Creating a List</strong></p>
 <p>Following is an example to create a list containing strings, numbers,
 vectors and a logical values.</p>
-<pre class="r"><code># Create a list containing strings, numbers, vectors and a logical
-# values.
-list_data &lt;- list(&quot;Red&quot;, &quot;Green&quot;, c(21,32,11), TRUE, 51.23, 119.1)
-print(list_data)</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="co"># Create a list containing strings, numbers, vectors and a logical</span></span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a><span class="co"># values.</span></span>
+<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a>list_data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;Red&quot;</span>, <span class="st">&quot;Green&quot;</span>, <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">32</span>,<span class="dv">11</span>), <span class="cn">TRUE</span>, <span class="fl">51.23</span>, <span class="fl">119.1</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" tabindex="-1"></a><span class="fu">print</span>(list_data)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;Red&quot;
 ## 
@@ -576,15 +554,15 @@ print(list_data)</code></pre>
 <p><strong>2. Naming List Elements</strong></p>
 <p>The list elements can be given names and they can be accessed using
 these names.</p>
-<pre class="r"><code># Create a list containing a vector, a matrix and a list.
-list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
-   list(&quot;green&quot;,12.3))
-
-# Give names to the elements in the list.
-names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
-
-# Show the list.
-print(list_data)</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a><span class="co"># Create a list containing a vector, a matrix and a list.</span></span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>list_data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">8</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>   <span class="fu">list</span>(<span class="st">&quot;green&quot;</span>,<span class="fl">12.3</span>))</span>
+<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a><span class="co"># Give names to the elements in the list.</span></span>
+<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a><span class="fu">names</span>(list_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st Quarter&quot;</span>, <span class="st">&quot;A_Matrix&quot;</span>, <span class="st">&quot;A Inner list&quot;</span>)</span>
+<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" tabindex="-1"></a><span class="co"># Show the list.</span></span>
+<span id="cb61-9"><a href="#cb61-9" tabindex="-1"></a><span class="fu">print</span>(list_data)</span></code></pre></div>
 <pre><code>## $`1st Quarter`
 ## [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot;
 ## 
@@ -604,27 +582,27 @@ print(list_data)</code></pre>
 the list. In case of named lists it can also be accessed using the
 names.</p>
 <p>We continue to use the list in the above example −</p>
-<pre class="r"><code># Create a list containing a vector, a matrix and a list.
-list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
-   list(&quot;green&quot;,12.3))
-
-# Give names to the elements in the list.
-names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
-
-# Access the first element of the list.
-print(list_data[1])</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="co"># Create a list containing a vector, a matrix and a list.</span></span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a>list_data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">8</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a>   <span class="fu">list</span>(<span class="st">&quot;green&quot;</span>,<span class="fl">12.3</span>))</span>
+<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" tabindex="-1"></a><span class="co"># Give names to the elements in the list.</span></span>
+<span id="cb63-6"><a href="#cb63-6" tabindex="-1"></a><span class="fu">names</span>(list_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st Quarter&quot;</span>, <span class="st">&quot;A_Matrix&quot;</span>, <span class="st">&quot;A Inner list&quot;</span>)</span>
+<span id="cb63-7"><a href="#cb63-7" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" tabindex="-1"></a><span class="co"># Access the first element of the list.</span></span>
+<span id="cb63-9"><a href="#cb63-9" tabindex="-1"></a><span class="fu">print</span>(list_data[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## $`1st Quarter`
 ## [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot;</code></pre>
-<pre class="r"><code># Access the thrid element. As it is also a list, all its elements will be printed.
-print(list_data[3])</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="co"># Access the thrid element. As it is also a list, all its elements will be printed.</span></span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a><span class="fu">print</span>(list_data[<span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## $`A Inner list`
 ## $`A Inner list`[[1]]
 ## [1] &quot;green&quot;
 ## 
 ## $`A Inner list`[[2]]
 ## [1] 12.3</code></pre>
-<pre class="r"><code># Access the list element using the name of the element.
-print(list_data$A_Matrix)</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="co"># Access the list element using the name of the element.</span></span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a><span class="fu">print</span>(list_data<span class="sc">$</span>A_Matrix)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3    5   -2
 ## [2,]    9    1    8</code></pre>
@@ -632,42 +610,42 @@ print(list_data$A_Matrix)</code></pre>
 <p>We can add, delete and update list elements as shown below. We can
 add and delete elements only at the end of a list. But we can update any
 element.</p>
-<pre class="r"><code># Create a list containing a vector, a matrix and a list.
-list_data &lt;- list(c(&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;), matrix(c(3,9,5,1,-2,8), nrow = 2),
-   list(&quot;green&quot;,12.3))
-
-# Give names to the elements in the list.
-names(list_data) &lt;- c(&quot;1st Quarter&quot;, &quot;A_Matrix&quot;, &quot;A Inner list&quot;)
-
-# Add element at the end of the list.
-list_data[4] &lt;- &quot;New element&quot;
-print(list_data[4])</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="co"># Create a list containing a vector, a matrix and a list.</span></span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a>list_data <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Feb&quot;</span>,<span class="st">&quot;Mar&quot;</span>), <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">8</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>   <span class="fu">list</span>(<span class="st">&quot;green&quot;</span>,<span class="fl">12.3</span>))</span>
+<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a><span class="co"># Give names to the elements in the list.</span></span>
+<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a><span class="fu">names</span>(list_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1st Quarter&quot;</span>, <span class="st">&quot;A_Matrix&quot;</span>, <span class="st">&quot;A Inner list&quot;</span>)</span>
+<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a></span>
+<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a><span class="co"># Add element at the end of the list.</span></span>
+<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a>list_data[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">&quot;New element&quot;</span></span>
+<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a><span class="fu">print</span>(list_data[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;New element&quot;</code></pre>
-<pre class="r"><code># Remove the last element.
-list_data[4] &lt;- NULL
-
-# Print the 4th Element.
-print(list_data[4])</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="co"># Remove the last element.</span></span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a>list_data[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" tabindex="-1"></a><span class="co"># Print the 4th Element.</span></span>
+<span id="cb71-5"><a href="#cb71-5" tabindex="-1"></a><span class="fu">print</span>(list_data[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## $&lt;NA&gt;
 ## NULL</code></pre>
-<pre class="r"><code># Update the 3rd Element.
-list_data[3] &lt;- &quot;updated element&quot;
-print(list_data[3])</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="co"># Update the 3rd Element.</span></span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>list_data[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;updated element&quot;</span></span>
+<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a><span class="fu">print</span>(list_data[<span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## $`A Inner list`
 ## [1] &quot;updated element&quot;</code></pre>
 <p><strong>5. Merging Lists</strong></p>
 <p>You can merge many lists into one list by placing all the lists
 inside one list() function.</p>
-<pre class="r"><code># Create two lists.
-list1 &lt;- list(1,2,3)
-list2 &lt;- list(&quot;Sun&quot;,&quot;Mon&quot;,&quot;Tue&quot;)
-
-# Merge the two lists.
-merged.list &lt;- c(list1,list2)
-
-# Print the merged list.
-print(merged.list)</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a><span class="co"># Create two lists.</span></span>
+<span id="cb75-2"><a href="#cb75-2" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb75-3"><a href="#cb75-3" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;Sun&quot;</span>,<span class="st">&quot;Mon&quot;</span>,<span class="st">&quot;Tue&quot;</span>)</span>
+<span id="cb75-4"><a href="#cb75-4" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="#cb75-5" tabindex="-1"></a><span class="co"># Merge the two lists.</span></span>
+<span id="cb75-6"><a href="#cb75-6" tabindex="-1"></a>merged.list <span class="ot">&lt;-</span> <span class="fu">c</span>(list1,list2)</span>
+<span id="cb75-7"><a href="#cb75-7" tabindex="-1"></a></span>
+<span id="cb75-8"><a href="#cb75-8" tabindex="-1"></a><span class="co"># Print the merged list.</span></span>
+<span id="cb75-9"><a href="#cb75-9" tabindex="-1"></a><span class="fu">print</span>(merged.list)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1
 ## 
@@ -691,26 +669,26 @@ vector can be used for further manipulation. All the arithmetic
 operations on vectors can be applied after the list is converted into
 vectors. To do this conversion, we use the unlist() function. It takes
 the list as input and produces a vector.</p>
-<pre class="r"><code># Create lists.
-list1 &lt;- list(1:5)
-print(list1)</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="co"># Create lists.</span></span>
+<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb77-3"><a href="#cb77-3" tabindex="-1"></a><span class="fu">print</span>(list1)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>list2 &lt;-list(10:14)
-print(list2)</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a>list2 <span class="ot">&lt;-</span><span class="fu">list</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">14</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" tabindex="-1"></a><span class="fu">print</span>(list2)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 10 11 12 13 14</code></pre>
-<pre class="r"><code># Convert the lists to vectors.
-v1 &lt;- unlist(list1)
-v2 &lt;- unlist(list2)
-
-print(v1)</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="co"># Convert the lists to vectors.</span></span>
+<span id="cb81-2"><a href="#cb81-2" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">unlist</span>(list1)</span>
+<span id="cb81-3"><a href="#cb81-3" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">unlist</span>(list2)</span>
+<span id="cb81-4"><a href="#cb81-4" tabindex="-1"></a></span>
+<span id="cb81-5"><a href="#cb81-5" tabindex="-1"></a><span class="fu">print</span>(v1)</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>print(v2)</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a><span class="fu">print</span>(v2)</span></code></pre></div>
 <pre><code>## [1] 10 11 12 13 14</code></pre>
-<pre class="r"><code># Now add the vectors
-result &lt;- v1+v2
-print(result)</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="co"># Now add the vectors</span></span>
+<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> v1<span class="sc">+</span>v2</span>
+<span id="cb85-3"><a href="#cb85-3" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## [1] 11 13 15 17 19</code></pre>
 </div>
 <div id="matrices" class="section level2">
@@ -736,28 +714,28 @@ arranged by row.</li>
 </ul>
 <p><strong>Example</strong></p>
 <p>Create a matrix taking a vector of numbers as input.</p>
-<pre class="r"><code># Elements are arranged sequentially by row.
-M &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE)
-print(M)</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a><span class="co"># Elements are arranged sequentially by row.</span></span>
+<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">14</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb87-3"><a href="#cb87-3" tabindex="-1"></a><span class="fu">print</span>(M)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3    4    5
 ## [2,]    6    7    8
 ## [3,]    9   10   11
 ## [4,]   12   13   14</code></pre>
-<pre class="r"><code># Elements are arranged sequentially by column.
-N &lt;- matrix(c(3:14), nrow = 4, byrow = FALSE)
-print(N)</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a><span class="co"># Elements are arranged sequentially by column.</span></span>
+<span id="cb89-2"><a href="#cb89-2" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">14</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb89-3"><a href="#cb89-3" tabindex="-1"></a><span class="fu">print</span>(N)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3    7   11
 ## [2,]    4    8   12
 ## [3,]    5    9   13
 ## [4,]    6   10   14</code></pre>
-<pre class="r"><code># Define the column and row names.
-rownames = c(&quot;row1&quot;, &quot;row2&quot;, &quot;row3&quot;, &quot;row4&quot;)
-colnames = c(&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;)
-
-P &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
-print(P)</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a><span class="co"># Define the column and row names.</span></span>
+<span id="cb91-2"><a href="#cb91-2" tabindex="-1"></a>rownames <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>, <span class="st">&quot;row4&quot;</span>)</span>
+<span id="cb91-3"><a href="#cb91-3" tabindex="-1"></a>colnames <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>, <span class="st">&quot;col3&quot;</span>)</span>
+<span id="cb91-4"><a href="#cb91-4" tabindex="-1"></a></span>
+<span id="cb91-5"><a href="#cb91-5" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">14</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(rownames, colnames))</span>
+<span id="cb91-6"><a href="#cb91-6" tabindex="-1"></a><span class="fu">print</span>(P)</span></code></pre></div>
 <pre><code>##      col1 col2 col3
 ## row1    3    4    5
 ## row2    6    7    8
@@ -768,25 +746,25 @@ Matrix</strong></span></p>
 <p>Elements of a matrix can be accessed by using the column and row
 index of the element. We consider the matrix P above to find the
 specific elements below.</p>
-<pre class="r"><code># Define the column and row names.
-rownames = c(&quot;row1&quot;, &quot;row2&quot;, &quot;row3&quot;, &quot;row4&quot;)
-colnames = c(&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;)
-
-# Create the matrix.
-P &lt;- matrix(c(3:14), nrow = 4, byrow = TRUE, dimnames = list(rownames, colnames))
-
-# Access the element at 3rd column and 1st row.
-print(P[1,3])</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a><span class="co"># Define the column and row names.</span></span>
+<span id="cb93-2"><a href="#cb93-2" tabindex="-1"></a>rownames <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>, <span class="st">&quot;row4&quot;</span>)</span>
+<span id="cb93-3"><a href="#cb93-3" tabindex="-1"></a>colnames <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>, <span class="st">&quot;col3&quot;</span>)</span>
+<span id="cb93-4"><a href="#cb93-4" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="#cb93-5" tabindex="-1"></a><span class="co"># Create the matrix.</span></span>
+<span id="cb93-6"><a href="#cb93-6" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">14</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(rownames, colnames))</span>
+<span id="cb93-7"><a href="#cb93-7" tabindex="-1"></a></span>
+<span id="cb93-8"><a href="#cb93-8" tabindex="-1"></a><span class="co"># Access the element at 3rd column and 1st row.</span></span>
+<span id="cb93-9"><a href="#cb93-9" tabindex="-1"></a><span class="fu">print</span>(P[<span class="dv">1</span>,<span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<pre class="r"><code># Access the element at 2nd column and 4th row.
-print(P[4,2])</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a><span class="co"># Access the element at 2nd column and 4th row.</span></span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a><span class="fu">print</span>(P[<span class="dv">4</span>,<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<pre class="r"><code># Access only the  2nd row.
-print(P[2,])</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a><span class="co"># Access only the  2nd row.</span></span>
+<span id="cb97-2"><a href="#cb97-2" tabindex="-1"></a><span class="fu">print</span>(P[<span class="dv">2</span>,])</span></code></pre></div>
 <pre><code>## col1 col2 col3 
 ##    6    7    8</code></pre>
-<pre class="r"><code># Access only the 3rd column.
-print(P[,3])</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" tabindex="-1"></a><span class="co"># Access only the 3rd column.</span></span>
+<span id="cb99-2"><a href="#cb99-2" tabindex="-1"></a><span class="fu">print</span>(P[,<span class="dv">3</span>])</span></code></pre></div>
 <pre><code>## row1 row2 row3 row4 
 ##    5    8   11   14</code></pre>
 <p><span style="color: blue;"><strong>Matrix
@@ -797,59 +775,71 @@ the R operators. The result of the operation is also a matrix.</p>
 matrices involved in the operation.</p>
 <p><span style="color: blue;"><strong>1. Matrix Addition &amp;
 Subtraction</strong></span></p>
-<pre class="r"><code># Create two 2x3 matrices.
-matrix1 &lt;- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
-print(matrix1)</code></pre>
+<div class="sourceCode" id="cb101"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a><span class="co"># Create two 2x3 matrices.</span></span>
+<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a>matrix1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb101-3"><a href="#cb101-3" tabindex="-1"></a><span class="fu">print</span>(matrix1)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3   -1    2
 ## [2,]    9    4    6</code></pre>
-<pre class="r"><code>matrix2 &lt;- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
-print(matrix2)</code></pre>
+<div class="sourceCode" id="cb103"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a>matrix2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb103-2"><a href="#cb103-2" tabindex="-1"></a><span class="fu">print</span>(matrix2)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    0    3
 ## [2,]    2    9    4</code></pre>
-<pre class="r"><code># Add the matrices.
-result &lt;- matrix1 + matrix2
-cat(&quot;Result of addition&quot;,&quot;\n&quot;)</code></pre>
+<div class="sourceCode" id="cb105"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a><span class="co"># Add the matrices.</span></span>
+<span id="cb105-2"><a href="#cb105-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> matrix1 <span class="sc">+</span> matrix2</span>
+<span id="cb105-3"><a href="#cb105-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Result of addition&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Result of addition</code></pre>
-<pre class="r"><code>print(result)</code></pre>
+<div class="sourceCode" id="cb107"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    8   -1    5
 ## [2,]   11   13   10</code></pre>
-<pre class="r"><code># Subtract the matrices
-result &lt;- matrix1 - matrix2
-cat(&quot;Result of subtraction&quot;,&quot;\n&quot;)</code></pre>
+<div class="sourceCode" id="cb109"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" tabindex="-1"></a><span class="co"># Subtract the matrices</span></span>
+<span id="cb109-2"><a href="#cb109-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> matrix1 <span class="sc">-</span> matrix2</span>
+<span id="cb109-3"><a href="#cb109-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Result of subtraction&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Result of subtraction</code></pre>
-<pre class="r"><code>print(result)</code></pre>
+<div class="sourceCode" id="cb111"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   -2   -1   -1
 ## [2,]    7   -5    2</code></pre>
 <p><span style="color: blue;"><strong>2. Matrix Multiplication &amp;
 Division</strong></span></p>
-<pre class="r"><code># Create two 2x3 matrices.
-matrix1 &lt;- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2)
-print(matrix1)</code></pre>
+<div class="sourceCode" id="cb113"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" tabindex="-1"></a><span class="co"># Create two 2x3 matrices.</span></span>
+<span id="cb113-2"><a href="#cb113-2" tabindex="-1"></a>matrix1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">6</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb113-3"><a href="#cb113-3" tabindex="-1"></a><span class="fu">print</span>(matrix1)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    3   -1    2
 ## [2,]    9    4    6</code></pre>
-<pre class="r"><code>matrix2 &lt;- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2)
-print(matrix2)</code></pre>
+<div class="sourceCode" id="cb115"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" tabindex="-1"></a>matrix2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb115-2"><a href="#cb115-2" tabindex="-1"></a><span class="fu">print</span>(matrix2)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    0    3
 ## [2,]    2    9    4</code></pre>
-<pre class="r"><code># Multiply the matrices.
-result &lt;- matrix1 * matrix2
-cat(&quot;Result of multiplication&quot;,&quot;\n&quot;)</code></pre>
+<div class="sourceCode" id="cb117"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" tabindex="-1"></a><span class="co"># Multiply the matrices.</span></span>
+<span id="cb117-2"><a href="#cb117-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> matrix1 <span class="sc">*</span> matrix2</span>
+<span id="cb117-3"><a href="#cb117-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Result of multiplication&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Result of multiplication</code></pre>
-<pre class="r"><code>print(result)</code></pre>
+<div class="sourceCode" id="cb119"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   15    0    6
 ## [2,]   18   36   24</code></pre>
-<pre class="r"><code># Divide the matrices
-result &lt;- matrix1 / matrix2
-cat(&quot;Result of division&quot;,&quot;\n&quot;)</code></pre>
+<div class="sourceCode" id="cb121"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a><span class="co"># Divide the matrices</span></span>
+<span id="cb121-2"><a href="#cb121-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> matrix1 <span class="sc">/</span> matrix2</span>
+<span id="cb121-3"><a href="#cb121-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Result of division&quot;</span>,<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Result of division</code></pre>
-<pre class="r"><code>print(result)</code></pre>
+<div class="sourceCode" id="cb123"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##      [,1]      [,2]      [,3]
 ## [1,]  0.6      -Inf 0.6666667
 ## [2,]  4.5 0.4444444 1.5000000</code></pre>
@@ -865,13 +855,14 @@ input and uses the values in the dim parameter to create an array.</p>
 <p><strong>Example</strong></p>
 <p>The following example creates an array of two 3x3 matrices each with
 3 rows and 3 columns.</p>
-<pre class="r"><code># Create two vectors of different lengths.
-vector1 &lt;- c(5,9,3)
-vector2 &lt;- c(10,11,12,13,14,15)
-
-# Take these vectors as input to the array.
-result &lt;- array(c(vector1,vector2),dim = c(3,3,2))
-print(result)</code></pre>
+<div class="sourceCode" id="cb125"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb125-2"><a href="#cb125-2" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb125-3"><a href="#cb125-3" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb125-4"><a href="#cb125-4" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="#cb125-5" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb125-6"><a href="#cb125-6" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb125-7"><a href="#cb125-7" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -889,17 +880,18 @@ print(result)</code></pre>
 Rows</strong></span></p>
 <p>We can give names to the rows, columns and matrices in the array by
 using the dimnames parameter.</p>
-<pre class="r"><code># Create two vectors of different lengths.
-vector1 &lt;- c(5,9,3)
-vector2 &lt;- c(10,11,12,13,14,15)
-column.names &lt;- c(&quot;COL1&quot;,&quot;COL2&quot;,&quot;COL3&quot;)
-row.names &lt;- c(&quot;ROW1&quot;,&quot;ROW2&quot;,&quot;ROW3&quot;)
-matrix.names &lt;- c(&quot;Matrix1&quot;,&quot;Matrix2&quot;)
-
-# Take these vectors as input to the array.
-result &lt;- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,column.names,
-   matrix.names))
-print(result)</code></pre>
+<div class="sourceCode" id="cb127"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb127-2"><a href="#cb127-2" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb127-3"><a href="#cb127-3" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb127-4"><a href="#cb127-4" tabindex="-1"></a>column.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
+<span id="cb127-5"><a href="#cb127-5" tabindex="-1"></a>row.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
+<span id="cb127-6"><a href="#cb127-6" tabindex="-1"></a>matrix.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
+<span id="cb127-7"><a href="#cb127-7" tabindex="-1"></a></span>
+<span id="cb127-8"><a href="#cb127-8" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb127-9"><a href="#cb127-9" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="at">dimnames =</span> <span class="fu">list</span>(row.names,column.names,</span>
+<span id="cb127-10"><a href="#cb127-10" tabindex="-1"></a>   matrix.names))</span>
+<span id="cb127-11"><a href="#cb127-11" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## , , Matrix1
 ## 
 ##      COL1 COL2 COL3
@@ -915,26 +907,29 @@ print(result)</code></pre>
 ## ROW3    3   12   15</code></pre>
 <p><span style="color: blue;"><strong>2. Accessing Array
 Elements</strong></span></p>
-<pre class="r"><code># Create two vectors of different lengths.
-vector1 &lt;- c(5,9,3)
-vector2 &lt;- c(10,11,12,13,14,15)
-column.names &lt;- c(&quot;COL1&quot;,&quot;COL2&quot;,&quot;COL3&quot;)
-row.names &lt;- c(&quot;ROW1&quot;,&quot;ROW2&quot;,&quot;ROW3&quot;)
-matrix.names &lt;- c(&quot;Matrix1&quot;,&quot;Matrix2&quot;)
-
-# Take these vectors as input to the array.
-result &lt;- array(c(vector1,vector2),dim = c(3,3,2),dimnames = list(row.names,
-   column.names, matrix.names))
-
-# Print the third row of the second matrix of the array.
-print(result[3,,2])</code></pre>
+<div class="sourceCode" id="cb129"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb129-2"><a href="#cb129-2" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb129-3"><a href="#cb129-3" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb129-4"><a href="#cb129-4" tabindex="-1"></a>column.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>,<span class="st">&quot;COL3&quot;</span>)</span>
+<span id="cb129-5"><a href="#cb129-5" tabindex="-1"></a>row.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ROW1&quot;</span>,<span class="st">&quot;ROW2&quot;</span>,<span class="st">&quot;ROW3&quot;</span>)</span>
+<span id="cb129-6"><a href="#cb129-6" tabindex="-1"></a>matrix.names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Matrix1&quot;</span>,<span class="st">&quot;Matrix2&quot;</span>)</span>
+<span id="cb129-7"><a href="#cb129-7" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="#cb129-8" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb129-9"><a href="#cb129-9" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="at">dimnames =</span> <span class="fu">list</span>(row.names,</span>
+<span id="cb129-10"><a href="#cb129-10" tabindex="-1"></a>   column.names, matrix.names))</span>
+<span id="cb129-11"><a href="#cb129-11" tabindex="-1"></a></span>
+<span id="cb129-12"><a href="#cb129-12" tabindex="-1"></a><span class="co"># Print the third row of the second matrix of the array.</span></span>
+<span id="cb129-13"><a href="#cb129-13" tabindex="-1"></a><span class="fu">print</span>(result[<span class="dv">3</span>,,<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## COL1 COL2 COL3 
 ##    3   12   15</code></pre>
-<pre class="r"><code># Print the element in the 1st row and 3rd column of the 1st matrix.
-print(result[1,3,1])</code></pre>
+<div class="sourceCode" id="cb131"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a><span class="co"># Print the element in the 1st row and 3rd column of the 1st matrix.</span></span>
+<span id="cb131-2"><a href="#cb131-2" tabindex="-1"></a><span class="fu">print</span>(result[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<pre class="r"><code># Print the 2nd Matrix.
-print(result[,,2])</code></pre>
+<div class="sourceCode" id="cb133"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" tabindex="-1"></a><span class="co"># Print the 2nd Matrix.</span></span>
+<span id="cb133-2"><a href="#cb133-2" tabindex="-1"></a><span class="fu">print</span>(result[,,<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>##      COL1 COL2 COL3
 ## ROW1    5   10   13
 ## ROW2    9   11   14
@@ -944,25 +939,26 @@ Elements</strong></span></p>
 <p>As array is made up matrices in multiple dimensions, the operations
 on elements of array are carried out by accessing elements of the
 matrices.</p>
-<pre class="r"><code># Create two vectors of different lengths.
-vector1 &lt;- c(5,9,3)
-vector2 &lt;- c(10,11,12,13,14,15)
-
-# Take these vectors as input to the array.
-array1 &lt;- array(c(vector1,vector2),dim = c(3,3,2))
-
-# Create two vectors of different lengths.
-vector3 &lt;- c(9,1,0)
-vector4 &lt;- c(6,0,11,3,14,1,2,6,9)
-array2 &lt;- array(c(vector1,vector2),dim = c(3,3,2))
-
-# create matrices from these arrays.
-matrix1 &lt;- array1[,,2]
-matrix2 &lt;- array2[,,2]
-
-# Add the matrices.
-result &lt;- matrix1+matrix2
-print(result)</code></pre>
+<div class="sourceCode" id="cb135"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb135-2"><a href="#cb135-2" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb135-3"><a href="#cb135-3" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb135-4"><a href="#cb135-4" tabindex="-1"></a></span>
+<span id="cb135-5"><a href="#cb135-5" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb135-6"><a href="#cb135-6" tabindex="-1"></a>array1 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb135-7"><a href="#cb135-7" tabindex="-1"></a></span>
+<span id="cb135-8"><a href="#cb135-8" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb135-9"><a href="#cb135-9" tabindex="-1"></a>vector3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb135-10"><a href="#cb135-10" tabindex="-1"></a>vector4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">3</span>,<span class="dv">14</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">9</span>)</span>
+<span id="cb135-11"><a href="#cb135-11" tabindex="-1"></a>array2 <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb135-12"><a href="#cb135-12" tabindex="-1"></a></span>
+<span id="cb135-13"><a href="#cb135-13" tabindex="-1"></a><span class="co"># create matrices from these arrays.</span></span>
+<span id="cb135-14"><a href="#cb135-14" tabindex="-1"></a>matrix1 <span class="ot">&lt;-</span> array1[,,<span class="dv">2</span>]</span>
+<span id="cb135-15"><a href="#cb135-15" tabindex="-1"></a>matrix2 <span class="ot">&lt;-</span> array2[,,<span class="dv">2</span>]</span>
+<span id="cb135-16"><a href="#cb135-16" tabindex="-1"></a></span>
+<span id="cb135-17"><a href="#cb135-17" tabindex="-1"></a><span class="co"># Add the matrices.</span></span>
+<span id="cb135-18"><a href="#cb135-18" tabindex="-1"></a>result <span class="ot">&lt;-</span> matrix1<span class="sc">+</span>matrix2</span>
+<span id="cb135-19"><a href="#cb135-19" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   10   20   26
 ## [2,]   18   22   28
@@ -983,13 +979,14 @@ array.</li>
 <p><strong>Example</strong></p>
 <p>We use the <strong>apply()</strong> function below to calculate the
 sum of the elements in the rows of an array across all the matrices</p>
-<pre class="r"><code># Create two vectors of different lengths.
-vector1 &lt;- c(5,9,3)
-vector2 &lt;- c(10,11,12,13,14,15)
-
-# Take these vectors as input to the array.
-new.array &lt;- array(c(vector1,vector2),dim = c(3,3,2))
-print(new.array)</code></pre>
+<div class="sourceCode" id="cb137"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" tabindex="-1"></a><span class="co"># Create two vectors of different lengths.</span></span>
+<span id="cb137-2"><a href="#cb137-2" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb137-3"><a href="#cb137-3" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb137-4"><a href="#cb137-4" tabindex="-1"></a></span>
+<span id="cb137-5"><a href="#cb137-5" tabindex="-1"></a><span class="co"># Take these vectors as input to the array.</span></span>
+<span id="cb137-6"><a href="#cb137-6" tabindex="-1"></a>new.array <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(vector1,vector2),<span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb137-7"><a href="#cb137-7" tabindex="-1"></a><span class="fu">print</span>(new.array)</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -1003,9 +1000,10 @@ print(new.array)</code></pre>
 ## [1,]    5   10   13
 ## [2,]    9   11   14
 ## [3,]    3   12   15</code></pre>
-<pre class="r"><code># Use apply to calculate the sum of the rows across all the matrices.
-result &lt;- apply(new.array, c(1), sum)
-print(result)</code></pre>
+<div class="sourceCode" id="cb139"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" tabindex="-1"></a><span class="co"># Use apply to calculate the sum of the rows across all the matrices.</span></span>
+<span id="cb139-2"><a href="#cb139-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">apply</span>(new.array, <span class="fu">c</span>(<span class="dv">1</span>), sum)</span>
+<span id="cb139-3"><a href="#cb139-3" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## [1] 56 68 60</code></pre>
 </div>
 <div id="data-frame" class="section level2">
@@ -1023,19 +1021,20 @@ character type.</li>
 </ul>
 <p><span style="color: blue;"><strong>1. Create Data
 Frame</strong></span></p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-  
-   stringsAsFactors = FALSE
-)
-# Print the data frame.         
-print(student.data) </code></pre>
+<div class="sourceCode" id="cb141"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb141-2"><a href="#cb141-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb141-3"><a href="#cb141-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb141-4"><a href="#cb141-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb141-5"><a href="#cb141-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb141-6"><a href="#cb141-6" tabindex="-1"></a>   </span>
+<span id="cb141-7"><a href="#cb141-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb141-8"><a href="#cb141-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb141-9"><a href="#cb141-9" tabindex="-1"></a>  </span>
+<span id="cb141-10"><a href="#cb141-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb141-11"><a href="#cb141-11" tabindex="-1"></a>)</span>
+<span id="cb141-12"><a href="#cb141-12" tabindex="-1"></a><span class="co"># Print the data frame.         </span></span>
+<span id="cb141-13"><a href="#cb141-13" tabindex="-1"></a><span class="fu">print</span>(student.data) </span></code></pre></div>
 <pre><code>##   std_id std_name pocketmoney start_date
 ## 1      1      Ali      623.30 2012-01-01
 ## 2      2      Abu      515.20 2013-09-23
@@ -1046,19 +1045,20 @@ print(student.data) </code></pre>
 Frame</strong></span></p>
 <p>The structure of the data frame can be seen by using str()
 function.</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-
-   stringsAsFactors = FALSE
-)
-# Get the structure of the data frame.
-str(student.data)</code></pre>
+<div class="sourceCode" id="cb143"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb143-2"><a href="#cb143-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb143-3"><a href="#cb143-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb143-4"><a href="#cb143-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb143-5"><a href="#cb143-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb143-6"><a href="#cb143-6" tabindex="-1"></a>   </span>
+<span id="cb143-7"><a href="#cb143-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb143-8"><a href="#cb143-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb143-9"><a href="#cb143-9" tabindex="-1"></a></span>
+<span id="cb143-10"><a href="#cb143-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb143-11"><a href="#cb143-11" tabindex="-1"></a>)</span>
+<span id="cb143-12"><a href="#cb143-12" tabindex="-1"></a><span class="co"># Get the structure of the data frame.</span></span>
+<span id="cb143-13"><a href="#cb143-13" tabindex="-1"></a><span class="fu">str</span>(student.data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    5 obs. of  4 variables:
 ##  $ std_id     : int  1 2 3 4 5
 ##  $ std_name   : chr  &quot;Ali&quot; &quot;Abu&quot; &quot;Ahmad&quot; &quot;Siti&quot; ...
@@ -1068,19 +1068,20 @@ str(student.data)</code></pre>
 Frame</strong></span></p>
 <p>The statistical summary and nature of the data can be obtained by
 applying summary() function.</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-  
-   stringsAsFactors = FALSE
-)
-# Print the summary.
-print(summary(student.data)) </code></pre>
+<div class="sourceCode" id="cb145"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb145-2"><a href="#cb145-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb145-3"><a href="#cb145-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb145-4"><a href="#cb145-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb145-5"><a href="#cb145-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb145-6"><a href="#cb145-6" tabindex="-1"></a>   </span>
+<span id="cb145-7"><a href="#cb145-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb145-8"><a href="#cb145-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb145-9"><a href="#cb145-9" tabindex="-1"></a>  </span>
+<span id="cb145-10"><a href="#cb145-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb145-11"><a href="#cb145-11" tabindex="-1"></a>)</span>
+<span id="cb145-12"><a href="#cb145-12" tabindex="-1"></a><span class="co"># Print the summary.</span></span>
+<span id="cb145-13"><a href="#cb145-13" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(student.data)) </span></code></pre></div>
 <pre><code>##      std_id    std_name          pocketmoney      start_date        
 ##  Min.   :1   Length:5           Min.   :515.2   Min.   :2012-01-01  
 ##  1st Qu.:2   Class :character   1st Qu.:611.0   1st Qu.:2013-09-23  
@@ -1091,20 +1092,21 @@ print(summary(student.data)) </code></pre>
 <p><span style="color: blue;"><strong>4. Extract Data from Data
 Frame</strong></span></p>
 <p>Extract specific column from a data frame using column name.</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-
-   stringsAsFactors = FALSE
-)
-# Extract Specific columns.
-result &lt;- data.frame(student.data$std_name,student.data$pocketmoney)
-print(result)</code></pre>
+<div class="sourceCode" id="cb147"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb147-2"><a href="#cb147-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb147-3"><a href="#cb147-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb147-4"><a href="#cb147-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb147-5"><a href="#cb147-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb147-6"><a href="#cb147-6" tabindex="-1"></a>   </span>
+<span id="cb147-7"><a href="#cb147-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb147-8"><a href="#cb147-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb147-9"><a href="#cb147-9" tabindex="-1"></a></span>
+<span id="cb147-10"><a href="#cb147-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb147-11"><a href="#cb147-11" tabindex="-1"></a>)</span>
+<span id="cb147-12"><a href="#cb147-12" tabindex="-1"></a><span class="co"># Extract Specific columns.</span></span>
+<span id="cb147-13"><a href="#cb147-13" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(student.data<span class="sc">$</span>std_name,student.data<span class="sc">$</span>pocketmoney)</span>
+<span id="cb147-14"><a href="#cb147-14" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##   student.data.std_name student.data.pocketmoney
 ## 1                   Ali                   623.30
 ## 2                   Abu                   515.20
@@ -1112,39 +1114,41 @@ print(result)</code></pre>
 ## 4                  Siti                   729.00
 ## 5                  Emma                   843.25</code></pre>
 <p>Extract the first two rows and then all columns</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-
-   stringsAsFactors = FALSE
-)
-# Extract first two rows.
-result &lt;- student.data[1:2,]
-print(result)</code></pre>
+<div class="sourceCode" id="cb149"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb149-2"><a href="#cb149-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb149-3"><a href="#cb149-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb149-4"><a href="#cb149-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb149-5"><a href="#cb149-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb149-6"><a href="#cb149-6" tabindex="-1"></a>   </span>
+<span id="cb149-7"><a href="#cb149-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb149-8"><a href="#cb149-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb149-9"><a href="#cb149-9" tabindex="-1"></a></span>
+<span id="cb149-10"><a href="#cb149-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb149-11"><a href="#cb149-11" tabindex="-1"></a>)</span>
+<span id="cb149-12"><a href="#cb149-12" tabindex="-1"></a><span class="co"># Extract first two rows.</span></span>
+<span id="cb149-13"><a href="#cb149-13" tabindex="-1"></a>result <span class="ot">&lt;-</span> student.data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span>
+<span id="cb149-14"><a href="#cb149-14" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##   std_id std_name pocketmoney start_date
 ## 1      1      Ali       623.3 2012-01-01
 ## 2      2      Abu       515.2 2013-09-23</code></pre>
 <p>Extract 3rd and 5th row with 2nd and 4th column</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
- 
-   stringsAsFactors = FALSE
-)
-
-# Extract 3rd and 5th row with 2nd and 4th column.
-result &lt;- student.data[c(3,5),c(2,4)]
-print(result)</code></pre>
+<div class="sourceCode" id="cb151"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb151-2"><a href="#cb151-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb151-3"><a href="#cb151-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb151-4"><a href="#cb151-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb151-5"><a href="#cb151-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb151-6"><a href="#cb151-6" tabindex="-1"></a>   </span>
+<span id="cb151-7"><a href="#cb151-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb151-8"><a href="#cb151-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb151-9"><a href="#cb151-9" tabindex="-1"></a> </span>
+<span id="cb151-10"><a href="#cb151-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb151-11"><a href="#cb151-11" tabindex="-1"></a>)</span>
+<span id="cb151-12"><a href="#cb151-12" tabindex="-1"></a></span>
+<span id="cb151-13"><a href="#cb151-13" tabindex="-1"></a><span class="co"># Extract 3rd and 5th row with 2nd and 4th column.</span></span>
+<span id="cb151-14"><a href="#cb151-14" tabindex="-1"></a>result <span class="ot">&lt;-</span> student.data[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</span>
+<span id="cb151-15"><a href="#cb151-15" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>##   std_name start_date
 ## 3    Ahmad 2014-11-15
 ## 5     Emma 2015-03-27</code></pre>
@@ -1153,22 +1157,23 @@ Frame</strong></span></p>
 <p>A data frame can be expanded by adding columns and rows.</p>
 <p><span style="color: blue;"><strong>Add Column</strong></span></p>
 <p>Just add the column vector using a new column name.</p>
-<pre class="r"><code># Create the data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
- 
-   stringsAsFactors = FALSE
-)
-
-# Add the &quot;program&quot; column.
-student.data$program &lt;- c(&quot;CS&quot;,&quot;BM&quot;,&quot;Stat&quot;,&quot;Banking&quot;,&quot;AM&quot;)
-v &lt;- student.data
-print(v)</code></pre>
+<div class="sourceCode" id="cb153"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb153-2"><a href="#cb153-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb153-3"><a href="#cb153-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb153-4"><a href="#cb153-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb153-5"><a href="#cb153-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb153-6"><a href="#cb153-6" tabindex="-1"></a>   </span>
+<span id="cb153-7"><a href="#cb153-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb153-8"><a href="#cb153-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb153-9"><a href="#cb153-9" tabindex="-1"></a> </span>
+<span id="cb153-10"><a href="#cb153-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb153-11"><a href="#cb153-11" tabindex="-1"></a>)</span>
+<span id="cb153-12"><a href="#cb153-12" tabindex="-1"></a></span>
+<span id="cb153-13"><a href="#cb153-13" tabindex="-1"></a><span class="co"># Add the &quot;program&quot; column.</span></span>
+<span id="cb153-14"><a href="#cb153-14" tabindex="-1"></a>student.data<span class="sc">$</span>program <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>,<span class="st">&quot;BM&quot;</span>,<span class="st">&quot;Stat&quot;</span>,<span class="st">&quot;Banking&quot;</span>,<span class="st">&quot;AM&quot;</span>)</span>
+<span id="cb153-15"><a href="#cb153-15" tabindex="-1"></a>v <span class="ot">&lt;-</span> student.data</span>
+<span id="cb153-16"><a href="#cb153-16" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>##   std_id std_name pocketmoney start_date program
 ## 1      1      Ali      623.30 2012-01-01      CS
 ## 2      2      Abu      515.20 2013-09-23      BM
@@ -1182,31 +1187,32 @@ structure</strong> as the existing data frame and use the
 <strong>rbind()</strong> function.</p>
 <p>In the example below we create a data frame with new rows and merge
 it with the existing data frame to create the final data frame.</p>
-<pre class="r"><code># Create the first data frame.
-student.data &lt;- data.frame(
-   std_id = c (1:5), 
-   std_name = c(&quot;Ali&quot;,&quot;Abu&quot;,&quot;Ahmad&quot;,&quot;Siti&quot;,&quot;Emma&quot;),
-   pocketmoney = c(623.3,515.2,611.0,729.0,843.25), 
-   
-   start_date = as.Date(c(&quot;2012-01-01&quot;, &quot;2013-09-23&quot;, &quot;2014-11-15&quot;, &quot;2014-05-11&quot;,
-      &quot;2015-03-27&quot;)),
-   program = c(&quot;CS&quot;,&quot;BM&quot;,&quot;Stat&quot;,&quot;Banking&quot;,&quot;AM&quot;),
-   stringsAsFactors = FALSE
-)
-
-# Create the second data frame
-student.newdata &lt;-  data.frame(
-   std_id = c (6:8), 
-   std_name = c(&quot;Hairi&quot;,&quot;Alimah&quot;,&quot;Maria&quot;),
-   pocketmoney = c(578.0,722.5,632.8), 
-   start_date = as.Date(c(&quot;2013-05-21&quot;,&quot;2013-07-30&quot;,&quot;2014-06-17&quot;)),
-   program = c(&quot;CS&quot;,&quot;Stat&quot;,&quot;AM&quot;),
-   stringsAsFactors = FALSE
-)
-
-# Bind the two data frames.
-std.finaldata &lt;- rbind(student.data,student.newdata)
-print(std.finaldata)</code></pre>
+<div class="sourceCode" id="cb155"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" tabindex="-1"></a><span class="co"># Create the first data frame.</span></span>
+<span id="cb155-2"><a href="#cb155-2" tabindex="-1"></a>student.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb155-3"><a href="#cb155-3" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
+<span id="cb155-4"><a href="#cb155-4" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>,<span class="st">&quot;Abu&quot;</span>,<span class="st">&quot;Ahmad&quot;</span>,<span class="st">&quot;Siti&quot;</span>,<span class="st">&quot;Emma&quot;</span>),</span>
+<span id="cb155-5"><a href="#cb155-5" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">623.3</span>,<span class="fl">515.2</span>,<span class="fl">611.0</span>,<span class="fl">729.0</span>,<span class="fl">843.25</span>), </span>
+<span id="cb155-6"><a href="#cb155-6" tabindex="-1"></a>   </span>
+<span id="cb155-7"><a href="#cb155-7" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2012-01-01&quot;</span>, <span class="st">&quot;2013-09-23&quot;</span>, <span class="st">&quot;2014-11-15&quot;</span>, <span class="st">&quot;2014-05-11&quot;</span>,</span>
+<span id="cb155-8"><a href="#cb155-8" tabindex="-1"></a>      <span class="st">&quot;2015-03-27&quot;</span>)),</span>
+<span id="cb155-9"><a href="#cb155-9" tabindex="-1"></a>   <span class="at">program =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>,<span class="st">&quot;BM&quot;</span>,<span class="st">&quot;Stat&quot;</span>,<span class="st">&quot;Banking&quot;</span>,<span class="st">&quot;AM&quot;</span>),</span>
+<span id="cb155-10"><a href="#cb155-10" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb155-11"><a href="#cb155-11" tabindex="-1"></a>)</span>
+<span id="cb155-12"><a href="#cb155-12" tabindex="-1"></a></span>
+<span id="cb155-13"><a href="#cb155-13" tabindex="-1"></a><span class="co"># Create the second data frame</span></span>
+<span id="cb155-14"><a href="#cb155-14" tabindex="-1"></a>student.newdata <span class="ot">&lt;-</span>  <span class="fu">data.frame</span>(</span>
+<span id="cb155-15"><a href="#cb155-15" tabindex="-1"></a>   <span class="at">std_id =</span> <span class="fu">c</span> (<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>), </span>
+<span id="cb155-16"><a href="#cb155-16" tabindex="-1"></a>   <span class="at">std_name =</span> <span class="fu">c</span>(<span class="st">&quot;Hairi&quot;</span>,<span class="st">&quot;Alimah&quot;</span>,<span class="st">&quot;Maria&quot;</span>),</span>
+<span id="cb155-17"><a href="#cb155-17" tabindex="-1"></a>   <span class="at">pocketmoney =</span> <span class="fu">c</span>(<span class="fl">578.0</span>,<span class="fl">722.5</span>,<span class="fl">632.8</span>), </span>
+<span id="cb155-18"><a href="#cb155-18" tabindex="-1"></a>   <span class="at">start_date =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2013-05-21&quot;</span>,<span class="st">&quot;2013-07-30&quot;</span>,<span class="st">&quot;2014-06-17&quot;</span>)),</span>
+<span id="cb155-19"><a href="#cb155-19" tabindex="-1"></a>   <span class="at">program =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>,<span class="st">&quot;Stat&quot;</span>,<span class="st">&quot;AM&quot;</span>),</span>
+<span id="cb155-20"><a href="#cb155-20" tabindex="-1"></a>   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb155-21"><a href="#cb155-21" tabindex="-1"></a>)</span>
+<span id="cb155-22"><a href="#cb155-22" tabindex="-1"></a></span>
+<span id="cb155-23"><a href="#cb155-23" tabindex="-1"></a><span class="co"># Bind the two data frames.</span></span>
+<span id="cb155-24"><a href="#cb155-24" tabindex="-1"></a>std.finaldata <span class="ot">&lt;-</span> <span class="fu">rbind</span>(student.data,student.newdata)</span>
+<span id="cb155-25"><a href="#cb155-25" tabindex="-1"></a><span class="fu">print</span>(std.finaldata)</span></code></pre></div>
 <pre><code>##   std_id std_name pocketmoney start_date program
 ## 1      1      Ali      623.30 2012-01-01      CS
 ## 2      2      Abu      515.20 2013-09-23      BM
@@ -1232,21 +1238,25 @@ etc. They are useful in data analysis for statistical modeling.</p>
 <p>Factors are created using the <strong>factor ()</strong> function by
 taking a vector as input.</p>
 <p><strong>Example</strong></p>
-<pre class="r"><code># Create a vector as input.
-data &lt;- c(&quot;East&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;,&quot;North&quot;,&quot;East&quot;,&quot;West&quot;,&quot;West&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;)
-
-print(data)</code></pre>
+<div class="sourceCode" id="cb157"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" tabindex="-1"></a><span class="co"># Create a vector as input.</span></span>
+<span id="cb157-2"><a href="#cb157-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;East&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;North&quot;</span>,<span class="st">&quot;North&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;North&quot;</span>)</span>
+<span id="cb157-3"><a href="#cb157-3" tabindex="-1"></a></span>
+<span id="cb157-4"><a href="#cb157-4" tabindex="-1"></a><span class="fu">print</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;East&quot;  &quot;West&quot;  &quot;East&quot;  &quot;North&quot; &quot;North&quot; &quot;East&quot;  &quot;West&quot;  &quot;West&quot;  &quot;West&quot; 
 ## [10] &quot;East&quot;  &quot;North&quot;</code></pre>
-<pre class="r"><code>print(is.factor(data))</code></pre>
+<div class="sourceCode" id="cb159"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">is.factor</span>(data))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code># Apply the factor function.
-factor_data &lt;- factor(data)
-
-print(factor_data)</code></pre>
+<div class="sourceCode" id="cb161"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" tabindex="-1"></a><span class="co"># Apply the factor function.</span></span>
+<span id="cb161-2"><a href="#cb161-2" tabindex="-1"></a>factor_data <span class="ot">&lt;-</span> <span class="fu">factor</span>(data)</span>
+<span id="cb161-3"><a href="#cb161-3" tabindex="-1"></a></span>
+<span id="cb161-4"><a href="#cb161-4" tabindex="-1"></a><span class="fu">print</span>(factor_data)</span></code></pre></div>
 <pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
 ## Levels: East North West</code></pre>
-<pre class="r"><code>print(is.factor(factor_data))</code></pre>
+<div class="sourceCode" id="cb163"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">is.factor</span>(factor_data))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><strong>Working with Factors:</strong></p>
 <p>Factors have distinct properties that make them useful for data
@@ -1263,14 +1273,15 @@ associated with it.</li>
 Frame</strong></span></p>
 <p>On creating any data frame with a column of text data, R treats the
 text column as categorical data and creates factors on it.</p>
-<pre class="r"><code># Create the vectors for data frame.
-height &lt;- c(132,151,162,139,166,147,122)
-weight &lt;- c(48,49,66,53,67,52,40)
-gender &lt;- c(&quot;male&quot;,&quot;male&quot;,&quot;female&quot;,&quot;female&quot;,&quot;male&quot;,&quot;female&quot;,&quot;male&quot;)
-
-# Create the data frame.
-input_data &lt;- data.frame(height,weight,gender)
-print(input_data)</code></pre>
+<div class="sourceCode" id="cb165"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" tabindex="-1"></a><span class="co"># Create the vectors for data frame.</span></span>
+<span id="cb165-2"><a href="#cb165-2" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">132</span>,<span class="dv">151</span>,<span class="dv">162</span>,<span class="dv">139</span>,<span class="dv">166</span>,<span class="dv">147</span>,<span class="dv">122</span>)</span>
+<span id="cb165-3"><a href="#cb165-3" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>,<span class="dv">49</span>,<span class="dv">66</span>,<span class="dv">53</span>,<span class="dv">67</span>,<span class="dv">52</span>,<span class="dv">40</span>)</span>
+<span id="cb165-4"><a href="#cb165-4" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;male&quot;</span>)</span>
+<span id="cb165-5"><a href="#cb165-5" tabindex="-1"></a></span>
+<span id="cb165-6"><a href="#cb165-6" tabindex="-1"></a><span class="co"># Create the data frame.</span></span>
+<span id="cb165-7"><a href="#cb165-7" tabindex="-1"></a>input_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(height,weight,gender)</span>
+<span id="cb165-8"><a href="#cb165-8" tabindex="-1"></a><span class="fu">print</span>(input_data)</span></code></pre></div>
 <pre><code>##   height weight gender
 ## 1    132     48   male
 ## 2    151     49   male
@@ -1279,26 +1290,30 @@ print(input_data)</code></pre>
 ## 5    166     67   male
 ## 6    147     52 female
 ## 7    122     40   male</code></pre>
-<pre class="r"><code># Test if the gender column is a factor.
-print(is.factor(input_data$gender))</code></pre>
+<div class="sourceCode" id="cb167"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" tabindex="-1"></a><span class="co"># Test if the gender column is a factor.</span></span>
+<span id="cb167-2"><a href="#cb167-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">is.factor</span>(input_data<span class="sc">$</span>gender))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code># Print the gender column so see the levels.
-print(input_data$gender)</code></pre>
+<div class="sourceCode" id="cb169"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" tabindex="-1"></a><span class="co"># Print the gender column so see the levels.</span></span>
+<span id="cb169-2"><a href="#cb169-2" tabindex="-1"></a><span class="fu">print</span>(input_data<span class="sc">$</span>gender)</span></code></pre></div>
 <pre><code>## [1] &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot; &quot;male&quot;   &quot;female&quot; &quot;male&quot;</code></pre>
 <p><span style="color: blue;"><strong>2. Changing the Order of
 Levels</strong></span></p>
 <p>The order of the levels in a factor can be changed by applying the
 factor function again with new order of the levels.</p>
-<pre class="r"><code>data &lt;- c(&quot;East&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;,&quot;North&quot;,&quot;East&quot;,&quot;West&quot;,
-   &quot;West&quot;,&quot;West&quot;,&quot;East&quot;,&quot;North&quot;)
-# Create the factors
-factor_data &lt;- factor(data)
-print(factor_data)</code></pre>
+<div class="sourceCode" id="cb171"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;East&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;North&quot;</span>,<span class="st">&quot;North&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;West&quot;</span>,</span>
+<span id="cb171-2"><a href="#cb171-2" tabindex="-1"></a>   <span class="st">&quot;West&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;East&quot;</span>,<span class="st">&quot;North&quot;</span>)</span>
+<span id="cb171-3"><a href="#cb171-3" tabindex="-1"></a><span class="co"># Create the factors</span></span>
+<span id="cb171-4"><a href="#cb171-4" tabindex="-1"></a>factor_data <span class="ot">&lt;-</span> <span class="fu">factor</span>(data)</span>
+<span id="cb171-5"><a href="#cb171-5" tabindex="-1"></a><span class="fu">print</span>(factor_data)</span></code></pre></div>
 <pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
 ## Levels: East North West</code></pre>
-<pre class="r"><code># Apply the factor function with required order of the level.
-new_order_data &lt;- factor(factor_data,levels = c(&quot;East&quot;,&quot;West&quot;,&quot;North&quot;))
-print(new_order_data)</code></pre>
+<div class="sourceCode" id="cb173"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" tabindex="-1"></a><span class="co"># Apply the factor function with required order of the level.</span></span>
+<span id="cb173-2"><a href="#cb173-2" tabindex="-1"></a>new_order_data <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_data,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;East&quot;</span>,<span class="st">&quot;West&quot;</span>,<span class="st">&quot;North&quot;</span>))</span>
+<span id="cb173-3"><a href="#cb173-3" tabindex="-1"></a><span class="fu">print</span>(new_order_data)</span></code></pre></div>
 <pre><code>##  [1] East  West  East  North North East  West  West  West  East  North
 ## Levels: East West North</code></pre>
 <p><span style="color: blue;"><strong>3. Generating Factor
@@ -1307,7 +1322,8 @@ Levels</strong></span></p>
 two integers as input which indicates how many levels and how many times
 each level.</p>
 <p><strong>Syntax</strong></p>
-<pre class="r"><code>gl(n, k, labels)</code></pre>
+<div class="sourceCode" id="cb175"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" tabindex="-1"></a><span class="fu">gl</span>(n, k, labels)</span></code></pre></div>
 <p>Following is the description of the parameters used −</p>
 <ul>
 <li><strong>n</strong> is a integer giving the number of levels.</li>
@@ -1317,58 +1333,72 @@ replications.</li>
 factor levels.</li>
 </ul>
 <p>Example</p>
-<pre class="r"><code>v &lt;- gl(3, 4, labels = c(&quot;Tampa&quot;, &quot;Seattle&quot;,&quot;Boston&quot;))
-print(v)</code></pre>
+<div class="sourceCode" id="cb176"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Tampa&quot;</span>, <span class="st">&quot;Seattle&quot;</span>,<span class="st">&quot;Boston&quot;</span>))</span>
+<span id="cb176-2"><a href="#cb176-2" tabindex="-1"></a><span class="fu">print</span>(v)</span></code></pre></div>
 <pre><code>##  [1] Tampa   Tampa   Tampa   Tampa   Seattle Seattle Seattle Seattle Boston 
 ## [10] Boston  Boston  Boston 
 ## Levels: Tampa Seattle Boston</code></pre>
 </div>
+<div id="arithmetic-with-r" class="section level2">
+<h2>Arithmetic with R</h2>
+<p>In its most basic form, R can be used as a simple calculator.
+Consider the following arithmetic operators:</p>
+<ul>
+<li>Addition: +</li>
+<li>Subtraction: -</li>
+<li>Multiplication: *</li>
+<li>Division: /</li>
+<li>Exponentiation: ^</li>
+<li>Modulo: %%</li>
+</ul>
+<p>The last two might need some explaining:</p>
+<p>The ^ operator raises the number to its left to the power of the
+number to its right: for example 3^2 is 9.</p>
+<p>The modulo returns the remainder of the division of the number to the
+left by the number on its right, for example 5 modulo 3 or 5 %% 3 is
+2.</p>
+<div id="variable-assignment" class="section level3">
+<h3>Variable assignment</h3>
+<p>A basic concept in (statistical) programming is called a
+variable.</p>
+<p>A variable allows you to store a value (e.g. 4) or an object (e.g. a
+function description) in R. You can then later use this variable’s name
+to easily access the value or the object that is stored within this
+variable.</p>
+<p>You can assign a value 4 to a variable <strong>my_var</strong> with
+the command</p>
+<div class="sourceCode" id="cb178"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="#cb178-1" tabindex="-1"></a>my_var <span class="ot">&lt;-</span> <span class="dv">4</span></span></code></pre></div>
+</div>
+</div>
+</div>
 </div>
 
+   
+   
+            
+      
+
+  <script>
+    $(document).ready(function () {
+
+			
+ 		
+	    });
+  </script>
 
 
 
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
 </body>
 </html>

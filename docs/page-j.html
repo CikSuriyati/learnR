@@ -1,332 +1,305 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
 
-<html>
+    
+        <meta name="date" content="2023-09-04" />
+    
+    <title>Topic 6: Basic Statistical Analysis</title>
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-<meta name="date" content="2023-08-08" />
-
-<title>Topic 6: Basic Statistical Analysis</title>
-
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
+        <script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+        <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
     </style>
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+    <!-- tabsets dropdown -->
 
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
 
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
 
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
 </head>
 
-<body>
+<body class="preload">
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Learn R</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Introduction to Statistical Programming
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Topic 1: Introduction to R language</li>
-    <li>
-      <a href="page-a.html">Week 1</a>
-    </li>
-    <li>
-      <a href="page-b.html">Week 2</a>
-    </li>
-    <li class="dropdown-header">Topic 2: Programming with R</li>
-    <li>
-      <a href="page-c.html">Week 3</a>
-    </li>
-    <li>
-      <a href="page-d.html">Week 4</a>
-    </li>
-    <li class="dropdown-header">Topic 3: Importing data into R</li>
-    <li>
-      <a href="page-e.html">Week 5</a>
-    </li>
-    <li class="dropdown-header">Topic 4: Programming statistical graphics</li>
-    <li>
-      <a href="page-f.html">Week 6</a>
-    </li>
-    <li>
-      <a href="page-g.html">Week 7</a>
-    </li>
-    <li class="dropdown-header">Topic 5: Data Cleaning and filtering</li>
-    <li>
-      <a href="page-h.html">Week 8</a>
-    </li>
-    <li>
-      <a href="page-i.html">Week 9</a>
-    </li>
-    <li class="dropdown-header">Topic 6: Basic Statistical Analysis</li>
-    <li>
-      <a href="page-j.html">Week 10</a>
-    </li>
-    <li>
-      <a href="page-k.html">Week 11</a>
-    </li>
-    <li>
-      <a href="page-l.html">Week 12</a>
-    </li>
-    <li>
-      <a href="page-m.html">Week 13</a>
-    </li>
-    <li>
-      <a href="page-n.html">Week 14</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="Journal.html">Tutorial</a>
-</li>
-<li>
-  <a href="Links.html">Links</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Learn R</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Introduction to Statistical Programming
+           
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li class="dropdown-header">Topic 1: Introduction to R language</li>
+          <li>
+            <a href="sow.html">Sheme of Work</a>
+          </li>
+          <li>
+            <a href="page-a.html">Week 1</a>
+          </li>
+          <li>
+            <a href="page-b.html">Week 2</a>
+          </li>
+          <li class="dropdown-header">Topic 2: Programming with R</li>
+          <li>
+            <a href="page-c.html">Week 3</a>
+          </li>
+          <li>
+            <a href="page-d.html">Week 4</a>
+          </li>
+          <li class="dropdown-header">Topic 3: Importing data into R</li>
+          <li>
+            <a href="page-e.html">Week 5</a>
+          </li>
+          <li class="dropdown-header">Topic 4: Programming statistical graphics</li>
+          <li>
+            <a href="page-f.html">Week 6</a>
+          </li>
+          <li>
+            <a href="page-g.html">Week 7</a>
+          </li>
+          <li class="dropdown-header">Topic 5: Data Cleaning and filtering</li>
+          <li>
+            <a href="page-h.html">Week 8</a>
+          </li>
+          <li>
+            <a href="page-i.html">Week 9</a>
+          </li>
+          <li class="dropdown-header">Topic 6: Basic Statistical Analysis</li>
+          <li>
+            <a href="page-j.html">Week 10</a>
+          </li>
+          <li>
+            <a href="page-k.html">Week 11</a>
+          </li>
+          <li>
+            <a href="page-l.html">Week 12</a>
+          </li>
+          <li>
+            <a href="page-m.html">Week 13</a>
+          </li>
+          <li>
+            <a href="page-n.html">Week 14</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="Journal.html">Tutorial</a>
+      </li>
+      <li>
+        <a href="Links.html">Links</a>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
         
+      <h1 class="title">Topic 6: Basic Statistical Analysis</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Topic 6: Basic Statistical Analysis</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#section" id="toc-section"></a>
+      <ul>
+      <li><a href="#summary-statistics"
+      id="toc-summary-statistics">Summary statistics</a></li>
+      <li><a href="#frequency" id="toc-frequency">Frequency</a></li>
+      <li><a href="#cross-tabulation-table"
+      id="toc-cross-tabulation-table">Cross tabulation table</a></li>
+      </ul></li>
       </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                  <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-09-04</p>
+          </div>
+   </div>
+     
 
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
-<h4 class="date">2023-08-08</h4>
-
-</div>
-
-
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
 <p>In this topic, you will learn about :</p>
 <ul>
 <li>Summary statistics, frequency, and cross tabulation table</li>
@@ -359,31 +332,31 @@ standard deviation and also measures variability.</li>
 into equal parts, such as quartiles (Q1, Q2, Q3) and percentiles.</li>
 </ul>
 <p><strong>Example: Computing Summary Statistics</strong></p>
-<pre class="r"><code># Sample data
-data &lt;- c(10, 15, 20, 25, 30, 35, 40)
-
-# Compute summary statistics
-mean_value &lt;- mean(data)
-median_value &lt;- median(data)
-min_value &lt;- min(data)
-max_value &lt;- max(data)
-sd_value &lt;- sd(data)
-var_value &lt;- var(data)
-quantiles &lt;- quantile(data, probs = c(0.25, 0.5, 0.75))
-
-print(mean_value)   </code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># Compute summary statistics</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(data)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(data)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>min_value <span class="ot">&lt;-</span> <span class="fu">min</span>(data)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>max_value <span class="ot">&lt;-</span> <span class="fu">max</span>(data)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>sd_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(data)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>var_value <span class="ot">&lt;-</span> <span class="fu">var</span>(data)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(data, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="fu">print</span>(mean_value)   </span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
-<pre class="r"><code>print(median_value) </code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">print</span>(median_value) </span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
-<pre class="r"><code>print(min_value)    </code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">print</span>(min_value)    </span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<pre class="r"><code>print(max_value)    </code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">print</span>(max_value)    </span></code></pre></div>
 <pre><code>## [1] 40</code></pre>
-<pre class="r"><code>print(sd_value)     </code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">print</span>(sd_value)     </span></code></pre></div>
 <pre><code>## [1] 10.80123</code></pre>
-<pre class="r"><code>print(var_value)    </code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">print</span>(var_value)    </span></code></pre></div>
 <pre><code>## [1] 116.6667</code></pre>
-<pre class="r"><code>print(quantiles)    </code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">print</span>(quantiles)    </span></code></pre></div>
 <pre><code>##  25%  50%  75% 
 ## 17.5 25.0 32.5</code></pre>
 <p><strong>Summary Statistics for Data Frames:</strong></p>
@@ -392,19 +365,19 @@ sapply(), and colMeans()</strong> to compute summary statistics for each
 variable.</p>
 <p><strong>Example: Computing Summary Statistics for a Data
 Frame</strong></p>
-<pre class="r"><code># Sample data frame
-data &lt;- data.frame(
-  Age = c(25, 30, 22, 28, 35),
-  Height = c(170, 180, 165, 175, 190),
-  Weight = c(70, 80, 60, 75, 85)
-)
-
-# Compute summary statistics for each variable in the data frame
-summary_stats &lt;- summary(data)
-means &lt;- sapply(data, mean)
-col_means &lt;- colMeans(data)
-
-print(summary_stats)</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Sample data frame</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">28</span>, <span class="dv">35</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="at">Height =</span> <span class="fu">c</span>(<span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">165</span>, <span class="dv">175</span>, <span class="dv">190</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="at">Weight =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">75</span>, <span class="dv">85</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># Compute summary statistics for each variable in the data frame</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">summary</span>(data)</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, mean)</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>col_means <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(data)</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="fu">print</span>(summary_stats)</span></code></pre></div>
 <pre><code>##       Age         Height        Weight  
 ##  Min.   :22   Min.   :165   Min.   :60  
 ##  1st Qu.:25   1st Qu.:170   1st Qu.:70  
@@ -412,10 +385,10 @@ print(summary_stats)</code></pre>
 ##  Mean   :28   Mean   :176   Mean   :74  
 ##  3rd Qu.:30   3rd Qu.:180   3rd Qu.:80  
 ##  Max.   :35   Max.   :190   Max.   :85</code></pre>
-<pre class="r"><code>print(means)</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">print</span>(means)</span></code></pre></div>
 <pre><code>##    Age Height Weight 
 ##     28    176     74</code></pre>
-<pre class="r"><code>print(col_means)</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">print</span>(col_means)</span></code></pre></div>
 <pre><code>##    Age Height Weight 
 ##     28    176     74</code></pre>
 <p>Summary statistics are valuable tools to gain insights into your data
@@ -436,12 +409,12 @@ function creates a frequency table that shows the count of each unique
 value in a vector or data frame column.</li>
 </ol>
 <p><strong>Example: Calculating Frequency using table()</strong></p>
-<pre class="r"><code># Sample data
-gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
-
-# Calculate frequency of each unique value
-frequency_table &lt;- table(gender)
-print(frequency_table)</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># Calculate frequency of each unique value</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>frequency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(gender)</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="fu">print</span>(frequency_table)</span></code></pre></div>
 <pre><code>## gender
 ## Female   Male 
 ##      4      4</code></pre>
@@ -453,8 +426,8 @@ in a data frame column.</li>
 </ol>
 <p><strong>Example: Calculating Frequency using count() from
 dplyr</strong></p>
-<pre class="r"><code># Load dplyr library
-library(dplyr)</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Load dplyr library</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -463,14 +436,14 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code># Sample data frame
-data &lt;- data.frame(
-  Gender = c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
-)
-
-# Calculate frequency of each unique value in the Gender column
-frequency_table &lt;- count(data, Gender)
-print(frequency_table)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># Sample data frame</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co"># Calculate frequency of each unique value in the Gender column</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>frequency_table <span class="ot">&lt;-</span> <span class="fu">count</span>(data, Gender)</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="fu">print</span>(frequency_table)</span></code></pre></div>
 <pre><code>##   Gender n
 ## 1 Female 4
 ## 2   Male 4</code></pre>
@@ -482,12 +455,12 @@ value in the dataset.</p>
 proportion of each unique value relative to the total count.</p>
 <p><strong>Example: Calculating Relative Frequency using
 prop.table()</strong></p>
-<pre class="r"><code># Sample data
-gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
-
-# Calculate relative frequency of each unique value
-relative_frequency &lt;- prop.table(table(gender))
-print(relative_frequency)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Calculate relative frequency of each unique value</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>relative_frequency <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(gender))</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="fu">print</span>(relative_frequency)</span></code></pre></div>
 <pre><code>## gender
 ## Female   Male 
 ##    0.5    0.5</code></pre>
@@ -519,13 +492,13 @@ function can be used to create a basic cross tabulation table in R.</li>
 </ol>
 <p><strong>Example: Creating a Cross Tabulation Table using
 table()</strong></p>
-<pre class="r"><code># Sample data
-gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
-occupation &lt;- c(&quot;Engineer&quot;, &quot;Teacher&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;, &quot;Teacher&quot;, &quot;Doctor&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;)
-
-# Create a cross tabulation table for gender and occupation
-cross_tab &lt;- table(gender, occupation)
-print(cross_tab)</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>occupation <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Teacher&quot;</span>, <span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Doctor&quot;</span>, <span class="st">&quot;Teacher&quot;</span>, <span class="st">&quot;Doctor&quot;</span>, <span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Doctor&quot;</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="co"># Create a cross tabulation table for gender and occupation</span></span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>cross_tab <span class="ot">&lt;-</span> <span class="fu">table</span>(gender, occupation)</span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a><span class="fu">print</span>(cross_tab)</span></code></pre></div>
 <pre><code>##         occupation
 ## gender   Doctor Engineer Teacher
 ##   Female      2        0       2
@@ -537,13 +510,13 @@ more flexibility in defining formulas.</li>
 </ol>
 <p><strong>Example: Creating a Cross Tabulation Table using
 xtabs()</strong></p>
-<pre class="r"><code># Sample data
-gender &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;)
-occupation &lt;- c(&quot;Engineer&quot;, &quot;Teacher&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;, &quot;Teacher&quot;, &quot;Doctor&quot;, &quot;Engineer&quot;, &quot;Doctor&quot;)
-
-# Create a cross tabulation table for gender and occupation
-cross_tab &lt;- xtabs(~ gender + occupation)
-print(cross_tab)</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>occupation <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Teacher&quot;</span>, <span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Doctor&quot;</span>, <span class="st">&quot;Teacher&quot;</span>, <span class="st">&quot;Doctor&quot;</span>, <span class="st">&quot;Engineer&quot;</span>, <span class="st">&quot;Doctor&quot;</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a><span class="co"># Create a cross tabulation table for gender and occupation</span></span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>cross_tab <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> gender <span class="sc">+</span> occupation)</span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="fu">print</span>(cross_tab)</span></code></pre></div>
 <pre><code>##         occupation
 ## gender   Doctor Engineer Teacher
 ##   Female      2        0       2
@@ -568,51 +541,32 @@ analysis.</li>
 </ol>
 </div>
 </div>
-
-
-
-
 </div>
 
-<script>
+   
+   
+            
+      
 
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
+  <script>
+    $(document).ready(function () {
 
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
+			
+ 		
+	    });
+  </script>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
 </body>
 </html>

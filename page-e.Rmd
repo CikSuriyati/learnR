@@ -1,9 +1,7 @@
 ---
 title: 'Topic 3: Importing data into R'
 date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  html_document: default
+output: rmdformats::readthedown
 ---
 
 ```{r setup, include=FALSE}

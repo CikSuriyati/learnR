@@ -1,10 +1,8 @@
 ---
 title: 'Topic 1: Introduction to R language'
 date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  html_document: default
-  word_document: default
+output: rmdformats::readthedown
+  
 ---
 
 ```{r setup, include=FALSE}
@@ -880,4 +878,33 @@ v <- gl(3, 4, labels = c("Tampa", "Seattle","Boston"))
 print(v)
 ```
 
+
+## Arithmetic with R
+
+In its most basic form, R can be used as a simple calculator. Consider the following arithmetic operators:
+
+- Addition: +
+- Subtraction: -
+- Multiplication: *
+- Division: /
+- Exponentiation: ^
+- Modulo: %%
+
+The last two might need some explaining:
+
+The ^ operator raises the number to its left to the power of the number to its right: for example 3^2 is 9.
+
+The modulo returns the remainder of the division of the number to the left by the number on its right, for example 5 modulo 3 or 5 %% 3 is 2.
+
+### Variable assignment
+
+A basic concept in (statistical) programming is called a variable.
+
+A variable allows you to store a value (e.g. 4) or an object (e.g. a function description) in R. You can then later use this variable's name to easily access the value or the object that is stored within this variable.
+
+You can assign a value 4 to a variable **my_var** with the command
+
+```{r}
+my_var <- 4
+```
 
