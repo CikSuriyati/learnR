@@ -1,7 +1,13 @@
 ---
 title: 'Topic 5: Data Cleaning and filtering'
 date: "`r Sys.Date()`"
-output: rmdformats::readthedown
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +21,9 @@ library(ggplot2)
 library(knitr)
 library(kableExtra)
 ```
+
+
+
 In this topic, you will learn about :
 
 - Introduction to tidy data

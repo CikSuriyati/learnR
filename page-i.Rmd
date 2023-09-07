@@ -1,12 +1,31 @@
 ---
 title: 'Topic 5: Data Cleaning and filtering'
 date: "`r Sys.Date()`"
-output: rmdformats::readthedown
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+<style>
+
+body {
+  padding-top:0px
+}
+
+.navbar{
+  visibility: hidden
+}
+
+</style>
+
 In this topic, you will learn about :
 
 - Keep and remove variables

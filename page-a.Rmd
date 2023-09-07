@@ -1,6 +1,12 @@
 ---
 title: 'Topic 1: Introduction to R language'
-output: rmdformats::readthedown
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -14,10 +20,7 @@ In this topic in week 1, you will learn about :
 - basic features of R programming
 - Logical vectors and relational operators
 
-
-
 # {.tabset}
-
 
 ## Basic Features
 

@@ -1,8 +1,13 @@
 ---
 title: 'Topic 1: Introduction to R language'
 date: "`r Sys.Date()`"
-output: rmdformats::readthedown
-  
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -19,6 +24,8 @@ library(nycflights13)
 library(tidyverse)
 library(ggplot2)
 ```
+
+
 In this topic in week 2 , you will learn about :
 
 - Data frames and list

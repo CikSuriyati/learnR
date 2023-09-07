@@ -1,24 +1,16 @@
 ---
 title: "Learn R"
-output: rmdformats::readthedown
-  toc:true
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
-<style type="text/css">
-.title {
-  display: none;
-}
 
-#getting-started img { 
-  margin-right: 10px;
-}
-
-</style>
-
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-
-# **Learn R**
+# **Introduction to Statistical Programming**
 
 R is a powerful, versatile and free statistical programming language, which has become increasingly popular among industrial and academic data analysis. These introduction course assume no previous coding experiences in R or any other programming language.
 

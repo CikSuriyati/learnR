@@ -1,12 +1,73 @@
 ---
-title: "Scheme of Work"
+title: "Syllabus"
 date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  html_document: default
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    df_print: paged
+    toc: true
+    toc_depth: 2
 ---
 
 
+## Introduction to Statistical Programming
+
+Course code: STA334\
+Credit hour: 4\
+Semester: October 2023 - February 2024
+
+**Instructor**
+
+Suriyati Ujang\
+Email: suriyatiujang@uitm.edu.my
+
+**Class location**
+
+Times:
+
+
+**Office Hours**
+
+by appointment.
+
+**Website**
+
+The syllabus and other relevant class information and resources will be posted here. Changes to the schedule will be posted to this site so please try to check it periodically for updates.
+
+**Prerequisite Knowledge and Skills**
+
+Knowledge of basic programming to provide context for exercises.
+
+**Teaching Philosophy**
+
+This class is taught using a flipped, learner-centered, approach, because learning to program and work with data requires actively working on computers.
+
+## Course Policies
+
+**Attendance Policy**
+
+Attendance will not be taken or factor into the grades for this class. However, experience suggests that students who regularly miss class struggle to learn the material.
+
+**Quiz/Exam Policy**
+
+All quizzes are will be informed as semester ongoing. The estimated week for:
+
+1. Quiz - Week 6 or 7
+2. Test - Week 13 or 14
+
+**Course Technology**
+
+Students are required to provide their own laptops and to install free and open source software on those laptops (see Setup for installation instructions). If you don’t have access to a laptop please contact the instructor.
+
+**UiTM Policies**
+
+Students should visit https://aims.uitm.edu.my/index.cfm/page/module/moduleId/159206 and review all syllabus statement information. 
+
+**Disclaimer:**\
+This syllabus represents my current plans and objectives. As we go through the semester, those plans may need to change to enhance the class learning opportunity. Such changes will be communicated clearly both on the website and in class.
+
+## Scheme of Work
 
 | **Week** | **Topic**                                                                                                                                                                           | **Remarks**                                                                               |
 |:--------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
