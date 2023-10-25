@@ -19,6 +19,13 @@ In this topic, you will learn about :
 
 Plotting using base package (graphics) focus on Histogram, Scatter diagram, Bar chart, Box plot, and Line chart
 
+Data exploration is the art of looking at your data, rapidly generating hypotheses, quickly testing them, then repeating again and again and again. The goal of data exploration is to generate many promising leads that you can later explore in more depth.
+
+```{r echo = FALSE, results = 'asis'}
+image = "https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png"
+cat(paste0('<center><img src="', image,  '"></center>')) 
+```
+picture from: [R for Data science](https://r4ds.had.co.nz/explore-intro.html)
 
 # {.tabset}
 

@@ -14,7 +14,7 @@
 
 <title>Topic 3: Importing data into R</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -90,11 +90,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
+code span.at { color: #c4a000; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
+code span.cn { color: #000000; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -103,14 +103,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.sc { color: #000000; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -428,6 +428,35 @@ $(document).ready(function () {
 <li>Importing data from other statistical software</li>
 <li>Exporting data</li>
 </ul>
+<p>Data wrangling is the process of converting raw data into a usable
+form.</p>
+<center>
+<img src="http://statseducation.com/Introduction-to-R/img/wf2.png">
+</center>
+<p>picture from: <a
+href="http://statseducation.com/Introduction-to-R/modules/getting%20started/workflow/">stateducation.com</a></p>
+<center>
+<img src="https://online.hbs.edu/PublishingImages/6-steps-of-data-wrangling.png">
+</center>
+<p>picture from: <a
+href="https://online.hbs.edu/PublishingImages/6-steps-of-data-wrangling.png">Harvard
+Business School Online</a></p>
+<p>Data wrangling—also called data cleaning, data remediation, or data
+munging—refers to a variety of processes designed to transform raw data
+into more readily used formats. The exact methods differ from project to
+project depending on the data you’re leveraging and the goal you’re
+trying to achieve.</p>
+<p>Some examples of data wrangling include:</p>
+<ul>
+<li>Merging multiple data sources into a single dataset for
+analysis</li>
+<li>Identifying gaps in data (for example, empty cells in a spreadsheet)
+and either filling or deleting them</li>
+<li>Deleting data that’s either unnecessary or irrelevant to the project
+you’re working on</li>
+<li>Identifying extreme outliers in data and either explaining the
+discrepancies or removing them so that analysis can take place</li>
+</ul>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
 <div id="importing-from-flat-files" class="section level2">
@@ -449,32 +478,32 @@ files) and create data frames. The <strong>read.table( )</strong>
 function is more generic and can handle different file formats, whereas
 <strong>read.csv( )</strong> is specifically designed to read CSV
 files.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Example: Reading data from a CSV file using read.csv()</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Reading data from a CSV file using read.csv()</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>)</span></code></pre></div>
 <p><strong>2. read.delim( )</strong> and <strong>read.delim2(
 ):</strong></p>
 <p>These functions are similar to <strong>read.table( )</strong>, but
 they are specifically designed to handle tab-delimited data.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Example: Reading tab-delimited data from a text file using read.delim()</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data.txt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Reading tab-delimited data from a text file using read.delim()</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data.txt&quot;</span>)</span></code></pre></div>
 <p><strong>3. read.csv2( ):</strong></p>
 <p>This function is used to read CSV files with European-style decimal
 separators (using semicolons as separators and commas as decimal
 points).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Example: Reading data from a CSV file with European-style decimal separators</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Reading data from a CSV file with European-style decimal separators</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data.csv&quot;</span>)</span></code></pre></div>
 <p><strong>4. read.fwf( ):</strong></p>
 <p>This function is used to read data from a file with fixed-width
 format (each column has a fixed width).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Example: Reading fixed-width data from a text file using read.fwf()</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="st">&quot;data.txt&quot;</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Reading fixed-width data from a text file using read.fwf()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="st">&quot;data.txt&quot;</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">8</span>))</span></code></pre></div>
 <p><strong>5. read.table( )</strong> with <strong>sep</strong>
 argument:</p>
 <p>The <strong>read.table( )</strong> function can be used to read data
 from files with custom <strong>separators (e.g., semicolon, tab,
 space)</strong> by specifying the sep argument.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Example: Reading data from a file with a custom separator using read.table()</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Reading data from a file with a custom separator using read.table()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <p>Remember that the actual file paths may need to be specified based on
 your working directory and the location of the data files. Also, make
 sure that the flat files are correctly formatted to match the chosen
@@ -496,16 +525,16 @@ Excel data files. It reads both .xls and .xlsx formats.</p>
 <p>Installation:</p>
 <p>You need to install the readxl package first if you haven’t done it
 already.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
 <p><strong>Example: Reading Excel Data with readxl</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Load the readxl package</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># Read data from an Excel file (xlsx format)</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the readxl package</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from an Excel file (xlsx format)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
 <p><strong>2. openxlsx</strong> Package:</p>
 <p>The openxlsx package is more versatile and allows you to read, write,
 and manipulate Excel files. It supports <strong>.xlsx</strong>
@@ -513,17 +542,17 @@ format.</p>
 <p>Installation:</p>
 <p>If you haven’t installed openxlsx yet, you can do it using the
 following command:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
 <p><strong>Example: Reading Excel Data with openxlsx</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Load the openxlsx package</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># Read data from an Excel file (xlsx format)</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>my_wb <span class="ot">&lt;-</span> <span class="fu">loadWorkbook</span>(<span class="st">&quot;data.xlsx&quot;</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">readWorkbook</span>(my_wb, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the openxlsx package</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from an Excel file (xlsx format)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>my_wb <span class="ot">&lt;-</span> <span class="fu">loadWorkbook</span>(<span class="st">&quot;data.xlsx&quot;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">readWorkbook</span>(my_wb, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
 <p>Make sure to provide the correct path to your Excel file in the
 examples above. You may also need to specify the sheet name or index
 from which you want to read data.</p>
@@ -546,14 +575,14 @@ for reading data from other statistical software formats such as
 <p>The foreign package is typically included with the base R
 installation, so you don’t need to install it separately.</p>
 <p><strong>Example: Reading Data from SPSS File</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Load the foreign package (usually not required as it comes with base R)</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># Read data from an SPSS file (.sav format)</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the foreign package (usually not required as it comes with base R)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from an SPSS file (.sav format)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.spss</span>(<span class="st">&quot;data.sav&quot;</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
 <p><strong>2. haven Package:</strong></p>
 <p>The haven package is designed specifically for reading data from
 <strong>SPSS and Stata</strong> file formats. It provides more
@@ -561,32 +590,32 @@ consistent handling of data types and value labels.</p>
 <p>Installation:</p>
 <p>If you haven’t installed haven yet, you can do it using the following
 command:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span></code></pre></div>
 <p><strong>Example: Reading Data from Stata File</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Read data from a Stata file (.dta format)</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;data.dta&quot;</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from a Stata file (.dta format)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;data.dta&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
 <p><strong>3. readstat Package:</strong></p>
 <p>The readstat package is a versatile package that supports reading
 data from <strong>SPSS, Stata, and SAS</strong> file formats.</p>
 <p>Installation:</p>
 <p>If you haven’t installed readstat yet, you can do it using the
 following command:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readstat&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readstat&quot;</span>)</span></code></pre></div>
 <p><strong>Example: Reading Data from SAS File</strong></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Load the readstat package</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">library</span>(readstat)</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Read data from a SAS file (.sas7bdat format)</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">&quot;data.sas7bdat&quot;</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the readstat package</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readstat)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from a SAS file (.sas7bdat format)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">&quot;data.sas7bdat&quot;</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the data</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(my_data))</span></code></pre></div>
 <p>Choose the appropriate package based on the format of the data you
 want to import. The examples above demonstrate how to read data from
 SPSS, Stata, and SAS files, but each package supports other file formats
@@ -604,15 +633,15 @@ data in R:</p>
 <p>These functions are used to write data frames to text files in
 tabular format, such as CSV files.</p>
 <p><strong>Example: Exporting Data to CSV</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Create a sample data frame</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Mike&quot;</span>),</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>),</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">70</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co"># Export data to CSV file</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="fu">write.csv</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sample data frame</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;Mike&quot;</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">70</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Export data to CSV file</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><strong>2. write.xlsx( ):</strong></p>
 <p>The <strong>openxlsx</strong> package provides the
 <strong>write.xlsx( )</strong> function to export data frames to Excel
@@ -620,32 +649,32 @@ files <strong>(.xlsx format)</strong>.</p>
 <p>Installation:</p>
 <p>If you haven’t installed <strong>openxlsx</strong> yet, you can do it
 using the following command:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span></code></pre></div>
 <p><strong>Example: Exporting Data to Excel</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Load the openxlsx package</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co"># Export data to Excel file</span></span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="fu">write.xlsx</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the openxlsx package</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Export data to Excel file</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.xlsx</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.xlsx&quot;</span>)</span></code></pre></div>
 <p><strong>3. write_dta( ):</strong></p>
 <p>The haven package provides the <strong>write_dta( )</strong> function
 to export data frames to <strong>Stata files (.dta format)</strong>.</p>
 <p><strong>Example: Exporting Data to Stata</strong></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># Export data to Stata file</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">write_dta</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.dta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Export data to Stata file</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dta</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.dta&quot;</span>)</span></code></pre></div>
 <p><strong>4. write_sav( ):</strong></p>
 <p>The haven package also provides the <strong>write_sav( )</strong>
 function to export data frames to <strong>SPSS files (.sav
 format)</strong>.</p>
 <p><strong>Example: Exporting Data to SPSS</strong></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># Export data to SPSS file</span></span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="fu">write_sav</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the haven package</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Export data to SPSS file</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(my_data, <span class="at">file =</span> <span class="st">&quot;data.sav&quot;</span>)</span></code></pre></div>
 <p><strong>Custom Export Formats:</strong></p>
 <p>You can also create custom export functions to save data in formats
 not natively supported by R. For example, you can write custom functions

@@ -31,7 +31,7 @@ df <- data.frame(
   Week = 1:16,
   Date = seq(as.Date("2023/10/2"), as.Date("2024/1/19"), "weeks"),
   Lesson = c("Introduction to R language", "", "Programming with R", "", " Importing data into R",
-    "Programming statistical graphics ", "", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "", "","", "",""),
+    "Programming statistical graphics ", "","", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "", "","", ""),
   Subtopic = c(
   "Basic features of R programming, Logical vectors and relational operators ", "Data frames and list
 Extracting elements from vectors", 
@@ -50,7 +50,7 @@ Correlation test
 ", "Linear regression (simple and multiple linear regression)","Presentation guidelines
 Written report Rubrics
 "),
-  'Reading' = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
+   Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-b.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-c.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-d.html)", 
@@ -65,7 +65,7 @@ Written report Rubrics
               "[Notes](https://ciksuriyati.github.io/learnR/page-m.html)",
               "[Notes](https://ciksuriyati.github.io/learnR/page-n.html)"),
   Lecture = c("[R script]()", 
-              "[R script]()", 
+              "[R script](https://drive.google.com/file/d/134NFrvE6Vk8FpoOZkt1uPCbioMWCtWiK/view?usp=share_link)", 
               "[R script]()", 
               "[R script]()", 
               "[R script]()", 
@@ -78,9 +78,23 @@ Written report Rubrics
               "[R script]()", 
               "[R script]()",
               "[R script]()"),
-  Assignment = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
-  Assessment = c("","","","","","Quiz","","","","",  "", "", "","", "Test","Presentation & Report"),
-  Percentage = c("","","","","","15%","","","","",  "", "", "","", "30%","25% & 30%"))
+  Exercise = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
+CheatSheet =c("[Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)", 
+              "", 
+              "", 
+              "", 
+              "[readr](https://rstudio.github.io/cheatsheets/data-import.pdf)", 
+              "[Base::Graph](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf)", "",
+              "[ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)", 
+              "", 
+              "[tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)", 
+              "[dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)", 
+              "[stats](https://4va.github.io/biodatasci/handouts/r-stats-cheatsheet.pdf)", "",
+              "", 
+              "",
+              ""),
+  Assessment = c("","","","","","","","Quiz","","",  "", "", "","", "Test","Presentation & Report"),
+  Mark = c("","","","","","","","15%","","",  "", "", "","", "30%","25% & 30%"))
 
 formattable(df, 
             align =c("l","l","l","c","c", "c", "c", "c", "r"), 
@@ -88,9 +102,10 @@ formattable(df,
 Date = formatter("span", style = ~ style(color = "Blue"),  `border-radius` = "4px", `padding-right` = "2px") ,
 Lecture = color_bar("lightgray"),
 Subtopic = color_bar("#e9c46a"),
-Assignment = color_bar("#80ed99"),
+Exercise = color_bar("#80ed99"),
 Assessment = color_bar("#48cae4"),
-Percentage = color_bar("#f28482"))
+CheatSheet = color_bar("lightgray"),
+Mark = color_bar("#f28482"))
             )
 
 ```

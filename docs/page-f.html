@@ -14,7 +14,7 @@
 
 <title>Topic 4: Programming statistical graphics</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
@@ -90,11 +90,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #204a87; } /* Attribute */
+code span.at { color: #c4a000; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
+code span.cn { color: #000000; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -103,14 +103,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.sc { color: #000000; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -425,6 +425,15 @@ graphics</h1>
 <p>In this topic, you will learn about :</p>
 <p>Plotting using base package (graphics) focus on Histogram, Scatter
 diagram, Bar chart, Box plot, and Line chart</p>
+<p>Data exploration is the art of looking at your data, rapidly
+generating hypotheses, quickly testing them, then repeating again and
+again and again. The goal of data exploration is to generate many
+promising leads that you can later explore in more depth.</p>
+<center>
+<img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png">
+</center>
+<p>picture from: <a href="https://r4ds.had.co.nz/explore-intro.html">R
+for Data science</a></p>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
 <div id="histogram" class="section level2">
@@ -435,8 +444,8 @@ points falling into specific bins or intervals. In R, you can create a
 histogram using the base graphics package.</p>
 <p><strong>Function: hist( )</strong></p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="st">&quot;Sturges&quot;</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="st">&quot;Sturges&quot;</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
 <ul>
 <li>x: The data vector for which the histogram is to be created.</li>
 <li>breaks: The method for determining the number of bins in the
@@ -451,14 +460,14 @@ histogram.
 <li>ylab: The label for the y-axis.</li>
 </ul>
 <p><strong>Example: Creating a Histogram</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Generate random data</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># Create a histogram</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">breaks =</span> <span class="st">&quot;Sturges&quot;</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of Random Data&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Value&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
-<p><img src="page-f_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate random data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">breaks =</span> <span class="st">&quot;Sturges&quot;</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of Random Data&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Value&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<p><img src="page-f_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>In this example, we generated 1000 random data points from a normal
 distribution with mean 10 and standard deviation 2. We then created a
 histogram using the <strong>hist( )</strong> function and specified the
@@ -478,8 +487,8 @@ understand the correlation and distribution of data points. In R, you
 can create a scatter plot using the base graphics package.</p>
 <p><strong>Function: plot( )</strong></p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">&quot;Scatter Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">&quot;Scatter Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code></pre></div>
 <ul>
 <li>x: The data vector for the x-axis.</li>
 <li>y: The data vector for the y-axis.</li>
@@ -490,14 +499,14 @@ can create a scatter plot using the base graphics package.</p>
 <li>pch: The symbol used for the data points. Default is 1 (a dot).</li>
 </ul>
 <p><strong>Example: Creating a Scatter Plot</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Generate random data</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">&quot;Scatter Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Y-axis&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code></pre></div>
-<p><img src="page-f_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate random data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">&quot;Scatter Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Y-axis&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code></pre></div>
+<p><img src="page-f_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>In this example, we generated two sets of random data x and y. The
 relationship between x and y is linear, with y being approximately twice
 the value of x with some random noise. We then created a scatter plot
@@ -517,8 +526,8 @@ the frequency or count of data in each category. In R, you can create a
 bar chart using the base graphics package.</p>
 <p><strong>Function: barplot( )</strong></p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">barplot</span>(height, <span class="at">names.arg =</span> <span class="cn">NULL</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Bar Chart&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(height, <span class="at">names.arg =</span> <span class="cn">NULL</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Bar Chart&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
 <ul>
 <li>height: A numeric vector containing the heights of the bars.</li>
 <li>names.arg: A vector of labels for the bars. If not provided, bar
@@ -529,14 +538,14 @@ numbers will be used as labels.</li>
 <li>ylab: The label for the y-axis.</li>
 </ul>
 <p><strong>Example: Creating a Bar Chart</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Category 1&quot;</span>, <span class="st">&quot;Category 2&quot;</span>, <span class="st">&quot;Category 3&quot;</span>, <span class="st">&quot;Category 4&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">25</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co"># Create a bar chart</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">names.arg =</span> categories, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Bar Chart Example&quot;</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Categories&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
-<p><img src="page-f_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Category 1&quot;</span>, <span class="st">&quot;Category 2&quot;</span>, <span class="st">&quot;Category 3&quot;</span>, <span class="st">&quot;Category 4&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">25</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">names.arg =</span> categories, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Bar Chart Example&quot;</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Categories&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<p><img src="page-f_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>In this example, we have sample data representing four categories and
 their corresponding counts. We used the <strong>barplot( )</strong>
 function to create a bar chart with the heights of the bars determined
@@ -556,8 +565,8 @@ presence of outliers. In R, you can create a box plot using the base
 graphics package.</p>
 <p><strong>Function: boxplot()</strong></p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">boxplot</span>(x, <span class="at">horizontal =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Box Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x, <span class="at">horizontal =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Box Plot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
 <ul>
 <li>x: A numeric vector or a list of numeric vectors for which the box
 plot is to be created.</li>
@@ -568,16 +577,16 @@ horizontally or vertically. Default is FALSE (vertical).</li>
 <li>ylab: The label for the y-axis.</li>
 </ul>
 <p><strong>Example: Creating a Box Plot</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">group1 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>),</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">group2 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">35</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fu">boxplot</span>(data, <span class="at">horizontal =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Box Plot Example&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Groups&quot;</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span></code></pre></div>
-<p><img src="page-f_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">group1 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group2 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">22</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">35</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(data, <span class="at">horizontal =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Box Plot Example&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Groups&quot;</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span></code></pre></div>
+<p><img src="page-f_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>In this example, we have two groups of sample data stored in a list
 data. Each group represents a set of numerical values. We used the
 <strong>boxplot( )</strong> function to create a box plot, displaying
@@ -597,8 +606,8 @@ over time or any ordered variable. In R, you can create a line chart
 using the base graphics package.</p>
 <p><strong>Function: plot( )</strong></p>
 <p>Syntax:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Line Chart&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Line Chart&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;X-axis label&quot;</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y-axis label&quot;</span>)</span></code></pre></div>
 <ul>
 <li>x: The data vector for the x-axis.</li>
 <li>y: The data vector for the y-axis.</li>
@@ -610,14 +619,14 @@ using the base graphics package.</p>
 <li>ylab: The label for the y-axis.</li>
 </ul>
 <p><strong>Example: Creating a Line Chart</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co"># Create a line chart</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Line Chart Example&quot;</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span></code></pre></div>
-<p><img src="page-f_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a line chart</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">&quot;Line Chart Example&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span></code></pre></div>
+<p><img src="page-f_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>In this example, we have sample data for time (x-axis) and
 corresponding values (y-axis). We used the <strong>plot( )</strong>
 function with type = <strong>“l”</strong> to create a line chart, where
