@@ -49,6 +49,12 @@ R programming offers a wide range of features for data analysis, statistics, vis
 
 ## Step-by-Step Guide to Install and Use R
 
+```{r, echo=FALSE}
+library("vembedr")
+
+embed_url("https://www.youtube.com/watch?v=H9EBlFDGG4k&pp=ygUZaW5zdGFsbCByIHN0dWRpbyBkYXRhY2FtcA%3D%3D")%>%
+  use_align("center")
+```
 
 Installing and using R is a straightforward process. Here's a step-by-step guide to help you get started:
 
