@@ -6,8 +6,7 @@ output:
     highlight: tango
     font-family: Arial
     df_print: paged
-    toc: true
-    toc_depth: 2
+
 ---
 
 ```{r setup, include=FALSE}

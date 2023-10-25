@@ -6,8 +6,7 @@ output:
     theme: united
     highlight: tango
     df_print: paged
-    toc: true
-    toc_depth: 2
+
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +17,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 In this topic, you will learn about :
 
-- Summary statistics, frequency, and cross tabulation table
+- Summary statistics
+- frequency
+- cross tabulation table
 
 
 # {.tabset}

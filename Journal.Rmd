@@ -22,6 +22,8 @@ This syllabus represents my current plans and objectives. As we go through the s
 Last compiled: `r Sys.Date()`
 
 ```{r, echo=FALSE}
+fixedWidth = 150
+
 df <- data.frame(
   Week = 1:16,
   Date = seq(as.Date("2023/10/2"), as.Date("2024/1/19"), "weeks"),
@@ -45,7 +47,7 @@ Correlation test
 ", "Linear regression (simple and multiple linear regression)","Presentation guidelines
 Written report Rubrics
 "),
-  Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
+  'Reading' = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-b.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-c.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-d.html)", 
@@ -59,14 +61,31 @@ Written report Rubrics
               "[Notes](https://ciksuriyati.github.io/learnR/page-l.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-m.html)",
               "[Notes](https://ciksuriyati.github.io/learnR/page-n.html)"),
-  Lecture = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
-  Asignment = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
+  Lecture = c("[R script]()", 
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", "",
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", 
+              "[R script]()", "",
+              "[R script]()", 
+              "[R script]()",
+              "[R script]()"),
+  Assignment = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
   Assessment = c("","","","","","Quiz","","","","",  "", "", "","", "Test","Presentation & Report"),
   Percentage = c("","","","","","15%","","","","",  "", "", "","", "30%","25% & 30%"))
 
-formattable(df, list(
+formattable(df, 
+            align =c("l","l","l","c","c", "c", "c", "c", "r"), 
+            list(
+Date = formatter("span", style = ~ style(color = "Blue"),  `border-radius` = "4px", `padding-right` = "2px") ,
+Lecture = color_bar("lightgray"),
 Subtopic = color_bar("#e9c46a"),
-Asignment = color_bar("#80ed99"),
+Assignment = color_bar("#80ed99"),
 Assessment = color_bar("#48cae4"),
 Percentage = color_bar("#f28482"))
             )

@@ -4,11 +4,11 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Syllabus"
+      href: Journal.html
     - text: "Introduction to Statistical Programming"
       menu:
         - text: "Topic 1: Introduction to R language"
-        - text: "About"
-          href: sow.html
         - text: "Week 1"
           href: page-a.html
         - text: "Week 2"
@@ -42,8 +42,8 @@ navbar:
           href: page-m.html
         - text: "Week 14"
           href: page-n.html
-    - text: "Sheme of Work"
-      href: Journal.html
+    - text: "About"
+      href: sow.html
     - text: "Links"
       href: Links.html
 output_dir: "docs"
