@@ -2,8 +2,6 @@
 title: "Schedule"
 output:
   html_document:
-    toc: true
-    toc_float: true
     collapsed: false
     number_sections: false
     toc_depth: 1
@@ -13,20 +11,22 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 library(formattable)
+library(lubridate)
 ```
 
 This syllabus represents my current plans and objectives. As we go through the semester, those plans may need to change to enhance the class learning opportunity. Such changes will be communicated clearly both on the website and in class.
 
 
-# Schedule for 14 weeks
+# Scheme of work
 
 Last compiled: `r Sys.Date()`
 
 ```{r, echo=FALSE}
 df <- data.frame(
-  Week = 1:14,
+  Week = 1:16,
+  Date = seq(as.Date("2023/10/2"), as.Date("2024/1/19"), "weeks"),
   Lesson = c("Introduction to R language", "", "Programming with R", "", " Importing data into R",
-    "Programming statistical graphics ", "", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "", "",""),
+    "Programming statistical graphics ", "", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "", "","", "",""),
   Subtopic = c(
   "Basic features of R programming, Logical vectors and relational operators ", "Data frames and list
 Extracting elements from vectors", 
@@ -36,33 +36,33 @@ Extracting elements from vectors",
 Importing Excel data file
 Importing data from other statistical software
 Exporting data
-", "Plotting using base package (graphics)", "Plotting using ggplot2 package (graphics)", "Introduction to tidy data
+", "Plotting using base package (graphics)","**MID SEMESTER BREAK**","Plotting using ggplot2 package (graphics)", "Introduction to tidy data
 Introduction to tidyr package
 Missing Data", "Keep and remove variables
-Filtering data and variables", "Summary statistics, frequency, and cross tabulation table",  "Test of single mean,independent t-test, paired t-test, one-way ANOVA", 
+Filtering data and variables", "Summary statistics, frequency, and cross tabulation table",  "Test of single mean,independent t-test, paired t-test, one-way ANOVA", "**SPECIAL BREAK**",
 "Test of association (Pearson Chi-Square and Fisher’s Exact test)
 Correlation test
 ", "Linear regression (simple and multiple linear regression)","Presentation guidelines
 Written report Rubrics
 "),
   Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)",
-              "[Notes](https://ciksuriyati.github.io/learnR/page-a.html)"),
-  Lecture = c("","","","","", 9.3, 9.3, 9.9, 8.5, 8.6,  "", "", "",""),
-  Asignment = c(9.1, 9.1, 9.2, 9.1, 8.9, 8.5, 9.2, 9.3, 9.1, 8.8,  "", "", "",""),
-  Assessment = c("","","","","","Quiz","","","","",  "", "", "Test","Presentation & Report"),
-  Percentage = c("","","","","","15%","","","","",  "", "", "30%"," 25% & 30%"))
+              "[Notes](https://ciksuriyati.github.io/learnR/page-b.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-c.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-d.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-e.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-f.html)", "",
+              "[Notes](https://ciksuriyati.github.io/learnR/page-g.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-h.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-i.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-j.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-k.html)", "",
+              "[Notes](https://ciksuriyati.github.io/learnR/page-l.html)", 
+              "[Notes](https://ciksuriyati.github.io/learnR/page-m.html)",
+              "[Notes](https://ciksuriyati.github.io/learnR/page-n.html)"),
+  Lecture = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
+  Asignment = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
+  Assessment = c("","","","","","Quiz","","","","",  "", "", "","", "Test","Presentation & Report"),
+  Percentage = c("","","","","","15%","","","","",  "", "", "","", "30%","25% & 30%"))
 
 formattable(df, list(
 Subtopic = color_bar("#e9c46a"),
