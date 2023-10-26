@@ -6,6 +6,8 @@ output:
     highlight: tango
     df_print: paged
     toc_depth: 2
+    includes:
+      after_body: footer.html
 ---
 
 
@@ -34,7 +36,4 @@ kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total
 
 
 Back to main website [_Miss Sue_](https://sites.google.com/view/suriyatiujang/home?authuser=0)
-
-
-
 

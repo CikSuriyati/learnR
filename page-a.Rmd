@@ -6,6 +6,8 @@ output:
     highlight: tango
     font-family: Arial
     df_print: paged
+    includes:
+      after_body: footer.html
 
 ---
 
@@ -27,24 +29,57 @@ In this topic in week 1, you will learn about :
 [EXERCISES](https://ciksuriyati.shinyapps.io/penguins/?_ga=2.111118085.1242787491.1673712812-716303559.1673712812)
 
 ### Introduction to basic features of R programming
+***
 
 **Basic Features of R Programming**
 
 R is a powerful and popular programming language widely used for data analysis, statistical computing, and graphical representation. It has several essential features that make it a favorite choice among data scientists, statisticians, and researchers. Below are some of the key features of R programming:
 
-1. **Open Source**: R is an open-source language, which means it is freely available for anyone to use, modify, and distribute. The open-source nature encourages collaboration and continuous improvement of the language.
-2. **Data Handling**: R provides efficient data handling capabilities, making it easy to import, manipulate, and transform data. It supports various data structures, such as vectors, matrices, data frames, and lists.
-3. **Statistical Analysis**: R is primarily known for its extensive statistical capabilities. It offers a vast collection of built-in functions and packages for conducting various statistical analyses, including regression, hypothesis testing, ANOVA, and time series analysis.
-4. **Graphics and Visualization**: R excels in producing high-quality visualizations and graphs. It offers powerful plotting functions and packages like ggplot2, lattice, and base graphics, enabling users to create insightful and publication-quality plots.
-5. **Extensible**: R is an extensible language, allowing users to create their functions and packages to extend its functionality. The Comprehensive R Archive Network (CRAN) hosts thousands of user-contributed packages for various purposes.
-6. **Reproducibility**: R promotes reproducibility in data analysis and research. Scripts written in R can be easily shared and rerun on different datasets, ensuring that others can replicate and verify the results.
-Documentation and Community Support: R has comprehensive documentation available through manuals, guides, and tutorials. Additionally, it has a vibrant and active community of users and developers who provide support through forums and mailing lists.
-7. **Interactive Environment**: R offers an interactive environment with an interactive console and script editor, allowing users to execute commands interactively and see immediate results.
-8. **Integration with Other Tools**: R can be integrated with other programming languages like Python, C++, and Java, enabling users to leverage their existing code and tools seamlessly.
+1. **Open Source**: 
 
+R is an open-source language, which means it is freely available for anyone to use, modify, and distribute. The open-source nature encourages collaboration and continuous improvement of the language.
+
+2. **Data Handling**: 
+
+R provides efficient data handling capabilities, making it easy to import, manipulate, and transform data. It supports various data structures, such as vectors, matrices, data frames, and lists.
+
+3. **Statistical Analysis**: 
+
+R is primarily known for its extensive statistical capabilities. It offers a vast collection of built-in functions and packages for conducting various statistical analyses, including regression, hypothesis testing, ANOVA, and time series analysis.
+
+4. **Graphics and Visualization**: 
+
+R excels in producing high-quality visualizations and graphs. It offers powerful plotting functions and packages like ggplot2, lattice, and base graphics, enabling users to create insightful and publication-quality plots.
+
+5. **Extensible**: 
+
+R is an extensible language, allowing users to create their functions and packages to extend its functionality. The Comprehensive R Archive Network (CRAN) hosts thousands of user-contributed packages for various purposes.
+
+6. **Reproducibility**: 
+
+R promotes reproducibility in data analysis and research. Scripts written in R can be easily shared and rerun on different datasets, ensuring that others can replicate and verify the results.
+
+Documentation and Community Support: R has comprehensive documentation available through manuals, guides, and tutorials. Additionally, it has a vibrant and active community of users and developers who provide support through forums and mailing lists.
+
+7. **Interactive Environment**: 
+
+R offers an interactive environment with an interactive console and script editor, allowing users to execute commands interactively and see immediate results.
+
+8. **Integration with Other Tools**: 
+
+R can be integrated with other programming languages like Python, C++, and Java, enabling users to leverage their existing code and tools seamlessly.
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 **Summary:**
+
 R programming offers a wide range of features for data analysis, statistics, visualization, and reproducibility. Its open-source nature, extensive statistical libraries, and active community support make it a preferred choice for data analysis and research in various domains. Whether you are a beginner or an experienced data analyst, R provides a powerful and flexible environment to explore, analyze, and visualize data effectively.
+
+</div>
+
 
 
 ## Step-by-Step Guide to Install and Use R
@@ -124,7 +159,7 @@ Now, you can explore R's vast capabilities for data analysis, visualization, and
 
 
 ### Operators in R
-
+***
 
 Type of operators in R
 
@@ -285,6 +320,13 @@ x||y
 
 
 
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 Let’s summarise the main points of this tutorial.
 
 - The three most important logical operators are NOT, AND and OR.
@@ -292,3 +334,5 @@ Let’s summarise the main points of this tutorial.
 - The AND operator is the ampersand.
 - The OR operator is the vertical bar.
 - Logical operators are often used to subset vectors or data frames.
+
+</div>

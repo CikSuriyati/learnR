@@ -6,6 +6,8 @@ output:
     theme: united
     highlight: tango
     df_print: paged
+    includes:
+      after_body: footer.html
 
 ---
 
@@ -30,7 +32,7 @@ cat(paste0('<center><img src="', image,  '"></center>'))
 ```
 picture from: [stateducation.com](http://statseducation.com/Introduction-to-R/modules/getting%20started/workflow/)
 
-```{r echo = FALSE, results = 'asis'}
+```{r echo = FALSE, results = 'asis', out.width="50%"}
 image = "https://online.hbs.edu/PublishingImages/6-steps-of-data-wrangling.png"
 cat(paste0('<center><img src="', image,  '"></center>')) 
 ```

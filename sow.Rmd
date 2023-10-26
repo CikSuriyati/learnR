@@ -5,6 +5,8 @@ output:
     theme: united
     highlight: tango
     df_print: paged
+    includes:
+      after_body: footer.html
 ---
 
 

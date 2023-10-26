@@ -6,6 +6,8 @@ output:
     theme: united
     highlight: tango
     df_print: paged
+    includes:
+      after_body: footer.html
 
 ---
 
@@ -103,6 +105,24 @@ ggplot(data, aes(x = x_values, y = y_values)) +
 In this example, we have a sample data frame named data with two **columns x_values** and **y_values**. We created a scatterplot using **ggplot2** by specifying the data and aesthetic mappings in the **ggplot()** function and adding the scatterplot geometry with **geom_point()**. We customized the point color and size in the scatterplot. We also added a title and axis labels using **labs()**.
 
 Remember to replace data, **x_values**, and **y_values** with your actual data frame and variable names in the **ggplot2** code. You can further customize the appearance of the plot using additional **ggplot2** functions to suit your specific visualization needs. **ggplot2** provides numerous options for creating attractive and informative scatterplots.
+
+**Interactive graphics**
+
+```{r}
+library(ggplot2)
+library(plotly)
+library(gapminder)
+ 
+p <- gapminder %>%
+  filter(year==1977) %>%
+  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw()
+ 
+ggplotly(p)
+```
+
 
 ## Bar chart
 
