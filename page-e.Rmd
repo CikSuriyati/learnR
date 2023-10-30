@@ -16,13 +16,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
 In this topic, you will learn about :
 
 - Importing from flat files with “utils”base package
 - Importing Excel data file
 - Importing data from other statistical software
 - Exporting data
+
+[Presentation slides](https://quartopub.com/sites/5fe232c5-a832-48ef-988e-4c61e845d6de)
 
 Data wrangling is the process of converting raw data into a usable form. 
 
@@ -36,6 +37,7 @@ picture from: [stateducation.com](http://statseducation.com/Introduction-to-R/mo
 image = "https://online.hbs.edu/PublishingImages/6-steps-of-data-wrangling.png"
 cat(paste0('<center><img src="', image,  '"></center>')) 
 ```
+
 picture from: [Harvard Business School Online](https://online.hbs.edu/PublishingImages/6-steps-of-data-wrangling.png)
 
 Data wrangling—also called data cleaning, data remediation, or data munging—refers to a variety of processes designed to transform raw data into more readily used formats. The exact methods differ from project to project depending on the data you’re leveraging and the goal you’re trying to achieve.
