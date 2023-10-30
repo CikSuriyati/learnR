@@ -23,7 +23,7 @@ In this topic, you will learn about :
 - Importing data from other statistical software
 - Exporting data
 
-[Presentation slides](https://quartopub.com/sites/5fe232c5-a832-48ef-988e-4c61e845d6de)
+[Presentation slides](https://ciksuriyati.quarto.pub/quarto/)
 
 Data wrangling is the process of converting raw data into a usable form. 
 
