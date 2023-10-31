@@ -12,18 +12,45 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
+library(formattable)
+library(lubridate)
 ```
 
 
 In this topic, you will learn about :
 
-- Importing from flat files with “utils”base package
-- Importing Excel data file
-- Importing data from other statistical software
-- Exporting data
 
-[Presentation slides](https://ciksuriyati.quarto.pub/quarto/)
+```{r, echo=FALSE}
+fixedWidth = 150
+
+df <- data.frame(
+  No = 1:4,
+  Chapter = c(" Importing data into R","","",""),
+  Subtopic = c("Importing from flat files with “utils”base package",
+"Importing Excel data file","Importing data from other statistical software",
+"Exporting data"),
+  Slide = c("[Slides](https://ciksuriyati.quarto.pub/quarto/)", 
+            "","",""),
+  Exercise = c("","","",""),
+CheatSheet =c("[Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)", 
+              "", 
+              "", 
+              "[readr](https://rstudio.github.io/cheatsheets/data-import.pdf)")
+)
+
+formattable(df, 
+            align =c("l","l","l","c","c", "c", "c", "c", "r"), 
+            list(
+Slide = color_bar("pink"),
+Subtopic = color_bar("#e9c46a"),
+Exercise = color_bar("#80ed99"),
+CheatSheet = color_bar("lightgray")
+)
+            )
+
+```
+
 
 Data wrangling is the process of converting raw data into a usable form. 
 

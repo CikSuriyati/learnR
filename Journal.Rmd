@@ -31,26 +31,8 @@ fixedWidth = 150
 df <- data.frame(
   Week = 1:16,
   Date = seq(as.Date("2023/10/2"), as.Date("2024/1/19"), "weeks"),
-  Lesson = c("Introduction to R language", "", "Programming with R", "", " Importing data into R",
-    "Programming statistical graphics ", "","", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "", "","", ""),
-  Subtopic = c(
-  "Basic features of R programming, Logical vectors and relational operators ", "Data frames and list
-Extracting elements from vectors", 
-"Flow control, Introduction to function", 
-"Packages, libraries, and repositories", 
-"Importing from flat files with “utils”base package
-Importing Excel data file
-Importing data from other statistical software
-Exporting data
-", "Plotting using base package (graphics)","**MID SEMESTER BREAK**","Plotting using ggplot2 package (graphics)", "Introduction to tidy data
-Introduction to tidyr package
-Missing Data", "Keep and remove variables
-Filtering data and variables", "Summary statistics, frequency, and cross tabulation table",  "Test of single mean,independent t-test, paired t-test, one-way ANOVA", "**SPECIAL BREAK**",
-"Test of association (Pearson Chi-Square and Fisher’s Exact test)
-Correlation test
-", "Linear regression (simple and multiple linear regression)","Presentation guidelines
-Written report Rubrics
-"),
+  Chapter = c("Introduction to R language", "", "Programming with R", "", " Importing data into R",
+    "Programming statistical graphics ", "**MID SEMESTER BREAK**","", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "**SPECIAL BREAK**", "","", ""),
    Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-b.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-c.html)", 
@@ -65,21 +47,6 @@ Written report Rubrics
               "[Notes](https://ciksuriyati.github.io/learnR/page-l.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-m.html)",
               "[Notes](https://ciksuriyati.github.io/learnR/page-n.html)"),
-  Lecture = c("[R script]()", 
-              "[R script](https://drive.google.com/file/d/134NFrvE6Vk8FpoOZkt1uPCbioMWCtWiK/view?usp=share_link)", 
-              "[R script]()", 
-              "[R script]()", 
-              "[R script]()", 
-              "[R script]()", "",
-              "[R script]()", 
-              "[R script]()", 
-              "[R script]()", 
-              "[R script]()", 
-              "[R script]()", "",
-              "[R script]()", 
-              "[R script]()",
-              "[R script]()"),
-  Exercise = c("","","","","", "", "", "", "", "",  "", "", "","", "",""),
 CheatSheet =c("[Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)", 
               "", 
               "", 
@@ -101,9 +68,7 @@ formattable(df,
             align =c("l","l","l","c","c", "c", "c", "c", "r"), 
             list(
 Date = formatter("span", style = ~ style(color = "Blue"),  `border-radius` = "4px", `padding-right` = "2px") ,
-Lecture = color_bar("lightgray"),
-Subtopic = color_bar("#e9c46a"),
-Exercise = color_bar("#80ed99"),
+Chapter = color_bar("#e9c46a"),
 Assessment = color_bar("#48cae4"),
 CheatSheet = color_bar("lightgray"),
 Mark = color_bar("#f28482"))

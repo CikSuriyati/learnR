@@ -12,14 +12,44 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
+library(formattable)
+library(lubridate)
 ```
-
 
 
 In this topic, you will learn about :
 
-Plotting using base package (graphics) focus on Histogram, Scatter diagram, Bar chart, Box plot, and Line chart
+
+```{r, echo=FALSE}
+fixedWidth = 150
+
+df <- data.frame(
+  No = 1:5,
+  Chapter = c("Programming statistical graphics (Base package)","","","", ""),
+  Subtopic = c("Histogram",
+"Scatterplot","Bar Chart",
+"Boxplot", "Line Chart"),
+  Slide = c("[Slides]()", 
+            "","","",""),
+  Exercise = c("","","","",""),
+CheatSheet =c("[Base R](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)", 
+              "", 
+              "", 
+              "[readr](https://rstudio.github.io/cheatsheets/data-import.pdf)",
+              "[ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)")
+)
+formattable(df, 
+            align =c("l","l","l","c","c"), 
+            list(
+Slide = color_bar("pink"),
+Subtopic = color_bar("#e9c46a"),
+Exercise = color_bar("#80ed99"),
+CheatSheet = color_bar("lightgray")
+)
+            )
+
+```
 
 Data exploration is the art of looking at your data, rapidly generating hypotheses, quickly testing them, then repeating again and again and again. The goal of data exploration is to generate many promising leads that you can later explore in more depth.
 
