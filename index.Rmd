@@ -9,8 +9,21 @@ output:
     includes:
       after_body: footer.html
       in_header: GA_script.html
+
 ---
 
+:::::::::::::: {.columns}
+::: {.column width="20%"}
+
+![](~/Documents/GitHub/learnR/logo.png)
+
+:::
+::: {.column width="80%"}
+
+
+
+:::
+::::::::::::::
 
 # **Introduction to Statistical Programming**
 
