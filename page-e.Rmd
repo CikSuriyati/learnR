@@ -8,6 +8,7 @@ output:
     df_print: paged
     includes:
       after_body: footer.html
+      in_header: GA_script.html
 
 ---
 

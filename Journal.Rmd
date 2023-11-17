@@ -10,6 +10,7 @@ output:
     font-family: Arial
     includes:
       after_body: footer.html
+      in_header: GA_script.html
 ---
 
 ```{r setup, include=FALSE}
