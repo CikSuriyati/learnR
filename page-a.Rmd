@@ -1,6 +1,8 @@
 ---
 title: 'Topic 1: Introduction to R language'
-output: 
+output:
+  pdf_document: default
+  word_document: default
   html_document:
     theme: united
     highlight: tango
@@ -10,7 +12,6 @@ output:
       before_body: header.html
       after_body: footer.html
       in_header: GA_script.html
-
 ---
 
 ```{r setup, include=FALSE}
