@@ -62,19 +62,18 @@ R is an extensible language, allowing users to create their functions and packag
 
 R promotes reproducibility in data analysis and research. Scripts written in R can be easily shared and rerun on different datasets, ensuring that others can replicate and verify the results.
 
-Documentation and Community Support: R has comprehensive documentation available through manuals, guides, and tutorials. Additionally, it has a vibrant and active community of users and developers who provide support through forums and mailing lists.
+7. **Documentation and Community Support**: 
 
-7. **Interactive Environment**: 
+R has comprehensive documentation available through manuals, guides, and tutorials. Additionally, it has a vibrant and active community of users and developers who provide support through forums and mailing lists.
+
+8. **Interactive Environment**: 
 
 R offers an interactive environment with an interactive console and script editor, allowing users to execute commands interactively and see immediate results.
 
-8. **Integration with Other Tools**: 
+9. **Integration with Other Tools**: 
 
 R can be integrated with other programming languages like Python, C++, and Java, enabling users to leverage their existing code and tools seamlessly.
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
 <div class = "blue">
 
 **Summary:**
@@ -151,7 +150,7 @@ Save the file and then open it in the R console using the **source( )** function
 When you create plots in R, they will typically appear in a separate window or plot pane.
 You can interact with the plots using buttons or options in the plot pane (for GUI-based interfaces) or by typing additional commands to modify or save the plots.
 
-**Step 9: Exiting R**
+9. **Exiting R**
 
 To exit R, type **q( )** or **quit( )** in the R console and press Enter.
 Congratulations! You have successfully installed and started using R. 
@@ -303,21 +302,21 @@ x|y
 
 But && and || examines only the first element of the operands resulting into a single length logical vector.
 
-
+```{r}
 x<-c(TRUE, FALSE, 0,6)
 y <- c(FALSE,TRUE,FALSE,TRUE)
 
 x&&y
-
-
+```
 
 Zero is considered FALSE and non-zero numbers are taken as TRUE.
 
-
+```{r}
 x<-c(TRUE, FALSE, 0,6)
 y <- c(FALSE,TRUE,FALSE,TRUE)
 
 x||y
+```
 
 
 
@@ -325,9 +324,6 @@ x||y
 
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
 <div class = "blue">
 
 Let’s summarise the main points of this tutorial.
