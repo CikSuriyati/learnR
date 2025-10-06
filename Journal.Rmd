@@ -12,6 +12,8 @@ output:
       before_body: header.html
       after_body: footer.html
       in_header: GA_script.html
+  pdf_document:
+    toc_depth: '1'
 ---
 
 ```{r setup, include=FALSE}
@@ -32,7 +34,7 @@ fixedWidth = 150
 
 df <- data.frame(
   Week = 1:16,
-  Date = seq(as.Date("2023/10/2"), as.Date("2024/1/19"), "weeks"),
+  Date = seq(as.Date("2025/10/6"), as.Date("2026/1/23"), "weeks"),
   Chapter = c("Introduction to R language", "", "Programming with R", "", " Importing data into R",
     "Programming statistical graphics ", "**MID SEMESTER BREAK**","", "Data Cleaning and filtering", "", "Basic Statistical Analysis", "", "**SPECIAL BREAK**", "","", ""),
    Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 

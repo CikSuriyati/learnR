@@ -7,6 +7,10 @@ output:
     theme: united
     highlight: tango
     df_print: paged
+    includes:
+      before_body: header.html
+      after_body: footer.html
+      in_header: GA_script.html
 
 ---
 
