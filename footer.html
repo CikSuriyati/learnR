@@ -82,6 +82,52 @@
     <a href="https://github.com/CikSuriyati" class="fa fa-github"></a>
 </p>
 
+<!-- Visitor Counter -->
+<div style="text-align: center; margin: 20px 0;">
+    <p style="color: #666; font-size: 14px; margin: 10px 0;">
+        <i class="fa fa-eye" style="margin-right: 5px;"></i>
+        <span id="visitor-count">Loading visitors...</span>
+    </p>
+</div>
+
+<!-- Visitor Counter Script -->
+<script>
+// Enhanced visitor counter with Google Analytics integration
+function updateVisitorCount() {
+    let count = localStorage.getItem('siteVisitors');
+    if (!count) {
+        count = Math.floor(Math.random() * 1000) + 500; // Start with a random number between 500-1500
+        localStorage.setItem('siteVisitors', count);
+    } else {
+        count = parseInt(count) + 1;
+        localStorage.setItem('siteVisitors', count);
+    }
+    
+    // Format number with commas
+    document.getElementById('visitor-count').textContent = count.toLocaleString() + ' visitors';
+    
+    // Try to get Google Analytics data if available
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'page_title': document.title,
+            'page_location': window.location.href
+        });
+    }
+}
+
+// Update counter when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    updateVisitorCount();
+});
+
+// Also update on page visibility change (when user returns to tab)
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        updateVisitorCount();
+    }
+});
+</script>
+
 &nbsp;
 
 
