@@ -1,8 +1,6 @@
 ---
 title: 'Topic 1: Introduction to R language'
 output:
-  pdf_document: default
-  word_document: default
   html_document:
     theme: united
     highlight: tango
@@ -306,7 +304,8 @@ But && and || examines only the first element of the operands resulting into a s
 x<-c(TRUE, FALSE, 0,6)
 y <- c(FALSE,TRUE,FALSE,TRUE)
 
-x&&y
+# && only works with single values, so we'll use the first element
+x[1] && y[1]
 ```
 
 Zero is considered FALSE and non-zero numbers are taken as TRUE.
@@ -315,7 +314,8 @@ Zero is considered FALSE and non-zero numbers are taken as TRUE.
 x<-c(TRUE, FALSE, 0,6)
 y <- c(FALSE,TRUE,FALSE,TRUE)
 
-x||y
+# || only works with single values, so we'll use the first element
+x[1] || y[1]
 ```
 
 
