@@ -1,6 +1,6 @@
 ---
 title: "Learn R"
-output: 
+output:
   html_document:
     theme: united
     highlight: tango
@@ -10,6 +10,8 @@ output:
       before_body: header.html
       after_body: footer.html
       in_header: GA_script.html
+  pdf_document:
+    toc_depth: '2'
 ---
 
 # **Introduction to Statistical Programming**
