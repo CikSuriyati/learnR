@@ -495,6 +495,174 @@ $(document).ready(function () {
 <p> </p>
 
 
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin"></a>
+    <a href="https://github.com/CikSuriyati" class="fa fa-github"></a>
+</p>
+
+<!-- Visitor Counter -->
+<div style="text-align: center; margin: 20px 0;">
+    <p style="color: #666; font-size: 14px; margin: 10px 0;">
+        <i class="fa fa-eye" style="margin-right: 5px;"></i>
+        <span id="visitor-count">Loading visitors...</span>
+    </p>
+</div>
+
+<!-- Visitor Counter Script -->
+<script>
+(function () {
+    var counterElement = document.getElementById('visitor-count');
+    if (!counterElement) {
+        return;
+    }
+
+    var storageKey = 'suriyatiujang-learnr-visits';
+    var sessionKey = 'suriyatiujang-learnr-session';
+    var endpoints = [
+        'https://api.countapi.xyz/hit/suriyatiujang-learnr/visits',
+        'https://api.countapi.xyz/get/suriyatiujang-learnr/visits'
+    ];
+
+    function setCounterText(value, suffix) {
+        counterElement.textContent = Number(value).toLocaleString() + ' ' + suffix;
+    }
+
+    function setUnavailable() {
+        counterElement.textContent = 'Visitors unavailable';
+    }
+
+    function storeFallback(value) {
+        try {
+            localStorage.setItem(storageKey, value);
+            localStorage.setItem(storageKey + '-timestamp', Date.now().toString());
+        } catch (err) {
+            // Ignore storage issues (e.g., private mode)
+        }
+    }
+
+    function readFallback() {
+        try {
+            var value = localStorage.getItem(storageKey);
+            var timestamp = localStorage.getItem(storageKey + '-timestamp');
+            // If data is older than 7 days, consider it stale
+            if (value && timestamp && (Date.now() - parseInt(timestamp)) < 7 * 24 * 60 * 60 * 1000) {
+                return value;
+            }
+            return null;
+        } catch (err) {
+            return null;
+        }
+    }
+
+    function isNewSession() {
+        try {
+            var sessionId = sessionStorage.getItem(sessionKey);
+            if (!sessionId) {
+                sessionStorage.setItem(sessionKey, Date.now().toString());
+                return true;
+            }
+            return false;
+        } catch (err) {
+            return true; // Assume new session if we can't check
+        }
+    }
+
+    function fireAnalyticsEvent() {
+        if (typeof gtag === 'function') {
+            gtag('event', 'visitor_counter_update', {
+                page_title: document.title,
+                page_location: window.location.href
+            });
+        }
+    }
+
+    function incrementLocalCounter() {
+        try {
+            var currentValue = parseInt(localStorage.getItem(storageKey) || '0');
+            var newValue = currentValue + 1;
+            storeFallback(newValue);
+            return newValue;
+        } catch (err) {
+            return 1; // Start with 1 if we can't read/write
+        }
+    }
+
+    function fetchCount() {
+        // First, try to get a cached value
+        var cachedValue = readFallback();
+        if (cachedValue) {
+            setCounterText(cachedValue, 'visits');
+        }
+
+        // If this is a new session, increment the local counter
+        if (isNewSession()) {
+            var newValue = incrementLocalCounter();
+            setCounterText(newValue, 'visits');
+            fireAnalyticsEvent();
+        }
+
+        // Try to sync with external API (non-blocking)
+        if (!window.fetch) {
+            return;
+        }
+
+        // Try multiple endpoints
+        var currentEndpoint = 0;
+        function tryNextEndpoint() {
+            if (currentEndpoint >= endpoints.length) {
+                return; // All endpoints failed
+            }
+
+            var endpoint = endpoints[currentEndpoint];
+            var isHitEndpoint = endpoint.includes('/hit/');
+            
+            fetch(endpoint, { 
+                method: 'GET', 
+                cache: 'no-cache',
+                timeout: 5000
+            })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                if (data && typeof data.value === 'number') {
+                    setCounterText(data.value, 'visits');
+                    storeFallback(data.value);
+                    fireAnalyticsEvent();
+                } else {
+                    throw new Error('Invalid counter data');
+                }
+            })
+            .catch(function (error) {
+                currentEndpoint++;
+                if (currentEndpoint < endpoints.length) {
+                    tryNextEndpoint();
+                }
+                // If all endpoints fail, keep using local counter
+            });
+        }
+
+        // Start trying endpoints after a short delay
+        setTimeout(tryNextEndpoint, 100);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchCount);
+    } else {
+        fetchCount();
+    }
+})();
+</script>
+
+
 </body>
 </html>
 
