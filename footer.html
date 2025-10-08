@@ -92,40 +92,151 @@
 
 <!-- Visitor Counter Script -->
 <script>
-// Enhanced visitor counter with Google Analytics integration
-function updateVisitorCount() {
-    let count = localStorage.getItem('siteVisitors');
-    if (!count) {
-        count = Math.floor(Math.random() * 1000) + 500; // Start with a random number between 500-1500
-        localStorage.setItem('siteVisitors', count);
+(function () {
+    var counterElement = document.getElementById('visitor-count');
+    if (!counterElement) {
+        return;
+    }
+
+    var storageKey = 'suriyatiujang-learnr-visits';
+    var sessionKey = 'suriyatiujang-learnr-session';
+    var endpoints = [
+        'https://api.countapi.xyz/hit/suriyatiujang-learnr/visits',
+        'https://api.countapi.xyz/get/suriyatiujang-learnr/visits'
+    ];
+
+    function setCounterText(value, suffix) {
+        counterElement.textContent = Number(value).toLocaleString() + ' ' + suffix;
+    }
+
+    function setUnavailable() {
+        counterElement.textContent = 'Visitors unavailable';
+    }
+
+    function storeFallback(value) {
+        try {
+            localStorage.setItem(storageKey, value);
+            localStorage.setItem(storageKey + '-timestamp', Date.now().toString());
+        } catch (err) {
+            // Ignore storage issues (e.g., private mode)
+        }
+    }
+
+    function readFallback() {
+        try {
+            var value = localStorage.getItem(storageKey);
+            var timestamp = localStorage.getItem(storageKey + '-timestamp');
+            // If data is older than 7 days, consider it stale
+            if (value && timestamp && (Date.now() - parseInt(timestamp)) < 7 * 24 * 60 * 60 * 1000) {
+                return value;
+            }
+            return null;
+        } catch (err) {
+            return null;
+        }
+    }
+
+    function isNewSession() {
+        try {
+            var sessionId = sessionStorage.getItem(sessionKey);
+            if (!sessionId) {
+                sessionStorage.setItem(sessionKey, Date.now().toString());
+                return true;
+            }
+            return false;
+        } catch (err) {
+            return true; // Assume new session if we can't check
+        }
+    }
+
+    function fireAnalyticsEvent() {
+        if (typeof gtag === 'function') {
+            gtag('event', 'visitor_counter_update', {
+                page_title: document.title,
+                page_location: window.location.href
+            });
+        }
+    }
+
+    function incrementLocalCounter() {
+        try {
+            var currentValue = parseInt(localStorage.getItem(storageKey) || '0');
+            var newValue = currentValue + 1;
+            storeFallback(newValue);
+            return newValue;
+        } catch (err) {
+            return 1; // Start with 1 if we can't read/write
+        }
+    }
+
+    function fetchCount() {
+        // First, try to get a cached value
+        var cachedValue = readFallback();
+        if (cachedValue) {
+            setCounterText(cachedValue, 'visits');
+        }
+
+        // If this is a new session, increment the local counter
+        if (isNewSession()) {
+            var newValue = incrementLocalCounter();
+            setCounterText(newValue, 'visits');
+            fireAnalyticsEvent();
+        }
+
+        // Try to sync with external API (non-blocking)
+        if (!window.fetch) {
+            return;
+        }
+
+        // Try multiple endpoints
+        var currentEndpoint = 0;
+        function tryNextEndpoint() {
+            if (currentEndpoint >= endpoints.length) {
+                return; // All endpoints failed
+            }
+
+            var endpoint = endpoints[currentEndpoint];
+            var isHitEndpoint = endpoint.includes('/hit/');
+            
+            fetch(endpoint, { 
+                method: 'GET', 
+                cache: 'no-cache',
+                timeout: 5000
+            })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                if (data && typeof data.value === 'number') {
+                    setCounterText(data.value, 'visits');
+                    storeFallback(data.value);
+                    fireAnalyticsEvent();
+                } else {
+                    throw new Error('Invalid counter data');
+                }
+            })
+            .catch(function (error) {
+                currentEndpoint++;
+                if (currentEndpoint < endpoints.length) {
+                    tryNextEndpoint();
+                }
+                // If all endpoints fail, keep using local counter
+            });
+        }
+
+        // Start trying endpoints after a short delay
+        setTimeout(tryNextEndpoint, 100);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchCount);
     } else {
-        count = parseInt(count) + 1;
-        localStorage.setItem('siteVisitors', count);
+        fetchCount();
     }
-    
-    // Format number with commas
-    document.getElementById('visitor-count').textContent = count.toLocaleString() + ' visitors';
-    
-    // Try to get Google Analytics data if available
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'page_view', {
-            'page_title': document.title,
-            'page_location': window.location.href
-        });
-    }
-}
-
-// Update counter when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    updateVisitorCount();
-});
-
-// Also update on page visibility change (when user returns to tab)
-document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-        updateVisitorCount();
-    }
-});
+})();
 </script>
 
 &nbsp;
@@ -133,4 +244,5 @@ document.addEventListener('visibilitychange', function() {
 
 </body>
 </html>
+
 

@@ -102,6 +102,8 @@ Select a CRAN mirror location near you.
 Choose the appropriate operating system (Windows, macOS, or Linux).
 Download the R installer for your operating system.
 
+Or RStudio Desktop **https://posit.co/download/rstudio-desktop/**
+
 2. **Install R**
 
 For **Windows**: Double-click the downloaded installer file and follow the on-screen instructions to install R.

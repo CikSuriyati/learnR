@@ -1,2 +1,4 @@
 formattable
 lubridate
+knitr
+kableExtra
