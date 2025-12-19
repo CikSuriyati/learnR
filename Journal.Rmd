@@ -42,7 +42,7 @@ df <- data.frame(
              "Basic Statistical Analysis", "Basic Statistical Analysis", 
              "**SPECIAL BREAK**", "Basic Statistical Analysis", "Basic Statistical Analysis", 
              "Basic Statistical Analysis"),
-  Hours = c("4", "4", "3", "3", "3", "3", "", "3", "3", "3", "3", "3", "", "3", "3", "3"),
+  Hours = c("4", "4", "4", "4", "4", "4", "", "4", "4", "4", "4", "4", "", "4", "4", "4"),
   Reading = c("[Notes](https://ciksuriyati.github.io/learnR/page-a.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-b.html)", 
               "[Notes](https://ciksuriyati.github.io/learnR/page-c.html)", 
