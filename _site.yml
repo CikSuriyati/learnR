@@ -51,5 +51,12 @@ output_dir: "docs"
 
 output:
   html_document:
+    theme:
+      bootswatch: litera
+      primary: "#1B2A41"
+      base_font:
+        google: "Source Sans Pro"
+      heading_font:
+        google: "Source Serif Pro"
     includes:
       after_body: footer.html

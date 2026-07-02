@@ -1,30 +1,189 @@
-/* Modern, readable UI font stack */
+/* ==========================================================================
+   Learn R — academic theme
+   Primary: #1B2A41 (navy) | Muted: #5B6B7F (slate) | Panel: #F4F1EA (warm sand)
+   ========================================================================== */
+
+:root {
+  --color-primary: #1B2A41;
+  --color-muted: #5B6B7F;
+  --color-bg: #FFFFFF;
+  --color-panel: #F4F1EA;
+}
+
 body {
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.6;
+  font-family: "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #1F2933;
+  background-color: var(--color-bg);
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Serif Pro", Georgia, "Times New Roman", serif;
   font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.1px;
+}
+
+p {
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-muted);
+}
+
+/* Muted / secondary text */
+.text-muted,
+small,
+.small {
+  color: var(--color-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Section spacing
+   -------------------------------------------------------------------------- */
+
+.section,
+div.section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container-fluid.main-container {
+  padding-top: 1rem;
+}
+
+hr {
+  margin: 2rem 0;
+  border-top: 1px solid #E3DFD4;
+}
+
+/* --------------------------------------------------------------------------
+   Navbar — simplified, low visual weight
+   -------------------------------------------------------------------------- */
+
+.navbar,
+.navbar-default {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0;
+  min-height: 52px;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: #F4F1EA;
+  font-weight: 400;
+  font-family: "Source Sans Pro", sans-serif;
   letter-spacing: 0.2px;
 }
 
-/* Optional: crisper nav text */
-.navbar-brand,
-.navbar-nav > li > a {
+.navbar-default .navbar-brand {
   font-weight: 600;
 }
 
-/* Monospace font refresh for code */
+/* subtle underline on hover instead of button-style highlight */
+.navbar-default .navbar-nav > li > a {
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  padding-top: 18px;
+  padding-bottom: 14px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: transparent;
+  color: #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  color: #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+/* Dropdown menu — "Introduction to Statistical Programming" */
+.navbar-default .navbar-nav .open .dropdown-menu {
+  background-color: #FFFFFF;
+  border: 1px solid #E3DFD4;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(27, 42, 65, 0.12);
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a {
+  color: #1F2933;
+  padding: 0.55rem 1.25rem;
+  line-height: 1.5;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .dropdown-menu > li > a:focus {
+  background-color: var(--color-panel);
+  color: var(--color-primary);
+}
+
+/* Non-link topic headers inside the dropdown (e.g. "Topic 1: ...") */
+.navbar-default .navbar-nav .dropdown-menu > li.dropdown-header,
+.navbar-default .navbar-nav .dropdown-menu > .disabled > a {
+  color: var(--color-muted);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1.25rem 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar / footer — sparing use of the warm panel background
+   -------------------------------------------------------------------------- */
+
+.sidebar,
+#sidebar,
+.tocify {
+  background-color: var(--color-panel);
+  padding: 1.25rem;
+  border-radius: 4px;
+}
+
+footer,
+.footer {
+  background-color: var(--color-panel);
+  color: var(--color-muted);
+  padding: 2rem 1.5rem;
+  margin-top: 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   Code
+   -------------------------------------------------------------------------- */
+
 code, pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.95em;
 }
 
-/* Blue highlight box for important content */
-div.blue {
-  background-color: #e6f0ff;
-  border-radius: 5px;
-  padding: 20px;
+pre {
+  background-color: var(--color-panel);
+  border: 1px solid #E3DFD4;
+  border-radius: 4px;
 }
 
+/* --------------------------------------------------------------------------
+   Callout box
+   -------------------------------------------------------------------------- */
+
+div.blue {
+  background-color: var(--color-panel);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
