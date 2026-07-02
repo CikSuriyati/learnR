@@ -10,26 +10,20 @@
 
 
 
-<meta name="date" content="2023-11-20" />
+<meta name="date" content="2026-07-03" />
 
 <title>Topic 6: Basic Statistical Analysis</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script>
+<link href="site_libs/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet" />
+<link href="site_libs/Source_Serif_Pro-0.4.10/font.css" rel="stylesheet" />
+<script src="site_libs/bs3compat-0.11.0/transition.js"></script>
+<script src="site_libs/bs3compat-0.11.0/tabs.js"></script>
+<script src="site_libs/bs3compat-0.11.0/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
@@ -63,6 +57,7 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -339,19 +334,34 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><img id="logo" style="width: 30px;" src="logo.png" /></a>
+      <a class="navbar-brand" href="index.html">Learn R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="Journal.html">Syllabus</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Course
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Journal.html">Syllabus</a>
+    </li>
+    <li>
+      <a href="sow.html">About</a>
+    </li>
+    <li>
+      <a href="Links.html">Links</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Introduction to Statistical Programming
+    Weekly materials
      
     <span class="caret"></span>
   </a>
@@ -406,12 +416,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<li>
-  <a href="sow.html">About</a>
-</li>
-<li>
-  <a href="Links.html">Links</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -422,6 +426,8 @@ $(document).ready(function () {
 <html>
 <div><img src="logo.png" width="200px" align="right"></div>
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style type="text/css">
 .inline {
   background-color: #f7f7f7;
@@ -495,40 +501,317 @@ $(document).ready(function () {
 <p> </p>
 
 
+</body>
+</html>
 
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
+<h4 class="date">2026-07-03</h4>
+
+</div>
+
+
+<p>In this topic, you will learn about :</p>
+<ul>
+<li>Linear regression (simple and multiple linear regression)</li>
+</ul>
+<div id="section" class="section level1 tabset">
+<h1 class="tabset"></h1>
+<div id="simple-linear-regression" class="section level2">
+<h2>Simple Linear Regression</h2>
+<div id="simple-linear-regression-in-r-programming"
+class="section level3">
+<h3>Simple Linear Regression in R Programming</h3>
+<p>Simple Linear Regression is a statistical method used to model the
+relationship between two continuous variables by fitting a linear
+equation to the data. It helps to understand how changes in the
+predictor variable (independent variable) are associated with changes in
+the response variable (dependent variable).</p>
+<p><strong>Performing Simple Linear Regression:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Using <strong>lm()</strong>: The <strong>lm()</strong> function in R
+is used to perform simple linear regression.</li>
+</ol>
+<p><strong>Example: Simple Linear Regression</strong></p>
+<p>Suppose we have data on the number of hours studied and the
+corresponding exam scores, and we want to model the relationship between
+the two variables using simple linear regression.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Sample data for hours studied and exam scores</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>hours_studied <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">95</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># Create a data frame with the two variables</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> hours_studied, <span class="at">Exam_Scores =</span> exam_scores)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Perform simple linear regression</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>reg_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Exam_Scores <span class="sc">~</span> Hours_Studied, <span class="at">data =</span> data)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co"># Print the regression summary</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">summary</span>(reg_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Exam_Scores ~ Hours_Studied, data = data)
+## 
+## Residuals:
+##    1    2    3    4    5 
+## -2.0  0.5  3.0  0.5 -2.0 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    59.5000     2.5331   23.49 0.000169 ***
+## Hours_Studied   3.7500     0.3819    9.82 0.002245 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.415 on 3 degrees of freedom
+## Multiple R-squared:  0.9698, Adjusted R-squared:  0.9598 
+## F-statistic: 96.43 on 1 and 3 DF,  p-value: 0.002245</code></pre>
+<p><strong>Interpreting the Output:</strong></p>
+<p>The output of the <strong>summary()</strong> function on the
+regression model provides the coefficient estimates, standard errors,
+t-values, and p-values for the predictor variable (Hours_Studied) and
+the intercept term. It also provides the R-squared value, which
+represents the proportion of variance in the response variable
+(Exam_Scores) explained by the predictor variable.</p>
+<p>The coefficient estimate for Hours_Studied indicates the change in
+the Exam_Scores for each unit increase in Hours_Studied.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Making Predictions:</strong></li>
+</ol>
+<p>Once the regression model is fitted, you can make predictions for new
+data using the <strong>predict()</strong> function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># New data for prediction</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Make predictions using the regression model</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg_model, <span class="at">newdata =</span> new_data)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Print the predictions</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">print</span>(predictions)</span></code></pre></div>
+<pre><code>##     1     2     3 
+## 70.75 85.75 93.25</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Plotting the Regression Line:</strong></li>
+</ol>
+<p>You can visualize the linear regression model by plotting the
+regression line along with the data points.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Plot the data points and the regression line</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(hours_studied, exam_scores, <span class="at">xlab =</span> <span class="st">&quot;Hours Studied&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Exam Scores&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Simple Linear Regression&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">abline</span>(reg_model, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="page-m_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<p><strong>Summary:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Simple Linear Regression is used to model the relationship between
+two continuous variables using a linear equation.</li>
+<li>The <strong>lm()</strong> function in R is used to perform simple
+linear regression.</li>
+<li>The output of <strong>summary()</strong> provides information about
+the regression coefficients, R-squared value, and statistical
+significance of the model.</li>
+<li>You can use the <strong>predict()</strong> function to make
+predictions with the fitted regression model.</li>
+<li>Visualizing the regression line can help in understanding the
+relationship between the variables.</li>
+</ol>
+</div>
+</div>
+<div id="multiple-linear-regression" class="section level2">
+<h2>Multiple Linear Regression</h2>
+<div id="multiple-linear-regression-in-r-programming"
+class="section level3">
+<h3>Multiple Linear Regression in R Programming</h3>
+<p>Multiple Linear Regression is a statistical method used to model the
+relationship between a dependent variable (response variable) and two or
+more independent variables (predictor variables) by fitting a linear
+equation to the data. It helps to understand how changes in multiple
+predictor variables are associated with changes in the response
+variable.</p>
+<p><strong>Performing Multiple Linear Regression:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Using <strong>lm()</strong>: The <strong>lm()</strong> function in R
+is also used to perform multiple linear regression, similar to simple
+linear regression.</li>
+</ol>
+<p><strong>Example: Multiple Linear Regression</strong></p>
+<p>Suppose we have data on the number of hours studied, the number of
+hours slept, and the corresponding exam scores, and we want to model the
+relationship between the two predictor variables (Hours_Studied and
+Hours_Slept) and the response variable (Exam_Scores) using multiple
+linear regression.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Sample data for hours studied, hours slept, and exam scores</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>hours_studied <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>hours_slept <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">8</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">95</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># Create a data frame with the three variables</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> hours_studied, <span class="at">Hours_Slept =</span> hours_slept, <span class="at">Exam_Scores =</span> exam_scores)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># Perform multiple linear regression</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>reg_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Exam_Scores <span class="sc">~</span> Hours_Studied <span class="sc">+</span> Hours_Slept, <span class="at">data =</span> data)</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># Print the regression summary</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="fu">summary</span>(reg_model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Exam_Scores ~ Hours_Studied + Hours_Slept, data = data)
+## 
+## Residuals:
+##          1          2          3          4          5 
+## -1.000e+00  5.000e-01  2.000e+00 -1.500e+00  2.956e-16 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)     45.000      9.109   4.940   0.0386 *
+## Hours_Studied    3.000      0.552   5.435   0.0322 *
+## Hours_Slept      2.500      1.531   1.633   0.2441  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.936 on 2 degrees of freedom
+## Multiple R-squared:  0.9871, Adjusted R-squared:  0.9741 
+## F-statistic: 76.33 on 2 and 2 DF,  p-value: 0.01293</code></pre>
+<p><strong>Interpreting the Output:</strong></p>
+<p>The output of the <strong>summary()</strong> function on the multiple
+regression model provides the coefficient estimates, standard errors,
+t-values, and p-values for each predictor variable (Hours_Studied and
+Hours_Slept) and the intercept term. It also provides the R-squared
+value, which represents the proportion of variance in the response
+variable (Exam_Scores) explained by the predictor variables.</p>
+<p>The coefficient estimates for Hours_Studied and Hours_Slept indicate
+the change in the Exam_Scores for each unit increase in the
+corresponding predictor variable while holding other variables
+constant.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Making Predictions:</strong></li>
+</ol>
+<p>Similarly to simple linear regression, you can make predictions for
+new data using the <strong>predict()</strong> function.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># New data for prediction</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">Hours_Slept =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># Make predictions using the regression model</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg_model, <span class="at">newdata =</span> new_data)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># Print the predictions</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fu">print</span>(predictions)</span></code></pre></div>
+<pre><code>##    1    2    3 
+## 71.5 86.0 94.5</code></pre>
+<p><strong>Summary:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Multiple Linear Regression is used to model the relationship between
+a dependent variable and two or more independent variables using a
+linear equation.</li>
+<li>The <strong>lm()</strong> function in R is used to perform multiple
+linear regression.</li>
+<li>The output of <strong>summary()</strong> provides information about
+the regression coefficients, R-squared value, and statistical
+significance of the model.</li>
+<li>You can use the <strong>predict()</strong> function to make
+predictions with the fitted regression model for new data.</li>
+</ol>
+</div>
+</div>
+<div id="test" class="section level2">
+<h2>Test</h2>
+<p>Test (30% of ongoing assessment)</p>
+<p>Topic 1 to 6</p>
+</div>
+</div>
+
+<html>
+
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Title</title>
+</head>
+
+
+
+&nbsp;
+<hr />
+<p style="text-align: center;">A work by <a href="https://github.com/CikSuriyati">Suriyati Ujang</a></p>
+<p style="text-align: center;"><span style="color: #808080;"><em>suriyatiujang@uitm.edu.my</em></span></p>
 
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Visitor Counter - Fixed at bottom -->
-<div style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid #e0e0e0;
-    padding: 10px 0;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-">
-    <p style="color: #666; font-size: 14px; margin: 5px 0;">
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin"></a>
+    <a href="https://github.com/CikSuriyati" class="fa fa-github"></a>
+</p>
+
+<!-- Visitor Counter -->
+<div style="text-align: center; margin: 20px 0;">
+    <p style="color: #666; font-size: 14px; margin: 10px 0;">
         <i class="fa fa-eye" style="margin-right: 5px;"></i>
         <span id="visitor-count">Loading visitors...</span>
     </p>
-    <p style="color: #999; font-size: 12px; margin: 2px 0;">
-        <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin" style="margin: 0 10px; color: #0077b5;"></a>
-        <a href="https://github.com/CikSuriyati" class="fa fa-github" style="margin: 0 10px; color: #333;"></a>
-    </p>
 </div>
-
-<!-- Add bottom padding to body to prevent content from being hidden behind fixed counter -->
-<style>
-body {
-    padding-bottom: 80px !important;
-}
-</style>
 
 <!-- Visitor Counter Script -->
 <script>
@@ -679,317 +962,12 @@ body {
 })();
 </script>
 
-
-
-</body>
-</html>
-
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Topic 6: Basic Statistical Analysis</h1>
-<h4 class="date">2023-11-20</h4>
-
-</div>
-
-
-<p>In this topic, you will learn about :</p>
-<ul>
-<li>Linear regression (simple and multiple linear regression)</li>
-</ul>
-<div id="section" class="section level1 tabset">
-<h1 class="tabset"></h1>
-<div id="simple-linear-regression" class="section level2">
-<h2>Simple Linear Regression</h2>
-<div id="simple-linear-regression-in-r-programming"
-class="section level3">
-<h3>Simple Linear Regression in R Programming</h3>
-<p>Simple Linear Regression is a statistical method used to model the
-relationship between two continuous variables by fitting a linear
-equation to the data. It helps to understand how changes in the
-predictor variable (independent variable) are associated with changes in
-the response variable (dependent variable).</p>
-<p><strong>Performing Simple Linear Regression:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Using <strong>lm()</strong>: The <strong>lm()</strong> function in R
-is used to perform simple linear regression.</li>
-</ol>
-<p><strong>Example: Simple Linear Regression</strong></p>
-<p>Suppose we have data on the number of hours studied and the
-corresponding exam scores, and we want to model the relationship between
-the two variables using simple linear regression.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Sample data for hours studied and exam scores</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>hours_studied <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">95</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># Create a data frame with the two variables</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> hours_studied, <span class="at">Exam_Scores =</span> exam_scores)</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Perform simple linear regression</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>reg_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Exam_Scores <span class="sc">~</span> Hours_Studied, <span class="at">data =</span> data)</span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co"># Print the regression summary</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="fu">summary</span>(reg_model)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Exam_Scores ~ Hours_Studied, data = data)
-## 
-## Residuals:
-##    1    2    3    4    5 
-## -2.0  0.5  3.0  0.5 -2.0 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)    59.5000     2.5331   23.49 0.000169 ***
-## Hours_Studied   3.7500     0.3819    9.82 0.002245 ** 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 2.415 on 3 degrees of freedom
-## Multiple R-squared:  0.9698, Adjusted R-squared:  0.9598 
-## F-statistic: 96.43 on 1 and 3 DF,  p-value: 0.002245</code></pre>
-<p><strong>Interpreting the Output:</strong></p>
-<p>The output of the <strong>summary()</strong> function on the
-regression model provides the coefficient estimates, standard errors,
-t-values, and p-values for the predictor variable (Hours_Studied) and
-the intercept term. It also provides the R-squared value, which
-represents the proportion of variance in the response variable
-(Exam_Scores) explained by the predictor variable.</p>
-<p>The coefficient estimate for Hours_Studied indicates the change in
-the Exam_Scores for each unit increase in Hours_Studied.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Making Predictions:</strong></li>
-</ol>
-<p>Once the regression model is fitted, you can make predictions for new
-data using the <strong>predict()</strong> function.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># New data for prediction</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Make predictions using the regression model</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg_model, <span class="at">newdata =</span> new_data)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Print the predictions</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">print</span>(predictions)</span></code></pre></div>
-<pre><code>##     1     2     3 
-## 70.75 85.75 93.25</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Plotting the Regression Line:</strong></li>
-</ol>
-<p>You can visualize the linear regression model by plotting the
-regression line along with the data points.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Plot the data points and the regression line</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(hours_studied, exam_scores, <span class="at">xlab =</span> <span class="st">&quot;Hours Studied&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Exam Scores&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Simple Linear Regression&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">abline</span>(reg_model, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="page-m_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p><strong>Summary:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Simple Linear Regression is used to model the relationship between
-two continuous variables using a linear equation.</li>
-<li>The <strong>lm()</strong> function in R is used to perform simple
-linear regression.</li>
-<li>The output of <strong>summary()</strong> provides information about
-the regression coefficients, R-squared value, and statistical
-significance of the model.</li>
-<li>You can use the <strong>predict()</strong> function to make
-predictions with the fitted regression model.</li>
-<li>Visualizing the regression line can help in understanding the
-relationship between the variables.</li>
-</ol>
-</div>
-</div>
-<div id="multiple-linear-regression" class="section level2">
-<h2>Multiple Linear Regression</h2>
-<div id="multiple-linear-regression-in-r-programming"
-class="section level3">
-<h3>Multiple Linear Regression in R Programming</h3>
-<p>Multiple Linear Regression is a statistical method used to model the
-relationship between a dependent variable (response variable) and two or
-more independent variables (predictor variables) by fitting a linear
-equation to the data. It helps to understand how changes in multiple
-predictor variables are associated with changes in the response
-variable.</p>
-<p><strong>Performing Multiple Linear Regression:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Using <strong>lm()</strong>: The <strong>lm()</strong> function in R
-is also used to perform multiple linear regression, similar to simple
-linear regression.</li>
-</ol>
-<p><strong>Example: Multiple Linear Regression</strong></p>
-<p>Suppose we have data on the number of hours studied, the number of
-hours slept, and the corresponding exam scores, and we want to model the
-relationship between the two predictor variables (Hours_Studied and
-Hours_Slept) and the response variable (Exam_Scores) using multiple
-linear regression.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Sample data for hours studied, hours slept, and exam scores</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>hours_studied <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>hours_slept <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">8</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">75</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">95</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co"># Create a data frame with the three variables</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> hours_studied, <span class="at">Hours_Slept =</span> hours_slept, <span class="at">Exam_Scores =</span> exam_scores)</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co"># Perform multiple linear regression</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>reg_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Exam_Scores <span class="sc">~</span> Hours_Studied <span class="sc">+</span> Hours_Slept, <span class="at">data =</span> data)</span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co"># Print the regression summary</span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="fu">summary</span>(reg_model)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Exam_Scores ~ Hours_Studied + Hours_Slept, data = data)
-## 
-## Residuals:
-##         1         2         3         4         5 
-## -1.00e+00  5.00e-01  2.00e+00 -1.50e+00 -1.11e-15 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)     45.000      9.109   4.940   0.0386 *
-## Hours_Studied    3.000      0.552   5.435   0.0322 *
-## Hours_Slept      2.500      1.531   1.633   0.2441  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 1.936 on 2 degrees of freedom
-## Multiple R-squared:  0.9871, Adjusted R-squared:  0.9741 
-## F-statistic: 76.33 on 2 and 2 DF,  p-value: 0.01293</code></pre>
-<p><strong>Interpreting the Output:</strong></p>
-<p>The output of the <strong>summary()</strong> function on the multiple
-regression model provides the coefficient estimates, standard errors,
-t-values, and p-values for each predictor variable (Hours_Studied and
-Hours_Slept) and the intercept term. It also provides the R-squared
-value, which represents the proportion of variance in the response
-variable (Exam_Scores) explained by the predictor variables.</p>
-<p>The coefficient estimates for Hours_Studied and Hours_Slept indicate
-the change in the Exam_Scores for each unit increase in the
-corresponding predictor variable while holding other variables
-constant.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Making Predictions:</strong></li>
-</ol>
-<p>Similarly to simple linear regression, you can make predictions for
-new data using the <strong>predict()</strong> function.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># New data for prediction</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hours_Studied =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>), <span class="at">Hours_Slept =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co"># Make predictions using the regression model</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg_model, <span class="at">newdata =</span> new_data)</span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># Print the predictions</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fu">print</span>(predictions)</span></code></pre></div>
-<pre><code>##    1    2    3 
-## 71.5 86.0 94.5</code></pre>
-<p><strong>Summary:</strong></p>
-<ol style="list-style-type: decimal">
-<li>Multiple Linear Regression is used to model the relationship between
-a dependent variable and two or more independent variables using a
-linear equation.</li>
-<li>The <strong>lm()</strong> function in R is used to perform multiple
-linear regression.</li>
-<li>The output of <strong>summary()</strong> provides information about
-the regression coefficients, R-squared value, and statistical
-significance of the model.</li>
-<li>You can use the <strong>predict()</strong> function to make
-predictions with the fitted regression model for new data.</li>
-</ol>
-</div>
-</div>
-<div id="test" class="section level2">
-<h2>Test</h2>
-<p>Test (30% of ongoing assessment)</p>
-<p>Topic 1 to 6</p>
-</div>
-</div>
-
-<html>
-
-<head>
-<style type="text/css">
-.inline {
-  background-color: #f7f7f7;
-  border:solid 1px #B0B0B0;
-}
-.error {
-	font-weight: bold;
-	color: #FF0000;
-}
-.warning {
-	font-weight: bold;
-}
-.message {
-	font-style: italic;
-}
-.source, .output, .warning, .error, .message {
-	padding: 0 1em;
-  border:solid 1px #F7F7F7;
-}
-.source {
-  background-color: #f5f5f5;
-}
-.left {
-  text-align: left;
-}
-.right {
-  text-align: right;
-}
-.center {
-  text-align: center;
-}
-.hl.num {
-  color: #AF0F91;
-}
-.hl.str {
-  color: #317ECC;
-}
-.hl.com {
-  color: #AD95AF;
-  font-style: italic;
-}
-.hl.opt {
-  color: #000000;
-}
-.hl.std {
-  color: #585858;
-}
-.hl.kwa {
-  color: #295F94;
-  font-weight: bold;
-}
-.hl.kwb {
-  color: #B05A65;
-}
-.hl.kwc {
-  color: #55aa55;
-}
-.hl.kwd {
-  color: #BC5A65;
-  font-weight: bold;
-}
-</style>
-<title>Title</title>
-</head>
-
-
-
-&nbsp;
-<hr />
-<p style="text-align: center;">A work by <a href="https://github.com/CikSuriyati">Suriyati Ujang</a></p>
-<p style="text-align: center;"><span style="color: #808080;"><em>suriyatiujang@uitm.edu.my</em></span></p>
-
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Add font awesome icons -->
-<p style="text-align: center;">
-    <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin"></a>
-    <a href="https://github.com/CikSuriyati" class="fa fa-github"></a>
-</p>
-
 &nbsp;
 
 
 </body>
 </html>
+
 
 
 

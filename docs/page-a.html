@@ -13,22 +13,16 @@
 
 <title>Topic 1: Introduction to R language</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.3.8/bootstrap.bundle.min.js"></script>
+<link href="site_libs/Source_Sans_Pro-0.4.10/font.css" rel="stylesheet" />
+<link href="site_libs/Source_Serif_Pro-0.4.10/font.css" rel="stylesheet" />
+<script src="site_libs/bs3compat-0.11.0/transition.js"></script>
+<script src="site_libs/bs3compat-0.11.0/tabs.js"></script>
+<script src="site_libs/bs3compat-0.11.0/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
@@ -347,12 +341,27 @@ $(document).ready(function () {
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="Journal.html">Syllabus</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Course
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Journal.html">Syllabus</a>
+    </li>
+    <li>
+      <a href="sow.html">About</a>
+    </li>
+    <li>
+      <a href="Links.html">Links</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Introduction to Statistical Programming
+    Weekly materials
      
     <span class="caret"></span>
   </a>
@@ -406,12 +415,6 @@ $(document).ready(function () {
       <a href="page-n.html">Week 14</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="sow.html">About</a>
-</li>
-<li>
-  <a href="Links.html">Links</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -604,6 +607,11 @@ data effectively.</p>
 <div id="step-by-step-guide-to-install-and-use-r"
 class="section level2">
 <h2>Step-by-Step Guide to Install and Use R</h2>
+<pre><code>## 
+## Attaching package: &#39;vembedr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:lubridate&#39;:
+## 
+##     hms</code></pre>
 <div class="vembedr" align="center">
 <div>
 <iframe src="https://www.youtube.com/embed/H9EBlFDGG4k" width="533" height="300" frameborder="0" allowfullscreen="" data-external="1"></iframe>
@@ -616,13 +624,14 @@ step-by-step guide to help you get started:</p>
 </ol>
 <p>Go to the R Project website: <strong><a
 href="https://www.r-project.org/"
-class="uri">https://www.r-project.org/</a></strong> or RStudio Desktop
-<strong><a href="https://posit.co/download/rstudio-desktop/"
-class="uri">https://posit.co/download/rstudio-desktop/</a></strong>
-Click on “CRAN” (Comprehensive R Archive Network) under “Download and
-Install R.” Select a CRAN mirror location near you.</p>
+class="uri">https://www.r-project.org/</a></strong> Click on “CRAN”
+(Comprehensive R Archive Network) under “Download and Install R.” Select
+a CRAN mirror location near you.</p>
 <p>Choose the appropriate operating system (Windows, macOS, or Linux).
 Download the R installer for your operating system.</p>
+<p>Or RStudio Desktop <strong><a
+href="https://posit.co/download/rstudio-desktop/"
+class="uri">https://posit.co/download/rstudio-desktop/</a></strong></p>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Install R</strong></li>
 </ol>
@@ -712,21 +721,21 @@ object in order to store the data.</p>
   </script>
 </div>
 <p>Example</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">6</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="dv">3</span> <span class="ot">-&gt;</span> z</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>w <span class="ot">&lt;&lt;-</span> <span class="dv">7</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="dv">8</span> <span class="ot">-&gt;&gt;</span> s</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">6</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="dv">3</span> <span class="ot">-&gt;</span> z</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>w <span class="ot">&lt;&lt;-</span> <span class="dv">7</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="dv">8</span> <span class="ot">-&gt;&gt;</span> s</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>z</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>w</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>w</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>s</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>s</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p><strong><em>2. ARITHMETIC OPERATORS</em></strong></p>
 <p>These operators are used to carry out mathematical operations like
@@ -738,21 +747,21 @@ available in R.</p>
   </script>
 </div>
 <p>Example</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>   </span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="dv">8</span> <span class="sc">-</span> <span class="dv">3</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="dv">8</span> <span class="sc">-</span> <span class="dv">3</span>   </span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="dv">7</span> <span class="sc">*</span> <span class="dv">5</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="dv">7</span> <span class="sc">*</span> <span class="dv">5</span>   </span></code></pre></div>
 <pre><code>## [1] 35</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>     </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>     </span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="dv">4</span> <span class="sc">^</span> <span class="dv">4</span>   </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="dv">4</span> <span class="sc">^</span> <span class="dv">4</span>   </span></code></pre></div>
 <pre><code>## [1] 256</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="dv">4</span> <span class="sc">**</span> <span class="dv">4</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="dv">4</span> <span class="sc">**</span> <span class="dv">4</span>  </span></code></pre></div>
 <pre><code>## [1] 256</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%%</span> <span class="dv">3</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%%</span> <span class="dv">3</span>  </span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p><strong><em>3. RELATIONAL/COMPARISON OPERATORS</em></strong></p>
 <p>Comparison or relational operators are designed to compare objects
@@ -764,20 +773,20 @@ following table summarizes the R relational operators.</p>
   </script>
 </div>
 <p>Example</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>x<span class="sc">&lt;</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>x<span class="sc">&lt;</span>y</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>x<span class="sc">&gt;</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>x<span class="sc">&gt;</span>y</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>x<span class="sc">&lt;=</span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>x<span class="sc">&lt;=</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>y<span class="sc">&gt;=</span><span class="dv">20</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>y<span class="sc">&gt;=</span><span class="dv">20</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>y <span class="sc">==</span> <span class="dv">16</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>y <span class="sc">==</span> <span class="dv">16</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>x <span class="sc">!=</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><strong><em>4. LOGICAL/BOOLEAN OPERATORS</em></strong></p>
 <div data-pagedtable="false">
@@ -786,40 +795,40 @@ following table summarizes the R relational operators.</p>
   </script>
 </div>
 <p><em>Example</em></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 1 0 0 6</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
-<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
-<p>Operators &amp; and | perform element-wise operation producing result
-having length of the longer operand.</p>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 0 0 6</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>x<span class="sc">&amp;</span>y</span></code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+<p>Operators &amp; and | perform element-wise operation producing result
+having length of the longer operand.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>x<span class="sc">|</span>y</span></code></pre></div>
-<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
-<p>But &amp;&amp; and || examines only the first element of the operands
-resulting into a single length logical vector.</p>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>x<span class="sc">&amp;</span>y</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a><span class="co"># &amp;&amp; only works with single values, so we&#39;ll use the first element</span></span>
-<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="sc">&amp;&amp;</span> y[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<p>Zero is considered FALSE and non-zero numbers are taken as TRUE.</p>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>x<span class="sc">|</span>y</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE  TRUE</code></pre>
+<p>But &amp;&amp; and || examines only the first element of the operands
+resulting into a single length logical vector.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a><span class="co"># || only works with single values, so we&#39;ll use the first element</span></span>
-<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="sc">||</span> y[<span class="dv">1</span>]</span></code></pre></div>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a><span class="co"># &amp;&amp; only works with single values, so we&#39;ll use the first element</span></span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="sc">&amp;&amp;</span> y[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Zero is considered FALSE and non-zero numbers are taken as TRUE.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="dv">0</span>,<span class="dv">6</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a><span class="co"># || only works with single values, so we&#39;ll use the first element</span></span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="sc">||</span> y[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="blue">
 <p>Let’s summarise the main points of this tutorial.</p>
@@ -911,39 +920,22 @@ frames.</li>
 <p style="text-align: center;">A work by <a href="https://github.com/CikSuriyati">Suriyati Ujang</a></p>
 <p style="text-align: center;"><span style="color: #808080;"><em>suriyatiujang@uitm.edu.my</em></span></p>
 
-
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Visitor Counter - Fixed at bottom -->
-<div style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid #e0e0e0;
-    padding: 10px 0;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-">
-    <p style="color: #666; font-size: 14px; margin: 5px 0;">
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin"></a>
+    <a href="https://github.com/CikSuriyati" class="fa fa-github"></a>
+</p>
+
+<!-- Visitor Counter -->
+<div style="text-align: center; margin: 20px 0;">
+    <p style="color: #666; font-size: 14px; margin: 10px 0;">
         <i class="fa fa-eye" style="margin-right: 5px;"></i>
         <span id="visitor-count">Loading visitors...</span>
     </p>
-    <p style="color: #999; font-size: 12px; margin: 2px 0;">
-        <a href="https://orcid.org/0000-0002-4074-953X" class="fa fa-linkedin" style="margin: 0 10px; color: #0077b5;"></a>
-        <a href="https://github.com/CikSuriyati" class="fa fa-github" style="margin: 0 10px; color: #333;"></a>
-    </p>
 </div>
-
-<!-- Add bottom padding to body to prevent content from being hidden behind fixed counter -->
-<style>
-body {
-    padding-bottom: 80px !important;
-}
-</style>
 
 <!-- Visitor Counter Script -->
 <script>
@@ -1094,12 +1086,12 @@ body {
 })();
 </script>
 
-
 &nbsp;
 
 
 </body>
 </html>
+
 
 
 

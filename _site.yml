@@ -4,9 +4,15 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Syllabus"
-      href: Journal.html
-    - text: "Introduction to Statistical Programming"
+    - text: "Course"
+      menu:
+        - text: "Syllabus"
+          href: Journal.html
+        - text: "About"
+          href: sow.html
+        - text: "Links"
+          href: Links.html
+    - text: "Weekly materials"
       menu:
         - text: "Topic 1: Introduction to R language"
         - text: "Week 1"
@@ -42,14 +48,17 @@ navbar:
           href: page-m.html
         - text: "Week 14"
           href: page-n.html
-    - text: "About"
-      href: sow.html
-    - text: "Links"
-      href: Links.html
 
 output_dir: "docs"
 
 output:
   html_document:
+    theme:
+      bootswatch: flatly
+      primary: "#5B4636"
+      base_font:
+        google: "Source Sans Pro"
+      heading_font:
+        google: "Source Serif Pro"
     includes:
       after_body: footer.html

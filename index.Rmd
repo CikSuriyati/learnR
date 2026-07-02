@@ -1,8 +1,8 @@
 ---
 title: "Learn R"
+always_allow_html: true
 output:
   html_document:
-    theme: united
     highlight: tango
     df_print: paged
     toc_depth: 2
@@ -14,11 +14,16 @@ output:
     toc_depth: '2'
 ---
 
-# **Introduction to Statistical Programming**
+<div class="hero-section text-center mt-2 mb-4">
+<p class="lead hero-tagline">Introduction to Statistical Programming — weekly materials for STA334</p>
+<a href="page-a.html" class="btn btn-primary btn-lg mt-2">Start Week 1 &rarr;</a>
+</div>
+
+## Introduction to Statistical Programming
 
 R is a powerful, versatile and free statistical programming language, which has become increasingly popular among industrial and academic data analysis. These introduction course assume no previous coding experiences in R or any other programming language.
 
-This course will provide students with extensive skills of fast computing on how to organize computations to access, transform, explore, analyze data and produce results. The primary focus is on teaching the concepts and vocabulary of statistical computing. The ultimate goal is that the students would be able to work in an office, lab or as a research assistant to do essential computations and that they would be able to legitimately put computing skills on their resume. 
+This course will provide students with extensive skills of fast computing on how to organize computations to access, transform, explore, analyze data and produce results. The primary focus is on teaching the concepts and vocabulary of statistical computing. The ultimate goal is that the students would be able to work in an office, lab or as a research assistant to do essential computations and that they would be able to legitimately put computing skills on their resume.
 
 The method of teaching and learning included lecture, lab work and project which should be held in the statistics laboratory. The assessments consist of project, quiz and test.
 
@@ -28,8 +33,8 @@ The method of teaching and learning included lecture, lab work and project which
 ```{r echo=FALSE}
 library(knitr)
 library(kableExtra)
-df <- data.frame(Cat = c("Presentation", "Quiz", "Test", "Written Report"), 
-                 Quiz = linebreak(c("Face to face", "Online", "Lab Test", "Written Report")), 
+df <- data.frame(Cat = c("Presentation", "Quiz", "Test", "Written Report"),
+                 Quiz = linebreak(c("Face to face", "Online", "Lab Test", "Written Report")),
                  Test = linebreak(c("25%", "15%","30%","30%")))
 kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total Mark"), escape = F, caption = "Details of Continuous Assessment") %>%
   kable_styling(latex_options = "hold_position")
@@ -40,3 +45,56 @@ kable(df, col.names = c("Assessment Type", "Assessment Description", "% of Total
 
 Back to main website [_Miss Sue_](https://sites.google.com/view/suriyatiujang/home?authuser=0)
 
+---
+
+## Weekly Materials
+
+<div class="mb-4">
+<h3 class="h5 mb-3">Topic 1: Introduction to R language</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-a.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 1</div><div class="small" style="color:#B5B5BC;">Introduction to R language</div></div></a></div>
+<div class="col"><a href="page-b.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 2</div><div class="small" style="color:#B5B5BC;">Introduction to R language</div></div></a></div>
+</div>
+</div>
+
+<div class="mb-4">
+<h3 class="h5 mb-3">Topic 2: Programming with R</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-c.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 3</div><div class="small" style="color:#B5B5BC;">Programming with R</div></div></a></div>
+<div class="col"><a href="page-d.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 4</div><div class="small" style="color:#B5B5BC;">Programming with R</div></div></a></div>
+</div>
+</div>
+
+<div class="mb-4">
+<h3 class="h5 mb-3">Topic 3: Importing data into R</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-e.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 5</div><div class="small" style="color:#B5B5BC;">Importing data into R</div></div></a></div>
+</div>
+</div>
+
+<div class="mb-4">
+<h3 class="h5 mb-3">Topic 4: Programming statistical graphics</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-f.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 6</div><div class="small" style="color:#B5B5BC;">Programming statistical graphics</div></div></a></div>
+<div class="col"><a href="page-g.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 7</div><div class="small" style="color:#B5B5BC;">Programming statistical graphics</div></div></a></div>
+</div>
+</div>
+
+<div class="mb-4">
+<h3 class="h5 mb-3">Topic 5: Data Cleaning and filtering</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-h.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 8</div><div class="small" style="color:#B5B5BC;">Data Cleaning and filtering</div></div></a></div>
+<div class="col"><a href="page-i.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 9</div><div class="small" style="color:#B5B5BC;">Data Cleaning and filtering</div></div></a></div>
+</div>
+</div>
+
+<div class="mb-5">
+<h3 class="h5 mb-3">Topic 6: Basic Statistical Analysis</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+<div class="col"><a href="page-j.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 10</div><div class="small" style="color:#B5B5BC;">Basic Statistical Analysis</div></div></a></div>
+<div class="col"><a href="page-k.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 11</div><div class="small" style="color:#B5B5BC;">Basic Statistical Analysis</div></div></a></div>
+<div class="col"><a href="page-l.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 12</div><div class="small" style="color:#B5B5BC;">Basic Statistical Analysis</div></div></a></div>
+<div class="col"><a href="page-m.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 13</div><div class="small" style="color:#B5B5BC;">Basic Statistical Analysis</div></div></a></div>
+<div class="col"><a href="page-n.html" class="text-decoration-none"><div class="card h-100 p-3"><div class="fw-bold" style="color:#F5F5F5;">Week 14</div><div class="small" style="color:#B5B5BC;">Basic Statistical Analysis</div></div></a></div>
+</div>
+</div>
